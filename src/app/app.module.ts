@@ -1,0 +1,116 @@
+import { NgxPayPalModule } from 'ngx-paypal';
+import { AuthInterceptorService } from './common/service/auth-interceptor.service';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MainNavComponent } from './common/main-nav/main-nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { LoginComponent } from './common/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  MatFormFieldModule,
+  MatInputModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTableModule,
+  MatSelectModule,
+  MatButtonToggleModule,
+  MatMenuModule,
+  MatBadgeModule,
+  MatGridListModule,
+  MatCardModule,
+  MatExpansionModule} from '@angular/material';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { ErrorComponent } from './common/error/error.component';
+import { ErrorInterceptor } from './common/service/error-interceptor.service';
+import { RegistrationComponent } from './common/registration/registration.component';
+import { CategoryComponent } from './admin/category/category.component';
+import { CategoryAddComponent } from './admin/category/category-add/category-add.component';
+import { CategoryListComponent } from './admin/category/category-list/category-list.component';
+import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { ProductAddComponent } from './admin/admin-product/product-add/product-add.component';
+import { ProductListComponent } from './admin/admin-product/product-list/product-list.component';
+import { ProductComponent } from './user/product/product.component';
+import { ProductDetailsComponent } from './user/product/product-details/product-details.component';
+import { ProductListsComponent } from './user/product/product-lists/product-lists.component';
+import { WishListComponent } from './user/wish-list/wish-list.component';
+import { CartListComponent } from './user/cart-list/cart-list.component';
+import { PaymentComponent } from './user/payment/payment.component';
+import { OrderComponent } from './user/order/order.component';
+import { OrderDetailsComponent } from './user/order/order-details/order-details.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    MainNavComponent,
+    LoginComponent,
+    DashboardComponent,
+    UserDashboardComponent,
+    UserProfileComponent,
+    ErrorComponent,
+    RegistrationComponent,
+    CategoryComponent,
+    CategoryAddComponent,
+    CategoryListComponent,
+    AdminProductComponent,
+    ProductAddComponent,
+    ProductListComponent,
+    ProductComponent,
+    ProductDetailsComponent,
+    ProductListsComponent,
+    WishListComponent,
+    CartListComponent,
+    PaymentComponent,
+    OrderComponent,
+    OrderDetailsComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule,
+    MatSelectModule,
+    MatButtonToggleModule,
+    MatGridListModule,
+    MatBadgeModule,
+    MatMenuModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatToolbarModule,
+    MatSelectModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    NgxPayPalModule
+  ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
+})
+export class AppModule { }

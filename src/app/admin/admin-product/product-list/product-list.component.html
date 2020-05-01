@@ -1,0 +1,63 @@
+<!-- <table mat-table class="struct" [dataSource]="productList" class="mat-elevation-z8">
+
+
+  <ng-container matColumnDef="_id"  >
+    <th mat-header-cell *matHeaderCellDef><b> Id</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+  </ng-container>
+
+  // Name Column
+  <ng-container matColumnDef="categoryName">
+    <th mat-header-cell *matHeaderCellDef><b>Category</b>  </th>
+    <td mat-cell *matCellDef="let element"> {{element.categoryName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="productName">
+    <th mat-header-cell *matHeaderCellDef><b>Product</b>  </th>
+    <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef><b>Price</b>  </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+ //  Active Column
+  <ng-container matColumnDef="outOfStock">
+    <th mat-header-cell *matHeaderCellDef> <b>OutOfStock</b> </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-button-toggle-group >
+        <mat-button-toggle value="Yes" [checked]="element.outOfStock">
+          Yes
+        </mat-button-toggle>
+        <mat-button-toggle value="No" [checked]="!element.outOfStock">
+          No
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->
+<!-- multi="true" *ngIf="posts.length>0 && !isLoading" -->
+<mat-accordion multi="true" *ngIf="products.length>0" >
+  <mat-expansion-panel *ngFor="let product of products">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{product.productName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <p>{{product.categoryName}}</p>
+    </div>
+    <div class="post-images">
+      <img [src]="product.imageUrl" [alt]="product.productName">
+    </div>
+      <p> {{product.description}}</p>
+      <p>{{product.price}}</p>
+    <mat-action-row>
+      <a mat-button color="primary"
+      [routerLink]="['/edit',product.id]">Edit</a>
+      <button mat-button color="warn" (click)="onDelete(product.id)">Delete</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1"
+*ngIf="products.length<=0">No product yet</p>

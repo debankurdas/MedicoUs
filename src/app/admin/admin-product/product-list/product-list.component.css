@@ -1,0 +1,38 @@
+/* table {
+  width: 90%;
+}
+
+td.mat-cell,
+td.mat-footer-cell,
+th.mat-header-cell {
+  padding: 5px;
+}
+
+.struct
+{
+
+  margin-top: 20px;
+} */
+:host{
+  margin-top: 1rem;
+}
+.info-text
+{
+  text-align: center;
+}
+mat-spinner {
+  margin: auto;
+}
+.post-images
+{
+  height: 9rem;
+  width: 40%;
+}
+.post-images img{
+  height: 100%;
+  width: 80%;
+}
+.margin {
+  margin: 1rem;
+}
+

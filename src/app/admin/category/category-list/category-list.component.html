@@ -1,0 +1,32 @@
+
+<table mat-table [dataSource]="categoryList" class="mat-elevation-z8">
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="_id"  >
+    <th mat-header-cell *matHeaderCellDef><b> Id</b> </th>
+    <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="categoryName">
+    <th mat-header-cell *matHeaderCellDef><b>Category</b>  </th>
+    <td mat-cell *matCellDef="let element"> {{element.categoryName}} </td>
+  </ng-container>
+
+  <!-- Active Column -->
+  <ng-container matColumnDef="isLive">
+    <th mat-header-cell *matHeaderCellDef> <b>Live</b> </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-button-toggle-group>
+        <mat-button-toggle value="Yes" [checked]="element.isLive">
+          Yes
+        </mat-button-toggle>
+        <mat-button-toggle value="No" [checked]="!element.isLive">
+          No
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

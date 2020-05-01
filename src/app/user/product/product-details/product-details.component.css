@@ -1,0 +1,19 @@
+.fitWidth {
+  width: 100%;
+  height: 80%;
+}
+
+.matSelect {
+  width: 100px;
+}
+
+.mat-grid-tile .mat-grid-tile-header {
+  background: steelblue;
+}
+textarea {
+  width: 100%;
+}
+
+button {
+  margin: 5px;
+}
