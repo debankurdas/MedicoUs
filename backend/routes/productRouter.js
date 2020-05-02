@@ -5,11 +5,11 @@ const productRouter = express.Router();
 
 
 productRouter.get('/',productController.getProduct);
-productRouter.get(('/:id'),productController.getProductById);
+productRouter.get('/:id',productController.getProductById);
 productRouter.post('/getproductByCategory',productController.getproductByCategory);
 productRouter.post('/searchProduct',productController.searchProduct);
 productRouter.post('/',upload.single('image'),productController.addProduct);
-productRouter.put(('/:id'),productController.updateProduct);
+productRouter.put(('/:id'), upload.single('image'),productController.updateProduct);
 productRouter.delete('/:id', productController.deleteProduct);
 
 module.exports = productRouter;

@@ -50,7 +50,6 @@ export class ProductAddComponent implements OnInit {
             description: productData.description,
             price: productData.price
           };
-          console.log(this.products);
           this.form.setValue({
             productName: this.products.productName,
             categoryName: this.products.categoryName,
@@ -81,16 +80,13 @@ export class ProductAddComponent implements OnInit {
   }
   getCategories() {
     this.categoryService.getCategory().subscribe((result) => {
-        console.log(result.status);
         this.catList = result.data;
-        console.log(this.catList);
       });
   }
   onSavePost() {
     if (this.form.invalid) {
       return;
     }
-
     if (this.mode === 'create') {
       // this.isLoading = true;
       console.log(this.form.value.productName, this.form.value.categoryName,
@@ -98,6 +94,8 @@ export class ProductAddComponent implements OnInit {
       this.productService.addProduct(this.form.value.productName, this.form.value.categoryName,
         this.form.value.imageUrl, this.form.value.description, this.form.value.price);
     } else  {
+      console.log(this.productId, this.form.value.productName, this.form.value.categoryName,
+        this.form.value.imageUrl, this.form.value.description, this.form.value.price);
       this.productService.updateProduct(this.productId, this.form.value.productName, this.form.value.categoryName,
         this.form.value.imageUrl, this.form.value.description, this.form.value.price);
     }

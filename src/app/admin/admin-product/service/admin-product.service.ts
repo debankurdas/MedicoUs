@@ -23,7 +23,6 @@ export class AdminProductService {
     formData.append('categoryName', categoryName);
     formData.append('description', description);
     formData.append('price', price);
-
     this.http.post<{UserDataModel, product: Product}>(environment.apiUrl + '/products', formData)
     .subscribe(() => {
       this.route.navigate(['Admin/product']);
@@ -60,47 +59,32 @@ export class AdminProductService {
    }
    updateProduct(id: string, productName: string, categoryName: string, imageUrl: File | string,
                  description: string, price: string) {
-     let productData: Product | FormData;
-     console.log(typeof imageUrl);
-     if (typeof imageUrl === 'object') {
-      productData = new FormData();
-      productData.append('id', id);
-      productData.append('productName', productName);
-      productData.append('categoryName', categoryName);
-      productData.append('description', description);
-      productData.append('imageUrl', imageUrl, productName);
-      productData.append('price', price);
-     } else {
-      productData = {
-         id,
-         productName,
-         categoryName,
-         description,
-         price,
-         imageUrl
-       };
+                  let productData: Product | FormData;
+                  console.log(typeof imageUrl);
+                  if (typeof imageUrl === 'object') {
+                    productData = new FormData();
+                    productData.append('id', id);
+                    productData.append('productName', productName);
+                    productData.append('categoryName', categoryName);
+                    productData.append('image', imageUrl, productName);
+                    productData.append('description', description);
+                    productData.append('price', price);
+                  } else {
+                    productData = {
+                      id,
+                      productName,
+                      categoryName,
+                      description,
+                      price,
+                      imageUrl
+                    };
+                  }
+                  this.http.put<{message: string}>(environment.apiUrl + '/products/' + id, productData)
+                  .subscribe(response => {
+                    this.route.navigate(['Admin/product']);
+                  } );
 
-     }
-     console.log(productData);
-     this.http.put<{message: string}>(environment.apiUrl + '/products/' + id, productData)
-     .subscribe(response => {
-       // const updatedPost = [...this.posts];
-       // const oldIndex = updatedPost.findIndex(p => p.id === id);
-       // const post: Post = {
-       //   id,
-       //   title,
-       //   content,
-       //   imagePath,
-       //   creator
-       // };
-       // console.log(post);
-       // updatedPost[oldIndex] = post;
-       // this.posts = updatedPost;
-       // console.log(response);
-       this.route.navigate(['Admin/product']);
-     } );
-
-   }
+    }
    deleteProduct(productId: string) {
     return this.http.delete(environment.apiUrl + '/products/' + productId);
      // .subscribe(() => {

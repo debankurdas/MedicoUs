@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req,res,next) => {
   try {
     const token = req.headers['access-token'];
-    const decodeToken = jwt.verify(token,process.env.JWT_KEY);
+    const decodeToken = jwt.verify(token,'strong_password');
     req.userData = {uId: decodeToken.uId};
     next();
   } catch (error) {

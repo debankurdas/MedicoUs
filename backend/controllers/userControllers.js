@@ -54,7 +54,7 @@ exports.login = (req,res,next) => {
     }
     const token = jwt.sign(
       {uId:user._id},
-      process.env.JWT_KEY,
+      'strong_password',
       {expiresIn: "1h"}
       );
       res.json({

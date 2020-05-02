@@ -24,6 +24,44 @@ exports.addProduct = (req, res,next) => {
     });
   });
 }
+exports.updateProduct = (req, res,next) => {
+  let imageUrl = req.body.imageUrl;
+  if(req.file) {
+    url = req.protocol+'://'+req.get('host');
+    imageUrl = url+'/images/'+req.file.filename
+  }
+  const product = new productSchema({
+    _id: req.body.id,
+    productName: req.body.productName,
+    categoryName: req.body.categoryName,
+    description: req.body.description,
+    imageUrl: imageUrl,
+    price: req.body.price
+  })
+  console.log(product);
+  console.log(req.params.id);
+  productSchema.updateOne({_id : req.params.id},product)
+  .then(result => {
+    if(result.n>0) {
+      res.status(200).json({message: "Updated!",
+      product :{
+        ...result,
+        imageUrl: result.imageUrl
+      }
+      });
+    } else {
+      res.status(401).json({
+        message: "Unathorized Access!"
+      })
+    }
+
+  }).catch((error) => {
+    res.status(500).json({
+      message: 'Post is not updaated yet!',
+      error: error
+    });
+  });
+ };
 exports.getProduct = (req,res,next) => {
   productSchema.find()
   .then((product) =>{
@@ -49,9 +87,7 @@ exports.getProductById = (req,res,next) => {
   productSchema.findById(productId)
   .then((product) =>{
     if (product) {
-      console.log(product);
-      res.status(200).json({
-        data:product});
+      res.status(200).json(product);
     } else {
       res.status(401).json({message: 'Product is not found'});
     }
@@ -114,46 +150,6 @@ productSchema.find().estimatedDocumentCount().exec()
   });
 });
 }
-exports.updateProduct = (req, res,next) => {
-  let imageUrl = req.body.imageUrl;
-  if(req.file) {
-    url = req.protocol+'://'+req.get('host');
-    imageUrl = url+'/images/'+req.file.filename
-  }
-
-  const product = new productSchema({
-    _id: req.params.id,
-    productName: req.body.productName,
-    categoryName: req.body.categoryName,
-    description: req.body.description,
-    imageUrl: imageUrl,
-    price: req.body.price
-  })
-  console.log(req.body.productName)
-  console.log(product);
-  productSchema.updateOne({_id : req.params.id},product)
-  .then(result => {
-    if(result.n>0) {
-      res.status(200).json({message: "Updated!",
-      product :{
-        ...result,
-        imageUrl: result.imageUrl
-      }
-      });
-    } else {
-      res.status(401).json({
-        message: "Unathorized Access!"
-      })
-    }
-
-  }).catch((error) => {
-    res.status(500).json({
-      message: 'Post is not updaated yet!',
-      error: error
-    });
-  });
- };
-
  exports.deleteProduct = (req,res,next) => {
   productSchema.deleteOne({_id: req.params.id})
   .then((result) => {

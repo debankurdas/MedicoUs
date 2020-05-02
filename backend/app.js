@@ -13,8 +13,7 @@ const path = require('path');
 const app = express();
 
 mongoose.connect(
-  "mongodb+srv://debankurdas:"+process.env.MONGO_ATLAS_PW+
-  "@cluster0-nvn0n.mongodb.net/medico?retryWrites=true&w=majority",
+  "mongodb+srv://debankurdas:amitutul1@cluster0-nvn0n.mongodb.net/medico?retryWrites=true&w=majority",
 { useNewUrlParser: true,useUnifiedTopology: true  })
 .then(()=>{
   console.log("Connected to database");
@@ -26,7 +25,8 @@ app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : false}));
-app.use("/images", express.static(path.join('backend/images')));
+// app.use("/images", express.static(path.join('backend/images')));
+app.use("/images", express.static(path.join('images')));
 app.use((req,res,next)=>
 {
   res.setHeader(
