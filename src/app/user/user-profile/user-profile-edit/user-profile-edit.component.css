@@ -1,0 +1,14 @@
+
+mat-form-field,
+textarea
+{
+  width: 100%;
+}
+
+
+mat-spinner {
+  margin: auto;
+}
+p{
+  margin-left: 1rem;
+}

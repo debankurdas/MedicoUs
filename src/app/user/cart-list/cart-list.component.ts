@@ -16,7 +16,6 @@ export class CartListComponent implements OnInit {
   id: any;
   id1: any;
   userCart = [];
-  private productSub: Subscription;
   displayedColumns: string[] = ['imageUrl', 'productName', 'quantity', 'price', 'total', 'actions'];
   constructor(private cartService: CartListService,
               private router: Router) { }

@@ -11,7 +11,6 @@ exports.signUp = (req, res,next) => {
     mobile: req.body.mobile,
     email:req.body.email,
     password:hash,
-    dob: req.body.dob,
     role: req.body.role
   });
   user.save()
@@ -25,7 +24,7 @@ exports.signUp = (req, res,next) => {
   .catch((error) => {
     res.status(500).json({
       status: 'Failed',
-      message: 'You have already registered with this emailId'
+      message: 'You have already registered with this credentials'
     });
   })
  })
@@ -71,51 +70,105 @@ exports.login = (req,res,next) => {
     })
   })
 }
- exports.updateProfile = (req, res,next) => {
- const  userid = req.userData.uId;
- userSchema.findByIdAndUpdate(userid,{
-   $set:{
-     firstname:req.body.firstname,
-     lastname:req.body.lastname,
-     addressInfo:req.body.addressInfo
-   }
- })
- .then((updatedResult) => {
-   console.log(updatedResult);
-  //  if(updatedResult.n>0) {
-    res.status(200).json({
-      status: 'Success',
-      message:'Post is updated',
-      post:updatedResult
-    });
-  //  } else {
-  //    res.status(401).json({
-  //      message: "Unauthorized access"
-  //    });
-  //  }
+//  exports.updateProfile = (req, res,next) => {
+//  const  userid = req.userData.uId;
+//  userSchema.findByIdAndUpdate(userid,{
+//    $set:{
+//      firstname:req.body.firstname,
+//      lastname:req.body.lastname,
+//      addressInfo:req.body.addressInfo
+//    }
+//  })
+//  .then((updatedResult) => {
+//    console.log(updatedResult);
+//   //  if(updatedResult.n>0) {
+//     res.status(200).json({
+//       status: 'Success',
+//       message:'Post is updated',
+//       post:updatedResult
+//     });
+//   //  } else {
+//   //    res.status(401).json({
+//   //      message: "Unauthorized access"
+//   //    });
+//   //  }
 
- })
- .catch((error) =>{
-   res.status(500).json({
-     message:'Post is not updated',
-     error: error
-   });
- });
-};
+//  })
+//  .catch((error) =>{
+//    res.status(500).json({
+//      message:'Post is not updated',
+//      error: error
+//    });
+//  });
+// };
 
 exports.getUserById = (req,res,next) => {
   userSchema.findById(req.userData.uId)
-  .then(user =>{
-    if (user) {
-      res.status(200).json(user);
-    } else {
-      res.status(404).json({message: 'Post is not found'});
-    }
+  .then((result) =>{
+      res.status(200).json({
+        status: 'Success',
+        data: result
+      });
   })
   .catch(error => {
     res.status(500).json({
-      message: 'Post is not fetched!'
+      message: 'Post is not fetched!',
+      error:error
     });
   });
 }
 
+exports.getUserByparamsId = (req,res,next) => {
+  const userId = req.params.userId;
+  if(userId) {
+    userSchema.findById(userId)
+    .then((userData) =>{
+      if (userData) {
+        res.status(200).json({
+          _id: userData._id,
+          firstname: userData.firstname,
+          lastname: userData.lastname,
+          mobile: userData.mobile,
+          email: userData.email
+        });
+      } else {
+        res.status(401).json({message: 'UserData is not fetched'});
+      }
+    })
+    .catch(error => {
+      res.status(401).json({
+        message: 'User is not fetched!',
+        error:error
+      });
+    });
+  } else {
+    res.status(200).json({
+      message: 'Unexpected Id'
+    })
+  }
+}
+exports.updateProfile = (req, res,next) => {
+  const  userid = req.params.id;
+  console.log(userid);
+  userSchema.findByIdAndUpdate(userid,{
+    $set:{
+      firstname:req.body.firstname,
+      lastname:req.body.lastname,
+      mobile:req.body.mobile,
+      email:req.body.email
+    }
+  })
+  .then(result => {
+    console.log(result);
+      res.status(200).json({message: "Updated!",
+      user :{
+        ...result
+      }
+      });
+  }).catch((error) => {
+    res.status(500).json({
+      message: 'UserData is not updaated yet!',
+      error: error
+    });
+  });
+ };

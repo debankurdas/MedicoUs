@@ -1,3 +1,4 @@
+import { UserProfileEditComponent } from './user/user-profile/user-profile-edit/user-profile-edit.component';
 import { ProductAddComponent } from './admin/admin-product/product-add/product-add.component';
 import { ProductListComponent } from './admin/admin-product/product-list/product-list.component';
 import { OrderDetailsComponent } from './user/order/order-details/order-details.component';
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'Admin/product', component: ProductListComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/product/create', component: ProductAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'edit/:productId', component: ProductAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'userprofile/edit/:userId', component: UserProfileEditComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/product', component: ProductComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/wishList', component: WishListComponent, canActivate: [AuthGuard, UserGuard] },

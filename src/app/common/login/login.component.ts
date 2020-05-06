@@ -14,10 +14,19 @@ export class LoginComponent implements OnInit {
     email: '',
     password: ''
   };
+  loginStatus$ = false;
+  role$: any;
   constructor(
-    private loginService: LoginService) {}
+    private loginService: LoginService, private route: Router) {}
 
   ngOnInit() {
+    if (this.loginStatus$ === false) {
+      this.loginStatus$ = this.loginService.getLoginStatus();
+    }
+    if (this.loginStatus$ === true) {
+      this.route.navigate(['/user/product']);
+    }
+
   }
   login() {
     this.loginService.login(this.user);

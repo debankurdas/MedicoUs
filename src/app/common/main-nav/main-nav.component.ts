@@ -1,3 +1,4 @@
+import { CartListService } from './../service/cart-list.service';
 import { UserDataModel } from './../service/userData.model';
 import { Router } from '@angular/router';
 import { Component, Optional, OnInit, OnDestroy } from '@angular/core';
@@ -17,20 +18,19 @@ export class MainNavComponent implements OnInit, OnDestroy {
   loginObservableStatus: Subscription;
   role$: string;
   roleObservable: Subscription;
+  // cartCountObservable: Subscription;
   // cart$: Observable<UserDataModel>;
   categories: any;
-  cartService: any;
   loginStatus: any;
   role: any;
-
+  cartCount: number;
   constructor(private router: Router,
               // private breakpointObserver: BreakpointObserver,
               private loginService: LoginService,
-              // private cartService: CartService,
+              private cartService: CartListService,
               private categoryService: CategoryService,
              ) {}
              ngOnInit() {
-
               this.loginObservableStatus = this.loginService.getLoggedIntoken()
               .subscribe((result) => {
 
@@ -52,12 +52,30 @@ export class MainNavComponent implements OnInit, OnDestroy {
               console.log('after role' + this.role$);
               if (this.loginStatus$ === true && this.role$ === 'User') {
                 this.getCategories();
+                this.getCartList();
               }
             }
   getCategories() {
     this.categoryService.getCategory().subscribe((result) => {
       console.log(result.data);
       this.categories = result.data;
+    });
+  }
+  // getCartList() {
+  //   this.cartService.getcartList()
+  //   .subscribe((result) => {
+  //     if (result.status === 'Success') {
+  //       this.cartCount = result.data.length;
+  //       console.log('Cart number', this.cartCount);
+  //     }
+  //   });
+  // }
+  getCartList() {
+    this.cartService.getcartList()
+    .subscribe((result) => {
+      if (result.status === 'Success') {
+        this.cartCount = result.data.length;
+      }
     });
   }
 
@@ -75,6 +93,7 @@ export class MainNavComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.loginObservableStatus.unsubscribe();
     this.roleObservable.unsubscribe();
+    // this.cartCountObservable.unsubscribe();
   }
 
 }

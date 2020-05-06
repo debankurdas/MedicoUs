@@ -25,8 +25,8 @@ export class ProductDetailsComponent implements OnInit {
     this.quantity = new FormControl('1');
     this.route.paramMap.subscribe((data) => {
       this.productService.getProductById(data.get('id')).subscribe((result) => {
-        console.log(result.data);
-        this.productDetails = result.data;
+        console.log(result);
+        this.productDetails = result;
       });
     });
   }

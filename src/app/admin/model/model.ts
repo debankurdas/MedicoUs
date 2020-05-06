@@ -7,6 +7,14 @@ export interface Product {
   price: string;
 }
 
+export interface USER {
+  _id: string;
+  firstname: string;
+  lastname: string;
+  mobile: number;
+  email: string;
+}
+
 export interface Cart {
   id: string;
   status: string;

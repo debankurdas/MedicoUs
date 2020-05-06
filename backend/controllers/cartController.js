@@ -18,6 +18,7 @@ exports.getcartList = (req,res,next) => {
   .then((result) => {
     res.status(200).json({
       message: 'Product is added to cart',
+      status: 'Success',
       data: result
     });
   })
@@ -50,6 +51,7 @@ exports.createCartList = (req,res,next) => {
     })
   })
 }
+
 exports.deleteProduct = (req,res,next) => {
   cartListSchema.deleteOne({_id: req.params.id})
   .then((result) => {

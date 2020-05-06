@@ -89,13 +89,9 @@ export class ProductAddComponent implements OnInit {
     }
     if (this.mode === 'create') {
       // this.isLoading = true;
-      console.log(this.form.value.productName, this.form.value.categoryName,
-        this.form.value.imageUrl, this.form.value.description, this.form.value.price);
       this.productService.addProduct(this.form.value.productName, this.form.value.categoryName,
         this.form.value.imageUrl, this.form.value.description, this.form.value.price);
     } else  {
-      console.log(this.productId, this.form.value.productName, this.form.value.categoryName,
-        this.form.value.imageUrl, this.form.value.description, this.form.value.price);
       this.productService.updateProduct(this.productId, this.form.value.productName, this.form.value.categoryName,
         this.form.value.imageUrl, this.form.value.description, this.form.value.price);
     }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { CustomValidation } from './../customValidation/customValidation';
 import { Component, OnInit } from '@angular/core';
@@ -15,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private registerService: RegistrationService,
+    private router: Router,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -22,22 +24,27 @@ export class RegistrationComponent implements OnInit {
       firstname: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
-      mobile: new FormControl('', Validators.required),
+      mobile: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
       password: new FormControl('', Validators.required),
       confirm_password: new FormControl('', Validators.required),
-      dob: new FormControl('', Validators.required)
     }, {validators: [CustomValidation.validatorPassword], updateOn: 'change'});
   }
 
   register() {
+    if (this.registration.invalid) {
+      return;
+    }
     this.registerService.register(this.registration.value)
     .subscribe((result) => {
       console.log(result);
       if (result.status === 'Success') {
-        this.snackBar.open('User registraion is successfull,please login to access your account', 'Register', {
-          duration: 2000
+        this.snackBar.open('User registraion is successfull,please login to access your account', 'Register',
+        {
+          duration: 3000
         });
+
       }
+      this.registration.reset();
     });
   }
 

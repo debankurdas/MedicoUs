@@ -59,5 +59,10 @@
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+<mat-paginator class="margin"
+[length] = 'productLength'
+[pageSize]= 'productPerpage'[pageSizeOptions]="productPerpageOption"
+(page)="onChange($event)" *ngIf="products.length>0">
+</mat-paginator>
 <p class="info-text mat-body-1"
 *ngIf="products.length<=0">No product yet</p>

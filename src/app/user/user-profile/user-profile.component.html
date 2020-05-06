@@ -1,1 +1,11 @@
-<p>user-profile works!</p>
+<div >
+  <label for="firstname">FirstName</label>
+  <p>{{firstname}}</p>
+  <label for="lastName">LastName</label>
+  <p>{{lastname}}</p>
+  <label for="mobile">Mobile Number</label>
+  <p>{{mobile}}</p>
+  <label for="email">Email Number</label>
+  <p>{{email}}</p>
+  <a class="btn btn-primary" [routerLink]="['/userprofile/edit',userId]">Edit</a>
+</div>

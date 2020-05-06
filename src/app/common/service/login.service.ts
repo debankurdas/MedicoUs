@@ -69,7 +69,7 @@ export class LoginService {
  navigate(role: string) {
   switch (role) {
     case 'User':
-      this.router.navigate(['/user/profile']);
+      this.router.navigate(['/user/product']);
       break;
     case 'Admin':
       this.router.navigate(['/Admin/dashboard']);

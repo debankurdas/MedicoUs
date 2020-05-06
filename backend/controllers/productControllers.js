@@ -61,26 +61,48 @@ exports.updateProduct = (req, res,next) => {
       error: error
     });
   });
- };
+ }
 exports.getProduct = (req,res,next) => {
-  productSchema.find()
-  .then((product) =>{
-    if (product) {
+  const pageSize = +req.query.pageSize;
+  const currentPage = +req.query.currentPage;
+  let fetchProduct;
+  const productQuery = productSchema.find();
+  if(pageSize && currentPage) {
+    productQuery.skip(pageSize * (currentPage -1)).limit(pageSize)
+    productQuery.then(result => {
+      fetchProduct = result;
+      return productSchema.count();
+    })
+    .then((finalCount) => {
       res.status(200).json({
-        status:'Success',
-        message:'Product is successfully fetched',
-        product:product
+        status: 'Success',
+        message: 'Product Fetched Successfully',
+        product: fetchProduct,
+        maxCount: finalCount
+      })
+    })
+    .catch(error => {
+      res.status(401).json({
+        message: 'Product is not fetched!',
+        error:error
       });
-    } else {
-      res.status(401).json({message: 'Product is not found'});
-    }
-  })
-  .catch(error => {
-    res.status(401).json({
-      message: 'Product is not fetched!',
-      error:error
     });
-  });
+  } else {
+    productSchema.find()
+    .then((result) => {
+      res.status(200).json({
+        status: 'Success',
+        message: 'Product is fetched',
+        data: result
+      })
+    })
+     .catch(error => {
+       res.status(401).json({
+         message: 'Product is not fetched!',
+         error:error
+       });
+     });
+  }
 }
 exports.getProductById = (req,res,next) => {
   const productId = req.params.id;

@@ -29,7 +29,8 @@ import {
   MatBadgeModule,
   MatGridListModule,
   MatCardModule,
-  MatExpansionModule} from '@angular/material';
+  MatExpansionModule,
+  MatPaginatorModule} from '@angular/material';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
@@ -50,6 +51,7 @@ import { CartListComponent } from './user/cart-list/cart-list.component';
 import { PaymentComponent } from './user/payment/payment.component';
 import { OrderComponent } from './user/order/order.component';
 import { OrderDetailsComponent } from './user/order/order-details/order-details.component';
+import { UserProfileEditComponent } from './user/user-profile/user-profile-edit/user-profile-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +76,7 @@ import { OrderDetailsComponent } from './user/order/order-details/order-details.
     PaymentComponent,
     OrderComponent,
     OrderDetailsComponent,
+    UserProfileEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +103,7 @@ import { OrderDetailsComponent } from './user/order/order-details/order-details.
     MatExpansionModule,
     MatToolbarModule,
     MatSelectModule,
+    MatPaginatorModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

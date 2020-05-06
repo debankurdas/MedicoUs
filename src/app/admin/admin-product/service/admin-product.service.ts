@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class AdminProductService {
   private product: Product[] = [];
-  private productUpdated = new Subject<{product: Product[]}>();
+  private productUpdated = new Subject<{product: Product[], productCount: number}>();
   constructor(private http: HttpClient, private route: Router) {}
 
   addProduct(productName: string, categoryName: string, imageUrl: File | string, description: string,
@@ -28,10 +28,13 @@ export class AdminProductService {
       this.route.navigate(['Admin/product']);
     });
   }
-  getProduct() {
-    return this.http.get<{userData: UserDataModel , message: string, product: any}>(environment.apiUrl + '/products')
+  getProduct(currentPage: number, pageSize: number) {
+    const queryParams = `?pageSize=${pageSize}&currentPage=${currentPage}`;
+    return this.http.get<{userData: UserDataModel , message: string, product: any, maxCount: number}>
+    (environment.apiUrl + '/products' + queryParams)
     .pipe(map((productData) => {
-         return{ product: productData.product.map((product) => {
+         return {
+           product: productData.product.map((product) => {
            return {
              id: product._id,
              productName: product.productName,
@@ -40,13 +43,14 @@ export class AdminProductService {
              price: product.price,
              imageUrl: product.imageUrl
            };
-         })
+         }),
+         count: productData.maxCount
        };
       }))
-      .subscribe((transformPostData) => {
-        console.log(transformPostData);
-        this.product = transformPostData.product;
-        this.productUpdated.next({ product: [...this.product]});
+      .subscribe((transformProductData) => {
+        console.log(transformProductData);
+        this.product = transformProductData.product;
+        this.productUpdated.next({ product: [...this.product], productCount: transformProductData.count });
       });
    }
    getProductUpdateListner() {

@@ -1,0 +1,33 @@
+<mat-card>
+  <!-- <mat-spinner [diameter]="50"
+  *ngIf="isLoading"></mat-spinner> -->
+  <!-- *ngIf="!isLoading" -->
+  <form
+  [formGroup]="form" (submit)="onSavePost()"
+  >
+    <mat-form-field class="formControl">
+      <mat-label>FirstName</mat-label>
+      <input  matInput placeholder="firstname" formControlName="firstname" required>
+    </mat-form-field>
+    <mat-form-field class="formControl">
+      <mat-label>LastName</mat-label>
+      <input  matInput placeholder="lastname" formControlName="lastname" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Mobile</mat-label>
+      <input  matInput placeholder="mobile" formControlName="mobile" required>
+      <mat-error
+        *ngIf="form.get('mobile').invalid">Please enter the 10 digit number
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Mobile</mat-label>
+      <input  matInput placeholder="Email" formControlName="email" required email>
+      <mat-error
+        *ngIf="form.get('email').invalid">Please enter the EmailId
+      </mat-error>
+    </mat-form-field>
+    <button color="primary" mat-raised-button type="submit"
+    [disabled]='!form.valid'>Submit</button>
+  </form>
+</mat-card>
