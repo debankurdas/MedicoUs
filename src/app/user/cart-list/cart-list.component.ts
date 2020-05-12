@@ -16,6 +16,7 @@ export class CartListComponent implements OnInit {
   id: any;
   id1: any;
   userCart = [];
+  orderCart = [];
   displayedColumns: string[] = ['imageUrl', 'productName', 'quantity', 'price', 'total', 'actions'];
   constructor(private cartService: CartListService,
               private router: Router) { }
@@ -35,13 +36,16 @@ export class CartListComponent implements OnInit {
         if (result.data === null) {
           this.productSize = [];
           console.log(this.productSize.length);
-        } else {
+        } else { 
           this.productSize = result.data;
         }
         result.data.forEach((cart: any) => {
           this.id = cart._id;
           cart.UserCartList[0].quantity = cart.quantity;
           this.userCart.push(cart.UserCartList[0]);
+          console.log('Usercart' , this.userCart);
+          this.orderCart.push(this.id);
+          console.log('hhhh', this.orderCart);
         });
         this.cartTable.dataSource = this.userCart;
         this.cartTable.renderRows();
@@ -51,6 +55,7 @@ export class CartListComponent implements OnInit {
 
   checkOut() {
     this.cartService.addProductForCheckOut(this.userCart);
+    this.cartService.addcartIdForCheckOut(this.orderCart);
     this.router.navigate(['/user/payment']);
   }
 

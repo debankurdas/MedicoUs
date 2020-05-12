@@ -1,4 +1,4 @@
-<form class="example-form" (submit)="login()" #myForm="ngForm">
+<!-- <form class="example-form" (submit)="login()" #myForm="ngForm">
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <input type="email" matInput placeholder="Email" name="email"
@@ -15,5 +15,84 @@
     <button type="submit" routerLink="/register" mat-raised-button color="primary" >SignUp</button>
   </div>
 
-</form>
+</form> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signin</title>
+
+</head>
+
+<body style="background-repeat:no-repeat;">
+
+    <div class="login-clean" style="background-image:url(&quot;../../../../../assets/assets_login/img/action-adult-affection-eldery-339620.jpg&quot;);background-position:center;background-repeat:no-repeat;background-size:cover;">
+        <form (submit)="login()" #myForm="ngForm">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput placeholder="Email" name="email" #email = "ngModel"
+              [(ngModel)]="user.email" required>
+              <mat-error
+              *ngIf="email.invalid" >Please enter a valid Email</mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Passoword</mat-label>
+              <input type="password" matInput placeholder="Password" name="password" #password ="ngModel"
+              [(ngModel)]="user.password" required>
+              <mat-error
+              *ngIf="password.invalid" >Please enter the Password
+              </mat-error>
+            </mat-form-field>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit" [disabled]="!myForm.form.valid">Log In</button>
+            </div><a href="#" class="forgot">Forgot your email or password?</a>
+        </form>
+    </div>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper" style="margin:-1px;"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="footer-dark" style="background-image:url(&quot;../../../../../assets/assets_login/img/mountain_bg.jpg&quot;);background-size:auto;background-repeat:no-repeat;background-position:bottom;">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3><a href="#">Blood Bank</a>
+                        <ul>
+                            <li><a href="#">Ambulance</a></li>
+                            <li><a href="#">Doctor</a></li>
+                            <li><a href="#">Ambulace</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p><strong><em>Medico24/7 </em></strong>application is &nbsp;being created for making the use of medical world easier and making it more approachable to the patients all around the world .The main concept for making this application
+                            is to bridge the gap between the physical world of medical and the digital world.<br></p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="text-truncate text-success copyright"><strong>MEDICO © 2020</strong></p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
 

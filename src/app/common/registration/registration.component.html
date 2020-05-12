@@ -1,4 +1,4 @@
-
+<!--
 <form class="example-form" [formGroup]="registration" (submit)="register()" >
   <mat-form-field class="example-full-width">
     <mat-label>First Name</mat-label>
@@ -41,5 +41,131 @@
     <button type="submit" [disabled]="registration.invalid" mat-raised-button color="primary" >SignUp</button>
     <button type="submit" mat-raised-button color="primary" routerLink='/login'>Login</button>
   </div>
-</form>
+</form> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+    <link rel="stylesheet" href="../../../assets/assets_registration/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="../../../assets/assets_registration/css/Features-Blue.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/css/Footer-Dark.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/css/Header-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/css/Projects-Horizontal.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/css/Simple-Slider.css">
+    <link rel="stylesheet" href="../../../assets/assets_registration/css/styles.css">
+</head>
+
+<body style="background-repeat:no-repeat;">
+    <div class="register-photo">
+        <div class="form-container">
+            <div class="image-holder" style="background-image:url(&quot;../../../../../assets/assets_registration/img/photo-medication-pills-on-white-plastic-container-3683074.jpg&quot;);background-position:center;background-size:cover;background-repeat:no-repeat;"></div>
+            <form  [formGroup]="registration" (submit)="register()">
+                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <mat-form-field class="example-full-width">
+                  <mat-label>First Name</mat-label>
+                  <input type="text" matInput placeholder="First Name" formControlName="firstname" required>
+                  <mat-error
+                  *ngIf="registration.get('firstname').invalid" >Please enter the FirstName</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Last Name</mat-label>
+                  <input type="text" matInput placeholder="Last Name" style="padding:11px;margin:0px;margin-top:14px;" formControlName="lastname" required>
+                  <mat-error
+                  *ngIf="registration.get('lastname').invalid" >Please enter the LastName</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input type="email" matInput placeholder="Email" formControlName="email" required style="margin-top:14px;">
+                  <mat-error
+                  *ngIf="registration.get('email').invalid" >Please enter the valid emailAddress</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Mobile No.</mat-label>
+                  <input type="text" matInput style="margin-top:14px;" placeholder="Mobile Number" formControlName="mobile" required>
+                  <mat-error
+                  *ngIf="registration.get('mobile').invalid" >Please enter 10 digit mobile number</mat-error>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput placeholder="Password" formControlName="password" required>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Confirm Password</mat-label>
+                  <input type="password" matInput placeholder="Confirm Password" formControlName="confirm_password" required>
+                </mat-form-field>
+                <div>
+                  <mat-error
+                  *ngIf="registration.errors?.invalidPassword" >Password and Confirm Password must be same
+                </mat-error>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox">I agree to the license terms.
+                      </label>
+                    </div>
+                 </div>
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block" type="submit" [disabled]="registration.invalid">Sign Up</button>
+                </div>
+                <a href="#" class="already">You already have an account? Login here.</a>
+            </form>
+        </div>
+    </div>
+    <div class="simple-slider">
+        <div class="swiper-container">
+            <div class="swiper-wrapper" style="margin:-1px;"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <div class="footer-dark" style="background-image:url(&quot;../../../../../assets/assets_registration/img/mountain_bg.jpg&quot;);background-size:auto;background-repeat:no-repeat;background-position:bottom;">
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3><a href="#">Blood Bank</a>
+                        <ul>
+                            <li><a href="#">Ambulance</a></li>
+                            <li><a href="#">Doctor</a></li>
+                            <li><a href="#">Ambulace</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p><strong><em>Medico24/7 </em></strong>application is &nbsp;being created for making the use of medical world easier and making it more approachable to the patients all around the world .The main concept for making this application
+                            is to bridge the gap between the physical world of medical and the digital world.<br></p>
+                    </div>
+                    <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="text-truncate text-success copyright"><strong>MEDICO © 2020</strong></p>
+            </div>
+        </footer>
+    </div>
+    <script src="../../../assets/assets_registration/js/jquery.min.js"></script>
+    <script src="../../../assets/assets_registration/js/bootstrap.min.js"></script>
+    <script src="../../../assets/assets_registration/js/bs-animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="../../../assets/assets_registration/js/Simple-Slider1.js"></script>
+</body>
+
+</html>
 

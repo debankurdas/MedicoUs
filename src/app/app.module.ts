@@ -52,6 +52,7 @@ import { PaymentComponent } from './user/payment/payment.component';
 import { OrderComponent } from './user/order/order.component';
 import { OrderDetailsComponent } from './user/order/order-details/order-details.component';
 import { UserProfileEditComponent } from './user/user-profile/user-profile-edit/user-profile-edit.component';
+import { OrdersComponent } from './admin/orders/orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { UserProfileEditComponent } from './user/user-profile/user-profile-edit/
     OrderComponent,
     OrderDetailsComponent,
     UserProfileEditComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

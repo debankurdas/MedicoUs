@@ -96,11 +96,14 @@ let OrderSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true,
-        default: 'Placed'
+        default: 'Pending'
     },
     createdOn: {
         type: Date,
         default: new Date()
+    },
+    deliveryOn: {
+        type: Date
     }
 });
 

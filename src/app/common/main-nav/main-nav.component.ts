@@ -41,6 +41,10 @@ export class MainNavComponent implements OnInit, OnDestroy {
               .subscribe((result) => {
                 this.role$ = result;
                 console.log('role when login' + this.role$);
+                if (this.role$ === 'User') {
+                  this.getCategories();
+                }
+
               });
 
               if (this.loginStatus$ === false && this.role$ === undefined) {

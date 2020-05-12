@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class PaymentComponent implements OnInit {
 
   products = [];
+  cartIdArray = [];
   total: number;
   shippingAddress: FormGroup;
   displayedColumns: string[] = ['imageUrl', 'productName', 'quantity', 'price', 'total'];
@@ -35,6 +36,11 @@ export class PaymentComponent implements OnInit {
       this.total = productList.map(p => p.quantity * p.price).reduce((total: any, price: any) =>
         total + price, 0
       );
+    });
+    this.cartService.getcartIdForCheckOut().subscribe((cartId) => {
+      console.log('cartId', cartId);
+      this.cartIdArray = cartId;
+      console.log(this.cartIdArray);
     });
     // this.initConfig();
   }
@@ -70,6 +76,7 @@ export class PaymentComponent implements OnInit {
   // }
   // paymentData: any
   placeOrder() {
+
     const paymentData = {
       paymentToken: 'done'
     };
@@ -79,8 +86,14 @@ export class PaymentComponent implements OnInit {
       paymentInfo: paymentData,
       total: this.total
     };
+    this.cartIdArray.forEach((cart: any) => {
+      this.cartService.deleteProduct(cart)
+      .subscribe((message) => {
+        console.log(message.message);
+      });
+    });
     this.orderService.placeOrder(order).subscribe((result) => {
-      this.router.navigate(['/user/orders', result.data]);
+      this.router.navigate(['/user/orders']);
     });
   }
 

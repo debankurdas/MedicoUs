@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CartListService {
   cartProduct: Cart[] = [];
   products = new BehaviorSubject<any>([]);
+  cartIds = new BehaviorSubject<any>([]);
 //  cartcountObserver = new BehaviorSubject<any>([]);
  cartCount: number;
   constructor(private http: HttpClient) { }
@@ -29,11 +30,17 @@ export class CartListService {
   addProductForCheckOut(product: any) {
     this.products.next(product);
   }
+  addcartIdForCheckOut(cartId: any) {
+    this.cartIds.next(cartId);
+  }
 
   getProductForCheckOut() {
     return this.products.asObservable();
   }
+  getcartIdForCheckOut() {
+    return this.cartIds.asObservable();
+  }
   deleteProduct(productId: string) {
-    return this.http.delete(environment.apiUrl + '/cartLists/' + productId);
+    return this.http.delete<{message: string}>(environment.apiUrl + '/cartLists/' + productId);
    }
 }
