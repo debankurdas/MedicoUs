@@ -51,6 +51,9 @@
 <form [formGroup]="shippingAddress">
   <ng-template matStepLabel>Fill out your address details</ng-template>
   <mat-form-field>
+    <input matInput placeholder="Full Name" formControlName="userName">
+  </mat-form-field>
+  <mat-form-field>
     <input matInput placeholder="Address Line1" formControlName="addressLine1">
   </mat-form-field>
   <mat-form-field>

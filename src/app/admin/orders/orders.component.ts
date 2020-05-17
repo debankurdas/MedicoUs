@@ -1,3 +1,4 @@
+import { AdminServiceService } from './../service/admin-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private orderService: AdminServiceService) { }
 
   ngOnInit() {
+  }
+  getOrders() {
+    this.orderService.getAllOrders()
+    .subscribe((result) => {
+      console.log(result);
+    });
   }
 
 }

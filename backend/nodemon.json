@@ -1,7 +1,6 @@
 {
   "env": {
-    "MONGO_ATLAS_PW": "amitutul1",
-    "JWT_KEY": "strong_password"
+    "mail_api": "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"
   }
 }
 

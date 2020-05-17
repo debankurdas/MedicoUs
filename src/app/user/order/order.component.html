@@ -39,6 +39,9 @@
   <div>
     <div *ngFor="let orders of orderDatas">
       <div *ngFor="let item of orders.data" >
+        Name:
+        {{item.shippingAddress.userName}}
+        <br>
         Address:
         {{item.shippingAddress.addressLine1}}
         {{item.shippingAddress.addressLine2}}

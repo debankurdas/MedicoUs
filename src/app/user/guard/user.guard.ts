@@ -11,8 +11,8 @@ export class UserGuard implements CanActivate, CanLoad {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (sessionStorage.getItem('role') != null) {
-        const role = this.encdecservice.decrypt(sessionStorage.getItem('role'), '');
+      if (localStorage.getItem('role') != null) {
+        const role = this.encdecservice.decrypt(localStorage.getItem('role'), '');
         if (role === 'User') {
           return true;
         } else {

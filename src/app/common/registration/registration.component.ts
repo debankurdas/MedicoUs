@@ -38,6 +38,8 @@ export class RegistrationComponent implements OnInit {
     .subscribe((result) => {
       console.log(result);
       if (result.status === 'Success') {
+        sessionStorage.setItem('email', result.data.email);
+        sessionStorage.setItem('temp_token', result.token);
         this.snackBar.open('User registraion is successfull,please login to access your account', 'Register',
         {
           duration: 3000

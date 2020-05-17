@@ -1,0 +1,11 @@
+<form class="example-form" (submit)="verifyMail()" #myForm="ngForm">
+  <mat-form-field class="example-full-width">
+    <mat-label>TokenId</mat-label>
+    <input type="text" matInput placeholder="tokenId" name="token"
+    [(ngModel)]="userToken.token" required>
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!myForm.form.valid">Verify Your email</button>
+  </div>
+
+</form>

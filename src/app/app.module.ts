@@ -1,3 +1,4 @@
+import { VerifYEmailComponent } from './common/registration/verif-yemail/verif-yemail.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { AuthInterceptorService } from './common/service/auth-interceptor.service';
 import { RouterModule } from '@angular/router';
@@ -79,6 +80,7 @@ import { OrdersComponent } from './admin/orders/orders.component';
     OrderDetailsComponent,
     UserProfileEditComponent,
     OrdersComponent,
+    VerifYEmailComponent
   ],
   imports: [
     BrowserModule,

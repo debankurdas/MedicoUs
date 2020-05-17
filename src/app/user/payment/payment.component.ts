@@ -1,31 +1,39 @@
+import { Subscription } from 'rxjs';
+import { UserProfileService } from './../user-profile/service/user-profile.service';
 // import { environment } from 'src/environments/environment';
 import { UserOrderService } from './../order/service/user-order.service';
 import { CartListService } from './../../common/service/cart-list.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {PayPalConfig, PayPalIntegrationType, PayPalEnvironment, } from 'ngx-paypal';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { USER } from 'src/app/admin/model/model';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
-export class PaymentComponent implements OnInit {
+export class PaymentComponent implements OnInit, OnDestroy {
 
   products = [];
   cartIdArray = [];
   total: number;
+  email: any;
+  userDataObserver: Subscription;
   shippingAddress: FormGroup;
   displayedColumns: string[] = ['imageUrl', 'productName', 'quantity', 'price', 'total'];
   public payPalConfig?: PayPalConfig;
+  UserDatas: USER[];
   constructor(private cartService: CartListService,
               private orderService: UserOrderService,
               private fb: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              private profileService: UserProfileService) { }
 
   ngOnInit() {
 
     this.shippingAddress = this.fb.group({
+      userName: ['', Validators.required],
       addressLine1: ['', Validators.required],
       addressLine2: ['', Validators.required],
       city: ['', Validators.required],
@@ -36,6 +44,13 @@ export class PaymentComponent implements OnInit {
       this.total = productList.map(p => p.quantity * p.price).reduce((total: any, price: any) =>
         total + price, 0
       );
+    });
+    this.profileService.getProfile();
+    this.userDataObserver = this.profileService.getuserUpdateListner()
+    .subscribe((userDatas: { user: USER[]}) => {
+      this.UserDatas = userDatas.user;
+      console.log(typeof this.UserDatas[0]);
+      this.email = this.UserDatas[4];
     });
     this.cartService.getcartIdForCheckOut().subscribe((cartId) => {
       console.log('cartId', cartId);
@@ -84,6 +99,7 @@ export class PaymentComponent implements OnInit {
       products: this.products,
       shippingAddress: this.shippingAddress.getRawValue(),
       paymentInfo: paymentData,
+      emailAddress: this.email,
       total: this.total
     };
     this.cartIdArray.forEach((cart: any) => {
@@ -96,5 +112,8 @@ export class PaymentComponent implements OnInit {
       this.router.navigate(['/user/orders']);
     });
   }
+   ngOnDestroy() {
+     this.userDataObserver.unsubscribe();
+   }
 
 }

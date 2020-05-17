@@ -36,7 +36,7 @@ export class CartListComponent implements OnInit {
         if (result.data === null) {
           this.productSize = [];
           console.log(this.productSize.length);
-        } else { 
+        } else {
           this.productSize = result.data;
         }
         result.data.forEach((cart: any) => {

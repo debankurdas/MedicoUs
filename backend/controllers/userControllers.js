@@ -2,6 +2,7 @@ const userSchema = require('../models/userSchema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+
 exports.signUp = (req, res,next) => {
  bcrypt.hash(req.body.password,10)
  .then((hash) => {
@@ -15,10 +16,65 @@ exports.signUp = (req, res,next) => {
   });
   user.save()
   .then((requestedData) => {
+    const token = jwt.sign(
+      {uId:user._id},
+      'verify_email',
+      {expiresIn: "1h"}
+      );
+    const obj = {
+      subject:  'Verify your mailId',
+      heading: "Welcome to Medico24/7",
+      description:
+        "For verification of  your mail, please go through this link"+''+"paste this token"+token
+    };
+
+
+
+    let htmlTemplate = `
+            <!DOCTYPE html>
+            <html>
+            <body>
+            <h1>${obj.heading}</h1>
+            <p>${obj.description}</p>
+            <p><storng>Token will be expired in one hour.</storng></p>
+            </body>
+            </html>
+    `;
+
+    const callMethod = () => {
+      axios({
+        method: "post",
+        url: "https://api.sendgrid.com/v3/mail/send",
+        headers: {
+          Authorization:
+            "Bearer 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"
+        },
+        data: {
+            personalizations: [
+                {
+                  to: [
+                    {
+                      email: email
+                    }
+                  ],
+                  subject: `${obj.subject}`
+                }
+              ],
+              from: {
+                email: "debankurdas2013.dd@gmail.com",
+                name: "Debankur Das"
+              },
+              content: [{ type: "text/html", value: htmlTemplate }]
+            }
+          });
+        };
+
+        callMethod();
     res.json({
       status: 'Success',
       message:'User Registration is successfull',
-      data: requestedData
+      data: requestedData,
+      token: token
     });
   })
   .catch((error) => {
@@ -39,7 +95,12 @@ exports.login = (req,res,next) => {
         status:'failed',
         message: 'Email is invalid'
       });
-    };
+    } else if(findingResult.verifyEmail === false) {
+      return res.status(400).json({
+        status: 'failed',
+        message: 'Atfirst verify your emailId'
+      })
+    }
 
     user = findingResult;
     return bcrypt.compare(req.body.password, findingResult.password);
@@ -70,37 +131,28 @@ exports.login = (req,res,next) => {
     })
   })
 }
-//  exports.updateProfile = (req, res,next) => {
-//  const  userid = req.userData.uId;
-//  userSchema.findByIdAndUpdate(userid,{
-//    $set:{
-//      firstname:req.body.firstname,
-//      lastname:req.body.lastname,
-//      addressInfo:req.body.addressInfo
-//    }
-//  })
-//  .then((updatedResult) => {
-//    console.log(updatedResult);
-//   //  if(updatedResult.n>0) {
-//     res.status(200).json({
-//       status: 'Success',
-//       message:'Post is updated',
-//       post:updatedResult
-//     });
-//   //  } else {
-//   //    res.status(401).json({
-//   //      message: "Unauthorized access"
-//   //    });
-//   //  }
-
-//  })
-//  .catch((error) =>{
-//    res.status(500).json({
-//      message:'Post is not updated',
-//      error: error
-//    });
-//  });
-// };
+ exports.updateStatus = (req, res,next) => {
+ const  email = req.body.email;
+ userSchema.findOne(email,{
+   $set:{
+      verifyEmail: req.body.verifyEmail
+   }
+ })
+ .then((updatedResult) => {
+   console.log(updatedResult);
+    res.status(200).json({
+      status: 'Success',
+      message:'Your mail is verified',
+      data:updatedResult
+    });
+ })
+ .catch((error) =>{
+   res.status(500).json({
+     message:'Post is not updated',
+     error: error
+   });
+ });
+};
 
 exports.getUserById = (req,res,next) => {
   userSchema.findById(req.userData.uId)

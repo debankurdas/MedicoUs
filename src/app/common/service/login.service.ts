@@ -34,7 +34,7 @@ export class LoginService {
       return this.loggedIn.asObservable();
     }
     getLoginStatus() {
-      const token = sessionStorage.getItem('token');
+      const token = localStorage.getItem('token');
       if (token) {
 
         return true;
@@ -43,7 +43,7 @@ export class LoginService {
       }
     }
     getUserBasedRole() {
-      const role = this.encService.decrypt(sessionStorage.getItem('role'), '');
+      const role = this.encService.decrypt(localStorage.getItem('role'), '');
       return role;
     }
     getUserRole() {
@@ -58,8 +58,8 @@ export class LoginService {
        this.role.next(this.roleAuth);
        if (response.status === 'success') {
           const role = this.encService.encrypt(response.role, '');
-          sessionStorage.setItem('role', role);
-          sessionStorage.setItem('token', response.token);
+          localStorage.setItem('role', role);
+          localStorage.setItem('token', response.token);
           this.navigate(response.role);
           this.isUserLogedIn.next(true);
       }
@@ -81,8 +81,8 @@ export class LoginService {
   }
 }
 userRole() {
-  if (sessionStorage.getItem('role')) {
-    const currentRole = this.encService.decrypt(sessionStorage.getItem('role'), '');
+  if (localStorage.getItem('role')) {
+    const currentRole = this.encService.decrypt(localStorage.getItem('role'), '');
     if (!currentRole) {
       return;
     }
@@ -93,8 +93,8 @@ userRole() {
 
 }
 removeAuth() {
-  sessionStorage.removeItem('token');
-  sessionStorage.removeItem('role');
+  localStorage.removeItem('token');
+  localStorage.removeItem('role');
   this.isUserLogedIn.next(false);
   this.router.navigate(['/login']);
 }
