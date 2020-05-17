@@ -8,7 +8,7 @@ userRouter.get('/',authVerify, UserController.getUserById);
 userRouter.get('/:userId',authVerify, UserController.getUserByparamsId);
 userRouter.post('/login', UserController.login);
 userRouter.post('/registration', UserController.signUp);
-userRouter.put('/:id',authVerify, UserController.updateProfile);
-userRouter.put('/verifyEmail',authVerify, UserController.updateStatus);
+userRouter.put('/:id', UserController.updateProfile);
+userRouter.put('/verifyEmail/:id', UserController.updateStatus);
 
 module.exports = userRouter;

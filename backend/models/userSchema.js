@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
   email:{type:String,required:true,trim:true, unique: true, required:true},
   password:{type:String,required:true,trim:true},
   role:{type:String,required:true,trim:true,default:'User'},
-  verifyEmail: {type: Boolean, default: false}
+  verifyEmail: {type: String, required: true, default: 'false'}
 })
 mongoose.plugin(uniqueValidator);
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserRegistrationModel } from './../../service/userRegistraion.model';
 import { RegistrationService } from './../../service/registration.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,29 +11,30 @@ import { Component, OnInit } from '@angular/core';
 export class VerifYEmailComponent implements OnInit {
   user: UserRegistrationModel;
   resultToken: string;
-  status: boolean;
-  email: string;
+  status: string;
+  id: string;
   userToken = {
     token: ''
   };
-  constructor(private registrationService: RegistrationService) { }
+  constructor(private registrationService: RegistrationService, private router: Router) { }
 
   ngOnInit() {
 
-      this.resultToken = sessionStorage.getItem('temp_token');
-      this.email = sessionStorage.getItem('email');
+      this.resultToken = localStorage.getItem('temp_token');
+      console.log(this.resultToken);
+      this.id = localStorage.getItem('id');
   }
 
   verifyMail() {
     if ( this.userToken.token === this.resultToken) {
-      this.status = true;
+      this.status = 'true';
       }
-    const details = {
-        verifyEmail: this.status,
-        email: this.email
-      };
-
-    this.registrationService.verifyEmail(details);
+    console.log(this.id);
+    console.log(this.status);
+    this.registrationService.verifyEmail(this.id, this.status);
+    localStorage.removeItem('temp_token');
+    localStorage.removeItem('id');
+    this.router.navigate(['/login']);
     }
 
 }

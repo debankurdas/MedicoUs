@@ -2,7 +2,7 @@ const userSchema = require('../models/userSchema');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-
+const axios = require("axios");
 exports.signUp = (req, res,next) => {
  bcrypt.hash(req.body.password,10)
  .then((hash) => {
@@ -16,60 +16,65 @@ exports.signUp = (req, res,next) => {
   });
   user.save()
   .then((requestedData) => {
+    const email = requestedData.email;
     const token = jwt.sign(
       {uId:user._id},
       'verify_email',
       {expiresIn: "1h"}
       );
     const obj = {
-      subject:  'Verify your mailId',
+      subject:  'Email confirmation Mail',
       heading: "Welcome to Medico24/7",
       description:
-        "For verification of  your mail, please go through this link"+''+"paste this token"+token
+        "Your token id is:"+token,
+        email: email
     };
 
 
 
     let htmlTemplate = `
-            <!DOCTYPE html>
-            <html>
+        <!DOCTYPE html>
+          <html>
             <body>
-            <h1>${obj.heading}</h1>
-            <p>${obj.description}</p>
-            <p><storng>Token will be expired in one hour.</storng></p>
+              <h1>${obj.heading}</h1>
+              <p>${obj.description}</p>
+              <br>
+              <p>"Please go through this link and verify your mailId by submiting this token:"+"http://localhost:4200/verifyMail"</p>
+              <p><strong>You will automatically redirect to login page</strong></p>
             </body>
-            </html>
-    `;
+          </html>
+          `;
 
-    const callMethod = () => {
-      axios({
-        method: "post",
-        url: "https://api.sendgrid.com/v3/mail/send",
-        headers: {
-          Authorization:
-            "Bearer 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"
-        },
-        data: {
-            personalizations: [
-                {
-                  to: [
-                    {
-                      email: email
-                    }
-                  ],
-                  subject: `${obj.subject}`
-                }
-              ],
-              from: {
-                email: "debankurdas2013.dd@gmail.com",
-                name: "Debankur Das"
-              },
-              content: [{ type: "text/html", value: htmlTemplate }]
-            }
-          });
-        };
+      const callMethod = () => {
+        axios({
+          method: "post",
+          url: "https://api.sendgrid.com/v3/mail/send",
+          headers: {
+            Authorization:
+              "Bearer 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"
+          },
+          data: {
+              personalizations: [
+                  {
+                    to: [
+                      {
+                        email: email
+                      }
+                    ],
+                    subject: `${obj.subject}`
+                  }
+                ],
+                from: {
+                  email: "debankurdas2013.dd@gmail.com",
+                  name: "Debankur Das"
+                },
+                content: [{ type: "text/html", value: htmlTemplate }]
+              }
+            });
+          };
 
-        callMethod();
+      callMethod();
+
     res.json({
       status: 'Success',
       message:'User Registration is successfull',
@@ -95,7 +100,7 @@ exports.login = (req,res,next) => {
         status:'failed',
         message: 'Email is invalid'
       });
-    } else if(findingResult.verifyEmail === false) {
+    } else if(findingResult.verifyEmail === 'false') {
       return res.status(400).json({
         status: 'failed',
         message: 'Atfirst verify your emailId'
@@ -132,26 +137,28 @@ exports.login = (req,res,next) => {
   })
 }
  exports.updateStatus = (req, res,next) => {
- const  email = req.body.email;
- userSchema.findOne(email,{
-   $set:{
-      verifyEmail: req.body.verifyEmail
-   }
- })
- .then((updatedResult) => {
-   console.log(updatedResult);
-    res.status(200).json({
-      status: 'Success',
-      message:'Your mail is verified',
-      data:updatedResult
+ const  id = req.params.id;
+ if (id != null) {
+  userSchema.findByIdAndUpdate(id,{
+    $set:{
+       verifyEmail: req.body.verifyEmail
+    }
+  })
+  .then((updatedResult) => {
+    console.log(updatedResult);
+     res.status(200).json({
+       status: 'Success',
+       message:'Your mail is verified',
+       data:updatedResult
+     });
+  })
+  .catch((error) =>{
+    res.status(500).json({
+      message:'At first try to create your mailId',
+      error: error
     });
- })
- .catch((error) =>{
-   res.status(500).json({
-     message:'Post is not updated',
-     error: error
-   });
- });
+  });
+ }
 };
 
 exports.getUserById = (req,res,next) => {
@@ -200,6 +207,7 @@ exports.getUserByparamsId = (req,res,next) => {
   }
 }
 exports.updateProfile = (req, res,next) => {
+  console.log('hi ', req.body)
   const  userid = req.params.id;
   console.log(userid);
   userSchema.findByIdAndUpdate(userid,{

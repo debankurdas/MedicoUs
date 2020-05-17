@@ -38,9 +38,9 @@ export class RegistrationComponent implements OnInit {
     .subscribe((result) => {
       console.log(result);
       if (result.status === 'Success') {
-        sessionStorage.setItem('email', result.data.email);
-        sessionStorage.setItem('temp_token', result.token);
-        this.snackBar.open('User registraion is successfull,please login to access your account', 'Register',
+        localStorage.setItem('id', result.data._id);
+        localStorage.setItem('temp_token', result.token);
+        this.snackBar.open('Please verify your mailId through the link which is provided in your mail', 'Register',
         {
           duration: 3000
         });

@@ -14,7 +14,14 @@ export class RegistrationService {
   register(user: UserRegistrationModel) {
     return this.http.post<{status: string , data: any, token: string}>(environment.apiUrl + '/users/registration', user);
   }
-  verifyEmail(details: any) {
-    return this.http.put(environment.apiUrl + '/users/verifyEmail', details);
+  verifyEmail(id: string, status: string) {
+    const details = {
+      verifyEmail: status,
+      _id: id
+    };
+    console.log(id);
+    console.log(details);
+    this.http.put(environment.apiUrl + '/users/verifyEmail/' + id, details)
+    .subscribe(() => {});
   }
 }
