@@ -54,6 +54,8 @@ import { OrderComponent } from './user/order/order.component';
 import { OrderDetailsComponent } from './user/order/order-details/order-details.component';
 import { UserProfileEditComponent } from './user/user-profile/user-profile-edit/user-profile-edit.component';
 import { OrdersComponent } from './admin/orders/orders.component';
+import { ForgotpasswordComponent } from './common/forgotpassword/forgotpassword.component';
+import { EmailSubmmitionComponent } from './common/forgotpassword/email-submmition/email-submmition.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +82,9 @@ import { OrdersComponent } from './admin/orders/orders.component';
     OrderDetailsComponent,
     UserProfileEditComponent,
     OrdersComponent,
-    VerifYEmailComponent
+    VerifYEmailComponent,
+    ForgotpasswordComponent,
+    EmailSubmmitionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,5 @@
+import { ForgotpasswordComponent } from './common/forgotpassword/forgotpassword.component';
+import { EmailSubmmitionComponent } from './common/forgotpassword/email-submmition/email-submmition.component';
 import { VerifYEmailComponent } from './common/registration/verif-yemail/verif-yemail.component';
 import { UserProfileEditComponent } from './user/user-profile/user-profile-edit/user-profile-edit.component';
 import { ProductAddComponent } from './admin/admin-product/product-add/product-add.component';
@@ -26,6 +28,8 @@ const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
   {path: 'verifyMail', component: VerifYEmailComponent},
+  {path: 'emailSubmit', component: EmailSubmmitionComponent},
+  {path: 'forgotPassword', component: ForgotpasswordComponent},
   {path: 'user/dashboard', component: UserDashboardComponent, canActivate: [AuthGuard, UserGuard]},
   {path: 'user/profile', component: UserProfileComponent, canActivate: [AuthGuard, UserGuard]},
   {path: 'Admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard]},

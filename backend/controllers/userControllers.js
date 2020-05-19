@@ -91,6 +91,98 @@ exports.signUp = (req, res,next) => {
  })
 
 };
+exports.tokenAgainstEmail = (req,res,next) => {
+  email1 = req.body.email;
+  userSchema.findOne({email: email1})
+  .then((findingResult) => {
+    const token = jwt.sign(
+    {email: findingResult.email},
+    'forgot_password',
+    {expiresIn: "1h"}
+    );
+    id = findingResult._id;
+    const obj = {
+      subject:  'Password Reset Mail',
+      heading: "Welcome to Medico24/7",
+      description:
+        "Your token id is:"+token,
+        email: email1
+    };
+
+
+
+    let htmlTemplate = `
+        <!DOCTYPE html>
+          <html>
+            <body>
+              <h1>${obj.heading}</h1>
+              <p>${obj.description}</p>
+              <br>
+              <p>"Please go through this link and reset your password by submiting this token and new password:"+"http://localhost:4200/forgotPassword"</p>
+            </body>
+          </html>
+          `;
+
+      const callMethod = () => {
+        axios({
+          method: "post",
+          url: "https://api.sendgrid.com/v3/mail/send",
+          headers: {
+            Authorization:
+              "Bearer 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"
+          },
+          data: {
+              personalizations: [
+                  {
+                    to: [
+                      {
+                        email: email1
+                      }
+                    ],
+                    subject: `${obj.subject}`
+                  }
+                ],
+                from: {
+                  email: "debankurdas2013.dd@gmail.com",
+                  name: "Debankur Das"
+                },
+                content: [{ type: "text/html", value: htmlTemplate }]
+              }
+            });
+          };
+
+      callMethod();
+    return res.status(200).send({
+      token: token,
+      id: id,
+      message: 'Token is succesfully send'
+    })
+
+  })
+}
+exports.updatePassword = (req,res,next) => {
+  const  userid = req.params.id;
+  bcrypt.hash(req.body.password, 10)
+  .then((hash) => {
+    console.log(hash)
+    userSchema.findByIdAndUpdate(userid,{
+      $set:{
+        password: hash
+      }
+    })
+    .then(result => {
+        res.status(200).json({
+          status: 'Success',
+          message: "Your password is succesfully updated",
+        });
+    }).catch((error) => {
+      res.status(500).json({
+        message: 'Password cannot be updated ',
+        error: error
+      });
+    });
+  })
+}
 exports.login = (req,res,next) => {
   let user;
   userSchema.findOne({ email: req.body.email})
@@ -207,7 +299,6 @@ exports.getUserByparamsId = (req,res,next) => {
   }
 }
 exports.updateProfile = (req, res,next) => {
-  console.log('hi ', req.body)
   const  userid = req.params.id;
   console.log(userid);
   userSchema.findByIdAndUpdate(userid,{
