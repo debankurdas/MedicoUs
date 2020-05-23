@@ -1,8 +1,8 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true">
     <mat-toolbar>Menu</mat-toolbar>
-    <ng-container *ngIf="role$ === 'Admin'">
-      <ng-container *ngTemplateOutlet="AdminMenu"></ng-container>
+    <ng-container *ngIf="role$ === 'Admin_M'">
+      <ng-container *ngTemplateOutlet="AdminMedicineMenu"></ng-container>
     </ng-container>
     <ng-container *ngIf="role$ === 'User'">
       <ng-container *ngTemplateOutlet="userMenu"></ng-container>
@@ -26,7 +26,7 @@
             <mat-icon>account_circle</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item routerLink="/user/profile">My Profile</button>
+            <button *ngIf="role$ === 'User'" mat-menu-item routerLink="/user/profile">My Profile</button>
             <button mat-menu-item (click)="logout()">Logout</button>
           </mat-menu>
         </div>
@@ -56,7 +56,7 @@
   </mat-nav-list>
 </ng-template>
 
-<ng-template #AdminMenu>
+<ng-template #AdminMedicineMenu>
   <mat-nav-list>
     <mat-list-item>
       <a mat-list-item routerLink='/Admin/dashboard'>Dashboard</a>

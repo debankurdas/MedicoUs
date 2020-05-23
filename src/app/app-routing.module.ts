@@ -1,3 +1,9 @@
+import { HospitalViewComponent } from './admin/Hospital/hospital-view/hospital-view.component';
+import { HospitalAddComponent } from './admin/Hospital/hospital-add/hospital-add.component';
+import { BedViewComponent } from './admin/Hospital/Bed/bed-view/bed-view.component';
+import { BedAddComponent } from './admin/Hospital/Bed/bed-add/bed-add.component';
+import { HospitalAdminComponent } from './admin/Hospital/hospital-admin/hospital-admin.component';
+import { RootAdminComponent } from './admin/root-admin/root-admin.component';
 import { ForgotpasswordComponent } from './common/forgotpassword/forgotpassword.component';
 import { EmailSubmmitionComponent } from './common/forgotpassword/email-submmition/email-submmition.component';
 import { VerifYEmailComponent } from './common/registration/verif-yemail/verif-yemail.component';
@@ -32,14 +38,21 @@ const routes: Routes = [
   {path: 'forgotPassword', component: ForgotpasswordComponent},
   {path: 'user/dashboard', component: UserDashboardComponent, canActivate: [AuthGuard, UserGuard]},
   {path: 'user/profile', component: UserProfileComponent, canActivate: [AuthGuard, UserGuard]},
-  {path: 'Admin/dashboard', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/Medicine_dashboard', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/Hospital', component: HospitalAdminComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/HospitalBranchAdd', component: HospitalAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/HospitalBranchView', component: HospitalViewComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/edit/:hospitalId', component: HospitalAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/Bed/BedAdd', component: BedAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/Bed/BedView', component: BedViewComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/Root', component: RootAdminComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Category', component: CategoryComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/product', component: ProductListComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/product/create', component: ProductAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'edit/:productId', component: ProductAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'userprofile/edit/:userId', component: UserProfileEditComponent, canActivate: [AuthGuard, UserGuard]},
-  { path: 'user/product', component: ProductComponent, canActivate: [AuthGuard, UserGuard] },
-  { path: 'user/product/:id', component: ProductDetailsComponent, canActivate: [AuthGuard, UserGuard] },
+  { path: 'user/product', component: ProductComponent},
+  { path: 'user/product/:id', component: ProductDetailsComponent},
   { path: 'user/wishList', component: WishListComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/cartList', component: CartListComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/orders', component: OrderComponent, canActivate: [AuthGuard, UserGuard] },

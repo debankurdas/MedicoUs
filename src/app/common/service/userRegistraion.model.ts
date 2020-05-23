@@ -7,3 +7,4 @@ export interface UserRegistrationModel {
   confirm_password: string;
   dob: Date;
 }
+

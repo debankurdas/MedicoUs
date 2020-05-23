@@ -71,8 +71,14 @@ export class LoginService {
     case 'User':
       this.router.navigate(['/user/product']);
       break;
-    case 'Admin':
-      this.router.navigate(['/Admin/dashboard']);
+    case 'Admin_M':
+      this.router.navigate(['/Admin/Medicine_dashboard']);
+      break;
+    case 'Admin_R':
+      this.router.navigate(['/Admin/Root']);
+      break;
+    case 'Admin_H':
+      this.router.navigate(['/Admin/Hospital']);
       break;
     default:
       this.snackBar.open('User donot have valid role ', 'login', {

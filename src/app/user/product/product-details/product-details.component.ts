@@ -36,11 +36,19 @@ export class ProductDetailsComponent implements OnInit {
       productId: productDetails,
       quantity: this.quantity.value
     };
-    this.cartService.addProductTocartList(productData).subscribe((result) => {
-      this.snackBar.open('Product Added to Cart!', 'Product', {
-        duration: 1000
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.cartService.addProductTocartList(productData).subscribe((result) => {
+        this.snackBar.open('Product Added to Cart!', 'Product', {
+          duration: 1000
+        });
       });
-    });
+    } else {
+      this.snackBar.open('You have to login first', 'Please login', {
+        duration: 2000
+      });
+    }
+
   }
 
   addToWishlist(productId: any) {

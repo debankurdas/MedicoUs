@@ -1,0 +1,57 @@
+<form class="example-form" [formGroup]="registration" (submit)="register()" >
+  <mat-form-field class="example-full-width">
+    <mat-label>Hospital Name</mat-label>
+    <input type="text" matInput placeholder="First Name" formControlName="hospitalName" required>
+    <mat-error
+    *ngIf="registration.get('hospitalName').invalid" >Please enter the Hospitalname
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>First Name</mat-label>
+    <input type="text" matInput placeholder="First Name" formControlName="firstname" required>
+    <mat-error
+    *ngIf="registration.get('firstname').invalid" >Please enter the FirstName</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Last Name</mat-label>
+    <input type="text" matInput placeholder="Last Name" formControlName="lastname" required>
+    <mat-error
+    *ngIf="registration.get('lastname').invalid" >Please enter the LastName</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Email" formControlName="email" required>
+    <mat-error
+    *ngIf="registration.get('email').invalid" >Please enter the valid emailAddress</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Mobile No.</mat-label>
+    <input type="text" matInput placeholder="Mobile Number" formControlName="mobile" required>
+    <mat-error
+    *ngIf="registration.get('mobile').invalid" >Please enter 10 digit mobile number</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input type="password" matInput placeholder="Password" formControlName="password" required>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Confirm Password</mat-label>
+    <input type="password" matInput placeholder="Confirm Password" formControlName="confirm_password" required>
+  </mat-form-field>
+  <div>
+    <mat-error
+    *ngIf="registration.errors?.invalidPassword" >Password and Confirm Password must be same
+    </mat-error>
+  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Role</mat-label>
+      <select matNativeControl formControlName = "role" required>
+        <option value="Admin_H">Admin_H</option>
+        <option value="Admin_B">Admin_B</option>
+        <option value="Admin_A">Admin_A</option>
+      </select>
+  </mat-form-field>
+  <div>
+    <button type="submit" [disabled]="registration.invalid" mat-raised-button color="primary" >Submit</button>
+  </div>
+</form>

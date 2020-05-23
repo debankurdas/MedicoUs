@@ -323,3 +323,34 @@ exports.updateProfile = (req, res,next) => {
     });
   });
  };
+
+ exports.adminAssign = (req,res,next) => {
+  bcrypt.hash(req.body.user.password,10)
+  .then((hash) => {
+   const user = new userSchema({
+     firstname: req.body.user.firstname,
+     lastname: req.body.user.lastname,
+     mobile: req.body.user.mobile,
+     email:req.body.user.email,
+     password:hash,
+     role: req.body.user.role,
+     verifyEmail: req.body.verifyEmail,
+     hospitalName: req.body.hospitalName
+   });
+   user.save()
+   .then((requestedData) => {
+
+     res.json({
+       status: 'Success',
+       message:'Admin Registration is successfull',
+       data: requestedData,
+     });
+   })
+   .catch((error) => {
+     res.status(500).json({
+       status: 'Failed',
+       message: 'Admin registration failed!'
+     });
+   })
+  })
+ }

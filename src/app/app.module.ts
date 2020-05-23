@@ -56,6 +56,12 @@ import { UserProfileEditComponent } from './user/user-profile/user-profile-edit/
 import { OrdersComponent } from './admin/orders/orders.component';
 import { ForgotpasswordComponent } from './common/forgotpassword/forgotpassword.component';
 import { EmailSubmmitionComponent } from './common/forgotpassword/email-submmition/email-submmition.component';
+import { RootAdminComponent } from './admin/root-admin/root-admin.component';
+import { HospitalAdminComponent } from './admin/Hospital/hospital-admin/hospital-admin.component';
+import { BedAddComponent } from './admin/Hospital/Bed/bed-add/bed-add.component';
+import { BedViewComponent } from './admin/Hospital/Bed/bed-view/bed-view.component';
+import { HospitalViewComponent } from './admin/Hospital/hospital-view/hospital-view.component';
+import { HospitalAddComponent } from './admin/Hospital/hospital-add/hospital-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,7 +90,13 @@ import { EmailSubmmitionComponent } from './common/forgotpassword/email-submmiti
     OrdersComponent,
     VerifYEmailComponent,
     ForgotpasswordComponent,
-    EmailSubmmitionComponent
+    EmailSubmmitionComponent,
+    RootAdminComponent,
+    HospitalAdminComponent,
+    BedAddComponent,
+    BedViewComponent,
+    HospitalViewComponent,
+    HospitalAddComponent
   ],
   imports: [
     BrowserModule,

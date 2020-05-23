@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate, CanLoad {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if (localStorage.getItem('role') != null) {
         const role = this.encdecservice.decrypt(localStorage.getItem('role'), '');
-        if (role === 'Admin') {
+        if (role === 'Admin_M' || role === 'Admin_H' || role === 'Admin_B' || role === 'Admin_A' || role === 'Admin_R') {
           return true;
         } else {
           this.navigationtoLogin(state);

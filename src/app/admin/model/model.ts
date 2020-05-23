@@ -6,6 +6,15 @@ export interface Product {
   imageUrl: string | File;
   price: string;
 }
+export interface Hospital {
+  id: string;
+  hospitalName: string;
+  adminId: string;
+  imageUrl: File | string;
+  speciality: string;
+  status: string;
+  description: string;
+}
 
 export interface USER {
   _id: string;
