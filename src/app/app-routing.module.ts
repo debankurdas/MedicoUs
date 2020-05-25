@@ -1,3 +1,4 @@
+import { OrdersComponent } from './admin/orders/orders.component';
 import { HospitalViewComponent } from './admin/Hospital/hospital-view/hospital-view.component';
 import { HospitalAddComponent } from './admin/Hospital/hospital-add/hospital-add.component';
 import { BedViewComponent } from './admin/Hospital/Bed/bed-view/bed-view.component';
@@ -51,6 +52,7 @@ const routes: Routes = [
   {path: 'Admin/Category', component: CategoryComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/product', component: ProductListComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/product/create', component: ProductAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/order', component: OrdersComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'edit/:productId', component: ProductAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'userprofile/edit/:userId', component: UserProfileEditComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/product', component: ProductComponent},

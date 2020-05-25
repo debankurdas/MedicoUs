@@ -98,12 +98,34 @@ exports.getUserOrders = (req,res,next) => {
 }
 
 exports.getAllOrders = (req,res,next) => {
-  orderSchema.find({})
+  orderSchema.find()
   .then((result) => {
     res.json({ status: 'success', message: 'Orders Found!', data: result })
   })
   .catch((err) => {
     res.status(500).json({ status: 'failed', message: err });
+  })
+}
+
+exports.statusChange = (req,res,next) => {
+  console.log(req.body);
+  orderId = req.body.id,
+  status = req.body.status
+  orderSchema.findByIdAndUpdate(orderId, {
+    $set: {
+      status: status
+    }
+  })
+  .then((result) => {
+    res.status(200).json({
+      status: 'Success',
+      data: result
+    })
+  }).catch((error) => {
+    res.status(400).json({
+      error: error,
+      message: 'Some error is occured, try again'
+    })
   })
 }
 

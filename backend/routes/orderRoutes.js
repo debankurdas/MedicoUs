@@ -8,6 +8,7 @@ orderRouter.get('/admin',orderControllers.getAllOrders);
 orderRouter.post('/',authVerify, orderControllers.placeOrder);
 orderRouter.get('/:orderId',orderControllers.getOrderDetails);
 orderRouter.get('/',authVerify,orderControllers.getUserOrders);
+orderRouter.put('/statusChange',orderControllers.statusChange);
 // orderRoute.get('/admin/dashboard', OrderController.getDashBoardInfo);
 // orderRoute.put('/', OrderController.updateOrderStatus);
 
