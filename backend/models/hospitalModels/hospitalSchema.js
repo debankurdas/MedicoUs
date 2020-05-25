@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
+const uniqueValidator = require('mongoose-unique-validator');
 const hospitalSchema = new mongoose.Schema({
   hospitalName: {
     type: String,
@@ -24,6 +25,11 @@ const hospitalSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true
+  },
+  address: {
+    type: String,
+    required: true,
+    unique: true
   }
 
 });

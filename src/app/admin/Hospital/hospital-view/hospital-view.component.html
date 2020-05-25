@@ -1,1 +1,37 @@
-<p>hospital-view works!</p>
+<mat-accordion multi="true" *ngIf="hospital.length>0" >
+  <mat-expansion-panel *ngFor="let hosp of hospital">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{hosp.hospitalName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-label><strong>Speciality:</strong></mat-label>
+      <p>{{hosp.speciality}}</p>
+    </div>
+    <div class="post-images">
+      <img [src]="hosp.imageUrl" [alt]="hosp.hospitalName">
+    </div>
+    <mat-label><strong>Description:</strong></mat-label>
+      <p> {{hosp.description}}</p>
+    <mat-label><strong>Address:</strong></mat-label>
+      <p>{{hosp.address}}</p>
+    <mat-action-row>
+      <a mat-button color="primary"
+      [routerLink]="['/Admin/HospitalBranch/edit',hosp.id]">Edit</a>
+      <button mat-button color="warn" (click)="onDelete(hosp.id)">Delete</button>
+    </mat-action-row>
+    <mat-action-row>
+      <a mat-button color="primary"
+      [routerLink]="['/Admin/Bed/BedAdd',hosp.id]">Add Bed</a>
+      <button mat-button color="warn" [routerLink]="['/Admin/Bed/BedView',hosp.id]">View Bed</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator class="margin"
+[length] = 'hospitalLength'
+[pageSize]= 'hospitalPerpage'[pageSizeOptions]="hospitalPerpageOption"
+(page)="onChange($event)" *ngIf="hospital.length>0">
+</mat-paginator>
+<p class="info-text mat-body-1"
+*ngIf="hospital.length<=0">No hospital Data filled  yet</p>

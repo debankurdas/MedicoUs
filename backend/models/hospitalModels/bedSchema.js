@@ -10,7 +10,19 @@ const bedSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  ward: {
+    type: String,
+    required: true
+  },
+  bedType: {
+    type: String,
+    required: true
+  },
   quantity: {
+    type: String,
+    required: true
+  },
+  cost: {
     type: Number,
     required: true
   },
@@ -18,13 +30,9 @@ const bedSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  cost: {
-    type: Number,
-    required: true
-  },
-  ward: {
-    type: String,
-    required: true
+  date: {
+    type: Date,
+    default: new Date()
   }
 });
 

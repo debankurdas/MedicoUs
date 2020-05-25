@@ -324,7 +324,7 @@ exports.updateProfile = (req, res,next) => {
   });
  };
 
- exports.adminAssign = (req,res,next) => {
+ exports.HospitaladminAssign = (req,res,next) => {
   bcrypt.hash(req.body.user.password,10)
   .then((hash) => {
    const user = new userSchema({

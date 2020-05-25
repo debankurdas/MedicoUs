@@ -24,7 +24,7 @@ exports.placeOrder = (req,res,next) => {
       subject:  'Order Verification Mail',
       heading: "Welcome to Medico24/7",
       description:
-        "Your order is succesfully placed,Your order id is:"+resultId+
+        "Your order is succesfully placed,Your order id is:"+resultId+'.'+
         " For further information,Go through this link:"+"http://localhost:4200/user/orders",
         email: email
     };

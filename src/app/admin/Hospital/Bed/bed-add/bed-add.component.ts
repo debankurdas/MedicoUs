@@ -1,7 +1,9 @@
+import { Bed } from './../../../model/model';
+import { HospitalService } from './../../services/hospital.service';
 import { BedService } from './../services/bed.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-bed-add',
@@ -12,80 +14,77 @@ export class BedAddComponent implements OnInit {
 form: FormGroup;
 filetoUpload: File;
 constructor(private bedService: BedService, private route: ActivatedRoute,
-            private fb: FormBuilder) { }
+            private fb: FormBuilder, private hospitalService: HospitalService ) { }
 //  isLoading = false;
 private mode = 'create';
-
+hospitalId: string;
+bedDetails: Bed;
+bedId: string;
+hospitalName: string;
+date: Date;
  ngOnInit() {
-   this.getCategories();
    this.form = this.fb.group({
-     categoryName: new FormControl('', Validators.required),
-     productName: new FormControl('', Validators.required),
-     description: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
-     imageUrl: new FormControl('', Validators.required),
-     price: new FormControl('', Validators.required)
-     // quantity: new FormControl('', Validators.required)
+     cost: new FormControl('', Validators.required),
+     ward: new FormControl('', Validators.required),
+     quantity: new FormControl('', Validators.required),
+     existingBed: new FormControl('', Validators.required),
+     bedType: new FormControl('', Validators.required)
    });
-   this.route.paramMap.subscribe((paramMap: ParamMap) => {
-     if (paramMap.has('productId')) {
+   this.route.paramMap.subscribe((paramMaps: ParamMap) => {
+    if (paramMaps.has('hospitalId')) {
+      this.hospitalId = paramMaps.get('hospitalId');
+      console.log(this.hospitalId);
+      this.hospitalService.getHospitalById(this.hospitalId)
+      .subscribe((result) => {
+        this.hospitalName = result.hospitalName;
+      });
+    }
+   });
+   this.route.paramMap.subscribe((paramMaps: ParamMap) => {
+      if (paramMaps.has('bedId')) {
        this.mode = 'edit';
-       this.productId = paramMap.get('productId');
-       // this.isLoading = true;
-       this.productService.getProductById(this.productId)
-       .subscribe((productData) => {
-         // this.isLoading = false;
-         this.products = {
-           id: productData._id,
-           productName: productData.productName,
-           categoryName: productData.categoryName,
-           imageUrl: productData.imageUrl,
-           description: productData.description,
-           price: productData.price
+       this.bedId = paramMaps.get('bedId');
+      //  this.isLoading = true;
+       this.bedService.getBedById(this.bedId)
+       .subscribe((bedData) => {
+        //  this.isLoading = false;
+         this.bedDetails = {
+           id: bedData.data._id,
+           ward: bedData.data.ward,
+           cost: bedData.data.cost,
+           hospitalId: bedData.data.hospitalId,
+           quantity: bedData.data.quantity,
+           existingBed: bedData.data.existingBed,
+           hospitalName: bedData.data.hospitalName,
+           bedType: bedData.data.bedType,
+           date: bedData.data.date
          };
          this.form.setValue({
-           productName: this.products.productName,
-           categoryName: this.products.categoryName,
-           imageUrl: this.products.imageUrl,
-           description: this.products.description,
-           price: this.products.price});
+           ward: this.bedDetails.ward,
+           cost: this.bedDetails.cost,
+           quantity: this.bedDetails.quantity,
+           existingBed: this.bedDetails.existingBed,
+           bedType: this.bedDetails.bedType});
        });
      } else {
        this.mode = 'create';
-       this.productId = null;
+       this.bedId = null;
      }
    });
    console.log(this.mode);
  }
- // handelFileInput(file: FileList) {
- //   this.filetoUpload = file.item(0);
- // }
- filegetter(event: Event) {
-   const file = (event.target as HTMLInputElement).files[0];
-   this.form.patchValue({imageUrl: file});
-   this.form.get('imageUrl').updateValueAndValidity();
-   const reader = new FileReader();
-   reader.onload = () => {
-     // tslint:disable-next-line: no-unused-expression
-     this.imagePreview = reader.result as string;
-   };
-   reader.readAsDataURL(file);
- }
- getCategories() {
-   this.categoryService.getCategory().subscribe((result) => {
-       this.catList = result.data;
-     });
- }
- onSavePost() {
+onSavePost() {
    if (this.form.invalid) {
      return;
    }
    if (this.mode === 'create') {
      // this.isLoading = true;
-     this.productService.addProduct(this.form.value.productName, this.form.value.categoryName,
-       this.form.value.imageUrl, this.form.value.description, this.form.value.price);
+     console.log(this.hospitalId);
+     this.bedService.addBed(this.hospitalId, this.hospitalName, this.form.value.ward, this.form.value.quantity,
+       this.form.value.cost, this.form.value.existingBed, this.form.value.bedType, this.date);
    } else  {
-     this.productService.updateProduct(this.productId, this.form.value.productName, this.form.value.categoryName,
-       this.form.value.imageUrl, this.form.value.description, this.form.value.price);
+     this.bedService.updatebedData(this.bedId, this.hospitalId, this.hospitalName, this.form.value.ward, this.form.value.quantity,
+      this.form.value.cost, this.form.value.existingBed, this.form.value.bedType, this.date);
    }
    this.form.reset();
  }

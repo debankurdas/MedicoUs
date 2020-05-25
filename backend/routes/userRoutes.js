@@ -9,7 +9,7 @@ userRouter.get('/:userId',authVerify, UserController.getUserByparamsId);
 userRouter.post('/login', UserController.login);
 userRouter.post('/registration', UserController.signUp);
 userRouter.post('/tokenCreation', UserController.tokenAgainstEmail);
-userRouter.post('/adminAssign', UserController.adminAssign);
+userRouter.post('/adminAssign', UserController.HospitaladminAssign);
 userRouter.put('/:id', UserController.updateProfile);
 userRouter.put('/verifyEmail/:id', UserController.updateStatus);
 userRouter.put('/updatePassword/:id', UserController.updatePassword);

@@ -1,1 +1,31 @@
-<p>bed-view works!</p>
+<mat-accordion multi="true" *ngIf="bed.length>0" >
+  <mat-expansion-panel *ngFor="let bedView of bed">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{bedView.bedType}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <mat-label><strong>Ward:</strong></mat-label>
+      <p>{{bedView.ward}}</p>
+    </div>
+    <mat-label><strong>Total Bed:</strong></mat-label>
+      <p> {{bedView.quantity}}</p>
+    <mat-label><strong>Avilable Bed</strong></mat-label>
+      <p>{{bedView.existingBed}}</p>
+      <!-- <span>Bed details is updated at {{bedView.date}}</span> -->
+    <mat-action-row>
+      <a mat-button color="primary"
+      [routerLink]="['/Admin/BedEdit',bedView.id]">Edit</a>
+      <button mat-button color="warn" (click)="onDelete(bedView.id)">Delete</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator class="margin"
+[length] = 'bedLength'
+[pageSize]= 'bedPerpage'[pageSizeOptions]="bedPerpageOption"
+(page)="onChange($event)" *ngIf="bed.length>0">
+</mat-paginator>
+<p class="info-text mat-body-1"
+*ngIf="bed.length<=0">No Bed Details is filled  yet</p>

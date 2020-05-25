@@ -14,6 +14,20 @@ export interface Hospital {
   speciality: string;
   status: string;
   description: string;
+  address: string;
+}
+
+export interface Bed {
+  id: string;
+  hospitalId: string;
+  hospitalName: string;
+  quantity: number;
+  existingBed: number;
+  ward: string;
+  cost: number;
+  bedType: string;
+  date: Date;
+
 }
 
 export interface USER {

@@ -4,6 +4,9 @@
     <ng-container *ngIf="role$ === 'Admin_M'">
       <ng-container *ngTemplateOutlet="AdminMedicineMenu"></ng-container>
     </ng-container>
+    <ng-container *ngIf="role$ === 'Admin_H'">
+      <ng-container *ngTemplateOutlet="AdminHospitalMenu"></ng-container>
+    </ng-container>
     <ng-container *ngIf="role$ === 'User'">
       <ng-container *ngTemplateOutlet="userMenu"></ng-container>
     </ng-container>
@@ -75,3 +78,15 @@
     </mat-list-item>
   </mat-nav-list>
 </ng-template>
+<ng-template #AdminHospitalMenu>
+  <mat-nav-list>
+    <mat-list-item>
+      <a mat-list-item routerLink='/Admin/HospitalBranchAdd'>Hospital Add</a>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <a mat-list-item routerLink='/Admin/HospitalBranchView'>Hospital View</a>
+    </mat-list-item>
+  </mat-nav-list>
+</ng-template>
+

@@ -50,7 +50,7 @@
         {{item.shippingAddress.pin}}
         <br>
         <div *ngFor="let item of item.products" >
-          <!-- <img mat-card-image class="mat-cards" [src]="item.imageUrl" [alt]="item.productName"> -->
+          <img mat-card-image class="mat-cards" [src]="item.imageUrl" [alt]="item.productName">
          Productname:
          {{item.productName}}
          Price: {{item.price | currency: 'INR'}}
@@ -59,13 +59,6 @@
         </div>
         <br>
       </div>
-      <!-- <div *ngFor="let order of orders" >
-        <div *ngFor="let multipleData of order" >
-          <div *ngFor="let data of multipleData" >
-            {{data.status}}
-          </div>
-        </div>
-      </div> -->
     </div>
   </div>
   <!-- <ng-template ngFor let-order [ngForOf]="orderDatas" let-i="index">
