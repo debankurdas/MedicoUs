@@ -31,7 +31,8 @@ import {
   MatGridListModule,
   MatCardModule,
   MatExpansionModule,
-  MatPaginatorModule} from '@angular/material';
+  MatPaginatorModule,
+  MatRadioModule} from '@angular/material';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UserDashboardComponent } from './user/user-dashboard/user-dashboard.component';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
@@ -124,6 +125,7 @@ import { HospitalAddComponent } from './admin/Hospital/hospital-add/hospital-add
     MatToolbarModule,
     MatSelectModule,
     MatPaginatorModule,
+    MatRadioModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

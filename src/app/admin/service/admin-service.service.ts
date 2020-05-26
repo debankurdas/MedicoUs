@@ -12,11 +12,7 @@ orderDatas = [];
 private orderStatusUpdated = new Subject<{}>();
   constructor(private http: HttpClient) { }
   getAllOrders() {
-    return this.http.get<{UserDataModel, data: any}>(environment.apiUrl + '/orders/admin')
-    .subscribe((result) => {
-      this.orderDatas.push(result);
-      this.orderStatusUpdated.next(this.orderDatas);
-     });
+    return this.http.get<{UserDataModel, data: any}>(environment.apiUrl + '/orders/admin');
   }
   statusChange(id: string, status: string) {
    const details = {
@@ -26,7 +22,11 @@ private orderStatusUpdated = new Subject<{}>();
    return this.http.put<{status: string, data: any}>(environment.apiUrl + '/orders/statusChange', details);
 
   }
-  statusUpdateListner() {
-    return this.orderStatusUpdated.asObservable();
+
+  filterOrderbyStatus(status: string) {
+   const details = {
+    status
+    };
+   return this.http.post<{status: string, data: any}>(environment.apiUrl + '/orders/orderFilter', details);
   }
 }

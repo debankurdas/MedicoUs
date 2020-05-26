@@ -9,6 +9,7 @@ orderRouter.post('/',authVerify, orderControllers.placeOrder);
 orderRouter.get('/:orderId',orderControllers.getOrderDetails);
 orderRouter.get('/',authVerify,orderControllers.getUserOrders);
 orderRouter.put('/statusChange',orderControllers.statusChange);
+orderRouter.post('/orderFilter', orderControllers.getOrderFilterBystatus);
 // orderRoute.get('/admin/dashboard', OrderController.getDashBoardInfo);
 // orderRoute.put('/', OrderController.updateOrderStatus);
 

@@ -10,23 +10,25 @@
       </style>
   </head>
   <body>
-  <div class="panel panel-default panel-order" >
-    <div class="panel-heading">
+  <div class="panel panel-default panel-order"  >
+    <div class="panel-heading" >
         <strong>Order history</strong>
         <div class="btn-group pull-right">
-            <div class="btn-group">
-        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-          Filter history <i class="fa fa-filter"></i>
-        </button>
-        <ul class="dropdown-menu dropdown-menu-right">
-          <li><a href="#">Approved orders</a></li>
-          <li><a href="#">Pending orders</a></li>
-          <li><a href="#">All orders</a></li>
-        </ul>
+          <div class="btn-group" *ngFor="let orders of orderDatas">
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+             Filter history <i class="fa fa-filter"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" *ngFor="let item of orders.data">
+              <li><a class="cursor" (click) = filterStatusPlaced()>Approved orders</a></li>
+              <li><a class="cursor" (click) = filterStatusPending()>Pending orders</a></li>
+              <li><a class="cursor" (click) = filterStatusRejected()>Rejected Order</a></li>
+              <li><a class="cursor" (click) = filterStatusDelivered()>Delivered orders</a></li>
+              <li><a class="cursor" (click) = filterAllorders()>All orders</a></li>
+            </ul>
+          </div>
         </div>
-      </div>
     </div>
-    <div class="panel-body" *ngFor="let orders of orderDatas[0]">
+    <div class="panel-body" *ngFor="let orders of orderDatas">
       <div class="row" *ngFor="let item of orders.data" >
         <div class="col-md-2" *ngFor="let item of item.products">
             <img [src]="item.imageUrl" [alt]="item.productName" class="media-object img-thumbnail">
@@ -36,7 +38,7 @@
           <div class="row">
             <div class="col-md-12" >
               <div class="pull-right">
-                <label class="label label-danger" *ngIf="item.status === 'rejected'">Rejected</label>
+                <label class="label label-danger" *ngIf="item.status === 'Rejected'">Rejected</label>
               </div>
               <div class="pull-right"><label class="label label-primary" *ngIf="item.status === 'Placed'">Approved </label></div>
               <div class="pull-right"><label class="label label-success" *ngIf="item.status === 'Delivered'">Delivered</label> </div>
@@ -62,8 +64,8 @@
             <div class="col-md-12"></div>
             <div class="col-md-12">
               <a data-placement="top" class="btn btn-success btn-xs glyphicon glyphicon-ok" (click)= "sendStatusPlaced(item._id)"  title="Approved"></a>
-              <a data-placement="top" class="btn btn-danger  btn-xs glyphicon glyphicon-trash" href="#" title="Rejected"></a>
-              <a data-placement="top" class="btn btn-info  btn-xs glyphicon glyphicon-thumbs-up" href="#" title="Delivered"></a>
+              <a data-placement="top" class="btn btn-danger  btn-xs glyphicon glyphicon-trash" (click)= "sendStatusRejected(item._id)" title="Rejected"></a>
+              <a data-placement="top" class="btn btn-info  btn-xs glyphicon glyphicon-thumbs-up" (click)= "sendStatusDelivered(item._id)" title="Delivered"></a>
             </div>
             <div class="col-md-12">
               order made on: {{item.createdOn}} by <a href="#">{{item.shippingAddress.userName}} </a>

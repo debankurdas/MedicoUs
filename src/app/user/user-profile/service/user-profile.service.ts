@@ -23,7 +23,8 @@ export class UserProfileService {
           firstname: userData.data.firstname,
           lastname: userData.data.lastname,
           mobile: userData.data.mobile,
-          email: userData.data.email
+          email: userData.data.email,
+          gender: userData.data.gender
         };
       }))
         .subscribe((transformPostData) => {
@@ -32,7 +33,7 @@ export class UserProfileService {
           this.user[2] = transformPostData.lastname;
           this.user[3] = transformPostData.mobile;
           this.user[4] = transformPostData.email;
-          console.log(this.user);
+          this.user[5] = transformPostData.gender;
           this.userUpdated.next({ user: [...this.user]});
         });
   }
@@ -41,17 +42,18 @@ export class UserProfileService {
   }
   getProfileById(userId: string) {
    return this.http.get
-   <{_id: string, firstname: string, lastname: string, mobile: number, email: string}>
+   <{_id: string, firstname: string, lastname: string, mobile: number, email: string, gender: string}>
    (environment.apiUrl + '/users/' + userId);
   }
-  updateUserData(id: string, firstname: string, lastname: string, mobile: number, email: string) {
+  updateUserData(id: string, firstname: string, lastname: string, mobile: number, email: string, gender: string) {
      let userData: USER;
      userData = {
          _id: id,
          firstname,
          lastname,
          mobile,
-         email
+         email,
+         gender
        };
      this.http.put(environment.apiUrl + '/users/' + id, userData)
      .subscribe(response => {

@@ -36,6 +36,7 @@ export interface USER {
   lastname: string;
   mobile: number;
   email: string;
+  gender: string;
 }
 
 export interface Cart {

@@ -129,4 +129,22 @@ exports.statusChange = (req,res,next) => {
   })
 }
 
+exports.getOrderFilterBystatus = (req,res,next) => {
+  status = req.body.status;
+  orderSchema.find({status: status})
+  .then((result) => {
+    res.status(200).json({
+      data: result,
+      status: 'Success'
+    })
+  })
+  .catch((error) =>{
+    res.status(400).json({
+      message: 'Please try again after some time',
+      error: error,
+      status: 'Failed'
+    })
+  })
+}
+
 

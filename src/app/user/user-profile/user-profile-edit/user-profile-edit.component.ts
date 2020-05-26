@@ -24,7 +24,8 @@ export class UserProfileEditComponent implements OnInit {
        lastname: new FormControl('', Validators.required),
        firstname: new FormControl('', Validators.required),
        mobile: new FormControl('', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]),
-       email: new FormControl('', [Validators.required, Validators.email])
+       email: new FormControl('', [Validators.required, Validators.email]),
+       gender: new FormControl('', Validators.required)
        // quantity: new FormControl('', Validators.required)
      });
      this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -40,13 +41,15 @@ export class UserProfileEditComponent implements OnInit {
              firstname: userData.firstname,
              lastname: userData.lastname,
              mobile: userData.mobile,
-             email: userData.email
+             email: userData.email,
+             gender: userData.gender
            };
            this.form.setValue({
             firstname: this.user.firstname,
             lastname: this.user.lastname,
             mobile: this.user.mobile,
-            email: this.user.email});
+            email: this.user.email,
+            gender: this.user.gender});
          });
        }
      });
@@ -58,7 +61,7 @@ export class UserProfileEditComponent implements OnInit {
      if (this.mode === 'edit') {
        // this.isLoading = true;
        this.userService.updateUserData(this.userId, this.form.value.firstname, this.form.value.lastname,
-         this.form.value.mobile, this.form.value.email);
+         this.form.value.mobile, this.form.value.email, this.form.value.gender);
      }
      this.form.reset();
    }

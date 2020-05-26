@@ -13,6 +13,10 @@
       <mat-label>LastName</mat-label>
       <input  matInput placeholder="lastname" formControlName="lastname" required>
     </mat-form-field>
+    <mat-radio-group formControlName="gender" aria-label="Select an option">
+      <mat-radio-button value="Male">Male</mat-radio-button>
+      <mat-radio-button value="Female">Female</mat-radio-button>
+    </mat-radio-group>
     <mat-form-field>
       <mat-label>Mobile</mat-label>
       <input  matInput placeholder="mobile" formControlName="mobile" required>
@@ -21,7 +25,7 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Mobile</mat-label>
+      <mat-label>Email</mat-label>
       <input  matInput placeholder="Email" formControlName="email" required email>
       <mat-error
         *ngIf="form.get('email').invalid">Please enter the EmailId

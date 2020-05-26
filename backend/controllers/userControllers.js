@@ -11,6 +11,7 @@ exports.signUp = (req, res,next) => {
     lastname: req.body.lastname,
     mobile: req.body.mobile,
     email:req.body.email,
+    gender: req.body.gender,
     password:hash,
     role: req.body.role
   });
@@ -280,7 +281,8 @@ exports.getUserByparamsId = (req,res,next) => {
           firstname: userData.firstname,
           lastname: userData.lastname,
           mobile: userData.mobile,
-          email: userData.email
+          email: userData.email,
+          gender: userData.gender
         });
       } else {
         res.status(401).json({message: 'UserData is not fetched'});
@@ -306,7 +308,8 @@ exports.updateProfile = (req, res,next) => {
       firstname:req.body.firstname,
       lastname:req.body.lastname,
       mobile:req.body.mobile,
-      email:req.body.email
+      email:req.body.email,
+      gender: req.body.gender
     }
   })
   .then(result => {

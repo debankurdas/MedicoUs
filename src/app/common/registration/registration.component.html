@@ -1,47 +1,4 @@
-<!--
-<form class="example-form" [formGroup]="registration" (submit)="register()" >
-  <mat-form-field class="example-full-width">
-    <mat-label>First Name</mat-label>
-    <input type="text" matInput placeholder="First Name" formControlName="firstname" required>
-    <mat-error
-    *ngIf="registration.get('firstname').invalid" >Please enter the FirstName</mat-error>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Last Name</mat-label>
-    <input type="text" matInput placeholder="Last Name" formControlName="lastname" required>
-    <mat-error
-    *ngIf="registration.get('lastname').invalid" >Please enter the LastName</mat-error>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput placeholder="Email" formControlName="email" required>
-    <mat-error
-    *ngIf="registration.get('email').invalid" >Please enter the valid emailAddress</mat-error>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Mobile No.</mat-label>
-    <input type="text" matInput placeholder="Mobile Number" formControlName="mobile" required>
-    <mat-error
-    *ngIf="registration.get('mobile').invalid" >Please enter 10 digit mobile number</mat-error>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Password</mat-label>
-    <input type="password" matInput placeholder="Password" formControlName="password" required>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <mat-label>Confirm Password</mat-label>
-    <input type="password" matInput placeholder="Confirm Password" formControlName="confirm_password" required>
-  </mat-form-field>
-  <div>
-    <mat-error
-    *ngIf="registration.errors?.invalidPassword" >Password and Confirm Password must be same
-  </mat-error>
-  </div>
-  <div>
-    <button type="submit" [disabled]="registration.invalid" mat-raised-button color="primary" >SignUp</button>
-    <button type="submit" mat-raised-button color="primary" routerLink='/login'>Login</button>
-  </div>
-</form> -->
+
 <!DOCTYPE html>
 <html>
 
@@ -82,6 +39,10 @@
                   <mat-error
                   *ngIf="registration.get('lastname').invalid" >Please enter the LastName</mat-error>
                 </mat-form-field>
+                <mat-radio-group formControlName="gender" aria-label="Select an option">
+                  <mat-radio-button value="Male">Male</mat-radio-button>
+                  <mat-radio-button value="Female">Female</mat-radio-button>
+                </mat-radio-group>
                 <mat-form-field class="example-full-width">
                   <mat-label>Email</mat-label>
                   <input type="email" matInput placeholder="Email" formControlName="email" required style="margin-top:14px;">
