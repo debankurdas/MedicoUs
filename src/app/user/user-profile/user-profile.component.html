@@ -115,12 +115,12 @@
                 <div class="col-md-8 col-sm-8 col-xs-4">
                     <ul class="tabs">
                         <li class="tab">
-                            <a class="home-btn" ng-href="#home"><i class="fa fa-home" aria-hidden="true"></i></a>
+                            <a class="home-btn" (click)="homeId()"><i class="fa fa-home" aria-hidden="true"></i></a>
                         </li>
-                        <li class="tab"><a ng-href="#resume">FAQ</a></li>
-                        <li class="tab"><a ng-href="#portfolio">EDIT PROFILE</a></li>
-                        <li class="tab"><a ng-href="#blog">ORDERS</a></li>
-                        <li class="tab"><a ng-href="#contact">CONTACT</a></li>
+                        <li class="tab"><a  class="cursor"(click)= "Faq()" >FAQ</a></li>
+                        <li class="tab"><a class="cursor"(click) = "EditProfile()">EDIT PROFILE</a></li>
+                        <li class="tab"><a class="cursor"(click) = "order()" >ORDERS</a></li>
+                        <li class="tab"><a class="cursor"(click) = "contact()">CONTACT</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-4 col-xs-8 dynamic">
@@ -144,7 +144,7 @@
 
             <!-- Home Page
             ================================================== -->
-            <div id="home">
+            <div id="home" *ngIf="id === 0" >
                 <!-- Text Section -->
                 <div class="row">
                     <section class="about-me line col-md-12 padding_30 padbot_45">
@@ -208,7 +208,7 @@
 
             <!-- Resume Page
             ================================================== -->
-            <div id="resume">
+            <div id="resume" *ngIf="id === 1">
                 <!-- Resume Section -->
             <!----------------------------------------------------------------------------------------------helooooo--->
                 <div class="row">
@@ -441,7 +441,7 @@
             </div>
             <!-- EDIT PROFILE
             ================================================== -->
-            <div id="portfolio" class="row bottom_45">
+            <div id="portfolio" class="row bottom_45" *ngIf="id === 3">
                 <section class="col-md-12">
                     <div class="col-md-12 content-header bottom_15">
                         <div class="section-title top_30 bottom_30"><span></span><h2>EDIT PROFILE</h2></div>
@@ -455,7 +455,7 @@
 
             <!-- PREVIOUS ORDERS
             ================================================== -->
-            <div id="blog">
+            <div id="blog" *ngIf="id === 4">
                 <div class="row">
                     <section class="blog col-md-12 bottom_30">
                         <div class="col-md-12 content-header">
@@ -540,7 +540,7 @@
 
             <!-- Contact Page
             ================================================== -->
-            <div id="contact">
+            <div id="contact" *ngIf="id === 5">
                 <div class="row">
                     <!-- Contact Form -->
                     <section class="contact-form col-md-6 padding_30 padbot_45">

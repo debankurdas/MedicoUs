@@ -9,6 +9,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
+  id = 0;
  UserDatas: USER[] = [];
  userId: any;
  firstname: any;
@@ -34,6 +35,22 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.gender = this.UserDatas[5];
     });
 
+  }
+  homeId() {
+   this.id = 0;
+  }
+  Faq() {
+    this.id = 1;
+  }
+
+  EditProfile() {
+    this.id = 3;
+  }
+  order() {
+    this.id = 4;
+  }
+  contact() {
+    this.id = 5;
   }
   ngOnDestroy() {
     this.userDataObserver.unsubscribe();
