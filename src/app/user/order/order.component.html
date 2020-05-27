@@ -1,4 +1,4 @@
-
+<!--
   <div>
     <div *ngFor="let orders of orderDatas">
       <div *ngFor="let item of orders.data" >
@@ -23,9 +23,118 @@
         <br>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- <ng-template ngFor let-order [ngForOf]="orderDatas" let-i="index">
 
   </ng-template> -->
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <!--  This file has been downloaded from https://bootdey.com  -->
+      <!--  All snippets are MIT license https://bootdey.com/license -->
+      <title>Bootdey.com</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+      <style type="text/css">
+        body{
+      background:#eee;
 
+  }
+
+  .search-result .title h3 {
+      margin: 0 0 15px;
+      color: #333;
+  }
+  .search-result .title p {
+      font-size: 12px;
+      color: #333;
+  }
+  .well {
+      border: 0;
+      padding: 20px;
+      min-height: 63px;
+      background: #fff;
+      box-shadow: none;
+      border-radius: 3px;
+      position: relative;
+      max-height: 100000px;
+      border-bottom: 2px solid #ccc;
+      transition: max-height 0.5s ease;
+      -o-transition: max-height 0.5s ease;
+      -ms-transition: max-height 0.5s ease;
+      -moz-transition: max-height 0.5s ease;
+      -webkit-transition: max-height 0.5s ease;
+  }
+  .form-control {
+      height: 45px;
+      padding: 10px;
+      font-size: 16px;
+      box-shadow: none;
+      border-radius: 0;
+      position: relative;
+  }
+      </style>
+  </head>
+  <body>
+
+  <div class="container bootstrap snippet">
+      <hr>
+      <ol class="breadcrumb">
+          <li><a routerLink="/user/profile">Profile</a></li>
+          <li><a href="#">Previous Orders</a></li>
+          <li class="pull-right"><a routerLink="/user/orders" class="text-muted"><i class="fa fa-refresh"></i></a></li>
+      </ol>
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- <div class="well search-result">
+                  <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <span class="input-group-btn">
+                <button class="btn btn-info btn-lg" type="button">
+                          <i class="glyphicon glyphicon-search"></i>
+                          Search
+                      </button>
+              </span>
+                  </div>
+              </div> -->
+              <div class="well search-result" *ngFor="let orders of orderDatas">
+                  <div class="row" *ngFor="let item of orders.data">
+                      <a href="#">
+                          <div class="col-xs-5 col-sm-2 col-md-3 col-lg-2" *ngFor="let item of item.products">
+                              <img class="img-responsive" [src]="item.imageUrl" [alt]="item.productName">
+                              <h3>{{item.productName}}</h3>
+                              <strong><p class= "colors">Quantity: {{item.quantity}}</p></strong>
+                              Price:{{item.price | currency: 'INR'}}
+                          </div>
+                          <div class="col-xs-5 col-sm-7 col-md-6 col-lg-8 title">
+                              <p>{{item.shippingAddress.addressLine1}}
+                                {{item.shippingAddress.addressLine2}}</p>
+                          </div>
+
+
+                      </a>
+                      <div class="col-xs-2 col-sm-3 col-md-3 col-lg-2 title">
+                        <div class="topcorner">
+                          <div>
+                            <label class="label label-info" *ngIf="item.status === 'Placed'">{{item.status}}</label>
+                            <label class="label label-primary" *ngIf="item.status === 'Pending'">{{item.status}}</label>
+                            <label class="label label-success" *ngIf="item.status === 'Delivered'">{{item.status}}</label>
+                            <label class="label label-danger" *ngIf="item.status === 'Rejected'">{{item.status}}</label>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+  </script>
+  </body>
+  </html>
 

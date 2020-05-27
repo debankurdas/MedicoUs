@@ -13,5 +13,6 @@ userRouter.post('/adminAssign', UserController.HospitaladminAssign);
 userRouter.put('/:id', UserController.updateProfile);
 userRouter.put('/verifyEmail/:id', UserController.updateStatus);
 userRouter.put('/updatePassword/:id', UserController.updatePassword);
+userRouter.post('/contact', UserController.contact);
 
 module.exports = userRouter;

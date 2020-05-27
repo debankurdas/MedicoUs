@@ -1,37 +1,97 @@
-<mat-card>
-  <!-- <mat-spinner [diameter]="50"
-  *ngIf="isLoading"></mat-spinner> -->
-  <!-- *ngIf="!isLoading" -->
-  <form
-  [formGroup]="form" (submit)="onSavePost()"
-  >
-    <mat-form-field class="formControl">
-      <mat-label>FirstName</mat-label>
-      <input  matInput placeholder="firstname" formControlName="firstname" required>
-    </mat-form-field>
-    <mat-form-field class="formControl">
-      <mat-label>LastName</mat-label>
-      <input  matInput placeholder="lastname" formControlName="lastname" required>
-    </mat-form-field>
-    <mat-radio-group formControlName="gender" aria-label="Select an option">
-      <mat-radio-button value="Male">Male</mat-radio-button>
-      <mat-radio-button value="Female">Female</mat-radio-button>
-    </mat-radio-group>
-    <mat-form-field>
-      <mat-label>Mobile</mat-label>
-      <input  matInput placeholder="mobile" formControlName="mobile" required>
-      <mat-error
-        *ngIf="form.get('mobile').invalid">Please enter the 10 digit number
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input  matInput placeholder="Email" formControlName="email" required email>
-      <mat-error
-        *ngIf="form.get('email').invalid">Please enter the EmailId
-      </mat-error>
-    </mat-form-field>
-    <button color="primary" mat-raised-button type="submit"
-    [disabled]='!form.valid'>Submit</button>
-  </form>
-</mat-card>
+<!-- <mat-spinner [diameter]="50"
+*ngIf="isLoading"></mat-spinner>
+*ngIf="!isLoading" -->
+<!doctype html>
+<html lang="en">
+<head>
+
+<!-- Simple Page Needs
+================================================== -->
+<title>Mat</title>
+<meta charset="UTF-8">
+<meta name="description" content="Mat - Resume & vCard HTML Template">
+<meta name="keywords" content="personal, vcard, portfolio">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- Favicon
+================================================== -->
+<link href="../../../../assets/user_profile/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="../../../assets/user_profile/css/bootstrap.css">
+<link rel="stylesheet" href="../../../assets/user_profile/css/reset.css"/>
+<link rel="stylesheet" href="../../../assets/user_profile/cubeportfolio/css/cubeportfolio.min.css"/>
+<link rel="stylesheet" href="../../../assets/user_profile/css/owl.theme.css"/>
+<link rel="stylesheet" href="../../../assets/user_profile/css/owl.carousel.css"/>
+<link rel="stylesheet" href="../../../assets/user_profile/css/style.css"/>
+<link rel="stylesheet" href="../../../assets/user_profile/css/colors/yellow.css" id="color"/>
+
+
+<!-- Google Web fonts
+================================================== -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
+<!-- Font Icons
+================================================== -->
+<link rel="stylesheet" href="../../../../assets/user_profile/icon-fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
+<link rel="stylesheet" href="../../../../assets/user_profile/icon-fonts/web-design/font/flaticon.css" />
+<!-- Javascripts
+================================================== -->
+<script src="../../../../assets/user_profile/js/jquery-2.1.4.min.js"></script>
+<script src="../../../../assets/user_profile/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+<script src="../../../../assets/user_profile/js/bootstrap.min.js"></script>
+<script src="../../../../assets/user_profile/js/jquery.easytabs.min.js"></script>
+<script src="../../../../assets/user_profile/js/owl.carousel.min.js"></script>
+<script src="../../../../assets/user_profile/js/main.js"></script>
+<!-- for color alternatives -->
+<script src="../../../../assets/user_profile/js/jquery.cookie-1.4.1.min.js"></script>
+<script src="../../../../assets/user_profile/js/Demo.js"></script>
+<!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+</head>
+<body>
+  <div id="portfolio" class="row bottom_45">
+    <section class="col-md-12">
+        <div class="col-md-12 content-header bottom_15">
+            <div class="section-title top_30 bottom_30"><span></span><h2>EDIT PROFILE</h2></div>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </div>
+        <div id="grid-container" class="top_60">
+          <mat-card>
+
+            <form [formGroup]="form" (submit)="onSavePost()">
+              <mat-form-field class="formControl">
+                <mat-label>FirstName</mat-label>
+                <input  matInput placeholder="firstname" formControlName="firstname" required>
+              </mat-form-field>
+              <mat-form-field class="formControl">
+                <mat-label>LastName</mat-label>
+                <input  matInput placeholder="lastname" formControlName="lastname" required>
+              </mat-form-field>
+              <mat-radio-group formControlName="gender" aria-label="Select an option">
+                <mat-radio-button value="Male">Male</mat-radio-button>
+                <mat-radio-button value="Female">Female</mat-radio-button>
+              </mat-radio-group>
+              <mat-form-field>
+                <mat-label>Mobile</mat-label>
+                <input  matInput placeholder="mobile" formControlName="mobile" required>
+                <mat-error *ngIf="form.get('mobile').invalid">Please enter the 10 digit number</mat-error>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input  matInput placeholder="Email" formControlName="email" required email>
+                <mat-error *ngIf="form.get('email').invalid">Please enter the EmailId</mat-error>
+              </mat-form-field>
+              <button color="primary" mat-raised-button type="submit"
+              [disabled]='!form.valid'>Submit</button>
+            </form>
+          </mat-card>
+        </div>
+      </section>
+  </div>
+</body>

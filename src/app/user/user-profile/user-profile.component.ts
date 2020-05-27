@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { USER } from './../../admin/model/model';
 import { Subscription } from 'rxjs';
 import { UserProfileService } from './service/user-profile.service';
@@ -18,7 +19,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
  email: any;
  gender: any;
  private userDataObserver: Subscription;
-  constructor(private profileService: UserProfileService) { }
+
+ user = {
+   name: '',
+   email: '',
+   message: ''
+ };
+  constructor(private profileService: UserProfileService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.profileService.getProfile();
@@ -51,6 +58,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   contact() {
     this.id = 5;
+  }
+
+  contacts() {
+    console.log(this.user);
+    this.profileService.contact(this.user)
+    .subscribe((result) => {
+      if (result.status === 'Success') {
+        this.snackBar.open('Thank you for contacting us', '', {
+          duration: 1000
+        });
+      }
+    });
   }
   ngOnDestroy() {
     this.userDataObserver.unsubscribe();

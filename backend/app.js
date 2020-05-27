@@ -8,6 +8,7 @@ const cartRouter = require('./routes/cartRoutes');
 const hospitalRouter = require('./routes/hospitalRoutes/hospitalRoutes');
 const bedRouter = require('./routes/hospitalRoutes/bedRoute');
 const orders = require('./routes/orderRoutes');
+const contactRouter = require('./routes/contactRoutes');
 const helmet = require('helmet');
 const compression = require('compression');
 const express = require('express');
@@ -52,5 +53,6 @@ app.use('/api/cartLists',cartRouter);
 app.use('/api/orders',orders);
 app.use('/api/hospital', hospitalRouter);
 app.use('/api/bed', bedRouter);
+app.use('/api/contact', contactRouter);
 
 module.exports = app;

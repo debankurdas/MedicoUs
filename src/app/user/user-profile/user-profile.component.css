@@ -1,3 +1,31 @@
 .cursor {
   cursor: pointer;
 }
+
+@media screen and (min-width: 768px) {
+  .view {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 679px) {
+  .colors {
+    color: black;
+    margin-left: auto;
+    padding-left: 200px;
+  }
+
+}
+@media screen and (max-width: 679px) and (min-width: 600px) {
+  .colors {
+    color: black;
+    margin-left: auto;
+    padding-left: 170px;
+  }
+
+}
+
+.example-full-width {
+  width: 100%;
+}
+

@@ -357,3 +357,67 @@ exports.updateProfile = (req, res,next) => {
    })
   })
  }
+
+ exports.contact = (req,res,next) =>{
+   name = req.body.name;
+   email = req.body.email;
+   email1 = "debankurdas2016.dd@gmail.com"
+   message = req.body.message;
+   if(name!= null && email!= null && message !=null) {
+    const obj = {
+      subject:  'Contact Mail',
+      heading: "Welcome to Medico24/7",
+      name: name,
+      email: email,
+      message: message
+    };
+
+
+
+    let htmlTemplate = `
+        <!DOCTYPE html>
+          <html>
+            <body>
+              <h1>${obj.heading}</h1>
+              <p>${obj.name}</p>
+              <strong> <p>${obj.message}</p></strong>
+            </body>
+          </html>
+          `;
+
+      const callMethod = () => {
+        axios({
+          method: "post",
+          url: "https://api.sendgrid.com/v3/mail/send",
+          headers: {
+            Authorization:
+              "Bearer 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"
+          },
+          data: {
+              personalizations: [
+                  {
+                    to: [
+                      {
+                        email: "debankurdas2013.dd@gmail.com"
+                      }
+                    ],
+                    subject: `${obj.subject}`
+                  }
+                ],
+                from: {
+                  email: email1,
+                  name: name
+                },
+                content: [{ type: "text/html", value: htmlTemplate }]
+              }
+            });
+          };
+
+      callMethod();
+
+   }
+   res.status(200).json({
+     status: 'Success'
+   })
+
+ }

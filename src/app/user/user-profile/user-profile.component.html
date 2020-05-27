@@ -82,22 +82,27 @@
         </figure>
         <ul class="profile-information">
             <li></li>
-            <li><p><span>Name:</span> Chris Johnson</p></li>
+            <li><p><span>Name:</span> {{firstname}} {{lastname}}</p></li>
             <li>
               <div>
                 <fieldset data-role="controlgroup">
                   <legend>Your Gender:</legend>
-                    <label for="male">Male</label>
-                    <input type="radio" name="gender" id="male" value="male" checked>
-                    <label for="female">  Female</label>
-                    <input type="radio" name="gender" id="female" value="female" disabled>
+                    <label for="male" *ngIf="gender === 'Male'" >Male</label>
+                    <input type="radio" *ngIf="gender === 'Male'" name="gender" id="male" value="male" checked>
+                    <label for="female" *ngIf="gender === 'Female'">  Female</label>
+                    <input type="radio" *ngIf="gender === 'Female'" name="gender" id="female" value="female" checked>
                 </fieldset></div></li>
-            <li><p><span>Role:</span> User</p></li>
-            <li><p><span>Email:</span> henry@domain.com</p></li>
-            <li><p><span>Mobile Number:</span> 9831553759</p></li>
+            <li><p><span>Email:</span> {{email}}</p></li>
+            <li><p><span>Mobile Number:</span> {{mobile}}</p></li>
         </ul>
         <div class="col-md-12">
-            <button class="site-btn icon" onclick="myfunction()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+          <ul class="tabs view colors">
+            <li class="tab"><a  class="cursor "(click)= "Faq()" >FAQ</a></li>
+            <li class="tab"><a class="cursor "[routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</a></li>
+            <li class="tab"><a class="cursor "routerLink= "/user/orders" >ORDERS</a></li>
+            <li class="tab"><a class="cursor "(click) = "contact()">CONTACT</a></li>
+          </ul>
+          <button class="site-btn icon" onclick="myfunction()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
         </div>
     </div>
 </div>
@@ -118,8 +123,8 @@
                             <a class="home-btn" (click)="homeId()"><i class="fa fa-home" aria-hidden="true"></i></a>
                         </li>
                         <li class="tab"><a  class="cursor"(click)= "Faq()" >FAQ</a></li>
-                        <li class="tab"><a class="cursor"(click) = "EditProfile()">EDIT PROFILE</a></li>
-                        <li class="tab"><a class="cursor"(click) = "order()" >ORDERS</a></li>
+                        <li class="tab"><a class="cursor" [routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</a></li>
+                        <li class="tab"><a class="cursor"routerLink= "/user/orders" >ORDERS</a></li>
                         <li class="tab"><a class="cursor"(click) = "contact()">CONTACT</a></li>
                     </ul>
                 </div>
@@ -441,7 +446,7 @@
             </div>
             <!-- EDIT PROFILE
             ================================================== -->
-            <div id="portfolio" class="row bottom_45" *ngIf="id === 3">
+            <!-- <div id="portfolio" class="row bottom_45" *ngIf="id === 3">
                 <section class="col-md-12">
                     <div class="col-md-12 content-header bottom_15">
                         <div class="section-title top_30 bottom_30"><span></span><h2>EDIT PROFILE</h2></div>
@@ -451,92 +456,10 @@
 
                     </div>
                 </section>
-            </div>
+            </div> -->
 
             <!-- PREVIOUS ORDERS
             ================================================== -->
-            <div id="blog" *ngIf="id === 4">
-                <div class="row">
-                    <section class="blog col-md-12 bottom_30">
-                        <div class="col-md-12 content-header">
-                            <div class="section-title top_30 bottom_15"><span></span><h2>Previous Orders</h2></div>
-                            <i class="fa fa-history" aria-hidden="true"></i>
-                        </div>
-                        <div id="grid-blog" class="row">
-                            <!-- a blog -->
-                            <div class="cbp-item">
-                                <a href="#" class="blog-box">
-                                    <div class="blog-img">
-                                        <img src="../../../assets/user_profile/images/blogs/blog-6.jpg" alt="">
-                                    </div>
-                                    <div class="blog-box-info">
-                                        <span class="category">Order id: 123456</span>
-                                        <h2 class="title">Product Name</h2>
-                                        <p class="little-text">Address</p>
-                                        <p class="little-text">Price: Rs 200</p>
-                                        <span class="date">8 Nov 17</span>
-                                        <div class="pull-right"><label class="label label-danger">rejected</label> </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- a blog -->
-                            <div class="cbp-item">
-                                <a href="#" class="blog-box">
-                                    <div class="blog-img">
-                                        <img src="../../../assets/user_profile/images/blogs/blog-2.jpg" alt="">
-                                    </div>
-                                    <div class="blog-box-info">
-                                        <span class="category">Web Design</span>
-                                        <h2 class="title">How to become a web designer?</h2>
-                                        <p class="little-text">He must have tried it a hundred times, shut his eyes so that he wouldn't have to look at the floundering.</p>
-                                        <span class="date">27 Oct 17</span>
-                                        <div class="pull-right"><label class="label label-info">pending</label> </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- a blog -->
-                            <div class="cbp-item">
-                                <a href="#" class="blog-box">
-                                    <div class="blog-img">
-                                        <img src="../../../assets/user_profile/images/blogs/blog-3.jpg" alt="">
-                                    </div>
-                                    <div class="blog-box-info">
-                                        <span class="category">User İnterface</span>
-                                        <h2 class="title">Why is it better to work nights?</h2>
-                                        <p class="little-text">Legs, and only stopped when he began to feel a mild, dull pain there that he had never felt.</p>
-                                        <span class="date">19 Oct 17</span>
-                                        <div class="pull-right"><label class="label label-success">Approved</label> </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- a blog -->
-                            <div class="cbp-item">
-                                <a href="#" class="blog-box">
-                                    <div class="blog-img">
-                                        <img src="../../../assets/user_profile/images/blogs/blog-3.jpg" alt="">
-                                    </div>
-                                    <div class="blog-box-info">
-                                        <span class="category">User İnterface</span>
-                                        <h2 class="title">Why is it better to work nights?</h2>
-                                        <p class="little-text">Legs, and only stopped when he began to feel a mild, dull pain there that he had never felt.</p>
-                                        <span class="date">19 Oct 17</span>
-                                        <div class="pull-right"><label class="label label-success">Delivered</label> </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <!-- a blog -->
-                        </div>
-                        <!-- load more button -->
-                        <div id="load-posts" class="cbp-l-loadMore-button top_60">
-                            <a href="../../../assets/user_profile/load-more/blog-posts.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
-                                <span class="cbp-l-loadMore-defaultText">Load More (<span class="cbp-l-loadMore-loadItems">3</span>)</span>
-                                <span class="cbp-l-loadMore-loadingText">Loading...</span>
-                                <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
-                            </a>
-                        </div>
-                    </section>
-                </div>
-            </div>
 
             <!-- Contact Page
             ================================================== -->
@@ -545,22 +468,33 @@
                     <!-- Contact Form -->
                     <section class="contact-form col-md-6 padding_30 padbot_45">
                         <div class="section-title top_15 bottom_30"><span></span><h2>Contact Form</h2></div>
-                        <form class="site-form">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input class="site-input" placeholder="Name">
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="site-input" placeholder="E-mail">
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="site-area" placeholder="Message"></textarea>
-                                </div>
-                                <div class="col-md-12 top_15 bottom_30">
-                                    <button class="site-btn" type="submit">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+                        <form (submit)="contacts()" #myForm="ngForm">
+                          <mat-form-field class="example-full-width">
+                            <mat-label>Name</mat-label>
+                            <input type="name" matInput placeholder="name" name="name" #name ="ngModel"
+                            [(ngModel)]="user.name" required>
+                            <mat-error
+                            *ngIf="name.invalid" >Please enter the name
+                            </mat-error>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput placeholder="Email" name="email" #email = "ngModel"
+                            [(ngModel)]="user.email" required>
+                            <mat-error
+                            *ngIf="email.invalid" >Please enter a valid Email</mat-error>
+                          </mat-form-field>
+                          <mat-form-field class="example-full-width">
+                            <mat-label>Message</mat-label>
+                            <input type="message" matInput placeholder="message" name="message" #message = "ngModel"
+                            [(ngModel)]="user.message" required>
+                            <mat-error
+                            *ngIf="message.invalid" >Please enter a valid message</mat-error>
+                          </mat-form-field>
+                          <div class="form-group">
+                            <button class="btn btn-warning btn-block" type="submit" [disabled]="!myForm.form.valid">Log In</button>
+                          </div>
+                      </form>
                     </section>
                     <!-- Contact Informations -->
                     <section class="contact-info col-md-6 padding_30 padbot_45">
