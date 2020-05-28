@@ -1,16 +1,117 @@
 <!-- {{productList | json}} -->
 
-<h1>Category: {{categoryName}}</h1>
-<div>
-    Product {{productLists?.length}} of {{productCount}}
-</div>
-<mat-divider></mat-divider>
-<mat-card *ngFor="let product of productLists;let i=index">
-    <mat-card-header>
-        <mat-card-title>{{product.productName}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image [routerLink]="[product._id]" [src]="product.imageUrl" [alt]="product.productName">
-    <div>
-      {{product.price | currency : 'INR'}}
+<!--Carousel Wrapper-->
+<div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
+  <!--Indicators-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-2" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-2" data-slide-to="1"></li>
+    <li data-target="#carousel-example-2" data-slide-to="2"></li>
+  </ol>
+  <!--/.Indicators-->
+  <!--Slides-->
+  <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <div class="view">
+        <img class="d-block w-100" src="../../../../assets/product/img/one.jpg"
+          alt="First slide">
+        <div class="mask rgba-black-light"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">MEDICINE </h3>
+        <p>We at Medico 24/7 provide a large variety of medicine at a nominal rate with free shipping.</p>
+      </div>
     </div>
-</mat-card>
+    <div class="carousel-item">
+      <!--Mask color-->
+      <div class="view">
+        <img class="d-block w-100" src="../../../../assets/product/img/three.jpg"
+          alt="Second slide">
+        <div class="mask rgba-black-strong"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">MEDICINE</h3>
+        <p>Don't know which medicine to buy!.Check the contents and buy.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <!--Mask color-->
+      <div class="view">
+        <img class="d-block w-100" src="../../../../assets/product/img/two.jpg"
+          alt="Third slide">
+        <div class="mask rgba-black-slight"></div>
+      </div>
+      <div class="carousel-caption">
+        <h3 class="h3-responsive">MEDICINE</h3>
+        <p>At Medico 24/7 medicines are available 24/7.</p>
+      </div>
+    </div>
+  </div>
+  <!--/.Slides-->
+  <!--Controls-->
+  <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel-example-2" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+  <!--/.Controls-->
+</div>
+<!--/.Carousel Wrapper-->
+<br>
+<br>
+<div class="container">
+  <!--Section: Products v.3-->
+  <section class="text-center mb-4">
+
+    <!--Grid row-->
+    <div class="row wow fadeIn" >
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let product of productLists;">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Card image-->
+          <div class="view overlay">
+            <img [routerLink]="[product._id]" [src]="product.imageUrl" [alt]="product.productName" class="card-img-top">
+          </div>
+          <!--Card image-->
+
+          <!--Card content-->
+          <div class="card-body text-center">
+            <!--Category & Title-->
+            <a href="" class="grey-text">
+              <h5>{{categoryName}}</h5>
+            </a>
+            <h5>
+              <strong>
+                <a href="" class="dark-grey-text">{{product.productName}}
+                  <!-- <span class="badge badge-pill danger-color">NEW</span> -->
+                </a>
+              </strong>
+            </h5>
+
+            <h4 class="font-weight-bold blue-text">
+              <strong> {{product.price | currency : 'INR'}}</strong>
+            </h4>
+
+          </div>
+          <!--Card content-->
+
+        </div>
+        <!--Card-->
+
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+
+
+
+  </section>
+  <!--Section: Products v.3-->
+</div>

@@ -1,6 +1,6 @@
-img {
-  width: 200px;
-  height: 200px;
+.carousel-inner img {
+  width: 300px;
+  height: 300px;
   cursor: pointer;
 }
 
@@ -8,3 +8,5 @@ mat-card  {
   width: 29%;
   float: left;
 }
+
+

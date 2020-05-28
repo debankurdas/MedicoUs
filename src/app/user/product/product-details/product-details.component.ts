@@ -14,7 +14,10 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductDetailsComponent implements OnInit {
 
   quantity: FormControl;
-  productDetails: any;
+  productDetails = [];
+  allProductDetails = [];
+  categoryNameforId: string;
+  categoryName: string;
   constructor(private productService: ProductService,
               private wishListService: WishListService,
               private cartService: CartListService,
@@ -25,9 +28,22 @@ export class ProductDetailsComponent implements OnInit {
     this.quantity = new FormControl('1');
     this.route.paramMap.subscribe((data) => {
       this.productService.getProductById(data.get('id')).subscribe((result) => {
-        console.log(result);
-        this.productDetails = result;
+
+        this.productDetails.push(result);
+        console.log(this.productDetails);
+        this.categoryNameforId = this.productDetails[0].categoryName;
+        console.log('Category', this.categoryNameforId);
       });
+    });
+
+  }
+
+  loadProduct() {
+    this.productService.getProductByCategory(this.categoryNameforId)
+    .subscribe((result) => {
+      console.log(result);
+      this.allProductDetails.push(result.data);
+      console.log(this.allProductDetails);
     });
   }
 

@@ -124,6 +124,7 @@ exports.getProductById = (req,res,next) => {
 
 exports.getproductByCategory = (req,res,next) => {
   const category = req.body.categoryName;
+  console.log(category);
 let productCount=0;
 productSchema.find().estimatedDocumentCount().exec()
 .then((countResult) => {
