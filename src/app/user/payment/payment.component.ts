@@ -16,14 +16,16 @@ import { USER } from 'src/app/admin/model/model';
 export class PaymentComponent implements OnInit, OnDestroy {
 
   products = [];
+  id = 1;
   cartIdArray = [];
   total: number;
   email: any;
   userDataObserver: Subscription;
   shippingAddress: FormGroup;
-  displayedColumns: string[] = ['imageUrl', 'productName', 'quantity', 'price', 'total'];
+  // displayedColumns: string[] = ['imageUrl', 'productName', 'quantity', 'price', 'total'];
   public payPalConfig?: PayPalConfig;
   UserDatas: USER[];
+  cartCount: number;
   constructor(private cartService: CartListService,
               private orderService: UserOrderService,
               private fb: FormBuilder,
@@ -35,12 +37,13 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.shippingAddress = this.fb.group({
       userName: ['', Validators.required],
       addressLine1: ['', Validators.required],
-      addressLine2: ['', Validators.required],
+      addressLine2: [''],
       city: ['', Validators.required],
       pin: ['', Validators.required],
     });
     this.cartService.getProductForCheckOut().subscribe((productList) => {
       this.products = productList;
+      console.log(this.products);
       this.total = productList.map(p => p.quantity * p.price).reduce((total: any, price: any) =>
         total + price, 0
       );
@@ -49,14 +52,13 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.userDataObserver = this.profileService.getuserUpdateListner()
     .subscribe((userDatas: { user: USER[]}) => {
       this.UserDatas = userDatas.user;
-      console.log(typeof this.UserDatas[0]);
+      console.log(this.UserDatas);
       this.email = this.UserDatas[4];
     });
     this.cartService.getcartIdForCheckOut().subscribe((cartId) => {
-      console.log('cartId', cartId);
       this.cartIdArray = cartId;
-      console.log(this.cartIdArray);
     });
+    this.getCartList();
     // this.initConfig();
   }
   // private initConfig(): void {
@@ -111,6 +113,23 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.orderService.placeOrder(order).subscribe((result) => {
       this.router.navigate(['/user/orders']);
     });
+  }
+
+  getCartList() {
+    this.cartService.getcartList()
+    .subscribe((result) => {
+      if (result.status === 'Success') {
+        this.cartCount = result.data.length;
+
+      }
+    });
+  }
+
+  idChangeforCredit() {
+  this.id = 1;
+  }
+  idChange() {
+    this.id = 0;
   }
    ngOnDestroy() {
      this.userDataObserver.unsubscribe();

@@ -1,57 +1,72 @@
-<!-- {{ productDetails | json}} -->
-<div *ngFor="let product of productDetails;">
-  <h3>
-    {{product?.productName}}
-  </h3>
-  <mat-divider></mat-divider>
-  <mat-grid-list cols="4">
-    <mat-grid-tile colspan="1" rowspan="2">
-      <img class="fitWidth" mat-card-image [src]="product?.imageUrl">
-    </mat-grid-tile>
-    <mat-grid-tile colspan="3" rowspan="1">
-      <mat-grid-tile-header>
-        Description
-      </mat-grid-tile-header>
-      <div>
-        {{product?.description}}
+<main class="mt-5 pt-4">
+  <div class="container dark-grey-text mt-5" *ngFor="let product of productDetails;">
+
+    <!--Grid row-->
+    <div class="row wow fadeIn">
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+        <img [src]="product?.imageUrl" class="img-fluid" alt="">
+
       </div>
-    </mat-grid-tile>
-    <mat-grid-tile colspan="1" rowspan="1">
-      <mat-grid-tile-header>
-        Quantity
-      </mat-grid-tile-header>
-      <div>
-        <mat-select class="matSelect" required [formControl]="quantity" placeholder="Quantity" name="qty">
-          <mat-option *ngFor="let qty of [1,2,3,4,5,6,7,8,9,10]" [value]="qty">
-            {{qty}}
-          </mat-option>
-        </mat-select>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Content-->
+        <div class="p-4">
+
+          <p class="lead">
+<!--            <span class="mr-1">
+              <del>$200</del>
+            </span> -->
+            <strong>{{product?.productName}}</strong>
+            <br>
+            <br>
+            <span>{{product?.price | currency: 'INR'}}</span>
+          </p>
+
+          <p class="lead font-weight-bold">Description</p>
+
+          <p>{{product?.description}}</p>
+
+          <form class="d-flex justify-content-left">
+            <!-- Default input -->
+            <input type="number" value="1" aria-label="Search" [formControl]= "quantity" class="form-control" style="width: 100px">
+            <button class="btn btn-primary btn-md my-0 p" type="submit" (click)="addToCart(product._id)">Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </button>
+
+          </form>
+
+        </div>
+        <!--Content-->
+
       </div>
-    </mat-grid-tile>
+      <!--Grid column-->
 
-    <mat-grid-tile colspan="2" rowspan="1">
-      <mat-grid-tile-header>
-        Price
-      </mat-grid-tile-header>
-      <div>
-        {{product?.price | currency: 'INR'}}
+    </div>
+    <!--Grid row-->
+
+    <hr>
+    <!--Grid row-->
+    <div class="row wow fadeIn" *ngFor="let product of allProductDetails;">
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-4" *ngFor= "let item of product" >
+
+        <img [routerLink]="[product._id]" [src]="item.imageUrl" [alt]="item.productName" class="img-fluid" alt="">
+
       </div>
-    </mat-grid-tile>
+      <!--Grid column-->
 
+    </div>
+    <!--Grid row-->
 
-    <mat-grid-tile colspan="2" rowspan="1">
-      <button mat-raised-button color="primary" type = "submit" (click)="addToCart(product._id)" >Add To Cart</button>
-      <button mat-raised-button color="primary" (click)="addToWishlist(product._id)" >Add To WishList</button>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
-
-
-<div *ngFor="let product of allProductDetails;">
-  <div *ngFor= "let item of product">
-    <img [routerLink]="[product._id]" [src]="item.imageUrl" [alt]="item.productName" class="card-img-top">
   </div>
-</div>
+</main>
+<!-- {{ productDetails | json}} -->
 
 <div class="row">
   <button type="button" class="btn btn-info  btn-block" (click)= "loadProduct()" *ngIf="allProductDetails.length===0">

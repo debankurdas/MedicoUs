@@ -1,75 +1,224 @@
-<h1>
-  Complete Payment
-</h1>
-<h4>
-  Total : {{total | currency : 'INR'}}
-</h4>
-
-<h4>
-  Products
-</h4>
 
 
-<!-- {{products | json}} -->
-<mat-divider></mat-divider>
-<table mat-table [dataSource]="products" class="tableWidth">
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container wow fadeIn">
+
+      <!-- Heading -->
+      <h2 class="my-5 h2 text-center">Checkout form</h2>
+
+      <!--Grid row-->
+      <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-8 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!--Card content-->
+            <form class="card-body" [formGroup]="shippingAddress">
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-md-12 mb-2">
+
+                  <!--firstName-->
+                  <div class="md-form ">
+                    <input type="text" id="userName" formControlName="userName"class="form-control" required>
+                    <label for="Full Name" class="">Full Name</label>
+                  </div>
+
+                </div>
+                <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <!--email-->
+              <!-- <div class="md-form mb-5">
+                <input type="text" id="email" class="form-control" placeholder="youremail@example.com">
+                <label for="email" class="">Email (optional)</label>
+              </div> -->
+
+              <!--address-->
+              <div class="md-form mb-5">
+                <input type="text" id="address" class="form-control" formControlName="addressLine1" placeholder="address..." required>
+                <label for="address" class="">Address</label>
+              </div>
+
+              <!--address-2-->
+              <div class="md-form mb-5">
+                <input type="text" id="address-2" class="form-control" formControlName="addressLine2" placeholder="address...">
+                <label for="address-2" class="">Address 2(optional)</label>
+              </div>
+
+              <!--Grid row-->
+              <div class="row">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                  <label for="country">Country</label>
+                  <input type="text" class="form-control d-block w-100" id="country" required value="India" required>
+                  <label for="pin">PinCode</label>
+                  <input matInput placeholder="Pin" formControlName="pin" required>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4">
+
+                  <label for="state">State</label>
+                  <select class="custom-select d-block w-100" id="state" formControlName="city" required>
+                    <option value="">Choose...</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chandigarh">Chandigarh</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                      <option value="Daman and Diu">Daman and Diu</option>
+                      <option value="Delhi">Delhi</option>
+                      <option value="Lakshadweep">Lakshadweep</option>
+                      <option value="Puducherry">Puducherry</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                  </select>
+
+                </div>
+                <!--Grid column-->
+
+              </div>
+              <!--Grid row-->
+
+              <hr>
+
+              <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                  <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" (click)= "idChangeforCredit()" checked required value="credit">
+                  <label class="custom-control-label" for="credit">Credit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" (click)= "idChangeforCredit()" required value="debit">
+                  <label class="custom-control-label" for="debit">Debit card</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" (click)= "idChange()" required value="paypal">
+                  <label class="custom-control-label" for="paypal">Paypal</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input id="cash" name="paymentMethod" type="radio" class="custom-control-input" (click)= "idChange()" required value="cash">
+                  <label class="custom-control-label" for="cash">Cash</label>
+                </div>
+              </div>
+              <div class="hello"  *ngIf="id === 1">
+              <div class="row"  >
+                <div class="col-md-6 mb-3">
+                  <label for="cc-name">Name on card</label>
+                  <input type="text" class="form-control" id="cc-name" placeholder="" required="true">
+                  <small class="text-muted">Full name as displayed on card</small>
+                  <div class="invalid-feedback">
+                    Name on card is required
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="cc-number"> Card number</label>
+                  <input type="text" class="form-control" id="cc-number" placeholder="" required="true">
+                  <div class="invalid-feedback">
+                    Credit card number is required
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">Expiration</label>
+                  <input type="text" class="form-control" id="cc-expiration" placeholder=""  required="true">
+                  <div class="invalid-feedback">
+                    Expiration date required
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="cc-expiration">CVV</label>
+                  <input type="text" class="form-control" id="cc-cvv" placeholder=""  required="true">
+                  <div class="invalid-feedback">
+                    Security code required
+                  </div>
+                </div>
+              </div>
+              </div>
+              <hr class="mb-4">
+                <button class="btn btn-danger btn-lg btn-block" routerLink="/user/product">Back</button>
+              <button class="btn btn-primary btn-lg btn-block"*ngIf="shippingAddress.valid" type="submit" (click)="placeOrder()">Continue to checkout</button>
+
+            </form>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-4 mb-4">
+
+          <!-- Heading -->
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted">Your cart</span>
+            <span class="badge badge-secondary badge-pill">{{cartCount}}</span>
+          </h4>
+
+          <!-- Cart -->
+          <ul class="list-group mb-3 z-depth-1"  >
+            <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of products">
+              <div>
+                <h6 class="my-0">{{item.productName}}</h6>
+                <small class="text-muted"><img class="imageSize" [src]="item.imageUrl"></small>
+              </div>
+              <span class="text-muted">{{item.price | currency: 'INR'}}</span>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (INR)</span>
+              <strong>{{total}}</strong>
+            </li>
+          </ul>
+          <!-- Cart -->
 
 
-  <ng-container matColumnDef="imageUrl">
-    <th mat-header-cell *matHeaderCellDef> </th>
-    <td mat-cell *matCellDef="let element"> <img class="imageSize" [src]="element.imageUrl"> </td>
-  </ng-container>
+        </div>
+        <!--Grid column-->
 
-  <ng-container matColumnDef="productName">
-    <th mat-header-cell *matHeaderCellDef>Product Name</th>
-    <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
-  </ng-container>
+      </div>
+      <!--Grid row-->
 
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef> Quantity </th>
-    <td mat-cell *matCellDef="let element"> {{element.quantity }} </td>
-  </ng-container>
+    </div>
+  </main>
+  <!--Main layout-->
 
-  <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef> Price </th>
-    <td mat-cell *matCellDef="let element"> {{element.price  | currency: 'INR'}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="total">
-    <th mat-header-cell *matHeaderCellDef> Total </th>
-    <td mat-cell *matCellDef="let element"> {{element.price * element.quantity  | currency: 'INR'}} </td>
-  </ng-container>
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<mat-divider></mat-divider>
-<h4>
-  Shipping Address
-</h4>
-<form [formGroup]="shippingAddress">
-  <ng-template matStepLabel>Fill out your address details</ng-template>
-  <mat-form-field>
-    <input matInput placeholder="Full Name" formControlName="userName">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Address Line1" formControlName="addressLine1">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Address Line2" formControlName="addressLine2">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="City" formControlName="city">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="Pin" formControlName="pin">
-  </mat-form-field>
-  <div>
-    <button mat-raised-button color="primary" routerLink="/user/cart">Back</button>
-   <div *ngIf="shippingAddress.valid">
-      <button mat-raised-button (click)="placeOrder()">Place Order</button>
-      <!-- <ngx-paypal [config]="payPalConfig"></ngx-paypal> -->
-   </div>
-  </div>
-</form>

@@ -20,7 +20,7 @@
         <span class="titleWidth">Medico</span>
         <div *ngIf="role$ !== ''">
             <button *ngIf="role$ === 'User'" type="button" mat-icon-button routerLink="/user/cartList">
-              <mat-icon matBadge="{{cartCount}}" >shopping_cart</mat-icon>
+              <mat-icon matBadge="{{cartCount}}" (click)= "getCartList()" >shopping_cart</mat-icon>
             </button>
             <button *ngIf="role$ === 'User'" type="button" mat-icon-button routerLink="/user/wishList">
               <mat-icon>bookmark</mat-icon>

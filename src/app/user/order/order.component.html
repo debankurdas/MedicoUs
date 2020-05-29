@@ -101,6 +101,20 @@
               </div> -->
               <div class="well search-result" *ngFor="let orders of orderDatas">
                   <div class="row" *ngFor="let item of orders.data">
+                    <div class="col-xs-2 col-sm-3 col-md-3 col-lg-2 title">
+                      <div class="topcorner">
+                        <br>
+                        <br>
+                        <br>
+                        <div>
+                          <label class="label label-info" *ngIf="item.status === 'Placed'">{{item.status}}</label>
+                          <label class="label label-primary" *ngIf="item.status === 'Pending'">{{item.status}}</label>
+                          <label class="label label-success" *ngIf="item.status === 'Delivered'">{{item.status}}</label>
+                          <label class="label label-danger" *ngIf="item.status === 'Rejected'">{{item.status}}</label>
+                        </div>
+                        <br>
+                      </div>
+                    </div>
                       <a href="#">
                           <div class="col-xs-5 col-sm-2 col-md-3 col-lg-2" *ngFor="let item of item.products">
                               <img class="img-responsive" [src]="item.imageUrl" [alt]="item.productName">
@@ -115,16 +129,7 @@
 
 
                       </a>
-                      <div class="col-xs-2 col-sm-3 col-md-3 col-lg-2 title">
-                        <div class="topcorner">
-                          <div>
-                            <label class="label label-info" *ngIf="item.status === 'Placed'">{{item.status}}</label>
-                            <label class="label label-primary" *ngIf="item.status === 'Pending'">{{item.status}}</label>
-                            <label class="label label-success" *ngIf="item.status === 'Delivered'">{{item.status}}</label>
-                            <label class="label label-danger" *ngIf="item.status === 'Rejected'">{{item.status}}</label>
-                          </div>
-                        </div>
-                      </div>
+
                   </div>
               </div>
           </div>
