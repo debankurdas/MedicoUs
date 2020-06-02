@@ -1,9 +1,22 @@
 <form class="example-form" [formGroup]="registration" (submit)="register()" >
   <mat-form-field class="example-full-width">
+    <mat-select placeholder="AdminAddSelection">
+      <mat-option (click)="hospitalAdminAdd()" [value]="hospitalAdminAdd">HospitalAdminAdd</mat-option>
+      <mat-option (click)="bloodBankAdminAdd()" [value]= "bloodBankAdminAdd">BlodBankAdminAdd</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" *ngIf="id === 1" >
     <mat-label>Hospital Name</mat-label>
-    <input type="text" matInput placeholder="First Name" formControlName="hospitalName" required>
+    <input type="text" matInput placeholder="Hospital Name" formControlName="hospitalName">
     <mat-error
     *ngIf="registration.get('hospitalName').invalid" >Please enter the Hospitalname
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" *ngIf="id === 2" >
+    <mat-label>BloodBank Name</mat-label>
+    <input type="text" matInput placeholder="BloodBank Name" formControlName="bloodBankName">
+    <mat-error
+    *ngIf="registration.get('bloodBankName').invalid" >Please enter the bloodBankName
     </mat-error>
   </mat-form-field>
   <mat-form-field class="example-full-width">
@@ -46,8 +59,8 @@
   <mat-form-field class="example-full-width">
     <mat-label>Role</mat-label>
       <select matNativeControl formControlName = "role" required>
-        <option value="Admin_H">Admin_H</option>
-        <option value="Admin_B">Admin_B</option>
+        <option value="Admin_H" *ngIf="id === 1" >Admin_H</option>
+        <option value="Admin_B" *ngIf="id === 2" >Admin_B</option>
         <option value="Admin_A">Admin_A</option>
       </select>
   </mat-form-field>

@@ -80,6 +80,9 @@ export class LoginService {
     case 'Admin_H':
       this.router.navigate(['/Admin/Hospital']);
       break;
+    case 'Admin_B':
+      this.router.navigate(['/Admin/BloodBank']);
+      break;
     default:
       this.snackBar.open('User donot have valid role ', 'login', {
         duration: 1000

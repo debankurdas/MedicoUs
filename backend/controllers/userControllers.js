@@ -326,36 +326,74 @@ exports.updateProfile = (req, res,next) => {
     });
   });
  };
-
- exports.HospitaladminAssign = (req,res,next) => {
-  bcrypt.hash(req.body.user.password,10)
-  .then((hash) => {
-   const user = new userSchema({
-     firstname: req.body.user.firstname,
-     lastname: req.body.user.lastname,
-     mobile: req.body.user.mobile,
-     email:req.body.user.email,
-     password:hash,
-     role: req.body.user.role,
-     verifyEmail: req.body.verifyEmail,
-     hospitalName: req.body.hospitalName
-   });
-   user.save()
-   .then((requestedData) => {
-
-     res.json({
-       status: 'Success',
-       message:'Admin Registration is successfull',
-       data: requestedData,
+ exports.adminAssign = (req,res,next) => {
+   console.log(req.body)
+   console.log(req.body.user);
+   hospitalName = req.body.user.hospitalName;
+   bloodBankName = req.body.user.bloodBankName;
+   if (hospitalName !== null) {
+    bcrypt.hash(req.body.user.password,10)
+    .then((hash) => {
+     const user = new userSchema({
+       firstname: req.body.user.firstname,
+       lastname: req.body.user.lastname,
+       mobile: req.body.user.mobile,
+       email:req.body.user.email,
+       password:hash,
+       role: req.body.user.role,
+       verifyEmail: req.body.verifyEmail,
+       hospitalName: hospitalName
      });
-   })
-   .catch((error) => {
+     user.save()
+     .then((requestedData) => {
+       res.status(200).json({
+         status: 'Success',
+         message:'Admin Registration is successfull',
+         data: requestedData
+       });
+     })
+     .catch((error) => {
+       res.status(500).json({
+         status: 'Failed',
+         message: 'Admin registration failed!'
+       });
+     })
+    })
+   } else if (bloodBankName !== null) {
+    bcrypt.hash(req.body.user.password,10)
+    .then((hash) => {
+     const user = new userSchema({
+       firstname: req.body.user.firstname,
+       lastname: req.body.user.lastname,
+       mobile: req.body.user.mobile,
+       email:req.body.user.email,
+       password:hash,
+       role: req.body.user.role,
+       verifyEmail: req.body.verifyEmail,
+       bloodBankName: bloodBankName
+     });
+     user.save()
+     .then((requestedData) => {
+       res.status(200).json({
+         status: 'Success',
+         message:'Admin Registration is successfull',
+         data: requestedData
+       });
+     })
+     .catch((error) => {
+       res.status(500).json({
+         status: 'Failed',
+         message: 'Admin registration failed!'
+       });
+     })
+    })
+
+   } else {
      res.status(500).json({
-       status: 'Failed',
-       message: 'Admin registration failed!'
-     });
-   })
-  })
+       message: 'Admin registration failed'
+     })
+   }
+
  }
 
  exports.contact = (req,res,next) =>{

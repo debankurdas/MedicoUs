@@ -64,7 +64,7 @@
                   <label for="country">Country</label>
                   <input type="text" class="form-control d-block w-100" id="country" required value="India" required>
                   <label for="pin">PinCode</label>
-                  <input matInput placeholder="Pin" formControlName="pin" required>
+                  <input matInput placeholder="Pin" pattern="[1-9][0-9]{5}" title="Must be valid pin code" formControlName="pin" required>
                 </div>
                 <!--Grid column-->
 

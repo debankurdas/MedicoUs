@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
   password:{type:String,required:true,trim:true},
   role:{type:String,required:true,trim:true,default:'User'},
   verifyEmail: {type: String, required: true, default: 'false'},
-  gender: {type: String, required: true},
+  gender: {type: String},
   hospitalName: {type: String},
   bloodBankName: {type: String}
 })

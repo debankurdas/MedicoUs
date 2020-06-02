@@ -12,6 +12,7 @@ import { CustomValidation } from 'src/app/common/customValidation/customValidati
 })
 export class RootAdminComponent implements OnInit {
   registration: FormGroup;
+  id = 0;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -27,7 +28,8 @@ export class RootAdminComponent implements OnInit {
       password: new FormControl('', Validators.required),
       confirm_password: new FormControl('', Validators.required),
       role: new FormControl('', Validators.required),
-      hospitalName: new FormControl('', Validators.required)
+      hospitalName: new FormControl(''),
+      bloodBankName: new FormControl('')
     }, {validators: [CustomValidation.validatorPassword], updateOn: 'change'});
   }
   register() {
@@ -47,6 +49,13 @@ export class RootAdminComponent implements OnInit {
       }
       this.registration.reset();
     });
+  }
+  bloodBankAdminAdd() {
+    this.id = 2;
+  }
+
+  hospitalAdminAdd() {
+    this.id = 1;
   }
 
 }

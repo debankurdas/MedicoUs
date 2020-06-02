@@ -63,6 +63,11 @@ import { BedAddComponent } from './admin/Hospital/Bed/bed-add/bed-add.component'
 import { BedViewComponent } from './admin/Hospital/Bed/bed-view/bed-view.component';
 import { HospitalViewComponent } from './admin/Hospital/hospital-view/hospital-view.component';
 import { HospitalAddComponent } from './admin/Hospital/hospital-add/hospital-add.component';
+import { BloodBankViewComponent } from './admin/BloodBank/blood-bank-view/blood-bank-view.component';
+import { BloodBankAdminComponent } from './admin/BloodBank/blood-bank-admin/blood-bank-admin.component';
+import { BloodBankAddComponent } from './admin/BloodBank/blood-bank-add/blood-bank-add.component';
+import { BloodGroupAddComponent } from './admin/BloodBank/BloodGroup/blood-group-add/blood-group-add.component';
+import { BloodGroupViewComponent } from './admin/BloodBank/BloodGroup/blood-group-view/blood-group-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,7 +102,12 @@ import { HospitalAddComponent } from './admin/Hospital/hospital-add/hospital-add
     BedAddComponent,
     BedViewComponent,
     HospitalViewComponent,
-    HospitalAddComponent
+    HospitalAddComponent,
+    BloodBankViewComponent,
+    BloodBankAdminComponent,
+    BloodBankAddComponent,
+    BloodGroupAddComponent,
+    BloodGroupViewComponent
   ],
   imports: [
     BrowserModule,

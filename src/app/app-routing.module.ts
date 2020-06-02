@@ -1,3 +1,8 @@
+import { BloodGroupViewComponent } from './admin/BloodBank/BloodGroup/blood-group-view/blood-group-view.component';
+import { BloodGroupAddComponent } from './admin/BloodBank/BloodGroup/blood-group-add/blood-group-add.component';
+import { BloodBankViewComponent } from './admin/BloodBank/blood-bank-view/blood-bank-view.component';
+import { BloodBankAddComponent } from './admin/BloodBank/blood-bank-add/blood-bank-add.component';
+import { BloodBankAdminComponent } from './admin/BloodBank/blood-bank-admin/blood-bank-admin.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { HospitalViewComponent } from './admin/Hospital/hospital-view/hospital-view.component';
 import { HospitalAddComponent } from './admin/Hospital/hospital-add/hospital-add.component';
@@ -44,10 +49,16 @@ const routes: Routes = [
   {path: 'Admin/HospitalBranchAdd', component: HospitalAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/HospitalBranchView', component: HospitalViewComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/HospitalBranch/edit/:hospitalId', component: HospitalAddComponent, canActivate: [AuthGuard, AdminGuard]},
-  {path: 'Admin/edit/:hospitalId', component: HospitalAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Bed/BedAdd/:hospitalId', component: BedAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/BedEdit/:bedId', component: BedAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Bed/BedView/:hospitalId', component: BedViewComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodBank', component: BloodBankAdminComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodBankAdd', component: BloodBankAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodBankView', component: BloodBankViewComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodBank/edit/:bloodBankId', component: BloodBankAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodGroup/BloodGroupAdd/:bloodGroupId', component: BloodGroupAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodGroupEdit/:bloodGroupId', component: BloodGroupAddComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodGroup/BloodGroupView/:bloodGroupId', component: BloodGroupViewComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Root', component: RootAdminComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Category', component: CategoryComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/product', component: ProductListComponent, canActivate: [AuthGuard, AdminGuard]},
