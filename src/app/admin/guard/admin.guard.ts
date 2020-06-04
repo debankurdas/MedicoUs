@@ -36,6 +36,6 @@ export class AdminGuard implements CanActivate, CanLoad {
     return true;
   }
   navigationtoLogin(state: RouterStateSnapshot) {
-    this.router.navigate(['/login'], { queryParams: {returnUrl: state.url}});
+    this.router.navigate(['/index'], { queryParams: {returnUrl: state.url}});
   }
 }

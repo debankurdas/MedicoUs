@@ -213,7 +213,7 @@ exports.login = (req,res,next) => {
     const token = jwt.sign(
       {uId:user._id},
       'strong_password',
-      {expiresIn: "1h"}
+      {expiresIn: "12h"}
       );
       res.json({
         status:'success',

@@ -17,6 +17,16 @@ export interface Hospital {
   address: string;
 }
 
+export interface BloodBank {
+  id: string;
+  bloodBankName: string;
+  adminId: string;
+  imageUrl: File | string;
+  status: string;
+  description: string;
+  address: string;
+}
+
 export interface Bed {
   id: string;
   hospitalId: string;
@@ -26,6 +36,17 @@ export interface Bed {
   ward: string;
   cost: number;
   bedType: string;
+  date: Date;
+
+}
+
+export interface BloodGroup {
+  id: string;
+  bloodBankId: string;
+  bloodBankName: string;
+  quantity: number;
+  existingBloodQuantity: number;
+  bloodGroup: string;
   date: Date;
 
 }

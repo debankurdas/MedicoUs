@@ -15,12 +15,23 @@
     </ng-container>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="mat-prim">
       <mat-toolbar-row>
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
         <span class="titleWidth">Medico</span>
+        <div *ngIf="loginStatus$ === false">
+          <button mat-fab type="button" class="mar" color="primary"   mat-button routerLink="/index">
+            <mat-icon>home</mat-icon>
+          </button>
+          <button mat-fab type="button" class="mar" color="primary"   mat-button routerLink="/login">
+            <mat-icon>login</mat-icon>
+          </button>
+          <button type="button" mat-fab class="mar"   mat-button routerLink="/register">
+            <mat-icon class="mat-18">how_to_reg</mat-icon>
+          </button>
+        </div>
         <div *ngIf="role$ !== ''">
             <button *ngIf="role$ === 'User'" type="button" mat-icon-button routerLink="/user/cartList">
               <mat-icon matBadge="{{cartCount}}" (click)= "getCartList()" >shopping_cart</mat-icon>
@@ -38,10 +49,8 @@
         </div>
       </mat-toolbar-row>
     </mat-toolbar>
-    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
 
 <ng-template #userMenu>
   <mat-nav-list>
@@ -58,7 +67,6 @@
     <mat-list-item>
       <a mat-list-item routerLink='/user/profile'>Profile</a>
     </mat-list-item>
-
   </mat-nav-list>
 </ng-template>
 
@@ -103,4 +111,5 @@
     </mat-list-item>
   </mat-nav-list>
 </ng-template>
+
 

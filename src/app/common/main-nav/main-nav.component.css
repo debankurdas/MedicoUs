@@ -1,5 +1,5 @@
 .sidenav-container {
-  height: 100%;
+  height: 10%;
 }
 
 .sidenav {
@@ -10,7 +10,11 @@
   background: inherit;
 }
 
-.mat-toolbar.mat-primary {
+.mar {
+  margin-right: 8px;
+}
+
+.mat-toolbar.mat-prim {
   position: sticky;
   top: 0;
   z-index: 1;

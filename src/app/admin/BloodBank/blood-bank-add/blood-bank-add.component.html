@@ -1,1 +1,47 @@
-<p>blood-bank-add works!</p>
+<mat-card>
+  <!-- <mat-spinner [diameter]="50"
+  *ngIf="isLoading"></mat-spinner> -->
+  <!-- *ngIf="!isLoading" -->
+  <form
+  [formGroup]="form" (submit)="onSavePost()"
+  >
+  <mat-form-field class="formControl">
+    <mat-label>BloodBank Name</mat-label>
+    <input  matInput placeholder="BloodBank Name" formControlName="bloodBankName" required>
+  </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+      <input type="file"
+      #filePicker (change)="filegetter($event)">
+    </div>
+    <div class="image-preview"
+    *ngIf="imagePreview !=='' && imagePreview">
+      <img [src]="imagePreview" [alt]="form.value.hospitalName">
+    </div>
+    <mat-form-field class="formControl">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status" placeholder="Status" required>
+        <mat-option value='active'>Active</mat-option>
+        <mat-option value='deactive'>Deactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+      matInput name="" id="" rows="6"
+      formControlName="description"
+       placeholder="Description"></textarea>
+      <mat-error
+      *ngIf="form.get('description').invalid">Please enter the Description</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+      matInput name="" id="" rows="3"
+      formControlName="address"
+       placeholder="address"></textarea>
+      <mat-error
+      *ngIf="form.get('address').invalid">Please enter the address</mat-error>
+    </mat-form-field>
+    <button color="primary" mat-raised-button type="submit"
+    [disabled]='!form.valid'>Submit</button>
+  </form>
+</mat-card>

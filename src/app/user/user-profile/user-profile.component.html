@@ -64,7 +64,7 @@
 
 </head>
 <body>
-
+<app-main-nav></app-main-nav>
 <!-- Wrapper -->
 <div class="wrapper top_60 container">
 <div class="row">
@@ -491,7 +491,7 @@
                             *ngIf="message.invalid" >Please enter a valid message</mat-error>
                           </mat-form-field>
                           <div class="form-group">
-                            <button class="btn btn-warning btn-block" type="submit" [disabled]="!myForm.form.valid">Log In</button>
+                            <button class="btn btn-warning btn-block" type="submit" [disabled]="!myForm.form.valid">Submit</button>
                           </div>
                       </form>
                     </section>
@@ -529,12 +529,7 @@
 </div><!-- row end -->
 <!-- Footer
 ================================================== -->
-<footer>
-    <div class="footer col-md-12 top_30 bottom_30">
-        <div class="name col-md-4 hidden-md hidden-sm hidden-xs">Henry Rooney.</div>
-        <div class="copyright col-lg-8 col-md-12">© 2017 All rights reserved. Designed by <a href="https://themeforest.net/user/tavonline">tavonline</a> </div>
-    </div>
-</footer>
+<app-footer></app-footer>
 
 </div> <!-- Tab Container - End -->
 </div> <!-- Row - End -->

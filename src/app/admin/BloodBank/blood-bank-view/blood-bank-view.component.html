@@ -1,1 +1,33 @@
-<p>blood-bank-view works!</p>
+<mat-accordion multi="true" *ngIf="bloodBank.length>0" >
+  <mat-expansion-panel *ngFor="let blood of bloodBank">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{blood.bloodBankName}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="post-images">
+      <img [src]="blood.imageUrl" [alt]="blood.bloodBankName">
+    </div>
+    <mat-label><strong>Description:</strong></mat-label>
+      <p> {{blood.description}}</p>
+    <mat-label><strong>Address:</strong></mat-label>
+      <p>{{blood.address}}</p>
+    <mat-action-row>
+      <a mat-button color="primary"
+      [routerLink]="['/Admin/BloodBank/edit',blood.id]">Edit</a>
+      <button mat-button color="warn" (click)="onDelete(blood.id)">Delete</button>
+    </mat-action-row>
+    <mat-action-row>
+      <a mat-button color="primary"
+      [routerLink]="['/Admin/BloodGroup/BloodGroupAdd',blood.id]">Add BloodGroup</a>
+      <button mat-button color="warn" [routerLink]="['/Admin/BloodGroup/BloodGroupView',blood.id]">View BloodGroup Status</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator class="margin"
+[length] = 'bloodBankLength'
+[pageSize]= 'bloodBankPerpage'[pageSizeOptions]="bloodBankPerpageOption"
+(page)="onChange($event)" *ngIf="bloodBank.length>0">
+</mat-paginator>
+<p class="info-text mat-body-1"
+*ngIf="bloodBank.length<=0">No bloodBank Data filled  yet</p>

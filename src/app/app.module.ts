@@ -68,6 +68,8 @@ import { BloodBankAdminComponent } from './admin/BloodBank/blood-bank-admin/bloo
 import { BloodBankAddComponent } from './admin/BloodBank/blood-bank-add/blood-bank-add.component';
 import { BloodGroupAddComponent } from './admin/BloodBank/BloodGroup/blood-group-add/blood-group-add.component';
 import { BloodGroupViewComponent } from './admin/BloodBank/BloodGroup/blood-group-view/blood-group-view.component';
+import { IndexComponent } from './index/index.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +109,9 @@ import { BloodGroupViewComponent } from './admin/BloodBank/BloodGroup/blood-grou
     BloodBankAdminComponent,
     BloodBankAddComponent,
     BloodGroupAddComponent,
-    BloodGroupViewComponent
+    BloodGroupViewComponent,
+    IndexComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

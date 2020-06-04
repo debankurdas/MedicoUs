@@ -1,3 +1,4 @@
+import { IndexComponent } from './index/index.component';
 import { BloodGroupViewComponent } from './admin/BloodBank/BloodGroup/blood-group-view/blood-group-view.component';
 import { BloodGroupAddComponent } from './admin/BloodBank/BloodGroup/blood-group-add/blood-group-add.component';
 import { BloodBankViewComponent } from './admin/BloodBank/blood-bank-view/blood-bank-view.component';
@@ -39,6 +40,7 @@ import { ProductDetailsComponent } from './user/product/product-details/product-
 const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'index', component: IndexComponent},
   {path: 'verifyMail', component: VerifYEmailComponent},
   {path: 'emailSubmit', component: EmailSubmmitionComponent},
   {path: 'forgotPassword', component: ForgotpasswordComponent},
@@ -71,9 +73,9 @@ const routes: Routes = [
   { path: 'user/wishList', component: WishListComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/cartList', component: CartListComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/orders', component: OrderComponent, canActivate: [AuthGuard, UserGuard] },
-  { path: 'user/orders/:id', component: OrderDetailsComponent, canActivate: [AuthGuard, UserGuard] },
+  { path: 'user/orderDetails', component: OrderDetailsComponent},
   { path: 'user/payment', component: PaymentComponent, canActivate: [AuthGuard, UserGuard] },
-  {path: '', redirectTo: 'login', pathMatch: 'full'}
+  {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];
 
 @NgModule({

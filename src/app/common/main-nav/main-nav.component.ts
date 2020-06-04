@@ -31,6 +31,7 @@ export class MainNavComponent implements OnInit, OnDestroy {
               private categoryService: CategoryService,
              ) {}
              ngOnInit() {
+              console.log(this.role$);
               this.loginObservableStatus = this.loginService.getLoggedIntoken()
               .subscribe((result) => {
 
