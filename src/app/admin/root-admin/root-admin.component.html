@@ -1,3 +1,4 @@
+<app-main-nav></app-main-nav>
 <form class="example-form" [formGroup]="registration" (submit)="register()" >
   <mat-form-field class="example-full-width">
     <mat-select placeholder="AdminAddSelection">
@@ -68,3 +69,6 @@
     <button type="submit" [disabled]="registration.invalid" mat-raised-button color="primary" >Submit</button>
   </div>
 </form>
+<br>
+<hr>
+<app-footer></app-footer>

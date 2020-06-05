@@ -1,3 +1,4 @@
+<app-main-nav></app-main-nav>
 <mat-accordion multi="true" *ngIf="hospital.length>0" >
   <mat-expansion-panel *ngFor="let hosp of hospital">
     <mat-expansion-panel-header>
@@ -35,3 +36,6 @@
 </mat-paginator>
 <p class="info-text mat-body-1"
 *ngIf="hospital.length<=0">No hospital Data filled  yet</p>
+<br>
+<hr>
+<app-footer></app-footer>

@@ -2,15 +2,15 @@
 <div class="header">
   <a  class="navbar-brand"><img src="../../assets/front_page/images/medico.png" class="img-responsive" alt=""></a>
   <div class="header-right">
-    <a class="active" href="#home">Home</a>
-    <a href="#contact">Contact</a>
-    <a href="#team">About Us</a>
-    <a href="#project">Services</a>
+    <a class="active" (click)="home()">Home</a>
+    <a  (click)= "contact()">Contact</a>
+    <a  (click)="team()">About Us</a>
+    <a (click)="project()">Services</a>
   </div>
 </div>
 
 
-<section id="home" class="parallax-section">
+<section id="home" class="parallax-section" *ngIf="id === 0" >
      <div class="overlay"></div>
      <div class="container">
           <div class="row">
@@ -34,7 +34,7 @@
           Your browser does not support the video tag.
      </video>
 </section>
-<section id="about" class="parallax-section">
+<section id="about" class="parallax-section" *ngIf="id === 0 || id === 3">
      <div class="container">
           <div class="row">
 
@@ -48,7 +48,7 @@
           </div>
      </div>
 </section>
-<section id="project" class="parallax-section">
+<section id="project" class="parallax-section" *ngIf="id === 0 || id === 3">
      <div class="container">
           <div class="row">
 
@@ -117,7 +117,7 @@
 </section>
 <!-- TEAM -->
 
-<section id="team" class="parallax-section">
+<section id="team" class="parallax-section" *ngIf="id === 0 || id === 2">
      <div class="container">
           <div class="row">
 
@@ -199,7 +199,7 @@
 
 
 <!-- CONTACT -->
-<section id="contact" class="parallax-section">
+<section id="contact" class="parallax-section" *ngIf="id === 0 || id === 1">
      <div class="container">
           <div class="row">
 

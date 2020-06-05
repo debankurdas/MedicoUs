@@ -1,3 +1,4 @@
+<app-main-nav></app-main-nav>
 <mat-accordion multi="true" *ngIf="bloodBank.length>0" >
   <mat-expansion-panel *ngFor="let blood of bloodBank">
     <mat-expansion-panel-header>
@@ -31,3 +32,4 @@
 </mat-paginator>
 <p class="info-text mat-body-1"
 *ngIf="bloodBank.length<=0">No bloodBank Data filled  yet</p>
+<app-footer></app-footer>

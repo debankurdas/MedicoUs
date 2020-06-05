@@ -29,7 +29,7 @@ export class ProductAddComponent implements OnInit {
     this.form = this.fb.group({
       categoryName: new FormControl('', Validators.required),
       productName: new FormControl('', Validators.required),
-      description: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
+      description: new FormControl('', [Validators.required, Validators.maxLength(100000)]),
       imageUrl: new FormControl('', Validators.required),
       price: new FormControl('', Validators.required)
       // quantity: new FormControl('', Validators.required)

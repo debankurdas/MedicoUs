@@ -38,8 +38,6 @@ exports.updateProduct = (req, res,next) => {
     imageUrl: imageUrl,
     price: req.body.price
   })
-  console.log(product);
-  console.log(req.params.id);
   productSchema.updateOne({_id : req.params.id},product)
   .then(result => {
     if(result.n>0) {
@@ -124,7 +122,6 @@ exports.getProductById = (req,res,next) => {
 
 exports.getproductByCategory = (req,res,next) => {
   const category = req.body.categoryName;
-  console.log(category);
 let productCount=0;
 productSchema.find().estimatedDocumentCount().exec()
 .then((countResult) => {

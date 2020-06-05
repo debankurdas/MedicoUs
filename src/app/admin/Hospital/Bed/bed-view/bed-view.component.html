@@ -1,3 +1,4 @@
+<app-main-nav></app-main-nav>
 <mat-accordion multi="true" *ngIf="bed.length>0" >
   <mat-expansion-panel *ngFor="let bedView of bed">
 
@@ -29,3 +30,6 @@
 </mat-paginator>
 <p class="info-text mat-body-1"
 *ngIf="bed.length<=0">No Bed Details is filled  yet</p>
+<br>
+<hr>
+<app-footer></app-footer>

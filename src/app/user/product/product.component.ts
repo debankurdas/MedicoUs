@@ -27,7 +27,7 @@ export class ProductComponent implements OnInit {
             this.productCount = result.count;
           });
         } else {
-          this.category = 'All';
+          this.category = 'All Products';
           this.productService.getAllProducts().subscribe((result) => {
             this.product = result.data;
             console.log(this.product);

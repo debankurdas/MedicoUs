@@ -17,8 +17,8 @@ export class ProductListComponent implements OnInit, OnDestroy  {
 tokenAuthentication = false;
  products: Product[] = [];
  productLength = 0;
- productPerpage = 3;
- productPerpageOption = [1, 2, 5, 10];
+ productPerpage = 5;
+ productPerpageOption = [1, 2, 5, 7, 10];
  currentPage = 1;
  catList: any;
  isLoading = false;
