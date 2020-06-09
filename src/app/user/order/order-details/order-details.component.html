@@ -1,35 +1,405 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <!--Main Navigation-->
+  <header>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+    <!-- Navbar -->
+    </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="pt-5 mx-lg-5">
+    <div class="container-fluid mt-5">
+
+      <!-- Heading -->
+      <div class="card mb-4 wow fadeIn">
+
+        <!--Card content-->
+        <div class="card-body d-sm-flex justify-content-between">
+
+          <h4 class="mb-2 mb-sm-0 pt-1">
+            <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">Home Page</a>
+            <span>/</span>
+            <span>Dashboard</span>
+          </h4>
+
+          <form class="d-flex justify-content-center">
+            <!-- Default input -->
+            <input type="search" placeholder="Type your query" aria-label="Search" class="form-control">
+            <button class="btn btn-primary btn-sm my-0 p" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+
+          </form>
+
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav> -->
+
+      </div>
+      <!-- Heading -->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-9 mb-4">
+
+          <!--Card-->
+          <div class="card">
+            <div class="card-header text-center">
+              My chart
+            </div>
+            <!--Card content-->
+            <div class="card-body">
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-3 mb-4">
+
+          <!--Card-->
+          <div class="card mb-4">
+
+            <!-- Card header -->
+            <div class="card-header text-center">
+              Pie chart
+            </div>
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <canvas id="pieChart"></canvas>
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+          <!--Card-->
+          <div class="card mb-4">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- List group links -->
+              <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action waves-effect">Sales
+                  <span class="badge badge-success badge-pill pull-right">22%
+                    <i class="fas fa-arrow-up ml-1"></i>
+                  </span>
+                </a>
+                <a class="list-group-item list-group-item-action waves-effect">Traffic
+                  <span class="badge badge-danger badge-pill pull-right">5%
+                    <i class="fas fa-arrow-down ml-1"></i>
+                  </span>
+                </a>
+                <a class="list-group-item list-group-item-action waves-effect">Orders
+                  <span class="badge badge-primary badge-pill pull-right">14</span>
+                </a>
+                <a class="list-group-item list-group-item-action waves-effect">Issues
+                  <span class="badge badge-primary badge-pill pull-right">123</span>
+                </a>
+                <a class="list-group-item list-group-item-action waves-effect">Messages
+                  <span class="badge badge-primary badge-pill pull-right">8</span>
+                </a>
+              </div>
+              <!-- List group links -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-hover">
+                <!-- Table head -->
+                <thead class="blue-grey lighten-4">
+                  <tr>
+                    <th>#</th>
+                    <th>Lorem</th>
+                    <th>Ipsum</th>
+                    <th>Dolor</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                    <td>Cell 6</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Cell 7</td>
+                    <td>Cell 8</td>
+                    <td>Cell 9</td>
+                  </tr>
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <!-- Table  -->
+              <table class="table table-hover">
+                <!-- Table head -->
+                <thead class="blue lighten-4">
+                  <tr>
+                    <th>#</th>
+                    <th>Lorem</th>
+                    <th>Ipsum</th>
+                    <th>Dolor</th>
+                  </tr>
+                </thead>
+                <!-- Table head -->
+
+                <!-- Table body -->
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                    <td>Cell 3</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Cell 4</td>
+                    <td>Cell 5</td>
+                    <td>Cell 6</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Cell 7</td>
+                    <td>Cell 8</td>
+                    <td>Cell 9</td>
+                  </tr>
+                </tbody>
+                <!-- Table body -->
+              </table>
+              <!-- Table  -->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header">Doughnut Chart</div>
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <canvas id="doughnutChart"></canvas>
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-6 col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header">Horizontal Bar Chart</div>
+
+            <!--Card content-->
+            <div class="card-body">
+
+              <canvas id="horizontalBar"></canvas>
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Card-->
+          <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header">Google map</div>
+
+            <!--Card content-->
+            <div class="card-body">
+              <!--Google map-->
+              <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">
+                <iframe src="https://maps.google.com/maps?q=48/1F, Leela Roy Sarani, Gariahat Rd, near Orchestra Co-Operative Housing Society, Ballygunge, Kolkata, West Bengal 700019&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
+                  style="border:0" allowfullscreen></iframe>
+              </div>
+
+              <!--Google Maps-->
+
+            </div>
+
+          </div>
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Card-->
+            <!--Section: Modals-->
+
+            <!--Section: Modals-->
+
+            <!-- Card header -->
+
+
+          <!--/.Card-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+
+    <!--Call to action-->
+    <div class="pt-4">
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
+        role="button">Download
+        MDB
+        <i class="fas fa-download ml-2"></i>
+      </a>
+      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
+        free tutorial
+        <i class="fas fa-graduation-cap ml-2"></i>
+      </a>
+    </div>
+    <!--/.Call to action-->
+
+    <hr class="my-4">
+
+    <!-- Social icons -->
+    <div class="pb-4">
+      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
+        <i class="fab fa-facebook-f mr-3"></i>
+      </a>
+
+      <a href="https://twitter.com/MDBootstrap" target="_blank">
+        <i class="fab fa-twitter mr-3"></i>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
+        <i class="fab fa-youtube mr-3"></i>
+      </a>
+
+      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
+        <i class="fab fa-google-plus mr-3"></i>
+      </a>
+
+      <a href="https://dribbble.com/mdbootstrap" target="_blank">
+        <i class="fab fa-dribbble mr-3"></i>
+      </a>
+
+      <a href="https://pinterest.com/mdbootstrap" target="_blank">
+        <i class="fab fa-pinterest mr-3"></i>
+      </a>
+
+      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
+        <i class="fab fa-github mr-3"></i>
+      </a>
+
+      <a href="http://codepen.io/mdbootstrap/" target="_blank">
+        <i class="fab fa-codepen mr-3"></i>
+      </a>
+    </div>
+    <!-- Social icons -->
+
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2019 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
+    </div>
+    <!--/.Copyright-->
+
+  </footer>
+  <!--/.Footer-->

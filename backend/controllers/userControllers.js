@@ -18,6 +18,7 @@ exports.signUp = (req, res,next) => {
   user.save()
   .then((requestedData) => {
     const email = requestedData.email;
+    console.log(email);
     const token = jwt.sign(
       {uId:user._id},
       'verify_email',
@@ -264,7 +265,7 @@ exports.getUserById = (req,res,next) => {
   })
   .catch(error => {
     res.status(500).json({
-      message: 'Post is not fetched!',
+      message: 'Data is not fetched!',
       error:error
     });
   });

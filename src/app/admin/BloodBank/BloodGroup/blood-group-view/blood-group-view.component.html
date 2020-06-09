@@ -1,1 +1,31 @@
-<p>blood-group-view works!</p>
+<app-main-nav></app-main-nav>
+<mat-accordion multi="true" *ngIf="bloodGroup.length>0" >
+  <mat-expansion-panel *ngFor="let bloodGroupView of bloodGroup">
+
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{bloodGroupView.bloodGroup}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-label><strong>Total bloodGroup:</strong></mat-label>
+      <p> {{bloodGroupView.quantity}}</p>
+    <mat-label><strong>Avilable bloodGroup</strong></mat-label>
+      <p>{{bloodGroupView.existingBloodQuantity}}</p>
+      <!-- <span>bloodGroup details is updated at {{bloodGroupView.date}}</span> -->
+    <mat-action-row>
+      <a mat-button color="primary"
+      [routerLink]="['/Admin/BloodGroupEdit',bloodGroupView.id]">Edit</a>
+      <button mat-button color="warn" (click)="onDelete(bloodGroupView.id)">Delete</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator class="margin"
+[length] = 'bloodGroupLength'
+[pageSize]= 'bloodGroupPerpage'[pageSizeOptions]="bloodGroupPerpageOption"
+(page)="onChange($event)" *ngIf="bloodGroup.length>0">
+</mat-paginator>
+<p class="info-text mat-body-1"
+*ngIf="bloodGroup.length<=0">No bloodGroup Details is filled  yet</p>
+<br>
+<hr>
+<app-footer></app-footer>

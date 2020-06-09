@@ -1,12 +1,12 @@
 const bloodGroupSchema = require('../../models/bloodBankModels/bloodGroupSchema');
 exports.addbloodGroup = (req, res,next) => {
+  console.log(req.body);
    const bloodGroup = new bloodGroupSchema({
      bloodBankId: req.body.bloodBankId,
      bloodBankName:req.body.bloodBankName,
      bloodGroup: req.body.bloodGroup,
      quantity:req.body.quantity,
-     existingBloodQuantity: req.body.existingBloodQuantity,
-     date: req.body.date
+     existingBloodQuantity: req.body.existingBloodQuantity
    });
    bloodGroup.save()
    .then((requestedData) => {

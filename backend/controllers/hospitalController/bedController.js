@@ -7,8 +7,7 @@ exports.addBed = (req, res,next) => {
      existingBed: req.body.existingBed,
      ward:req.body.ward,
      cost: req.body.cost,
-     bedType: req.body.bedType,
-     date: req.body.date
+     bedType: req.body.bedType
    });
    bed.save()
    .then((requestedData) => {

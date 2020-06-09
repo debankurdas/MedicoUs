@@ -1,1 +1,36 @@
-<p>blood-group-add works!</p>
+<app-main-nav></app-main-nav>
+<mat-card>
+  <!-- <mat-spinner [diameter]="50"
+  *ngIf="isLoading"></mat-spinner> -->
+  <!-- *ngIf="!isLoading" -->
+  <form
+  [formGroup]="form" (submit)="onSavePost()"
+  >
+  <mat-form-field class="formControl">
+    <mat-label>BloodGroup Type</mat-label>
+      <mat-select formControlName="bloodGroup" placeholder="bloodGroup" required>
+        <mat-option value="A+">A+</mat-option>
+        <mat-option value="A-">A-</mat-option>
+        <mat-option value="B+">B+</mat-option>
+        <mat-option value="B-">B-</mat-option>
+        <mat-option value="AB+">AB+</mat-option>
+        <mat-option value="AB-">AB-</mat-option>
+        <mat-option value="O+">O+</mat-option>
+        <mat-option value="O-">O-</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <mat-form-field class="formControl">
+      <mat-label>Total Blood Quantity</mat-label>
+      <input  matInput placeholder="Total Blood" formControlName="quantity" required>
+  </mat-form-field>
+  <mat-form-field class="formControl">
+    <mat-label>Avilable Blood</mat-label>
+    <input  matInput placeholder="Avilable Blood" formControlName="existingBloodQuantity" required>
+  </mat-form-field>
+    <button color="primary" mat-raised-button type="submit"
+    [disabled]='!form.valid'>Submit</button>
+  </form>
+</mat-card>
+<br>
+<hr>
+<app-footer></app-footer>

@@ -198,15 +198,15 @@
           <ul class="list-group mb-3 z-depth-1"  >
             <li class="list-group-item d-flex justify-content-between lh-condensed" *ngFor="let item of products">
               <div>
-                <h6 class="my-0">{{item.productName}}</h6>
+                <h5 class="my-0">{{item.productName}}</h5>
+                <h5 class="my-0">Quantity: {{item.quantity}}</h5>
                 <small class="text-muted"><img class="imageSize" [src]="item.imageUrl"></small>
               </div>
               <span class="text-muted">{{item.price | currency: 'INR'}}</span>
             </li>
-
             <li class="list-group-item d-flex justify-content-between">
               <span>Total (INR)</span>
-              <strong>{{total}}</strong>
+              <strong>{{total| currency: 'INR'}}</strong>
             </li>
           </ul>
           <!-- Cart -->

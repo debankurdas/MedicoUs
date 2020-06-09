@@ -34,23 +34,18 @@
           Your browser does not support the video tag.
      </video>
 </section>
-<section id="about" class="parallax-section" *ngIf="id === 0 || id === 3">
-     <div class="container">
-          <div class="row">
 
-               <div class="col-md-offset-1 col-md-10 col-sm-12">
-                    <div class="about-info">
-                         <h1>Medico 24/7</h1>
-
-                    </div>
-               </div>
-
-          </div>
-     </div>
-</section>
 <section id="project" class="parallax-section" *ngIf="id === 0 || id === 3">
      <div class="container">
           <div class="row">
+                <div class="col-md-offset-1 col-md-10 col-sm-12">
+                  <div class="about-info">
+                    <br><br><br>
+                      <h1><b><i>Medico 24/7</i></b></h1>
+                      <br>
+                      <br><br>
+                  </div>
+                </div>
 
                <div class="col-md-6 col-sm-6">
                     <!-- PROJECT ITEM -->
@@ -70,12 +65,12 @@
                <div class="col-md-6 col-sm-6">
                     <!-- PROJECT ITEM -->
                     <div class="project-item">
-                         <a href="../../assets/front_page/images/project-image2.jpg" class="image-popup">
+                         <a routerLink="/user/product" class="image-popup">
                               <img src="../../assets/front_page/images/project-image2.jpg" class="img-fluid" alt="">
 
                               <div class="project-overlay">
                                    <div class="project-info">
-                                        <a href="#contact"><h1 style="background-color:black">MEDICINE</h1></a>
+                                        <a ><h1 style="background-color:black">MEDICINE</h1></a>
                                    </div>
                               </div>
                          </a>

@@ -1,32 +1,4 @@
-<!--
-  <div>
-    <div *ngFor="let orders of orderDatas">
-      <div *ngFor="let item of orders.data" >
-        Name:
-        {{item.shippingAddress.userName}}
-        <br>
-        Address:
-        {{item.shippingAddress.addressLine1}}
-        {{item.shippingAddress.addressLine2}}
-        <br>
-        {{item.shippingAddress.city}}
-        {{item.shippingAddress.pin}}
-        <br>
-        <div *ngFor="let item of item.products" >
-          <img mat-card-image class="mat-cards" [src]="item.imageUrl" [alt]="item.productName">
-         Productname:
-         {{item.productName}}
-         Price: {{item.price | currency: 'INR'}}
-          Quantity:{{item.quantity}}
 
-        </div>
-        <br>
-      </div>
-    </div>
-  </div> -->
-  <!-- <ng-template ngFor let-order [ngForOf]="orderDatas" let-i="index">
-
-  </ng-template> -->
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -123,6 +95,7 @@
                               Price:{{item.price | currency: 'INR'}}
                           </div>
                           <div class="col-xs-5 col-sm-7 col-md-6 col-lg-8 title">
+                            <label><b>Address:</b></label>
                               <p>{{item.shippingAddress.addressLine1}}
                                 {{item.shippingAddress.addressLine2}}</p>
                           </div>
@@ -135,6 +108,11 @@
           </div>
       </div>
   </div>
+  <div *ngIf="orderDatas.length<1" >
+    <p>No Product is purchased yet!</p>
+  </div>
+  <br>
+  <hr>
   <app-footer></app-footer>
 
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
