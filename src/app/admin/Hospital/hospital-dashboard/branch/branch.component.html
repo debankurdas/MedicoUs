@@ -1,0 +1,9 @@
+<form   [formGroup]="form" (submit)="branch()">
+  <mat-form-field class="example-full-width">
+    <mat-select formControlName="branchName" placeholder="BranchName"  required >
+      <mat-option *ngFor="let hosp of hospital[0]" [value]="hosp.branchName" required>{{hosp.branchName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Search</button>
+
+</form>

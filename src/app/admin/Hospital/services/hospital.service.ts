@@ -25,6 +25,7 @@ export class HospitalService {
            return {
              id: hospital._id,
              hospitalName: hospital.hospitalName,
+             branchName: hospital.branchName,
              adminId: hospital.adminId,
              description: hospital.description,
              speciality: hospital.speciality,
@@ -46,11 +47,12 @@ export class HospitalService {
     return this.hospitalUpdated.asObservable();
   }
 
-  addHospitalDetails(hospitalName: string, imageUrl: File | string, speciality: string,
+  addHospitalDetails(hospitalName: string, branchName: string, imageUrl: File | string, speciality: string,
                      status: string, description: string, address: string) {
     const formData = new FormData();
     formData.append('image', imageUrl);
     formData.append('hospitalName', hospitalName);
+    formData.append('branchName', branchName),
     formData.append('speciality', speciality);
     formData.append('status', status);
     formData.append('description', description);
@@ -62,11 +64,11 @@ export class HospitalService {
   }
   getHospitalById(id: string) {
     // tslint:disable-next-line: max-line-length
-    return this.http.get<{_id: string, hospitalName: string, adminId: string, imageUrl: File | string, speciality: string,
+    return this.http.get<{_id: string, hospitalName: string, branchName: string, adminId: string, imageUrl: File | string, speciality: string,
       status: string, description: string, address: string}>(
      environment.apiUrl + '/hospital/' + id);
   }
-  updateHospitalData(id: string, hospitalName: string, adminId: string, imageUrl: File | string, speciality: string,
+  updateHospitalData(id: string, hospitalName: string, branchName: string, adminId: string, imageUrl: File | string, speciality: string,
                      status: string, description: string, address: string) {
      let hospitalData: Hospital | FormData;
      console.log(typeof imageUrl);
@@ -74,6 +76,7 @@ export class HospitalService {
        hospitalData = new FormData();
        hospitalData.append('id', id);
        hospitalData.append('hospitalName', hospitalName);
+       hospitalData.append('branchName', branchName),
        hospitalData.append('adminId', adminId);
        hospitalData.append('image', imageUrl, hospitalName);
        hospitalData.append('description', description);
@@ -84,6 +87,7 @@ export class HospitalService {
        hospitalData = {
          id,
          hospitalName,
+         branchName,
          adminId,
          description,
          speciality,
@@ -104,6 +108,17 @@ export class HospitalService {
 
    gethospitalNameFromAdmin() {
     return this.http.get<{data: any}>(environment.apiUrl + '/users');
+   }
+
+   getBranch() {
+    return this.http.get<{data: any}>(environment.apiUrl + '/hospital');
+   }
+
+   getDataBranch(branch: string) {
+   const  branches = {
+      branchName: branch
+     };
+   return this.http.post<{data: any}>(environment.apiUrl + '/hospital/getData', branches);
    }
 }
 

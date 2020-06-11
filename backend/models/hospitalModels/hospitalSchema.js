@@ -6,6 +6,10 @@ const hospitalSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  branchName: {
+    type: String,
+    required: true
+  },
   adminId: {
     type: ObjectId,
     required: true
@@ -33,5 +37,5 @@ const hospitalSchema = new mongoose.Schema({
   }
 
 });
-
+mongoose.plugin(uniqueValidator);
 module.exports = mongoose.model('hospitalScehma', hospitalSchema);

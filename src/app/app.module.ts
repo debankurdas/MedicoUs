@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { LoginComponent } from './common/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GoogleChartsModule } from 'angular-google-charts';
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -70,6 +71,10 @@ import { BloodGroupAddComponent } from './admin/BloodBank/BloodGroup/blood-group
 import { BloodGroupViewComponent } from './admin/BloodBank/BloodGroup/blood-group-view/blood-group-view.component';
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
+import { HospitalDashboardComponent } from './admin/Hospital/hospital-dashboard/hospital-dashboard.component';
+import { BloodBankDashboardComponent } from './admin/BloodBank/blood-bank-dashboard/blood-bank-dashboard.component';
+import { BranchComponent } from './admin/Hospital/hospital-dashboard/branch/branch.component';
+import { ChartComponent } from './admin/Hospital/hospital-dashboard/chart/chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,7 +116,11 @@ import { FooterComponent } from './footer/footer.component';
     BloodGroupAddComponent,
     BloodGroupViewComponent,
     IndexComponent,
-    FooterComponent
+    FooterComponent,
+    HospitalDashboardComponent,
+    BloodBankDashboardComponent,
+    BranchComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
@@ -144,7 +153,8 @@ import { FooterComponent } from './footer/footer.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    NgxPayPalModule
+    NgxPayPalModule,
+    GoogleChartsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},

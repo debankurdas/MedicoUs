@@ -9,6 +9,7 @@ export interface Product {
 export interface Hospital {
   id: string;
   hospitalName: string;
+  branchName: string;
   adminId: string;
   imageUrl: File | string;
   speciality: string;
@@ -37,6 +38,12 @@ export interface Bed {
   cost: number;
   bedType: string;
   date: Date;
+
+}
+export interface BedModify {
+  quantity: number;
+  existingBed: number;
+  bedType: string;
 
 }
 

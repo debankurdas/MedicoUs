@@ -5,6 +5,7 @@ exports.addHospital = (req, res,next) => {
   url = req.protocol+'://'+req.get('host');
    const hospital = new hospitalSchema({
      hospitalName: req.body.hospitalName,
+     branchName: req.body.branchName,
      adminId:req.userData.uId,
      speciality:req.body.speciality,
      imageUrl: url+'/images/'+ req.file.filename,
@@ -23,7 +24,7 @@ exports.addHospital = (req, res,next) => {
    .catch((error) => {
      res.status(500).json({
        status: 'Failed',
-       message: 'Please give the exact address'
+       message: 'Please give the exact address or If you already add this hospital'
      });
    });
  }
@@ -58,7 +59,7 @@ exports.addHospital = (req, res,next) => {
     .then((result) => {
       res.status(200).json({
         status: 'Success',
-        message: 'Product is fetched',
+        message: 'Hospital Details is fetched',
         data: result
       })
     })
@@ -98,6 +99,7 @@ exports.updateHospitalDetails = (req, res,next) => {
   const hospital = new hospitalSchema({
     _id: req.body.id,
     hospitalName: req.body.hospitalName,
+    branchName: req.body.branchName,
     adminId: req.body.adminId,
     description: req.body.description,
     imageUrl: imageUrl,
@@ -149,4 +151,22 @@ exports.updateHospitalDetails = (req, res,next) => {
       message: 'Post can not be deleted!'
     });
   });
+}
+
+exports.getDataFilterBybranchName = (req,res,next) => {
+  branchName = req.body.branchName;
+  hospitalSchema.find({branchName: branchName})
+  .then((result) => {
+    res.status(200).json({
+      data: result,
+      status: 'Success'
+    })
+  })
+  .catch((error) =>{
+    res.status(400).json({
+      message: 'Please try again after some time',
+      error: error,
+      status: 'Failed'
+    })
+  })
 }

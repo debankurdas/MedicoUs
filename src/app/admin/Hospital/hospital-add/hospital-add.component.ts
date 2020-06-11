@@ -23,10 +23,10 @@ imagePreview: string;
 hospitalDetails: Hospital;
 private mode = 'create';
 private hospitalId: string;
-
  ngOnInit() {
    this.form = this.fb.group({
      hospitalName: new FormControl('', Validators.required),
+     branchName: new FormControl('', Validators.required),
      speciality: new FormControl('', Validators.required),
      status: new FormControl('', Validators.required),
      description: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
@@ -44,6 +44,7 @@ private hospitalId: string;
          this.hospitalDetails = {
            id: hospitalData._id,
            hospitalName: hospitalData.hospitalName,
+           branchName: hospitalData.branchName,
            adminId: hospitalData.adminId,
            imageUrl: hospitalData.imageUrl,
            description: hospitalData.description,
@@ -53,6 +54,7 @@ private hospitalId: string;
          };
          this.form.setValue({
           hospitalName: this.hospitalDetails.hospitalName,
+          branchName: this.hospitalDetails.branchName,
           imageUrl: this.hospitalDetails.imageUrl,
           description: this.hospitalDetails.description,
           speciality: this.hospitalDetails.speciality,
@@ -65,11 +67,11 @@ private hospitalId: string;
      }
    });
    console.log(this.mode);
-   this.hospitalService.gethospitalNameFromAdmin()
-   .subscribe((result) => {
-     this.result = result;
-     console.log(this.result.data.hospitalName);
-   });
+  //  this.hospitalService.gethospitalNameFromAdmin()
+  //  .subscribe((result) => {
+  //    this.result = result;
+  //    console.log(this.result.data.hospitalName);
+  //  });
  }
  // handelFileInput(file: FileList) {
  //   this.filetoUpload = file.item(0);
@@ -91,17 +93,12 @@ private hospitalId: string;
    }
    if (this.mode === 'create') {
      // this.isLoading = true;
-     if (this.result.data.hospitalName === this.form.value.hospitalName) {
-       this.hospitalService.addHospitalDetails(this.form.value.hospitalName,
+       this.hospitalService.addHospitalDetails(this.form.value.hospitalName, this.form.value.branchName,
         this.form.value.imageUrl, this.form.value.speciality, this.form.value.status ,
         this.form.value.description, this.form.value.address);
-     } else {
-       this.snackBar.open('You have to enter the exact name as ' + this.result.data.hospitalName, 'Try again', {
-         duration: 3000
-       });
-     }
    } else  {
-     this.hospitalService.updateHospitalData(this.hospitalId, this.form.value.hospitalName, this.hospitalDetails.adminId,
+     // tslint:disable-next-line: max-line-length
+     this.hospitalService.updateHospitalData(this.hospitalId, this.form.value.hospitalName,  this.form.value.branchName, this.hospitalDetails.adminId,
        this.form.value.imageUrl, this.form.value.speciality, this.form.value.status, this.form.value.description, this.form.value.address);
    }
    this.form.reset();

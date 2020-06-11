@@ -147,4 +147,21 @@ exports.updatebedDetails = (req, res,next) => {
     });
   });
 }
+exports.getDataFilterByhospitalId = (req,res,next) => {
+  hospitalId = req.body.hospitalId;
+  bedSchema.find({hospitalId: hospitalId})
+  .then((result) => {
+    res.status(200).json({
+      data: result,
+      status: 'Success'
+    })
+  })
+  .catch((error) =>{
+    res.status(400).json({
+      message: 'Please try again after some time',
+      error: error,
+      status: 'Failed'
+    })
+  })
+}
 

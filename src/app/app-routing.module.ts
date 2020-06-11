@@ -1,3 +1,5 @@
+import { BloodBankDashboardComponent } from './admin/BloodBank/blood-bank-dashboard/blood-bank-dashboard.component';
+import { HospitalDashboardComponent } from './admin/Hospital/hospital-dashboard/hospital-dashboard.component';
 import { IndexComponent } from './index/index.component';
 import { BloodGroupViewComponent } from './admin/BloodBank/BloodGroup/blood-group-view/blood-group-view.component';
 import { BloodGroupAddComponent } from './admin/BloodBank/BloodGroup/blood-group-add/blood-group-add.component';
@@ -48,12 +50,14 @@ const routes: Routes = [
   {path: 'user/profile', component: UserProfileComponent, canActivate: [AuthGuard, UserGuard]},
   {path: 'Admin/Medicine_dashboard', component: DashboardComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Hospital', component: HospitalAdminComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/HospitalDashboard', component: HospitalDashboardComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/HospitalBranchAdd', component: HospitalAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/HospitalBranchView', component: HospitalViewComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/HospitalBranch/edit/:hospitalId', component: HospitalAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Bed/BedAdd/:hospitalId', component: BedAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/BedEdit/:bedId', component: BedAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/Bed/BedView/:hospitalId', component: BedViewComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'Admin/BloodBankDashboard', component: BloodBankDashboardComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/BloodBank', component: BloodBankAdminComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/BloodBankAdd', component: BloodBankAddComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'Admin/BloodBankView', component: BloodBankViewComponent, canActivate: [AuthGuard, AdminGuard]},

@@ -1,3 +1,4 @@
+import { BedModify } from './../../../model/model';
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -13,7 +14,10 @@ import { map } from 'rxjs/operators';
 })
 export class BedService {
   private bed: Bed[] = [];
+  private bedModify: BedModify[] = [];
   private bedUpdated = new Subject<{bed: Bed[], bedCount: number}>();
+  private bedDetailsModify = new Subject<{bedModify: BedModify[]}>();
+
   constructor(private http: HttpClient, private route: Router, private snackBar: MatSnackBar) { }
 
   getbed(currentPage: number, pageSize: number, hospitalId: string) {
@@ -98,5 +102,30 @@ export class BedService {
     deletebed(bedId: string) {
       return this.http.delete(environment.apiUrl + '/bed/' + bedId);
      }
+
+     getBedDatabyhospitalId(hospitalId: string) {
+      const hospId = {
+         hospitalId
+       };
+      this.http.post<{data: any}>(environment.apiUrl + '/bed/getData', hospId)
+      .pipe(map((bedData) => {
+        return {
+          bed: bedData.data.map((bed) => {
+          return {
+            quantity: bed.quantity,
+            existingBed: bed.existingBed,
+            bedType: bed.bedType,
+          };
+        })
+      };
+     }))
+     .subscribe((transformbedData) => {
+       this.bedModify = transformbedData.bed;
+       this.bedDetailsModify.next({ bedModify: [...this.bedModify]});
+     });
+     }
+     getbedModifyListner() {
+      return this.bedDetailsModify.asObservable();
+    }
 
 }
