@@ -31,7 +31,7 @@ modBed = [];
   // tslint:disable-next-line: member-ordering
   type = 'BarChart';
   // tslint:disable-next-line: member-ordering
-  data = this.bedList ;
+  data = this.modifyBedlist ;
   // tslint:disable-next-line: member-ordering
   columnNames = ['Year', 'Occupied', 'Free'];
   // tslint:disable-next-line: member-ordering
