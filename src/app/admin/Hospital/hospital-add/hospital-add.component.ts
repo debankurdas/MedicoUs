@@ -67,15 +67,9 @@ private hospitalId: string;
      }
    });
    console.log(this.mode);
-  //  this.hospitalService.gethospitalNameFromAdmin()
-  //  .subscribe((result) => {
-  //    this.result = result;
-  //    console.log(this.result.data.hospitalName);
-  //  });
+
  }
- // handelFileInput(file: FileList) {
- //   this.filetoUpload = file.item(0);
- // }
+
  filegetter(event: Event) {
    const file = (event.target as HTMLInputElement).files[0];
    this.form.patchValue({imageUrl: file});
