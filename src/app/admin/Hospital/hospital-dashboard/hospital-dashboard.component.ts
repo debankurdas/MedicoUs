@@ -16,7 +16,10 @@ export class HospitalDashboardComponent implements OnInit, OnDestroy {
   form: FormGroup;
   hospital = [];
   ultimateResult: any;
+  idForBed: number;
   hospitalId: string;
+  // modifyBedlist: any;
+  // myBed = [];
   bedModifyListner: Subscription;
   ngOnInit() {
 
@@ -32,34 +35,25 @@ export class HospitalDashboardComponent implements OnInit, OnDestroy {
       .subscribe((results) => {
         this.ultimateResult = results;
         console.log(this.ultimateResult);
+        this.idForBed = 2;
+        // this.modifyBedlist = JSON.parse(JSON.stringify(this.ultimateResult));
+        // console.log(this.modifyBedlist);
+        // this.modifyBedlist.bedModify.forEach(element => {
+        //   console.log(typeof(element));
+        //   let arr: Array<any> = [];
+        //   arr.push(element.bedType);
+        //   arr.push(element.existingBed);
+        //   arr.push(element.quantity);
+        //   this.myBed.push(arr) ;
+        // });
+        // console.log( this.myBed, 'he');
       });
     });
   }
 
   // general = [['general', 2 , 5 ], ['icu', 4 , 7 ], ['general',  1 , 6 ], ['general',  1 , 6 ]];
 
-  // tslint:disable-next-line: member-ordering
-  title1 = 'Browser market shares at a specific website, 2014';
-  // tslint:disable-next-line: member-ordering
-  type1 = 'PieChart';
-  // tslint:disable-next-line: member-ordering
-  data1 = [
-     ['Firefox', 45.0],
-     ['IE', 26.8],
-     ['Chrome', 12.8],
-     ['Safari', 8.5],
-     ['Opera', 6.2],
-     ['Others', 0.7]
-  ];
-  // tslint:disable-next-line: member-ordering
-  columnNames1 = ['Browser', 'Percentage'];
-  // tslint:disable-next-line: member-ordering
-  options1 = {
-  };
-  // tslint:disable-next-line: member-ordering
-  width1 = 250;
-  // tslint:disable-next-line: member-ordering
-  height1 = 250;
+
 
 ngOnDestroy() {
   this.bedModifyListner.unsubscribe();

@@ -1,6 +1,96 @@
-<div class="card-body">
-    <google-chart #chart [title]="title" [type]="type" [data]="data" [columnNames]="columnNames" [options]="options" [width]="width" [height]="height">
-    </google-chart>
+<h3>Search  the Branch of Hospital and Click the display button to see the chart</h3>
+<button class="btn btn-primary" (click)="display()" *ngIf="id2 == 2" >Display</button>
+<br><br>
+<hr>
+<br>
+    <!--Grid row-->
+    <div class="row wow fadeIn" *ngIf="id === 1" >
 
-    <p (click)="display()">Hi</p>
-</div>
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!--Card content-->
+          <div class="card-header text-center">
+            BarChart
+          </div>
+          <div class="card-body">
+            <google-chart #chart [title]="title" [type]="type" [data]="data" [columnNames]="columnNames" [options]="options" [width]="width" [height]="height">
+            </google-chart>
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+              <!--Card-->
+              <div class="card">
+
+                <!--Card content-->
+                <div class="card-header text-center">
+                  PiChart
+                </div>
+                <div class="card-body">
+                  <google-chart #chart2 [title]="title1" [type]="type1" [data]="data1" [columnNames]="columnNames1" [options]="options1" [width]="width1" [height]="height1">
+                  </google-chart>
+                </div>
+
+              </div>
+              <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+    <div class="row wow fadeIn" *ngIf="id === 1" >
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+              <!--Card-->
+              <div class="card">
+
+                <!--Card content-->
+                <div class="card-header text-center">
+                  DonutChart
+                </div>
+                <div class="card-body">
+                  <google-chart #chart4 [title]="title4" [type]="type4" [data]="data4" [columnNames]="columnNames4" [options]="options4" [width]="width4" [height]="height4">
+                  </google-chart>
+                </div>
+
+              </div>
+              <!--/.Card-->
+
+            </div>
+            <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-md-6 mb-4">
+
+                          <!--Card-->
+                          <div class="card">
+
+                            <!--Card content-->
+                            <div class="card-header text-center">
+                              ColumnChart
+                            </div>
+                            <div class="card-body">
+                              <google-chart #chart5 [title]="title3" [type]="type3" [data]="data3" [columnNames]="columnNames3" [options]="options3" [width]="width3" [height]="height3">
+                              </google-chart>
+                            </div>
+
+                          </div>
+                          <!--/.Card-->
+
+                        </div>
+                        <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
