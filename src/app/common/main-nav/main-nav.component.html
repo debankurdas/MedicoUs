@@ -1,6 +1,13 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar>
+      Medico
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" style="float: right;">
+        <span class="material-icons">
+          cancel
+        </span>
+      </button>
+    </mat-toolbar>
     <ng-container *ngIf="role$ === 'Admin_M'">
       <ng-container *ngTemplateOutlet="AdminMedicineMenu"></ng-container>
     </ng-container>
@@ -116,5 +123,6 @@
     </mat-list-item>
   </mat-nav-list>
 </ng-template>
+
 
 
