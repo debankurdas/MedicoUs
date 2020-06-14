@@ -62,7 +62,8 @@
 
         <mat-form-field class="formControl">
             <mat-label>Pin Code</mat-label>
-            <input matInput placeholder="Pin Code" formControlName="pin" required>
+            <input matInput placeholder="Pin Code" pattern="[1-9][0-9]{5}" formControlName="pin" required>
+            <mat-error *ngIf="form.get('pin').invalid" >Please enter a valid pincode</mat-error>
         </mat-form-field>
 
 
