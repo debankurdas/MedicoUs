@@ -15,6 +15,8 @@ export interface Hospital {
   speciality: string;
   status: string;
   description: string;
+  state: string;
+  city: string;
   address: string;
 }
 

@@ -1,0 +1,32 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+
+
+
+
+    <label>Country
+    <div title="Please select the country that the customer will primarily be served from">
+        <select placeholder="Phantasyland" (change)="changeCountry($event.target.value)" formControlName="x1">
+      <option *ngFor ="let count of countryList" name="abc" value= {{count.name}}  >{{count.name}} </option>
+  </select>
+    </div>
+  </label>
+    <label>City
+    <div title="Please select the city that the customer is primarily to be served from.">
+        <select placeholder="Anycity" formControlName="x2">
+  <option *ngFor ="let city of cities" value={{city}}  >{{city}} </option>
+</select>
+    </div>
+  </label>
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName">
+    </label>
+
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName">
+    </label>
+
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>

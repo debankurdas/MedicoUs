@@ -4,7 +4,7 @@
   *ngIf="isLoading"></mat-spinner> -->
   <!-- *ngIf="!isLoading" -->
   <form
-  [formGroup]="form" (submit)="onSavePost()"
+  [formGroup]="form" (submit)="SaveHospitalDetails()"
   >
   <mat-form-field class="formControl">
     <mat-label>Hospital Name</mat-label>
@@ -41,6 +41,23 @@
        placeholder="Description"></textarea>
       <mat-error
       *ngIf="form.get('description').invalid">Please enter the Description</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>State</mat-label>
+      <div>
+        <mat-select placeholder="State"
+         formControlName="state" required>
+          <mat-option *ngFor ="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)" >{{count.name}} </mat-option>
+        </mat-select>
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <div>
+        <mat-select placeholder="Anycity" formControlName="city">
+          <mat-option *ngFor ="let city of cities" value={{city}} >{{city}}</mat-option>
+        </mat-select>
+      </div>
     </mat-form-field>
     <mat-form-field>
       <textarea

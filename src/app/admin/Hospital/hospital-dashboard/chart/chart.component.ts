@@ -56,6 +56,10 @@ id: number;
       this.id = 1;
     });
     console.log( this.myBed, 'he');
+    this.myBed = [];
+    this.myBedForColumnChart = [];
+    this.myBedForDonutChart = [];
+    this.myBedForPiChart = [];
     // this.live = this.bedList;
     // console.log(this.live);
   }

@@ -2,6 +2,7 @@ const hospitalSchema = require('../../models/hospitalModels/hospitalSchema');
 
 
 exports.addHospital = (req, res,next) => {
+  console.log(req.body);
   url = req.protocol+'://'+req.get('host');
    const hospital = new hospitalSchema({
      hospitalName: req.body.hospitalName,
@@ -11,6 +12,8 @@ exports.addHospital = (req, res,next) => {
      imageUrl: url+'/images/'+ req.file.filename,
      status: req.body.status,
      description: req.body.description,
+     state: req.body.state,
+     city: req.body.city,
      address: req.body.address
    });
    hospital.save()
@@ -24,7 +27,7 @@ exports.addHospital = (req, res,next) => {
    .catch((error) => {
      res.status(500).json({
        status: 'Failed',
-       message: 'Please give the exact address or If you already add this hospital'
+       message: 'Please Fillup the information carefully'
      });
    });
  }
@@ -104,7 +107,10 @@ exports.updateHospitalDetails = (req, res,next) => {
     description: req.body.description,
     imageUrl: imageUrl,
     speciality: req.body.speciality,
-    status: req.body.status
+    status: req.body.status,
+    state: req.body.state,
+    city: req.body.city,
+    address: req.body.address
   })
   console.log(hospital);
   console.log(req.params.id);

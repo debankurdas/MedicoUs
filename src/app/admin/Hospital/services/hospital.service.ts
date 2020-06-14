@@ -31,6 +31,8 @@ export class HospitalService {
              speciality: hospital.speciality,
              imageUrl: hospital.imageUrl,
              status: hospital.status,
+             state: hospital.state,
+             city: hospital.city,
              address: hospital.address
            };
          }),
@@ -48,7 +50,7 @@ export class HospitalService {
   }
 
   addHospitalDetails(hospitalName: string, branchName: string, imageUrl: File | string, speciality: string,
-                     status: string, description: string, address: string) {
+                     status: string, description: string, state: string, city: string, address: string) {
     const formData = new FormData();
     formData.append('image', imageUrl);
     formData.append('hospitalName', hospitalName);
@@ -56,6 +58,8 @@ export class HospitalService {
     formData.append('speciality', speciality);
     formData.append('status', status);
     formData.append('description', description);
+    formData.append('state', state);
+    formData.append('city', city);
     formData.append('address', address);
     this.http.post<{status: string, hospital: Hospital}>(environment.apiUrl + '/hospital/addHospital', formData)
     .subscribe(() => {
@@ -65,11 +69,11 @@ export class HospitalService {
   getHospitalById(id: string) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<{_id: string, hospitalName: string, branchName: string, adminId: string, imageUrl: File | string, speciality: string,
-      status: string, description: string, address: string}>(
+      status: string, description: string, state: string, city: string, address: string}>(
      environment.apiUrl + '/hospital/' + id);
   }
   updateHospitalData(id: string, hospitalName: string, branchName: string, adminId: string, imageUrl: File | string, speciality: string,
-                     status: string, description: string, address: string) {
+                     status: string, description: string, state: string, city: string, address: string) {
      let hospitalData: Hospital | FormData;
      console.log(typeof imageUrl);
      if (typeof imageUrl === 'object') {
@@ -82,6 +86,8 @@ export class HospitalService {
        hospitalData.append('description', description);
        hospitalData.append('speciality', speciality);
        hospitalData.append('status', status);
+       hospitalData.append('state', state),
+       hospitalData.append('city', city),
        hospitalData.append('address', address);
      } else {
        hospitalData = {
@@ -93,6 +99,8 @@ export class HospitalService {
          speciality,
          status,
          imageUrl,
+         state,
+         city,
          address
        };
      }

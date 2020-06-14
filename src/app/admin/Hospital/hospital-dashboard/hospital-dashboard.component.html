@@ -35,7 +35,7 @@
 
     </div>
     <!-- Heading -->
-    <app-branch (addBranch)= "branch($event)"></app-branch>
+    <app-branch (addBranch)= "branch($event)" *ngIf="idForBed != 2" ></app-branch>
     <app-chart [bedList]="ultimateResult" [id2]= "idForBed"></app-chart>
 
   </div>

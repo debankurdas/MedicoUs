@@ -18,6 +18,7 @@ export class HospitalDashboardComponent implements OnInit, OnDestroy {
   ultimateResult: any;
   idForBed: number;
   hospitalId: string;
+  hospitalAddress: string;
   // modifyBedlist: any;
   // myBed = [];
   bedModifyListner: Subscription;
@@ -28,7 +29,10 @@ export class HospitalDashboardComponent implements OnInit, OnDestroy {
   branch(branchName: any) {
     this.adminHospitalService.getDataBranch(branchName)
     .subscribe((result) => {
+      console.log(result.data);
       this.hospitalId = result.data[0]._id;
+      this.hospitalAddress = result.data[0].address;
+      console.log(this.hospitalAddress);
       console.log(this.hospitalId);
       this.bedService.getBedDatabyhospitalId(this.hospitalId);
       this.bedModifyListner = this.bedService.getbedModifyListner()
@@ -36,27 +40,15 @@ export class HospitalDashboardComponent implements OnInit, OnDestroy {
         this.ultimateResult = results;
         console.log(this.ultimateResult);
         this.idForBed = 2;
-        // this.modifyBedlist = JSON.parse(JSON.stringify(this.ultimateResult));
-        // console.log(this.modifyBedlist);
-        // this.modifyBedlist.bedModify.forEach(element => {
-        //   console.log(typeof(element));
-        //   let arr: Array<any> = [];
-        //   arr.push(element.bedType);
-        //   arr.push(element.existingBed);
-        //   arr.push(element.quantity);
-        //   this.myBed.push(arr) ;
-        // });
-        // console.log( this.myBed, 'he');
       });
     });
   }
 
-  // general = [['general', 2 , 5 ], ['icu', 4 , 7 ], ['general',  1 , 6 ], ['general',  1 , 6 ]];
 
 
 
 ngOnDestroy() {
-  this.bedModifyListner.unsubscribe();
+  // this.bedModifyListner.unsubscribe();
 }
 
 }
