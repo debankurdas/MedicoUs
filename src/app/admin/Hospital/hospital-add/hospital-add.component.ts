@@ -16,6 +16,7 @@ catList: any;
 form: FormGroup;
 filetoUpload: File;
 result: any;
+
 constructor(public hospitalService: HospitalService , private route: ActivatedRoute,
             private fb: FormBuilder, private snackBar: MatSnackBar) { }
 //  isLoading = false;
@@ -192,9 +193,6 @@ cities: Array<any>;
    console.log(this.mode);
 
  }
-
-
-
 changeCountry(event, count) {
   this.cities = this.countryList.find(con => con.name === count.name).cities;
 }
