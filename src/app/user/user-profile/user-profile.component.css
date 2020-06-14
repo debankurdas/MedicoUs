@@ -1,32 +1,36 @@
 .cursor {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
-  .view {
-    display: none;
-  }
+    .view {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 679px) {
-  .colors {
-    color: black;
-    margin-left: auto;
-    padding-left: 200px;
-  }
-
+    .colors {
+        color: black;
+        margin-left: auto;
+        padding-left: 200px;
+    }
 }
-@media screen and (max-width: 679px) and (min-width: 600px) {
-  .colors {
-    color: black;
-    margin-left: auto;
-    padding-left: 170px;
-  }
 
+@media screen and (max-width: 679px) and (min-width: 600px) {
+    .colors {
+        color: black;
+        margin-left: auto;
+        padding-left: 170px;
+    }
 }
 
 .example-full-width {
-  width: 100%;
+    width: 100%;
 }
 
-
+.mm {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}

@@ -13,440 +13,469 @@
 </div> -->
 <!doctype html>
 <html lang="en">
+
 <head>
 
-<!-- Simple Page Needs
+    <!-- Simple Page Needs
 ================================================== -->
-<title>Mat</title>
-<meta charset="UTF-8">
-<meta name="description" content="Mat - Resume & vCard HTML Template">
-<meta name="keywords" content="personal, vcard, portfolio">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mat</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Mat - Resume & vCard HTML Template">
+    <meta name="keywords" content="personal, vcard, portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-<!-- Favicon
+    <!-- Favicon
 ================================================== -->
-<link href="../../../assets/user_profile/favicon.ico" rel="shortcut icon" type="../../../assets/user_profile/image/x-icon" />
+    <link href="../../../assets/user_profile/favicon.ico" rel="shortcut icon" type="../../../assets/user_profile/image/x-icon" />
 
-<!-- CSS
+    <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="../../../assets/user_profile/css/bootstrap.css">
-<link rel="stylesheet" href="../../../assets/user_profile/css/reset.css"/>
-<link rel="stylesheet" href="../../../assets/user_profile/cubeportfolio/css/cubeportfolio.min.css"/>
-<link rel="stylesheet" href="../../../assets/user_profile/css/owl.theme.css"/>
-<link rel="stylesheet" href="../../../assets/user_profile/css/owl.carousel.css"/>
-<link rel="stylesheet" href="../../../assets/user_profile/css/style.css"/>
-<link rel="stylesheet" href="../../../assets/user_profile/css/colors/yellow.css" id="color"/>
+    <link rel="stylesheet" href="../../../assets/user_profile/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../assets/user_profile/css/reset.css" />
+    <link rel="stylesheet" href="../../../assets/user_profile/cubeportfolio/css/cubeportfolio.min.css" />
+    <link rel="stylesheet" href="../../../assets/user_profile/css/owl.theme.css" />
+    <link rel="stylesheet" href="../../../assets/user_profile/css/owl.carousel.css" />
+    <link rel="stylesheet" href="../../../assets/user_profile/css/style.css" />
+    <link rel="stylesheet" href="../../../assets/user_profile/css/colors/yellow.css" id="color" />
 
 
-<!-- Google Web fonts
+    <!-- Google Web fonts
 ================================================== -->
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
 
-<!-- Font Icons
+    <!-- Font Icons
 ================================================== -->
-<link rel="stylesheet" href="../../../assets/user_profile/icon-fonts/font-awesome-4.7.0/css/font-awesome.min.css"/>
-<link rel="stylesheet" href="../../../assets/user_profile/icon-fonts/web-design/font/flaticon.css" />
-<!-- Javascripts
+    <link rel="stylesheet" href="../../../assets/user_profile/icon-fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../../../assets/user_profile/icon-fonts/web-design/font/flaticon.css" />
+    <!-- Javascripts
 ================================================== -->
-<script src="../../../assets/user_profile/js/jquery-2.1.4.min.js"></script>
-<script src="../../../assets/user_profile/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-<script src="../../../assets/user_profile/js/bootstrap.min.js"></script>
-<script src="../../../assets/user_profile/js/jquery.easytabs.min.js"></script>
-<script src="../../../assets/user_profile/js/main.js"></script>
-<!-- for color alternatives -->
-<script src="../../../assets/user_profile/js/jquery.cookie-1.4.1.min.js"></script>
-<script src="../../../assets/user_profile/js/Demo.js"></script>
-<!--[if lt IE 9]>
+    <script src="../../../assets/user_profile/js/jquery-2.1.4.min.js"></script>
+    <script src="../../../assets/user_profile/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+    <script src="../../../assets/user_profile/js/bootstrap.min.js"></script>
+    <script src="../../../assets/user_profile/js/jquery.easytabs.min.js"></script>
+    <script src="../../../assets/user_profile/js/main.js"></script>
+    <!-- for color alternatives -->
+    <script src="../../../assets/user_profile/js/jquery.cookie-1.4.1.min.js"></script>
+    <script src="../../../assets/user_profile/js/Demo.js"></script>
+    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
 
 </head>
+
 <body>
-<app-main-nav></app-main-nav>
-<!-- Wrapper -->
-<div class="wrapper top_60 container">
-<div class="row">
+    <app-main-nav></app-main-nav>
+    <!-- Wrapper -->
+    <div class="wrapper top_60 container">
+        <div class="row">
 
-<!-- Profile Section
+            <!-- Profile Section
 ================================================== -->
-<div class="col-lg-3 col-md-4">
-    <div class="profile">
-        <div class="profile-name">
-            <span class="name">Medico</span><br>
-        </div>
-        <figure class="profile-image">
-            <img src="../../../assets/user_profile/images/Male.jpeg" alt="profile" *ngIf="gender === 'Male'" style="height: 90%; width: 90%;">
-            <img src="../../../assets/user_profile/images/Female.jpeg" alt="profile" *ngIf="gender === 'Female'" style="height: 90%; width: 90%;">
-        </figure>
-        <ul class="profile-information">
-            <li></li>
-            <li><p><span>Name:</span> {{firstname}} {{lastname}}</p></li>
-            <li>
-              <div>
-                <fieldset data-role="controlgroup">
-                  <legend>Your Gender:</legend>
-                    <label for="male" *ngIf="gender === 'Male'" >Male</label>
-                    <input type="radio" *ngIf="gender === 'Male'" name="gender" id="male" value="male" checked>
-                    <label for="female" *ngIf="gender === 'Female'">  Female</label>
-                    <input type="radio" *ngIf="gender === 'Female'" name="gender" id="female" value="female" checked>
-                </fieldset></div></li>
-            <li><p><span>Email:</span> {{email}}</p></li>
-            <li><p><span>Mobile Number:</span> {{mobile}}</p></li>
-        </ul>
-        <div class="col-md-12">
-          <ul class="tabs view colors">
-            <li class="tab"><a  class="cursor "(click)= "Faq()" >FAQ</a></li>
-            <li class="tab"><a class="cursor "[routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</a></li>
-            <li class="tab"><a class="cursor "routerLink= "/user/orders" >ORDERS</a></li>
-            <li class="tab"><a class="cursor "(click) = "contact()">CONTACT</a></li>
-          </ul>
-          <button class="site-btn icon" onclick="myfunction()">Log Out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
-        </div>
-    </div>
-</div>
-
-<!-- Page Tab Container Div -->
-<div id="ajax-tab-container" class="col-lg-9 col-md-8 tab-container">
-
-<!-- Header
-================================================== -->
-<div class="row">
-    <header class="col-md-12">
-        <nav>
-            <div class="row">
-                <!-- navigation bar -->
-                <div class="col-md-8 col-sm-8 col-xs-4">
-                    <ul class="tabs">
-                        <li class="tab">
-                            <a class="home-btn" (click)="homeId()"><i class="fa fa-home" aria-hidden="true"></i></a>
+            <div class="col-lg-3 col-md-4">
+                <div class="profile">
+                    <div class="profile-name">
+                        <span class="name">Medico</span><br>
+                    </div>
+                    <figure class="profile-image">
+                        <img src="../../../assets/user_profile/images/Male.jpeg" alt="profile" *ngIf="gender === 'Male'" style="height: 90%; width: 90%;">
+                        <img src="../../../assets/user_profile/images/Female.jpeg" alt="profile" *ngIf="gender === 'Female'" style="height: 90%; width: 90%;">
+                    </figure>
+                    <ul class="profile-information">
+                        <li></li>
+                        <li>
+                            <p><span>Name:</span> {{firstname}} {{lastname}}</p>
                         </li>
-                        <li class="tab"><a  class="cursor"(click)= "Faq()" >FAQ</a></li>
-                        <li class="tab"><a class="cursor" [routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</a></li>
-                        <li class="tab"><a class="cursor"routerLink= "/user/orders" >ORDERS</a></li>
-                        <li class="tab"><a class="cursor"(click) = "contact()">CONTACT</a></li>
+                        <li>
+                            <div>
+                                <fieldset data-role="controlgroup">
+                                    <legend>Your Gender:</legend>
+                                    <label for="male" *ngIf="gender === 'Male'">Male</label>
+                                    <input type="radio" *ngIf="gender === 'Male'" name="gender" id="male" value="male" checked>
+                                    <label for="female" *ngIf="gender === 'Female'">  Female</label>
+                                    <input type="radio" *ngIf="gender === 'Female'" name="gender" id="female" value="female" checked>
+                                </fieldset>
+                            </div>
+                        </li>
+                        <li>
+                            <p><span>Email:</span> {{email}}</p>
+                        </li>
+                        <li>
+                            <p><span>Mobile Number:</span> {{mobile}}</p>
+                        </li>
                     </ul>
                 </div>
-                <div class="col-md-4 col-sm-4 col-xs-8 dynamic">
-
-                    <div class="hamburger pull-right hidden-lg hidden-md"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                    <div class="hidden-md social-icons pull-right">
-                        <a class="fb" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a class="ins" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a class="dr" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                    </div>
-                </div>
             </div>
-        </nav>
-    </header>
 
-    <!-- Page Content
+            <!-- Page Tab Container Div -->
+            <div id="ajax-tab-container" class="col-lg-9 col-md-8 tab-container">
+
+                <!-- Header
+================================================== -->
+                <div class="row">
+                    <header class="col-md-12">
+                        <nav>
+                            <div class="row">
+                                <!-- navigation bar -->
+                                <div class="col-md-8 col-sm-8 col-xs-4">
+                                    <ul class="tabs">
+                                        <li class="tab">
+                                            <a class="home-btn" (click)="homeId()"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="tab"><a class="cursor" (click)="Faq()">FAQ</a></li>
+                                        <li class="tab"><a class="cursor" [routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</a></li>
+                                        <li class="tab"><a class="cursor" routerLink="/user/orders">ORDERS</a></li>
+                                        <li class="tab"><a class="cursor" (click)="contact()">CONTACT</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-8 dynamic">
+
+                                    <button class="pull-right hidden-lg hidden-md" mat-button [matMenuTriggerFor]="menu"><div style="margin-top: 20px;"></div><div class="mm"></div>
+                                      <div class="mm"></div>
+                                      <div class="mm"></div></button>
+                                    <mat-menu #menu="matMenu">
+                                        <button mat-menu-item class="cursor" (click)="Faq()">FAQ</button>
+                                        <button mat-menu-item [routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</button>
+                                        <button mat-menu-item routerLink="/user/orders">ORDERS</button>
+                                        <button mat-menu-item (click)="contact()">CONTACT</button>
+                                    </mat-menu>
+                                </div>
+                            </div>
+                        </nav>
+                    </header>
+
+                    <!-- Page Content
     ================================================== -->
-    <div class="col-md-12">
-        <div id="content" class="panel-container">
+                    <div class="col-md-12">
+                        <div id="content" class="panel-container">
 
-            <!-- Home Page
+                            <!-- Home Page
             ================================================== -->
-            <div id="home" *ngIf="id === 0" >
-                <!-- Text Section -->
-                <div class="row">
-                    <section class="about-me line col-md-12 padding_30 padbot_45">
-                    <div class="section-title"><span></span><h2>About Us</h2></div>
-                    <p class="top_30">Started earnest brother believe an exposed so. Me he believing daughters if forfeited at furniture. Age again and stuff downs spoke. Late hour new nay able fat each sell. Nor themselves age introduced frequently use unsatiable devonshire get. They why quit gay cold rose deal park. One same they four did ask busy. Reserved opinions fat him nay position. Breakfast as zealously incommode do agreeable furniture. One too nay led fanny allow plate.
-                        <br>
-                        <br> Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat. Her bachelor honoured perceive securing but desirous ham required. Questions deficient acuteness to engrossed as. Entirely led ten humoured greatest and yourself. Besides ye country on observe. She continue appetite endeavor she judgment interest the met. For she surrounded motionless fat resolution may. </p>
-                    </section>
-                    </div>
-                <!-- My Services Section -->
-                <div class="row">
-                    <section class="services line graybg col-md-12 padding_50 padbot_50">
-                    <div class="section-title bottom_45"><span></span><h2>Our Services</h2></div>
-                    <div class="row">
-                        <!-- a service -->
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="service">
-                                <div class="icon">
-                                    <i class="flaticon-ambulance"></i>
+                            <div id="home" *ngIf="id === 0">
+                                <!-- Text Section -->
+                                <div class="row">
+                                    <section class="about-me line col-md-12 padding_30 padbot_45">
+                                        <div class="section-title"><span></span>
+                                            <h2>About Us</h2>
+                                        </div>
+                                        <p class="top_30">Started earnest brother believe an exposed so. Me he believing daughters if forfeited at furniture. Age again and stuff downs spoke. Late hour new nay able fat each sell. Nor themselves age introduced frequently
+                                            use unsatiable devonshire get. They why quit gay cold rose deal park. One same they four did ask busy. Reserved opinions fat him nay position. Breakfast as zealously incommode do agreeable furniture. One too
+                                            nay led fanny allow plate.
+                                            <br>
+                                            <br> Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat. Her bachelor honoured perceive securing but desirous ham required. Questions deficient
+                                            acuteness to engrossed as. Entirely led ten humoured greatest and yourself. Besides ye country on observe. She continue appetite endeavor she judgment interest the met. For she surrounded motionless fat resolution
+                                            may. </p>
+                                    </section>
                                 </div>
-                                <span class="title">Ambulance</span>
-                                <p class="little-text">Provides 24*7 Ambulance services.</p>
-                            </div>
-                        </div>
-                        <!-- a service -->
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="service">
-                                <div class="icon">
-                                    <i class="flaticon-medicine"></i>
+                                <!-- My Services Section -->
+                                <div class="row">
+                                    <section class="services line graybg col-md-12 padding_50 padbot_50">
+                                        <div class="section-title bottom_45"><span></span>
+                                            <h2>Our Services</h2>
+                                        </div>
+                                        <div class="row">
+                                            <!-- a service -->
+                                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-ambulance"></i>
+                                                    </div>
+                                                    <span class="title">Ambulance</span>
+                                                    <p class="little-text">Provides 24*7 Ambulance services.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a service -->
+                                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-medicine"></i>
+                                                    </div>
+                                                    <span class="title">Medicine</span>
+                                                    <p class="little-text">Delivers at your door-step.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a service -->
+                                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-hospital"></i>
+                                                    </div>
+                                                    <span class="title">hospital</span>
+                                                    <p class="little-text">Availablity of any hospitals.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a service -->
+                                            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-blood"></i>
+                                                    </div>
+                                                    <span class="title">Blood Bank</span>
+                                                    <p class="little-text">Availablilty of blood in blood bank</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
                                 </div>
-                                <span class="title">Medicine</span>
-                                <p class="little-text">Delivers at your door-step.</p>
-                            </div>
-                        </div>
-                        <!-- a service -->
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="service">
-                                <div class="icon">
-                                    <i class="flaticon-hospital"></i>
-                                </div>
-                                <span class="title">hospital</span>
-                                <p class="little-text">Availablity of any hospitals.</p>
-                            </div>
-                        </div>
-                        <!-- a service -->
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="service">
-                                <div class="icon">
-                                    <i class="flaticon-blood"></i>
-                                </div>
-                                <span class="title">Blood Bank</span>
-                                <p class="little-text">Availablilty of blood in blood bank</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                </div>
-                <!-- Skills Section -->
+                                <!-- Skills Section -->
 
-            </div>
+                            </div>
 
-            <!-- Resume Page
+                            <!-- Resume Page
             ================================================== -->
-            <div id="resume" *ngIf="id === 1">
-                <!-- Resume Section -->
-            <!----------------------------------------------------------------------------------------------helooooo--->
-                <div class="row">
-                    <section class="education">
-                    <div class="section-title top_30"><span></span><h2>FAQ AND REVIEWS</h2></div>
-                        <div class="row">
-                            <!-- Working History -->
-                            <div class="working-history col-md-6 padding_15 padbot_30">
-                                <ul class="timeline col-md-12 top_30">
-                                    <li><i class="fa fa-suitcase" aria-hidden="true"></i><h2 class="timeline-title">FAQ</h2></li>
-                                    <!-- a work -->
-                                    <li><p ><mark>What happens when I update my email address (or mobile number)?
+                            <div id="resume" *ngIf="id === 1">
+                                <!-- Resume Section -->
+                                <!----------------------------------------------------------------------------------------------helooooo--->
+                                <div class="row">
+                                    <section class="education">
+                                        <div class="section-title top_30"><span></span>
+                                            <h2>FAQ AND REVIEWS</h2>
+                                        </div>
+                                        <div class="row">
+                                            <!-- Working History -->
+                                            <div class="working-history col-md-6 padding_15 padbot_30">
+                                                <ul class="timeline col-md-12 top_30">
+                                                    <li><i class="fa fa-suitcase" aria-hidden="true"></i>
+                                                        <h2 class="timeline-title">FAQ</h2>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <p><mark>What happens when I update my email address (or mobile number)?
                                         <span>2010 - Present</span></mark></p>
-                                        <p class="little-text">Your login email id (or mobile number) changes, likewise. You'll receive all your account related communication on your updated email address (or mobile number).</p>
-                                    </li>
-                                   <!-- a work -->
-                                    <li><p ><mark>When will my account be updated with the new email address (or mobile number)?</mark></p>
-                                        <span>2008 - 2010</span>
-                                        <p class="little-text">It happens as soon as you confirm the verification code sent to your email (or mobile) and save the changes.</p>
-                                    </li>
-                                   <!-- a work -->
-                                    <li><p ><mark>What happens to my existing Flipkart account when I update my email address (or mobile number)?</mark></p>
-                                        <span>2005 - 2008</span>
-                                        <p class="little-text">Updating your email address (or mobile number) doesn't invalidate your account. Your account remains fully functional. You'll continue seeing your Order history, saved information and personal details.</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Education History -->
-                            <div class="education-history col-md-6 padding_15 padbot_30">
-                                <ul class="timeline col-md-12 top_30">
-                                    <li><i class="fa fa-suitcase" aria-hidden="true"></i><h2 class="timeline-title">FAQ</h2></li>
-                                    <!-- a work -->
-                                    <li><p ><mark>Does my Seller account get affected when I update my email address?</mark></p>
-                                        <span>2004 - 2009</span>
-                                        <p class="little-text">Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.</p>
-                                    </li>
-                                   <!-- a work -->
-                                    <li><p ><mark>Does my Seller account get affected when I update my email address?
+                                                        <p class="little-text">Your login email id (or mobile number) changes, likewise. You'll receive all your account related communication on your updated email address (or mobile number).</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <p><mark>When will my account be updated with the new email address (or mobile number)?</mark></p>
+                                                        <span>2008 - 2010</span>
+                                                        <p class="little-text">It happens as soon as you confirm the verification code sent to your email (or mobile) and save the changes.</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <p><mark>What happens to my existing Flipkart account when I update my email address (or mobile number)?</mark></p>
+                                                        <span>2005 - 2008</span>
+                                                        <p class="little-text">Updating your email address (or mobile number) doesn't invalidate your account. Your account remains fully functional. You'll continue seeing your Order history, saved information and personal details.</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- Education History -->
+                                            <div class="education-history col-md-6 padding_15 padbot_30">
+                                                <ul class="timeline col-md-12 top_30">
+                                                    <li><i class="fa fa-suitcase" aria-hidden="true"></i>
+                                                        <h2 class="timeline-title">FAQ</h2>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <p><mark>Does my Seller account get affected when I update my email address?</mark></p>
+                                                        <span>2004 - 2009</span>
+                                                        <p class="little-text">Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <p><mark>Does my Seller account get affected when I update my email address?
                                         <span>2003 - 2004</span></mark></p>
-                                        <p class="little-text">Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.</p>
-                                    </li>
-                                   <!-- a work -->
-                                    <li><a href="#"><h3 class="line-title">Deactivate acount</h3></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- Clients Section -->
-                <div class="row">
-                    <section class="clients col-md-12 graybg padding_45 padbot_45">
-                        <div class="section-title bottom_30"><span></span><h2>Partners</h2></div>
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="client">
-                                    <img src="../../../assets/user_profile/images/client-01.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="client">
-                                    <img src="../../../assets/user_profile/images/client-02.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="client">
-                                    <img src="../../../assets/user_profile/images/client-03.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <div class="client">
-                                    <img src="../../../assets/user_profile/images/client-04.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <!-- Testimonials -->
-                <div class="row">
-                    <section class="testimonials bottom_30">
-                        <div class="section-title top_60 bottom_30"><span></span><h2>Reviews</h2></div>
-                        <div class="owl-carousel row" data-items="3" data-autoplay="3000" data-pagination="true">
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-1.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">Jack Garratt</span>
-                                            <span class="job">Freelancer</span>
+                                                        <p class="little-text">Flipkart has a 'single sign-on' policy. Any changes will reflect in your Seller account also.</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <a href="#">
+                                                            <h3 class="line-title">Deactivate acount</h3>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <p>Great designer! he finished our work wonderfully and just in time. thanks for everything.</p>
+                                    </section>
                                 </div>
-                            </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-2.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">April M. Griffin</span>
-                                            <span class="job">Founder</span>
+                                <!-- Clients Section -->
+                                <div class="row">
+                                    <section class="clients col-md-12 graybg padding_45 padbot_45">
+                                        <div class="section-title bottom_30"><span></span>
+                                            <h2>Partners</h2>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <p>Our logo and business card design look great. Thanks Henry</p>
-                                </div>
-                            </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-3.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">Larry M. Johnson</span>
-                                            <span class="job">Freelancer</span>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="../../../assets/user_profile/images/client-01.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="../../../assets/user_profile/images/client-02.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="../../../assets/user_profile/images/client-03.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="../../../assets/user_profile/images/client-04.jpg" alt="">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
+                                    </section>
                                 </div>
-                            </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-1.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">Jack Garratt</span>
-                                            <span class="job">Freelancer</span>
+                                <!-- Testimonials -->
+                                <div class="row">
+                                    <section class="testimonials bottom_30">
+                                        <div class="section-title top_60 bottom_30"><span></span>
+                                            <h2>Reviews</h2>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <p>Great designer! he finished our work wonderfully and just in time. thanks for everything.</p>
-                                </div>
-                            </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-2.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">April M. Griffin</span>
-                                            <span class="job">Founder</span>
+                                        <div class="owl-carousel row" data-items="3" data-autoplay="3000" data-pagination="true">
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-1.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Jack Garratt</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Great designer! he finished our work wonderfully and just in time. thanks for everything.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-2.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">April M. Griffin</span>
+                                                            <span class="job">Founder</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Our logo and business card design look great. Thanks Henry</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-3.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Larry M. Johnson</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-1.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Jack Garratt</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Great designer! he finished our work wonderfully and just in time. thanks for everything.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-2.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">April M. Griffin</span>
+                                                            <span class="job">Founder</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Our logo and business card design look great. Thanks Henry</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-3.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Larry M. Johnson</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-1.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Jack Garratt</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Great designer! he finished our work wonderfully and just in time. thanks for everything.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-2.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">April M. Griffin</span>
+                                                            <span class="job">Founder</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Our logo and business card design look great. Thanks Henry</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="../../../assets/user_profile/images/testimonial-3.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Larry M. Johnson</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <p>Our logo and business card design look great. Thanks Henry</p>
+                                    </section>
                                 </div>
                             </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-3.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">Larry M. Johnson</span>
-                                            <span class="job">Freelancer</span>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
-                                </div>
-                            </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-1.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">Jack Garratt</span>
-                                            <span class="job">Freelancer</span>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p>Great designer! he finished our work wonderfully and just in time. thanks for everything.</p>
-                                </div>
-                            </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-2.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">April M. Griffin</span>
-                                            <span class="job">Founder</span>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p>Our logo and business card design look great. Thanks Henry</p>
-                                </div>
-                            </div>
-                            <!-- a item -->
-                            <div class="col-md-12 item">
-                                <div class="comment">
-                                    <div class="top-section">
-                                        <figure>
-                                            <img src="../../../assets/user_profile/images/testimonial-3.jpg" alt="">
-                                        </figure>
-                                        <div class="name-info">
-                                            <span class="name">Larry M. Johnson</span>
-                                            <span class="job">Freelancer</span>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-            </div>
-            <!-- EDIT PROFILE
+                            <!-- EDIT PROFILE
             ================================================== -->
-            <!-- <div id="portfolio" class="row bottom_45" *ngIf="id === 3">
+                            <!-- <div id="portfolio" class="row bottom_45" *ngIf="id === 3">
                 <section class="col-md-12">
                     <div class="col-md-12 content-header bottom_15">
                         <div class="section-title top_30 bottom_30"><span></span><h2>EDIT PROFILE</h2></div>
@@ -458,83 +487,90 @@
                 </section>
             </div> -->
 
-            <!-- PREVIOUS ORDERS
+                            <!-- PREVIOUS ORDERS
             ================================================== -->
 
-            <!-- Contact Page
+                            <!-- Contact Page
             ================================================== -->
-            <div id="contact" *ngIf="id === 5">
-                <div class="row">
-                    <!-- Contact Form -->
-                    <section class="contact-form col-md-6 padding_30 padbot_45">
-                        <div class="section-title top_15 bottom_30"><span></span><h2>Contact Form</h2></div>
-                        <form (submit)="contacts()" #myForm="ngForm">
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Name</mat-label>
-                            <input type="name" matInput placeholder="name" name="name" #name ="ngModel"
-                            [(ngModel)]="user.name" required>
-                            <mat-error
-                            *ngIf="name.invalid" >Please enter the name
-                            </mat-error>
-                          </mat-form-field>
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Email</mat-label>
-                            <input type="email" matInput placeholder="Email" name="email" #email = "ngModel"
-                            [(ngModel)]="user.email" required>
-                            <mat-error
-                            *ngIf="email.invalid" >Please enter a valid Email</mat-error>
-                          </mat-form-field>
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Message</mat-label>
-                            <input type="message" matInput placeholder="message" name="message" #message = "ngModel"
-                            [(ngModel)]="user.message" required>
-                            <mat-error
-                            *ngIf="message.invalid" >Please enter a valid message</mat-error>
-                          </mat-form-field>
-                          <div class="form-group">
-                            <button class="btn btn-warning btn-block" type="submit" [disabled]="!myForm.form.valid">Submit</button>
-                          </div>
-                      </form>
-                    </section>
-                    <!-- Contact Informations -->
-                    <section class="contact-info col-md-6 padding_30 padbot_45">
-                        <div class="section-title top_15 bottom_30"><span></span><h2>Contact Informations</h2></div>
-                        <i class="fa fa-address-book" aria-hidden="true"></i>
-                        <ul>
-                            <li><span>Address:</span> 24, 1A, Chandi Ghosh Rd, Ashok Nagar, Tollygunge, Kolkata, West Bengal 700040</li>
-                            <li><span>Phone:</span> +38 012-3456-7890</li>
-                            <li><span>COMPANY:</span> Medico</li>
-                            <li><span>E-mail:</span> souravseal.sourav@gmail.com</li>
-                            <li>
-                                <div class="social-icons top_15">
-                                    <a class="fb" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a class="ins" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                    <a class="dr" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                            <div id="contact" *ngIf="id === 5">
+                                <div class="row">
+                                    <!-- Contact Form -->
+                                    <section class="contact-form col-md-6 padding_30 padbot_45">
+                                        <div class="section-title top_15 bottom_30"><span></span>
+                                            <h2>Contact Form</h2>
+                                        </div>
+                                        <form (submit)="contacts()" #myForm="ngForm">
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Name</mat-label>
+                                                <input type="name" matInput placeholder="name" name="name" #name="ngModel" [(ngModel)]="user.name" required>
+                                                <mat-error *ngIf="name.invalid">Please enter the name
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Email</mat-label>
+                                                <input type="email" matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+                                                <mat-error *ngIf="email.invalid">Please enter a valid Email</mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field class="example-full-width">
+                                                <mat-label>Message</mat-label>
+                                                <input type="message" matInput placeholder="message" name="message" #message="ngModel" [(ngModel)]="user.message" required>
+                                                <mat-error *ngIf="message.invalid">Please enter a valid message</mat-error>
+                                            </mat-form-field>
+                                            <div class="form-group">
+                                                <button class="btn btn-warning btn-block" type="submit" [disabled]="!myForm.form.valid">Submit</button>
+                                            </div>
+                                        </form>
+                                    </section>
+                                    <!-- Contact Informations -->
+                                    <section class="contact-info col-md-6 padding_30 padbot_45">
+                                        <div class="section-title top_15 bottom_30"><span></span>
+                                            <h2>Contact Informations</h2>
+                                        </div>
+                                        <i class="fa fa-address-book" aria-hidden="true"></i>
+                                        <ul>
+                                            <li><span>Address:</span> 24, 1A, Chandi Ghosh Rd, Ashok Nagar, Tollygunge, Kolkata, West Bengal 700040</li>
+                                            <li><span>Phone:</span> +38 012-3456-7890</li>
+                                            <li><span>COMPANY:</span> Medico</li>
+                                            <li><span>E-mail:</span> souravseal.sourav@gmail.com</li>
+                                            <li>
+                                                <div class="social-icons top_15">
+                                                    <a class="fb" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                                    <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                                    <a class="ins" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                                    <a class="dr" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </section>
+                                    <!-- Contact Map -->
+                                    <section class="contact-map col-md-12 top_15 bottom_15">
+                                        <div class="section-title bottom_30"><span></span>
+                                            <h2>Contact Map.</h2>
+                                        </div>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.5397465880988!2d88.3429195149373!3d22.483923685228465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270ecc09b4691%3A0x7f99d48523fd066a!2sCalcutta%20Institute%20of%20Engineering%20And%20Management!5e0!3m2!1sen!2sin!4v1590247082436!5m2!1sen!2sin"
+                                            height="350" style="border:0" allowfullscreen></iframe>
+
+                                    </section>
                                 </div>
-                            </li>
-                        </ul>
-                    </section>
-                    <!-- Contact Map -->
-                    <section class="contact-map col-md-12 top_15 bottom_15">
-                        <div class="section-title bottom_30"><span></span><h2>Contact Map.</h2></div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.5397465880988!2d88.3429195149373!3d22.483923685228465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0270ecc09b4691%3A0x7f99d48523fd066a!2sCalcutta%20Institute%20of%20Engineering%20And%20Management!5e0!3m2!1sen!2sin!4v1590247082436!5m2!1sen!2sin" height="350" style="border:0" allowfullscreen></iframe>
+                            </div>
 
-                    </section>
+
+                        </div>
+                        <!-- Content - End -->
+                    </div>
+                    <!-- col-md-12 end -->
                 </div>
-            </div>
-
-
-        </div><!-- Content - End -->
-     </div> <!-- col-md-12 end -->
-</div><!-- row end -->
-<!-- Footer
+                <!-- row end -->
+                <!-- Footer
 ================================================== -->
-<app-footer></app-footer>
+                <app-footer></app-footer>
 
-</div> <!-- Tab Container - End -->
-</div> <!-- Row - End -->
-</div> <!-- Wrapper - End -->
+            </div>
+            <!-- Tab Container - End -->
+        </div>
+        <!-- Row - End -->
+    </div>
+    <!-- Wrapper - End -->
 
 
 
@@ -543,4 +579,5 @@
 </body>
 
 <!-- Mirrored from tavonline.net/html/mat/default/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 May 2020 09:09:39 GMT -->
+
 </html>
