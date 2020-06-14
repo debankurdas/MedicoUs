@@ -150,7 +150,9 @@ cities: Array<any>;
      imageUrl: new FormControl('', Validators.required),
      state: new FormControl('', Validators.required),
      city: new FormControl('', Validators.required),
-     address: new FormControl('', Validators.required)
+     branchArea : new FormControl('', Validators.required),
+     address: new FormControl('', Validators.required),
+     pin: new FormControl('', Validators.required),
    });
    this.route.paramMap.subscribe((paramMap: ParamMap) => {
      if (paramMap.has('hospitalId')) {
@@ -171,7 +173,9 @@ cities: Array<any>;
            status: hospitalData.status,
            state: hospitalData.state,
            city: hospitalData.city,
-           address: hospitalData.address
+           branchArea:hospitalData.branchArea,
+           address: hospitalData.address,
+           pin: hospitalData.pin,
          };
          this.form.setValue({
           hospitalName: this.hospitalDetails.hospitalName,
@@ -182,7 +186,10 @@ cities: Array<any>;
           status: this.hospitalDetails.status,
           state: this.hospitalDetails.state,
           city: this.hospitalDetails.city,
-          address: this.hospitalDetails.address});
+          branchArea:this.hospitalDetails.branchArea,
+          address: this.hospitalDetails.address,
+          pin:this.hospitalDetails.pin
+        });
        });
      } else {
        this.mode = 'create';
@@ -214,12 +221,13 @@ changeCountry(event, count) {
      // this.isLoading = true;
        this.hospitalService.addHospitalDetails(this.form.value.hospitalName, this.form.value.branchName,
         this.form.value.imageUrl, this.form.value.speciality, this.form.value.status ,
-        this.form.value.description, this.form.value.state, this.form.value.city, this.form.value.address);
+        this.form.value.description, this.form.value.state, this.form.value.city, this.form.value.branchArea,
+         this.form.value.address, this.form.value.pin );
    } else  {
      // tslint:disable-next-line: max-line-length
      this.hospitalService.updateHospitalData(this.hospitalId, this.form.value.hospitalName,  this.form.value.branchName, this.hospitalDetails.adminId,
        this.form.value.imageUrl, this.form.value.speciality, this.form.value.status, this.form.value.description,
-       this.form.value.state, this.form.value.city, this.form.value.address);
+       this.form.value.state, this.form.value.city, this.form.value.branchArea, this.form.value.address, this.form.value.pin);
    }
    this.form.reset();
  }

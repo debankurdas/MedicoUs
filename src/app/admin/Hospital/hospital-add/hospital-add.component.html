@@ -49,13 +49,24 @@
                 </mat-select>
             </div>
         </mat-form-field>
-
+        <mat-form-field class="formControl">
+            <mat-label>Branch Area</mat-label>
+            <input matInput placeholder="Branch Area" formControlName="branchArea" required>
+        </mat-form-field>
 
 
         <mat-form-field>
             <textarea matInput name="" id="" rows="3" formControlName="address" placeholder="address"></textarea>
             <mat-error *ngIf="form.get('address').invalid">Please enter the address</mat-error>
         </mat-form-field>
+
+        <mat-form-field class="formControl">
+            <mat-label>Pin Code</mat-label>
+            <input matInput placeholder="Pin Code" formControlName="pin" required>
+        </mat-form-field>
+
+
+
         <button color="primary" mat-raised-button type="submit" [disabled]='!form.valid'>Submit</button>
     </form>
 </mat-card>

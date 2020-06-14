@@ -17,7 +17,9 @@ export interface Hospital {
   description: string;
   state: string;
   city: string;
+  branchArea: string;
   address: string;
+  pin: string;
 }
 
 export interface BloodBank {
