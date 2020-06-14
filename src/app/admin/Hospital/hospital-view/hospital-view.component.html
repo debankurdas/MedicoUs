@@ -15,8 +15,12 @@
     </div>
     <mat-label><strong>Description:</strong></mat-label>
       <p> {{hosp.description}}</p>
+    <mat-label><strong>BranchArea</strong></mat-label>
+      <p> {{hosp.branchArea}}</p>
     <mat-label><strong>Address:</strong></mat-label>
       <p>{{hosp.address}}</p>
+    <mat-label><strong>Pincode</strong></mat-label>
+      <p> {{hosp.pin}}</p>
     <mat-action-row>
       <a mat-button color="primary"
       [routerLink]="['/Admin/HospitalBranch/edit',hosp.id]">Edit</a>

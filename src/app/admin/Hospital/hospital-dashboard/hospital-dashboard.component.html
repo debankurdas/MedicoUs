@@ -36,7 +36,8 @@
     </div>
     <!-- Heading -->
     <app-branch (addBranch)= "branch($event)" *ngIf="idForBed != 2" ></app-branch>
-    <app-chart [bedList]="ultimateResult" [id2]= "idForBed"></app-chart>
+    <app-chart [bedList]="ultimateResult" [id2]= "idForBed" [hospitalAddress]="hospitalAddress"
+    [state] = "state" [city]="city" [pin]="pin"></app-chart>
 
   </div>
 </main>

@@ -1,4 +1,4 @@
-<h3>Click the display button to see the chart and For other branches You have to refresh the page</h3>
+<h3 *ngIf="id2 == 2">Click the display button to see the chart and For other branches You have to refresh the page</h3>
 <button class="btn btn-primary" (click)="display()" *ngIf="id2 == 2" >Display</button>
 <br><br>
 <hr>
@@ -93,4 +93,33 @@
 
     </div>
     <!--Grid row-->
+    <div class="row wow fadeIn" *ngIf="id === 1">
+
+      <!--Grid column-->
+      <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+          <!-- Card header -->
+          <div class="card-header">Google map</div>
+
+          <!--Card content-->
+          <div class="card-body">
+            <!--Google map-->
+            <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 500px">
+              <iframe [src]="address" frameborder="0"
+                style="border:0" allowfullscreen></iframe>
+            </div>
+
+            <!--Google Maps-->
+
+          </div>
+
+        </div>
+        <!--/.Card-->
+
+      </div>
+      <!--Grid column-->
+    </div>
 

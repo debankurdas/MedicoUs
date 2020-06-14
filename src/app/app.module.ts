@@ -120,7 +120,7 @@ import { ChartComponent } from './admin/Hospital/hospital-dashboard/chart/chart.
     HospitalDashboardComponent,
     BloodBankDashboardComponent,
     BranchComponent,
-    ChartComponent
+    ChartComponent,
   ],
   imports: [
     BrowserModule,

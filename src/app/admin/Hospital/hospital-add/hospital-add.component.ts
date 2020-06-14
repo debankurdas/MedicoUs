@@ -135,7 +135,7 @@ countryList: Array<any> = [
    'Nainital', 'Pauri Garhwal', 'Pithoragarh', 'Rudraprayag', 'Tehri Garhwal', 'Udham Singh Nagar', 'Uttarkashi'] },
   { name: 'West Bengal', cities: ['Alipurduar', 'Bankura', 'Birbhum', 'Cooch Behar', 'Dakshin Dinajpur',
   'Darjeeling', 'Hooghly', 'Howrah', 'Jalpaiguri', 'Jhargram', 'Kalimpong', 'Kolkata', 'Malda', 'Murshidabad',
-   'Nadia','North 24 Parganas', 'Paschim Bardhaman', 'Paschim Medinipur', 'Purba Bardhaman', 'Purba Medinipur', 'Purulia',
+   'Nadia', 'North 24 Parganas', 'Paschim Bardhaman', 'Paschim Medinipur', 'Purba Bardhaman', 'Purba Medinipur', 'Purulia',
     'South 24 Parganas', 'Uttar Dinajpur'] },
   { name: 'Andaman and Nicobar Islands', cities: ['Nicobar', 'North and Middle Andaman', 'South Andaman'] }
 ];
@@ -173,7 +173,7 @@ cities: Array<any>;
            status: hospitalData.status,
            state: hospitalData.state,
            city: hospitalData.city,
-           branchArea:hospitalData.branchArea,
+           branchArea: hospitalData.branchArea,
            address: hospitalData.address,
            pin: hospitalData.pin,
          };
@@ -186,9 +186,9 @@ cities: Array<any>;
           status: this.hospitalDetails.status,
           state: this.hospitalDetails.state,
           city: this.hospitalDetails.city,
-          branchArea:this.hospitalDetails.branchArea,
+          branchArea: this.hospitalDetails.branchArea,
           address: this.hospitalDetails.address,
-          pin:this.hospitalDetails.pin
+          pin: this.hospitalDetails.pin
         });
        });
      } else {
