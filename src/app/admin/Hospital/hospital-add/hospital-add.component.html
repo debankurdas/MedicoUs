@@ -2,73 +2,62 @@
 <mat-card>
     <!-- <mat-spinner [diameter]="50"
   *ngIf="isLoading"></mat-spinner> -->
-  <form
-  [formGroup]="form" (submit)="SaveHospitalDetails()"
-  >
-  <mat-form-field class="formControl">
-    <mat-label>Hospital Name</mat-label>
-    <input  matInput placeholder="Hospital Name" formControlName="hospitalName" required>
-  </mat-form-field>
-  <mat-form-field class="formControl">
-    <mat-label>Branch Name</mat-label>
-    <input  matInput placeholder="Branch Name" formControlName="branchName" required>
-  </mat-form-field>
-  <mat-form-field class="formControl">
-    <mat-label>Speciality</mat-label>
-    <input  matInput placeholder="Speciality" formControlName="speciality" required>
-  </mat-form-field>
-    <div>
-      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
-      <input type="file"
-      #filePicker (change)="filegetter($event)">
-    </div>
-    <div class="image-preview"
-    *ngIf="imagePreview !=='' && imagePreview">
-      <img [src]="imagePreview" [alt]="form.value.hospitalName">
-    </div>
-    <mat-form-field class="formControl">
-      <mat-label>Status</mat-label>
-      <mat-select formControlName="status" placeholder="Status" required>
-        <mat-option value='active'>Active</mat-option>
-        <mat-option value='deactive'>Deactive</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea
-      matInput name="" id="" rows="6"
-      formControlName="description"
-       placeholder="Description"></textarea>
-      <mat-error
-      *ngIf="form.get('description').invalid">Please enter the Description</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>State</mat-label>
-      <div>
-        <mat-select placeholder="State"
-         formControlName="state" required>
-          <mat-option *ngFor ="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)" >{{count.name}} </mat-option>
-        </mat-select>
-      </div>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>City</mat-label>
-      <div>
-        <mat-select placeholder="Anycity" formControlName="city">
-          <mat-option *ngFor ="let city of cities" value={{city}} >{{city}}</mat-option>
-        </mat-select>
-      </div>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea
-      matInput name="" id="" rows="3"
-      formControlName="address"
-       placeholder="address"></textarea>
-      <mat-error
-      *ngIf="form.get('address').invalid">Please enter the address</mat-error>
-    </mat-form-field>
-    <button color="primary" mat-raised-button type="submit"
-    [disabled]='!form.valid'>Submit</button>
-  </form>
+    <form [formGroup]="form" (submit)="SaveHospitalDetails()">
+        <mat-form-field class="formControl">
+            <mat-label>Hospital Name</mat-label>
+            <input matInput placeholder="Hospital Name" formControlName="hospitalName" required>
+        </mat-form-field>
+        <mat-form-field class="formControl">
+            <mat-label>Branch Name</mat-label>
+            <input matInput placeholder="Branch Name" formControlName="branchName" required>
+        </mat-form-field>
+        <mat-form-field class="formControl">
+            <mat-label>Speciality</mat-label>
+            <input matInput placeholder="Speciality" formControlName="speciality" required>
+        </mat-form-field>
+        <div>
+            <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+            <input type="file" #filePicker (change)="filegetter($event)">
+        </div>
+        <div class="image-preview" *ngIf="imagePreview !=='' && imagePreview">
+            <img [src]="imagePreview" [alt]="form.value.hospitalName">
+        </div>
+        <mat-form-field class="formControl">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status" placeholder="Status" required>
+                <mat-option value='active'>Active</mat-option>
+                <mat-option value='deactive'>Deactive</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea matInput name="" id="" rows="6" formControlName="description" placeholder="Description"></textarea>
+            <mat-error *ngIf="form.get('description').invalid">Please enter the Description</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>State</mat-label>
+            <div>
+                <mat-select placeholder="State" formControlName="state" required>
+                    <mat-option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
+                </mat-select>
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>City</mat-label>
+            <div>
+                <mat-select placeholder="Anycity" formControlName="city">
+                    <mat-option *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
+                </mat-select>
+            </div>
+        </mat-form-field>
+
+
+
+        <mat-form-field>
+            <textarea matInput name="" id="" rows="3" formControlName="address" placeholder="address"></textarea>
+            <mat-error *ngIf="form.get('address').invalid">Please enter the address</mat-error>
+        </mat-form-field>
+        <button color="primary" mat-raised-button type="submit" [disabled]='!form.valid'>Submit</button>
+    </form>
 </mat-card>
 <br>
 <hr>

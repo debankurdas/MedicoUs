@@ -135,9 +135,8 @@ countryList: Array<any> = [
    'Nainital', 'Pauri Garhwal', 'Pithoragarh', 'Rudraprayag', 'Tehri Garhwal', 'Udham Singh Nagar', 'Uttarkashi'] },
   { name: 'West Bengal', cities: ['Alipurduar', 'Bankura', 'Birbhum', 'Cooch Behar', 'Dakshin Dinajpur',
   'Darjeeling', 'Hooghly', 'Howrah', 'Jalpaiguri', 'Jhargram', 'Kalimpong', 'Kolkata', 'Malda', 'Murshidabad',
-   'Nadia,North 24', 'Paschim Bardhaman', 'Paschim Medinipur', 'Purba Bardhaman', 'Purba Medinipur', 'Purulia',
+   'Nadia','North 24 Parganas', 'Paschim Bardhaman', 'Paschim Medinipur', 'Purba Bardhaman', 'Purba Medinipur', 'Purulia',
     'South 24 Parganas', 'Uttar Dinajpur'] },
-
   { name: 'Andaman and Nicobar Islands', cities: ['Nicobar', 'North and Middle Andaman', 'South Andaman'] }
 ];
 cities: Array<any>;
