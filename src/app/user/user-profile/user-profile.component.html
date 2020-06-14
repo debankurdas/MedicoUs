@@ -77,7 +77,8 @@
             <span class="name">Medico</span><br>
         </div>
         <figure class="profile-image">
-            <img src="../../../assets/user_profile/images/profile.jpg" alt="profile">
+            <img src="../../../assets/user_profile/images/Male.jpeg" alt="profile" *ngIf="gender === 'Male'" style="height: 90%; width: 90%;">
+            <img src="../../../assets/user_profile/images/Female.jpeg" alt="profile" *ngIf="gender === 'Female'" style="height: 90%; width: 90%;">
         </figure>
         <ul class="profile-information">
             <li></li>
