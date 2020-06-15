@@ -6,5 +6,6 @@ bloodGroupRouter.post('/bloodGroupAddition', bloodGroupController.addbloodGroup)
 bloodGroupRouter.put(('/:id'),bloodGroupController.updatebloodGroupDetails);
 bloodGroupRouter.get('/:id', bloodGroupController.getbloodGroupById);
 bloodGroupRouter.get('/', bloodGroupController.getbloodGroup);
+bloodGroupRouter.post('/getData', bloodGroupController.getDataFilterBybloodBankId);
 bloodGroupRouter.delete('/:id', bloodGroupController.deletebloodGroup);
 module.exports = bloodGroupRouter

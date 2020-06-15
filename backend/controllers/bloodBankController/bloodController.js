@@ -9,7 +9,11 @@ exports.addBloodBank = (req, res, next) => {
      imageUrl: url+'/images/'+ req.file.filename,
      status: req.body.status,
      description: req.body.description,
-     address: req.body.address
+     state: req.body.state,
+     city: req.body.city,
+     branchArea: req.body.branchArea,
+     address: req.body.address,
+     pin: req.body.pin
    });
    bloodBank.save()
    .then((requestedData) => {
@@ -99,8 +103,13 @@ exports.updatebloodBankDetails = (req, res,next) => {
     bloodBankName: req.body.bloodBankName,
     adminId: req.body.adminId,
     description: req.body.description,
+    state: req.body.state,
+    city: req.body.city,
+    branchArea: req.body.branchArea,
     imageUrl: imageUrl,
-    status: req.body.status
+    status: req.body.status,
+    address: req.body.address,
+    pin: req.body.pin
   })
   console.log(bloodBank);
   console.log(req.params.id);
@@ -147,4 +156,22 @@ exports.updatebloodBankDetails = (req, res,next) => {
       message: 'Post can not be deleted!'
     });
   });
+}
+
+exports.getDataFilterBybranchArea = (req, res, next) => {
+  branchArea = req.body.branchArea;
+  bloodBankSchema.find({ branchArea: branchArea })
+      .then((result) => {
+          res.status(200).json({
+              data: result,
+              status: 'Success'
+          })
+      })
+      .catch((error) => {
+          res.status(400).json({
+              message: 'Please try again after some time',
+              error: error,
+              status: 'Failed'
+          })
+      })
 }

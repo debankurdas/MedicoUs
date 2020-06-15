@@ -35,12 +35,37 @@
       *ngIf="form.get('description').invalid">Please enter the Description</mat-error>
     </mat-form-field>
     <mat-form-field>
+      <mat-label>State</mat-label>
+      <div>
+          <mat-select placeholder="State" formControlName="state" required>
+              <mat-option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
+          </mat-select>
+      </div>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>City</mat-label>
+      <div>
+          <mat-select placeholder="Anycity" formControlName="city">
+              <mat-option *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
+          </mat-select>
+      </div>
+    </mat-form-field>
+    <mat-form-field class="formControl">
+      <mat-label>Branch Area</mat-label>
+      <input matInput placeholder="Branch Area" formControlName="branchArea" required>
+    </mat-form-field>
+    <mat-form-field>
       <textarea
       matInput name="" id="" rows="3"
       formControlName="address"
        placeholder="address"></textarea>
       <mat-error
       *ngIf="form.get('address').invalid">Please enter the address</mat-error>
+    </mat-form-field>
+    <mat-form-field class="formControl">
+      <mat-label>Pin Code</mat-label>
+      <input matInput placeholder="Pin Code" pattern="[1-9][0-9]{5}" formControlName="pin" required>
+      <mat-error *ngIf="form.get('pin').invalid" >Please enter a valid pincode</mat-error>
     </mat-form-field>
     <button color="primary" mat-raised-button type="submit"
     [disabled]='!form.valid'>Submit</button>

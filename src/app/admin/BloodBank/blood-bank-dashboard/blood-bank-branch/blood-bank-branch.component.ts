@@ -1,24 +1,25 @@
+import { BloodBankService } from './../../services/blood-bank.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HospitalService } from '../../services/hospital.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-branch',
-  templateUrl: './branch.component.html',
-  styleUrls: ['./branch.component.css']
+  selector: 'app-blood-bank-branch',
+  templateUrl: './blood-bank-branch.component.html',
+  styleUrls: ['./blood-bank-branch.component.css']
 })
-export class BranchComponent implements OnInit {
+export class BloodBankBranchComponent implements OnInit {
+
   form: FormGroup;
-  hospital = [];
+  BloodBank = [];
   @Output() addBranch = new EventEmitter<any>();
-  constructor(private adminHospitalService: HospitalService, private fb: FormBuilder) { }
+  constructor(private adminBloodBankService: BloodBankService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.adminHospitalService.getBranch()
+    this.adminBloodBankService.getbloodBankbranch()
     .subscribe((result) => {
       console.log(result.data);
-      this.hospital.push(result.data);
-      console.log(this.hospital);
+      this.BloodBank.push(result.data);
+      console.log(this.BloodBank);
     });
     this.form = this.fb.group({
       branchName: new FormControl('', Validators.required),

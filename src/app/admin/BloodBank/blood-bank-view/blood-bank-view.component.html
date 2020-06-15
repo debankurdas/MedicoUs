@@ -3,7 +3,7 @@
   <mat-expansion-panel *ngFor="let blood of bloodBank">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{blood.bloodBankName}}
+        {{blood.bloodBankName}}({{blood.branchArea}})
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="post-images">
@@ -11,8 +11,12 @@
     </div>
     <mat-label><strong>Description:</strong></mat-label>
       <p> {{blood.description}}</p>
+    <mat-label><strong>BranchArea</strong></mat-label>
+      <p> {{blood.branchArea}}</p>
     <mat-label><strong>Address:</strong></mat-label>
       <p>{{blood.address}}</p>
+    <mat-label><strong>PinCode</strong></mat-label>
+      <p> {{blood.pin}}</p>
     <mat-action-row>
       <a mat-button color="primary"
       [routerLink]="['/Admin/BloodBank/edit',blood.id]">Edit</a>

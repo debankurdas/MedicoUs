@@ -1,0 +1,10 @@
+<h3>Search the branch to see the chart</h3>
+<form [formGroup]="form" (submit)="branch()">
+    <mat-form-field class="example-full-width">
+        <mat-select formControlName="branchName" placeholder="BranchName" required>
+            <mat-option *ngFor="let bloo of BloodBank[0]" [value]="bloo.branchArea" required>{{bloo.branchArea}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Search</button>
+
+</form>

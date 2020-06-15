@@ -29,7 +29,11 @@ export interface BloodBank {
   imageUrl: File | string;
   status: string;
   description: string;
+  state: string;
+  city: string;
+  branchArea: string;
   address: string;
+  pin: string;
 }
 
 export interface Bed {
@@ -61,7 +65,11 @@ export interface BloodGroup {
   date: Date;
 
 }
-
+export interface BloodModify {
+  quantity: number;
+  existingBloodQuantity: number;
+  bloodGroup: string;
+}
 export interface USER {
   _id: string;
   firstname: string;

@@ -29,6 +29,9 @@ export class BloodBankService {
              description: bloodBank.description,
              imageUrl: bloodBank.imageUrl,
              status: bloodBank.status,
+             state: bloodBank.state,
+             city: bloodBank.city,
+             branchArea: bloodBank.branchArea,
              address: bloodBank.address
            };
          }),
@@ -45,14 +48,18 @@ export class BloodBankService {
     return this.bloodBankUpdated.asObservable();
   }
 
-  addbloodBankDetails(bloodBankName: string, imageUrl: File | string, status: string, description: string,
-                      address: string) {
+  addbloodBankDetails(bloodBankName: string, imageUrl: File | string, status: string, state: string,
+                      city: string, branchArea: string, description: string, address: string, pin: string) {
     const formData = new FormData();
     formData.append('image', imageUrl);
     formData.append('bloodBankName', bloodBankName);
     formData.append('status', status);
     formData.append('description', description);
+    formData.append('state', state);
+    formData.append('city', city);
+    formData.append('branchArea', branchArea);
     formData.append('address', address);
+    formData.append('pin', pin);
     this.http.post<{status: string, bloodBank: BloodBank}>(environment.apiUrl + '/bloodBank/addBloodBank', formData)
     .subscribe(() => {
       this.router.navigate(['Admin/BloodBankView']);
@@ -61,11 +68,13 @@ export class BloodBankService {
   getbloodBankById(id: string) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<{_id: string, bloodBankName: string, adminId: string, imageUrl: File | string,
-      status: string, description: string, address: string}>(
+      status: string, description: string, state: string, city: string, branchArea: string,
+      address: string, pin: string}>(
      environment.apiUrl + '/bloodBank/' + id);
   }
   updatebloodBankData(id: string, bloodBankName: string, adminId: string, imageUrl: File | string,
-                      status: string, description: string, address: string) {
+                      status: string, state: string, city: string, branchArea: string,
+                      description: string, address: string, pin: string) {
      let bloodBankData: BloodBank | FormData;
      console.log(typeof imageUrl);
      if (typeof imageUrl === 'object') {
@@ -75,8 +84,12 @@ export class BloodBankService {
        bloodBankData.append('adminId', adminId);
        bloodBankData.append('image', imageUrl, bloodBankName);
        bloodBankData.append('description', description);
+       bloodBankData.append('state', state);
+       bloodBankData.append('city', city);
+       bloodBankData.append('branchArea', branchArea);
        bloodBankData.append('status', status);
        bloodBankData.append('address', address);
+       bloodBankData.append('pin', pin);
      } else {
        bloodBankData = {
          id,
@@ -85,7 +98,11 @@ export class BloodBankService {
          description,
          status,
          imageUrl,
-         address
+         state,
+         city,
+         branchArea,
+         address,
+         pin
        };
      }
      this.http.put<{message: string}>(environment.apiUrl + '/bloodBank/' + id, bloodBankData)
@@ -98,7 +115,14 @@ export class BloodBankService {
     return this.http.delete(environment.apiUrl + '/bloodBank/' + bloodBankId);
    }
 
-   getbloodBankNameFromAdmin() {
-    return this.http.get<{data: any}>(environment.apiUrl + '/users');
+   getbloodBankbranch() {
+    return this.http.get<{data: any}>(environment.apiUrl + '/bloodBank');
    }
+
+   getDataBranch(branch: string) {
+    const  branches = {
+       branchArea: branch
+      };
+    return this.http.post<{data: any}>(environment.apiUrl + '/bloodBank/getData', branches);
+    }
 }

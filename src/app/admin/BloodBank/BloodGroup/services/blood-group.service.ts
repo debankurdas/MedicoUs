@@ -1,3 +1,4 @@
+import { BloodBank, BloodModify } from './../../../model/model';
 import { Injectable } from '@angular/core';
 import { BloodGroup } from 'src/app/admin/model/model';
 import { Subject } from 'rxjs';
@@ -13,7 +14,9 @@ import { map } from 'rxjs/operators';
 })
 export class BloodGroupService {
   private bloodGroup: BloodGroup[] = [];
+  private bloodGroupModify: BloodModify[] = [];
   private bloodGroupUpdated = new Subject<{bloodGroup: BloodGroup[], bloodGroupCount: number}>();
+  private bloodDetailsModify = new Subject<{blooGroupModify: BloodModify[]}>();
   constructor(private http: HttpClient, private route: Router, private snackBar: MatSnackBar) { }
 
   getbloodGroup(currentPage: number, pageSize: number, bloodBankId: string) {
@@ -91,5 +94,30 @@ export class BloodGroupService {
     deletebloodGroup(bloodGroupId: string) {
       return this.http.delete(environment.apiUrl + '/bloodGroup/' + bloodGroupId);
      }
+
+     getBloodGroupDatabyBloodBankId(bloodBankId: string) {
+      const bloodId = {
+         bloodBankId
+       };
+      this.http.post<{data: any}>(environment.apiUrl + '/bloodGroup/getData', bloodId)
+      .pipe(map((bloodData) => {
+        return {
+          bloodGroup: bloodData.data.map((bloodGroup) => {
+          return {
+            quantity: bloodGroup.quantity,
+            existingBloodQuantity: bloodGroup.existingBloodQuantity,
+            bloodGroup: bloodGroup.bloodGroup,
+          };
+        })
+      };
+     }))
+     .subscribe((transformbloodData) => {
+       this.bloodGroupModify = transformbloodData.bloodGroup;
+       this.bloodDetailsModify.next({ blooGroupModify: [...this.bloodGroupModify]});
+     });
+     }
+     getBloodModifyListner() {
+      return this.bloodDetailsModify.asObservable();
+    }
 
 }
