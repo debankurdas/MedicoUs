@@ -54,8 +54,8 @@ const ProductSchema = new mongoose.Schema({
 
 const AddressSchema = new mongoose.Schema({
     userName: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     addressLine1: {
         type: String,
@@ -63,6 +63,10 @@ const AddressSchema = new mongoose.Schema({
     },
     addressLine2: {
         type: String
+    },
+    state: {
+        type: String,
+        required: true
     },
     city: {
         type: String,
@@ -84,14 +88,18 @@ const CouriesSchema = new mongoose.Schema({
 })
 
 let OrderSchema = new mongoose.Schema({
-  uId: {
-    type: ObjectId,
-    required: true
-},
-emailAddress:{
-  type: String,
-  required: true
-},
+    uId: {
+        type: ObjectId,
+        required: true
+    },
+    emailAddress: {
+        type: String,
+        required: true
+    },
+    mobile: {
+        type: Number,
+        required: true
+    },
     shippingAddress: AddressSchema,
     products: [ProductSchema],
     paymentInfo: PaymentSchema,
@@ -112,9 +120,9 @@ emailAddress:{
     deliveryOn: {
         type: Date
     },
-    deliveryStatus : {
-      type : String,
-      default: 'Your order will be delivered within 2 days'
+    deliveryStatus: {
+        type: String,
+        default: 'Your order will be delivered within 2 days'
     }
 });
 

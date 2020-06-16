@@ -3,55 +3,55 @@
 <br>
 <br>
 <div class="container">
-  <!--Section: Products v.3-->
-  <section class="text-center mb-4">
+    <!--Section: Products v.3-->
+    <section class="text-center mb-4">
 
-    <!--Grid row-->
-    <div class="row wow fadeIn" >
+        <!--Grid row-->
+        <div class="row wow fadeIn">
 
-      <!--Grid column-->
-      <div class="col-lg-3 col-md-6 mb-4" *ngFor="let product of productLists;">
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4" *ngFor="let product of productLists;">
 
-        <!--Card-->
-        <div class="card">
+                <!--Card-->
+                <div class="card">
 
-          <!--Card image-->
-          <div class="view overlay">
-            <img [routerLink]="[product._id]" [src]="product.imageUrl" [alt]="product.productName" class="card-img-top">
-          </div>
-          <!--Card image-->
+                    <!--Card image-->
+                    <div class="view overlay">
+                        <img [routerLink]="[product._id]" [src]="product.imageUrl" [alt]="product.productName" class="card-img-top">
+                    </div>
+                    <!--Card image-->
 
-          <!--Card content-->
-          <div class="card-body text-center">
-            <!--Category & Title-->
-            <a href="" class="grey-text">
-              <h5>{{categoryName}}</h5>
-            </a>
-            <h5>
-              <strong>
+                    <!--Card content-->
+                    <div class="card-body text-center">
+                        <!--Category & Title-->
+                        <a class="grey-text">
+                            <h5>{{categoryName}}</h5>
+                        </a>
+                        <h5>
+                            <strong>
                 <a [routerLink]="[product._id]"s class="dark-grey-text">{{product.productName}}
                   <!-- <span class="badge badge-pill danger-color">NEW</span> -->
                 </a>
               </strong>
-            </h5>
+                        </h5>
 
-            <h4 class="font-weight-bold blue-text">
-              <strong> {{product.price | currency : 'INR'}}</strong>
-            </h4>
+                        <h4 class="font-weight-bold blue-text">
+                            <strong> {{product.price | currency : 'INR'}}</strong>
+                        </h4>
 
-          </div>
-          <!--Card content-->
+                    </div>
+                    <!--Card content-->
 
+                </div>
+                <!--Card-->
+
+            </div>
+            <!--Grid column-->
         </div>
-        <!--Card-->
-
-      </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
+        <!--Grid row-->
 
 
 
-  </section>
-  <!--Section: Products v.3-->
+    </section>
+    <!--Section: Products v.3-->
 </div>

@@ -20,6 +20,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
   cartIdArray = [];
   total: number;
   email: any;
+  mobile: any;
   userDataObserver: Subscription;
   shippingAddress: FormGroup;
   // displayedColumns: string[] = ['imageUrl', 'productName', 'quantity', 'price', 'total'];
@@ -40,6 +41,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
       addressLine2: [''],
       city: ['', Validators.required],
       pin: ['', Validators.required],
+      //add city
     });
     this.cartService.getProductForCheckOut().subscribe((productList) => {
       this.products = productList;
@@ -54,6 +56,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
       this.UserDatas = userDatas.user;
       console.log(this.UserDatas);
       this.email = this.UserDatas[4];
+      this.mobile = this.UserDatas[3];
     });
     this.cartService.getcartIdForCheckOut().subscribe((cartId) => {
       this.cartIdArray = cartId;
@@ -102,6 +105,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
       shippingAddress: this.shippingAddress.getRawValue(),
       paymentInfo: paymentData,
       emailAddress: this.email,
+      mobile: this.mobile,
       total: this.total
     };
     this.cartIdArray.forEach((cart: any) => {
