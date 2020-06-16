@@ -71,20 +71,26 @@
                             <!--Grid column-->
                             <div class="col-lg-4 col-md-6 mb-4">
 
-                                <label for="state">State</label>
-                                <select class="custom-select d-block w-100" id="state" formControlName="state" required>
-                    <option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </option>
-                     
-                  </select>
+                                <mat-form-field>
+                                    <mat-label>State</mat-label>
+                                    <div>
+                                        <mat-select placeholder="State" formControlName="state" required>
+                                            <mat-option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </mat-form-field>
 
                             </div>
                             <div class="col-lg-4 col-md-6 mb-4">
 
-                                <label for="city">City</label>
-                                <select class="custom-select d-block w-100" id="city" formControlName="city" required>
-                      <option *ngFor="let city of cities" value={{city}}>{{city}}/option>
-                       
-                    </select>
+                                <mat-form-field>
+                                    <mat-label>City</mat-label>
+                                    <div>
+                                        <mat-select placeholder="Anycity" formControlName="city">
+                                            <mat-option *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
+                                        </mat-select>
+                                    </div>
+                                </mat-form-field>
 
                             </div>
                             <!--Grid column-->
