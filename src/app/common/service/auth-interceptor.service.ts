@@ -21,7 +21,7 @@ export class AuthInterceptorService implements HttpInterceptor {
       return event;
     }), catchError((error: HttpErrorResponse) => {
       if (error.status === 401) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/index']);
       }
       return throwError(error);
     })
