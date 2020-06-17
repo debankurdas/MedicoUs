@@ -17,6 +17,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
   products = [];
   id = 1;
+  idForProduct: number;
   cartIdArray = [];
   total: number;
   email: any;
@@ -161,8 +162,10 @@ cities: Array<any>;
       //add city
     });
     this.cartService.getProductForCheckOut().subscribe((productList) => {
-      this.products = productList;
-      console.log(this.products);
+      if ( productList.length > 0) {
+        this.idForProduct = 12;
+        this.products = productList;
+      }
       this.total = productList.map(p => p.quantity * p.price).reduce((total: any, price: any) =>
         total + price, 0
       );
@@ -181,38 +184,7 @@ cities: Array<any>;
     this.getCartList();
     // this.initConfig();
   }
-  // private initConfig(): void {
-  //   this.payPalConfig = new PayPalConfig(PayPalIntegrationType.ClientSideREST, PayPalEnvironment.Sandbox, {
-  //     commit: true,
-  //     client: {
-  //       sandbox: 'AVDkkPvR8kNeED_YTyTVFofaoJT_zBn9YPjiMnzT-ZrxvCb1Crew1Ooo3bInv0o76n-sp1B4Ri_OnWRI'
-  //     },
-  //     button: {
-  //       label: 'paypal',
-  //     },
-  //     onPaymentComplete: (paymentInfo, actions) => {
-  //       console.log('OnPaymentComplete');
-  //       console.log(paymentInfo);
-  //       console.log(actions);
-  //       this.placeOrder(paymentInfo);
-  //     },
-  //     onCancel: (data, actions) => {
-  //       console.log('OnCancel');
-  //     },
-  //     onError: (err) => {
-  //       console.log('OnError');
-  //       console.log(err);
-  //     },
-  //     transactions: [{
-  //       amount: {
-  //         currency: 'INR',
-  //         total: this.total
-  //       }
-  //     }]
-  //   });
-  // }
-  // paymentData: any
-  changeCountry($event,count) {
+  changeCountry($event, count: any) {
     console.log(count.name);
     this.cities = this.countryList.find(con => con.name === count.name).cities;
   }
@@ -240,6 +212,10 @@ cities: Array<any>;
     });
   }
 
+  placeOrderwithCard() {
+    console.log('hi');
+  }
+
   getCartList() {
     this.cartService.getcartList()
     .subscribe((result) => {
@@ -250,7 +226,7 @@ cities: Array<any>;
     });
   }
 
-  idChangeforCredit() {
+  idChangeforPay() {
   this.id = 1;
   }
   idChange() {

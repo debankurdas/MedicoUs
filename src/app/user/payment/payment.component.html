@@ -37,11 +37,7 @@
                         </div>
                         <!--Grid row-->
 
-                        <!--email-->
-                        <!-- <div class="md-form mb-5">
-                <input type="text" id="email" class="form-control" placeholder="youremail@example.com">
-                <label for="email" class="">Email (optional)</label>
-              </div> -->
+
 
                         <!--address-->
                         <div class="md-form mb-5">
@@ -102,60 +98,18 @@
 
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
-                                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" (click)="idChangeforCredit()" checked required value="credit">
-                                <label class="custom-control-label" for="credit">Credit card</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" (click)="idChangeforCredit()" required value="debit">
-                                <label class="custom-control-label" for="debit">Debit card</label>
-                            </div>
-                            <div class="custom-control custom-radio">
-                                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" (click)="idChange()" required value="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
+                                <input id="Pay" name="paymentMethod" type="radio" class="custom-control-input" (click)="idChangeforPay()" checked required value="Pay">
+                                <label class="custom-control-label" for="Pay">Pay with card</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input id="cash" name="paymentMethod" type="radio" class="custom-control-input" (click)="idChange()" required value="cash">
                                 <label class="custom-control-label" for="cash">Cash</label>
                             </div>
                         </div>
-                        <div class="hello" *ngIf="id === 1">
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="cc-name">Name on card</label>
-                                    <input type="text" class="form-control" id="cc-name" placeholder="" required="true">
-                                    <small class="text-muted">Full name as displayed on card</small>
-                                    <div class="invalid-feedback">
-                                        Name on card is required
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="cc-number"> Card number</label>
-                                    <input type="text" class="form-control" id="cc-number" placeholder="" required="true">
-                                    <div class="invalid-feedback">
-                                        Credit card number is required
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-3 mb-3">
-                                    <label for="cc-expiration">Expiration</label>
-                                    <input type="text" class="form-control" id="cc-expiration" placeholder="" required="true">
-                                    <div class="invalid-feedback">
-                                        Expiration date required
-                                    </div>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="cc-expiration">CVV</label>
-                                    <input type="text" class="form-control" id="cc-cvv" placeholder="" required="true">
-                                    <div class="invalid-feedback">
-                                        Security code required
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <hr class="mb-4">
                         <button class="btn btn-danger btn-lg btn-block" routerLink="/user/product">Back</button>
-                        <button class="btn btn-primary btn-lg btn-block" *ngIf="shippingAddress.valid" type="submit" (click)="placeOrder()">Continue to checkout</button>
+                        <button class="btn btn-primary btn-lg btn-block" *ngIf="shippingAddress.valid && id === 1 && idForProduct === 12" type="submit" (click)="placeOrderwithCard()">Continue to checkout</button>
+                        <button class="btn btn-primary btn-lg btn-block" *ngIf="shippingAddress.valid && id === 0 && idForProduct === 12" type="submit" (click)="placeOrder()">Continue to checkout</button>
 
                     </form>
 
