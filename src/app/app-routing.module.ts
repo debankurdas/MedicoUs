@@ -37,6 +37,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from './user/product/product.component';
 import { ProductDetailsComponent } from './user/product/product-details/product-details.component';
+import { StrideComponent } from './user/payment/stride/stride.component';
 
 
 const routes: Routes = [
@@ -78,6 +79,7 @@ const routes: Routes = [
   { path: 'user/cartList', component: CartListComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/orders', component: OrderComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/orderDetails', component: OrderDetailsComponent},
+  {path: 'user/payWithCard', component: StrideComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/payment', component: PaymentComponent, canActivate: [AuthGuard, UserGuard] },
   {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];

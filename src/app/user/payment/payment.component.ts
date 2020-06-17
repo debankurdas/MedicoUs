@@ -8,6 +8,7 @@ import {PayPalConfig, PayPalIntegrationType, PayPalEnvironment, } from 'ngx-payp
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { USER } from 'src/app/admin/model/model';
+import { PaymentService } from './service/payment-service.service';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -32,7 +33,8 @@ export class PaymentComponent implements OnInit, OnDestroy {
               private orderService: UserOrderService,
               private fb: FormBuilder,
               private router: Router,
-              private profileService: UserProfileService) { }
+              private profileService: UserProfileService,
+              private paymentService: PaymentService) { }
 
 //start
 countryList: Array<any> = [
@@ -190,6 +192,29 @@ cities: Array<any>;
   }
   placeOrder() {
 
+    const paymentDatas = {
+      paymentToken: 'done'
+    };
+    const orders = {
+      products: this.products,
+      shippingAddress: this.shippingAddress.getRawValue(),
+      paymentInfo: paymentDatas,
+      emailAddress: this.email,
+      mobile: this.mobile,
+      total: this.total
+    };
+    this.cartIdArray.forEach((cart: any) => {
+      this.cartService.deleteProduct(cart)
+      .subscribe((message) => {
+        console.log(message.message);
+      });
+    });
+    this.orderService.placeOrder(orders).subscribe((result) => {
+      this.router.navigate(['/user/orders']);
+    });
+  }
+
+  placeOrderwithCard() {
     const paymentData = {
       paymentToken: 'done'
     };
@@ -207,13 +232,9 @@ cities: Array<any>;
         console.log(message.message);
       });
     });
-    this.orderService.placeOrder(order).subscribe((result) => {
-      this.router.navigate(['/user/orders']);
-    });
-  }
-
-  placeOrderwithCard() {
-    console.log('hi');
+    console.log(order);
+    this.paymentService.addOrder(order);
+    this.router.navigate(['/user/payWithCard']);
   }
 
   getCartList() {

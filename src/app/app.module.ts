@@ -77,6 +77,7 @@ import { BranchComponent } from './admin/Hospital/hospital-dashboard/branch/bran
 import { ChartComponent } from './admin/Hospital/hospital-dashboard/chart/chart.component';
 import { BloodBankBranchComponent } from './admin/BloodBank/blood-bank-dashboard/blood-bank-branch/blood-bank-branch.component';
 import { BloodChartComponent } from './admin/BloodBank/blood-bank-dashboard/chart/chart.component';
+import { StrideComponent } from './user/payment/stride/stride.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -124,7 +125,8 @@ import { BloodChartComponent } from './admin/BloodBank/blood-bank-dashboard/char
     BranchComponent,
     ChartComponent,
     BloodBankBranchComponent,
-    BloodChartComponent
+    BloodChartComponent,
+    StrideComponent
   ],
   imports: [
     BrowserModule,

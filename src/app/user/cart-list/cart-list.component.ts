@@ -22,6 +22,7 @@ export class CartListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
+    console.log("hi");
     console.log(this.id1);
     if (this.id1 === undefined) {
       this.fetchData();

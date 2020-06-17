@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartListService {
-  cartProduct: Cart[] = [];
+  // cartProduct: Cart[] = [];
   products = new BehaviorSubject<any>([]);
   cartIds = new BehaviorSubject<any>([]);
 //  cartcountObserver = new BehaviorSubject<any>([]);
