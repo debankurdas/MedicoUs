@@ -192,13 +192,9 @@ cities: Array<any>;
   }
   placeOrder() {
 
-    const paymentDatas = {
-      paymentToken: 'done'
-    };
     const orders = {
       products: this.products,
       shippingAddress: this.shippingAddress.getRawValue(),
-      paymentInfo: paymentDatas,
       emailAddress: this.email,
       mobile: this.mobile,
       total: this.total
@@ -215,25 +211,22 @@ cities: Array<any>;
   }
 
   placeOrderwithCard() {
-    const paymentData = {
-      paymentToken: 'done'
-    };
+
     const order = {
       products: this.products,
       shippingAddress: this.shippingAddress.getRawValue(),
-      paymentInfo: paymentData,
       emailAddress: this.email,
       mobile: this.mobile,
       total: this.total
     };
-    this.cartIdArray.forEach((cart: any) => {
-      this.cartService.deleteProduct(cart)
-      .subscribe((message) => {
-        console.log(message.message);
-      });
-    });
+    // this.cartIdArray.forEach((cart: any) => {
+    //   this.cartService.deleteProduct(cart)
+    //   .subscribe((message) => {
+    //     console.log(message.message);
+    //   });
+    // });
     console.log(order);
-    this.paymentService.addOrder(order);
+    this.paymentService.addOrder(order, this.cartIdArray);
     this.router.navigate(['/user/payWithCard']);
   }
 

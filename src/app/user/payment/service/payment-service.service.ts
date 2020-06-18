@@ -6,13 +6,18 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class PaymentService {
   orders = new BehaviorSubject<any>([]);
+  cartIdArray = new BehaviorSubject<any>([]);
   constructor() { }
 
-  addOrder(order: any) {
+  addOrder(order: any, cartIdarray: any) {
     this.orders.next(order);
+    this.cartIdArray.next(cartIdarray);
   }
 
   getOrder() {
     return this.orders.asObservable();
+  }
+  getCartId() {
+    return this.cartIdArray.asObservable();
   }
 }

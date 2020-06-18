@@ -17,6 +17,7 @@ import { LoginComponent } from './common/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { NgxStripeModule } from 'ngx-stripe';
 import {
   MatFormFieldModule,
   MatInputModule,
@@ -160,7 +161,8 @@ import { StrideComponent } from './user/payment/stride/stride.component';
     HttpClientModule,
     RouterModule,
     NgxPayPalModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    NgxStripeModule.forRoot('pk_test_jTsalbzdqlt6fKmlCGHhSM0z')
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},

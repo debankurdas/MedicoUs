@@ -25,6 +25,17 @@ mongoose.connect(
     .catch(() => {
         console.log("Connection error");
     })
+var cors = require('cors');
+var originsWhitelist = [
+    'http://localhost:4200'
+];
+var corsOptions = {
+    origin: function(origin, callback) {
+        var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+    },
+    credentials: true
+}
 app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
@@ -45,6 +56,8 @@ app.use((req, res, next) => {
     );
     next();
 })
+
+app.use(cors(corsOptions));
 
 app.use('/api/users', userRouter);
 app.use('/api/categories', categoryRouter);

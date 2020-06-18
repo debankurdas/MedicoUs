@@ -62,23 +62,19 @@
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
             <mat-form-field class="example-full-width">
-              <mat-label>Email</mat-label>
-              <input type="email" matInput placeholder="Email" name="email" #email = "ngModel"
-              [(ngModel)]="user.email" required>
-              <mat-error
-              *ngIf="email.invalid" >Please enter a valid Email</mat-error>
+                <mat-label>Email</mat-label>
+                <input type="email" matInput placeholder="Email" name="email" #email="ngModel" [(ngModel)]="user.email" required>
+                <mat-error *ngIf="email.invalid">Please enter a valid Email</mat-error>
             </mat-form-field>
 
             <mat-form-field class="example-full-width">
-              <mat-label>Passoword</mat-label>
-              <input type="password" matInput placeholder="Password" name="password" #password ="ngModel"
-              [(ngModel)]="user.password" required>
-              <mat-error
-              *ngIf="password.invalid" >Please enter the Password
-              </mat-error>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="Password" name="password" #password="ngModel" [(ngModel)]="user.password" required>
+                <mat-error *ngIf="password.invalid">Please enter the Password
+                </mat-error>
             </mat-form-field>
             <div class="form-group">
-              <button class="btn btn-pink btn-block waves-effect waves-light" type="submit" [disabled]="!myForm.form.valid">Log In</button>
+                <button class="btn btn-pink btn-block waves-effect waves-light" type="submit" [disabled]="!myForm.form.valid">Log In</button>
             </div><a routerLink='/emailSubmit' class="forgot">Forgot your email or password?</a>
         </form>
     </div>
@@ -94,4 +90,3 @@
 </body>
 
 </html>
-

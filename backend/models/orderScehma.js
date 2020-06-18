@@ -1,33 +1,8 @@
 const mongoose = require('mongoose');
+const { stringify } = require('querystring');
 
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
-const PaymentSchema = new mongoose.Schema({
-    // intent: {
-    //     type: String,
-    //     required: true
-    // },
-    // orderID: {
-    //     type: String,
-    //     required: true
-    // },
-    // payerID: {
-    //     type: String,
-    //     required: true
-    // },
-    // paymentID: {
-    //     type: String,
-    //     required: true
-    // },
-    paymentToken: {
-        type: String,
-        required: true
-    },
-    // returnUrl: {
-    //     type: String,
-    //     required: true
-    // }
-})
 
 const ProductSchema = new mongoose.Schema({
     _id: {
@@ -100,9 +75,15 @@ let OrderSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    userName: {
+        type: String
+    },
+    paymentToken: {
+        type: String,
+        required: true
+    },
     shippingAddress: AddressSchema,
     products: [ProductSchema],
-    paymentInfo: PaymentSchema,
     courierInfo: CouriesSchema,
     total: {
         type: Number,
