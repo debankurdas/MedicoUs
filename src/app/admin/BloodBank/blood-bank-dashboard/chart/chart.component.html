@@ -14,6 +14,52 @@
         <div class="card">
 
             <!--Card content-->
+            <div class="card-body">
+
+                <!-- Table  -->
+                <table class="table table-hover">
+                    <!-- Table head -->
+                    <thead class="blue-grey lighten-4">
+                        <tr>
+                            <th>#</th>
+                            <th>Blood Type</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <!-- Table head -->
+
+                    <!-- Table body -->
+                    <tbody>
+                        <tr *ngFor="let x of modifyBedlist.blooGroupModify; let i=index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{x.bloodGroup}}</td>
+                            <td>{{x.quantity}}</td>
+                        </tr>
+                    </tbody>
+                    <!-- Table body -->
+                </table>
+                <!-- Table  -->
+
+            </div>
+
+        </div>
+        <!--/.Card-->
+
+    </div>
+</div>
+
+
+
+
+<div class="row wow fadeIn" *ngIf="id === 1">
+
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+            <!--Card content-->
             <div class="card-header text-center">
                 BarChart
             </div>
@@ -26,4 +72,65 @@
         <!--/.Card-->
 
     </div>
+    <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+            <!--Card content-->
+            <div class="card-header text-center">
+                PiChart
+            </div>
+            <div class="card-body">
+                <google-chart #chart2 [title]="title1" [type]="type1" [data]="data1" [columnNames]="columnNames1" [options]="options1" [width]="width1" [height]="height1">
+                </google-chart>
+            </div>
+
+        </div>
+        <!--/.Card-->
+
+    </div>
 </div>
+<div class="row wow fadeIn" *ngIf="id === 1">
+    <!--Grid column-->
+    <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+            <!--Card content-->
+            <div class="card-header text-center">
+                DonutChart
+            </div>
+            <div class="card-body">
+                <google-chart #chart4 [title]="title4" [type]="type4" [data]="data4" [columnNames]="columnNames4" [options]="options4" [width]="width4" [height]="height4">
+                </google-chart>
+            </div>
+
+        </div>
+        <!--/.Card-->
+
+    </div>
+    <div class="col-md-6 mb-4">
+
+        <!--Card-->
+        <div class="card">
+
+            <!-- Card header -->
+            <div class="card-header">Google map</div>
+
+            <!--Card content-->
+            <div class="card-body">
+                <!--Google map-->
+                <div id="map-container-google-2" class=" map-container" style="height:250px;width: 250px;">
+                    <iframe [src]="address" frameborder="0" style="border:0; height: 100%; width:250% ;" allowfullscreen></iframe>
+                </div>
+
+                <!--Google Maps-->
+
+            </div>
+
+        </div>
+        <!--/.Card-->
+
+    </div>

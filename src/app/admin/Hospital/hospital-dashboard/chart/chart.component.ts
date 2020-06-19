@@ -37,28 +37,28 @@ id: number;
       arr.push(element.existingBed);
       arr.push(element.quantity - element.existingBed);
       this.myBed.push(arr) ;
-      this.width = 300;
+      this.width = 500;
       this.height = 250;
 
       const arr1: Array<any> = [];
       arr1.push(element.bedType);
       arr1.push(100 * (element.existingBed / element.quantity));
       this.myBedForPiChart.push(arr1);
-      this.width1 = 350;
+      this.width1 = 500;
       this.height1 = 250;
 
       const arr2: Array<any> = [];
       arr2.push(element.bedType);
       arr2.push(element.existingBed);
       this.myBedForColumnChart.push(arr2);
-      this.width3 = 250;
+      this.width3 = 500;
       this.height3 = 250;
 
       const arr3: Array<any> = [];
       arr3.push(element.bedType);
       arr3.push(100 * (element.existingBed / element.quantity));
       this.myBedForDonutChart.push(arr3);
-      this.width4 = 250;
+      this.width4 = 800;
       this.height4 = 250;
 
       this.id = 1;

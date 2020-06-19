@@ -20,7 +20,6 @@ myBedForPiChart = [];
 myBedForDonutChart = [];
 myBedForColumnChart = [];
 id: number;
-
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
@@ -38,9 +37,33 @@ id: number;
     this.myBed.push(arr) ;
     this.width = 500;
     this.height = 250;
+
+    const arr1: Array<any> = [];
+    arr1.push(element.bloodGroup);
+    arr1.push(element.existingBloodQuantity);
+    this.myBedForPiChart.push(arr1);
+    this.width1 = 500;
+    this.height1 = 250;
+
+    const arr3: Array<any> = [];
+    arr3.push(element.bloodGroup);
+    arr3.push(element.existingBloodQuantity);
+    this.myBedForDonutChart.push(arr3);
+    this.width4 = 800;
+    this.height4 = 250;
+
+
     this.id = 1;
     });
+
+
+    this.address = this.sanitizer.bypassSecurityTrustResourceUrl
+    ('https://maps.google.com/maps?q=' + this.hospitalAddress + this.city + this.state + this.pin + '&t=&z=13&ie=UTF8&iwloc=&output=embed');
+    console.log(this.address);
   }
+
+
+
   // tslint:disable-next-line: member-ordering
   title = 'Blood Available';
   // tslint:disable-next-line: member-ordering
@@ -59,6 +82,38 @@ id: number;
   width: number;
   // tslint:disable-next-line: member-ordering
   height: number;
+
+
+
+
+// ----------------------------Pie Chart ------------------
+    // tslint:disable-next-line: member-ordering
+    title1 = 'Blood Details';
+    // tslint:disable-next-line: member-ordering
+    type1 = 'PieChart';
+    // tslint:disable-next-line: member-ordering
+    data1 = this.myBedForPiChart;
+    // tslint:disable-next-line: member-ordering
+    columnNames1 = ['BloodGroup', 'Available'];
+    // tslint:disable-next-line: member-ordering
+    options1 = {
+    };
+    // tslint:disable-next-line: member-ordering
+    width1: number;
+    // tslint:disable-next-line: member-ordering
+    height1: number;
+
+
+
+    title4 = 'Blood Details';
+    type4 = 'PieChart';
+    data4 = this.myBedForDonutChart;
+    columnNames4 = ['BloodGroup', 'Available'];
+    options4 = {
+      pieHole:0.4
+    };
+    width4: number;
+    height4: number;
 
 
 }
