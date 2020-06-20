@@ -39,6 +39,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from './user/product/product.component';
 import { ProductDetailsComponent } from './user/product/product-details/product-details.component';
 import { StrideComponent } from './user/payment/stride/stride.component';
+import { HospViewComponent } from './user/hospital/hosp-view/hosp-view.component';
 
 
 const routes: Routes = [
@@ -82,7 +83,11 @@ const routes: Routes = [
   { path: 'user/orderDetails', component: OrderDetailsComponent},
   {path: 'user/payWithCard', component: StrideComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/payment', component: PaymentComponent, canActivate: [AuthGuard, UserGuard] },
+<<<<<<< HEAD
   {path: 'user/invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard, UserGuard]},
+=======
+  { path: 'user/hospital', component: HospViewComponent, canActivate: [AuthGuard, UserGuard] },
+>>>>>>> 113de057d48e8889cdb4af509200d79a2f2c69f7
   {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];
 
