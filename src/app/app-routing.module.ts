@@ -1,3 +1,4 @@
+import { InvoiceComponent } from './user/order/invoice/invoice.component';
 import { BloodBankDashboardComponent } from './admin/BloodBank/blood-bank-dashboard/blood-bank-dashboard.component';
 import { HospitalDashboardComponent } from './admin/Hospital/hospital-dashboard/hospital-dashboard.component';
 import { IndexComponent } from './index/index.component';
@@ -81,6 +82,7 @@ const routes: Routes = [
   { path: 'user/orderDetails', component: OrderDetailsComponent},
   {path: 'user/payWithCard', component: StrideComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/payment', component: PaymentComponent, canActivate: [AuthGuard, UserGuard] },
+  {path: 'user/invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard, UserGuard]},
   {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];
 

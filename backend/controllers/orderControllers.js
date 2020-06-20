@@ -56,7 +56,7 @@ exports.placeOrder = (req, res, next) => {
                     method: "post",
                     url: "https://api.sendgrid.com/v3/mail/send",
                     headers: {
-                        Authorization: "Bearer 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"
+                        Authorization: "Bearer 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"
                     },
                     data: {
                         personalizations: [{
@@ -96,6 +96,7 @@ exports.placeOrder = (req, res, next) => {
 }
 
 exports.placeOrderbyCard = (req, res, next) => {
+  console.log(req.body);
     const order = new orderSchema({
         uId: req.userData.uId,
         userName: req.body.name,
@@ -151,7 +152,7 @@ exports.placeOrderbyCard = (req, res, next) => {
                     method: "post",
                     url: "https://api.sendgrid.com/v3/mail/send",
                     headers: {
-                        Authorization: "Bearer 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"
+                        Authorization: "Bearer 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"
                     },
                     data: {
                         personalizations: [{

@@ -16,7 +16,7 @@ export class UserOrderService {
   placeOrder(order: any) {
    const orderData = {
       order,
-      paymentToken: 'done'
+      paymentToken: 'Cash On Delivery'
     };
    return this.http.post<UserDataModel>(environment.apiUrl + '/orders', orderData);
   }
@@ -25,7 +25,7 @@ export class UserOrderService {
       order,
       token
     };
-    console.log(orderData);
+    console.log('hi', orderData);
     this.http.post<{status: any}>(environment.apiUrl + '/orders/payWithCard', orderData)
     .subscribe((result) => {
       if (result.status === 'success') {

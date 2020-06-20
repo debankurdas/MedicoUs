@@ -82,6 +82,7 @@ import { StrideComponent } from './user/payment/stride/stride.component';
 import { HospitalComponent } from './user/hospital/hospital.component';
 import { NavbarHospComponent } from './user/hospital/navbar-hosp/navbar-hosp.component';
 import { HospViewComponent } from './user/hospital/hosp-view/hosp-view.component';
+import { InvoiceComponent } from './user/order/invoice/invoice.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -133,7 +134,8 @@ import { HospViewComponent } from './user/hospital/hosp-view/hosp-view.component
     StrideComponent,
     HospitalComponent,
     NavbarHospComponent,
-    HospViewComponent
+    HospViewComponent,
+    InvoiceComponent
   ],
   imports: [
     BrowserModule,

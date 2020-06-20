@@ -1,0 +1,33 @@
+
+
+<div class="container">
+
+  <br/><br/>
+  <div class="container" id="content" #content>
+    {{date}}
+      <div *ngFor="let order of orderDatas">
+        {{order._id}}
+        <div  *ngFor="let product of order.products" >
+          {{product.productName}}
+          {{product.price}}
+
+        </div>
+        <div>
+          {{order.shippingAddress.userName}}
+          {{order.shippingAddress.addressLine1}}
+          {{order.emailAddress}}
+          <div *ngIf="paymentMode === 'Cash On Delivery'" >
+            PaymentMode:Cash on Delivery
+          </div>
+          <div *ngIf="paymentMode != 'Cash On Delivery'" >
+            PaymentMode: Paid with card
+            PaymentToken: {{order.paymentToken}}
+          </div>
+        </div>
+      </div>
+  </div>
+  <input type="button" value="Download PDF" class="btn btn-success" (click)="SavePDF()">
+</div>
+
+
+

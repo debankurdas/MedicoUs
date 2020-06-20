@@ -33,6 +33,7 @@
     "express": "^4.17.1",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
+    "jspdf": "^1.5.3",
     "mdbootstrap": "^4.19.0",
     "mongoose": "^5.9.1",
     "mongoose-unique-validator": "^2.0.3",
