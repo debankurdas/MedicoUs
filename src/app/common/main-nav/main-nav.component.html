@@ -1,3 +1,5 @@
+<!-- <link  rel="shortcut icon" type="../../../assets/user_profile/image/x-icon" /> -->
+<link rel="stylesheet" href="../../../assets/user_profile/icon-fonts/web-design/font/flaticon.css" />
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport="true">
     <mat-toolbar>
@@ -40,7 +42,9 @@
           </button>
         </div>
         <div *ngIf="role$ !== ''">
-            <button *ngIf="role$ === 'User'" type="button" mat-icon-button routerLink="/user/cartList">
+            <i class="flaticon-medicine"  *ngIf="role$ === 'User'"  (click)= "idChangeForMedicine()" routerLink="/user/product"  aria-hidden="true" ></i>
+            <i  *ngIf="role$ === 'User'" (click)="idChangeForHospital()" type="button" routerLink = "/user/hospital" class="flaticon-hospital" aria-hidden="true"></i>
+            <button *ngIf="role$ === 'User' && idForall === '1'" type="button" mat-icon-button routerLink="/user/cartList">
               <mat-icon matBadge="{{cartCount}}" (click)= "getCartList()" >shopping_cart</mat-icon>
             </button>
           <button *ngIf="loginStatus$" mat-icon-button [matMenuTriggerFor]="menu">
@@ -56,8 +60,8 @@
   </mat-sidenav-content>
 </mat-sidenav-container>
 
-<ng-template #userMenu>
-  <mat-nav-list>
+<ng-template #userMenu  >
+  <mat-nav-list *ngIf="idForall === '1'">
     <mat-list-item>
       <a mat-list-item routerLink='/user/product'>All Products</a>
     </mat-list-item>
@@ -67,9 +71,6 @@
     </mat-list-item>
     <mat-list-item>
       <a mat-list-item routerLink='/user/orders'>Orders</a>
-    </mat-list-item>
-    <mat-list-item>
-      <a mat-list-item routerLink='/user/profile'>Profile</a>
     </mat-list-item>
   </mat-nav-list>
 </ng-template>

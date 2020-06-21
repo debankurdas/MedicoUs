@@ -20,7 +20,6 @@ exports.placeOrder = (req, res, next) => {
         courierInfo: req.body.order.courierInfo,
         total: req.body.order.total,
         status: req.body.order.status,
-        createdOn: req.body.order.createdOn
     })
     order.save()
         .then((result) => {
@@ -107,8 +106,7 @@ exports.placeOrderbyCard = (req, res, next) => {
         paymentToken: req.body.token,
         courierInfo: req.body.order.courierInfo,
         total: req.body.order.total,
-        status: req.body.order.status,
-        createdOn: req.body.order.createdOn
+        status: req.body.order.status
     })
     order.save()
         .then((result) => {

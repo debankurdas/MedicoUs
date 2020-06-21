@@ -24,6 +24,7 @@ export class MainNavComponent implements OnInit, OnDestroy {
   loginStatus: any;
   role: any;
   cartCount: number;
+  idForall: string;
   constructor(private router: Router,
               // private breakpointObserver: BreakpointObserver,
               private loginService: LoginService,
@@ -42,19 +43,23 @@ export class MainNavComponent implements OnInit, OnDestroy {
                 this.role$ = result;
                 console.log('role when login' + this.role$);
                 if (this.role$ === 'User') {
+                  this.idForall = sessionStorage.getItem('idForall');
                   this.getCategories();
                 }
 
               });
 
               if (this.loginStatus$ === false && this.role$ === undefined) {
-                  this.loginStatus$ = this.loginService.getLoginStatus();
-                  this.role$ = this.loginService.getUserBasedRole();
+                this.loginStatus$ = this.loginService.getLoginStatus();
+                this.role$ = this.loginService.getUserBasedRole();
+
+                this.idForall = sessionStorage.getItem('idForall');
+                console.log('after refresh' + this.loginStatus$);
+                console.log('after role' + this.role$);
                 }
 
-              console.log('after refresh' + this.loginStatus$);
-              console.log('after role' + this.role$);
               if (this.loginStatus$ === true && this.role$ === 'User') {
+                this.idForall = sessionStorage.getItem('idForall');
                 this.getCategories();
                 this.getCartList();
               }
@@ -88,6 +93,18 @@ export class MainNavComponent implements OnInit, OnDestroy {
     this.role$ = undefined;
     this.loginService.removeAuth();
 
+  }
+
+  idChangeForHospital() {
+    this.idForall = '2';
+    console.log(this.idForall);
+    sessionStorage.setItem('idForall', this.idForall);
+  }
+
+  idChangeForMedicine() {
+    this.idForall = '1';
+    console.log(this.idForall);
+    sessionStorage.setItem('idForall', this.idForall);
   }
 
   getProduct(category: string) {

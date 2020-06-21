@@ -18,7 +18,7 @@ export class LoginService {
  private roleAuth: string;
  private role = new Subject<string>();
  public isUserLogedIn = new Subject<boolean>();
-
+idForall = '1';
   constructor(
     private http: HttpClient,
     private snackBar: MatSnackBar,
@@ -60,6 +60,7 @@ export class LoginService {
           const role = this.encService.encrypt(response.role, '');
           localStorage.setItem('role', role);
           localStorage.setItem('token', response.token);
+          sessionStorage.setItem('idForall', this.idForall )
           this.navigate(response.role);
           this.isUserLogedIn.next(true);
       }
