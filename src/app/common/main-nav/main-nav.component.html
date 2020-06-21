@@ -1,127 +1,123 @@
 <!-- <link  rel="shortcut icon" type="../../../assets/user_profile/image/x-icon" /> -->
 <link rel="stylesheet" href="../../../assets/user_profile/icon-fonts/web-design/font/flaticon.css" />
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport="true">
-    <mat-toolbar>
-      Medico
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" style="float: right;">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="true">
+        <mat-toolbar>
+            Medico
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" style="float: right;">
         <span class="material-icons">
           cancel
         </span>
       </button>
-    </mat-toolbar>
-    <ng-container *ngIf="role$ === 'Admin_M'">
-      <ng-container *ngTemplateOutlet="AdminMedicineMenu"></ng-container>
-    </ng-container>
-    <ng-container *ngIf="role$ === 'Admin_H'">
-      <ng-container *ngTemplateOutlet="AdminHospitalMenu"></ng-container>
-    </ng-container>
-    <ng-container *ngIf="role$ === 'Admin_B'">
-      <ng-container *ngTemplateOutlet="AdminBloodBankMenu"></ng-container>
-    </ng-container>
-    <ng-container *ngIf="role$ === 'User'">
-      <ng-container *ngTemplateOutlet="userMenu"></ng-container>
-    </ng-container>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar class="mat-prim">
-      <mat-toolbar-row>
-        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        </mat-toolbar>
+        <ng-container *ngIf="role$ === 'Admin_M'">
+            <ng-container *ngTemplateOutlet="AdminMedicineMenu"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="role$ === 'Admin_H'">
+            <ng-container *ngTemplateOutlet="AdminHospitalMenu"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="role$ === 'Admin_B'">
+            <ng-container *ngTemplateOutlet="AdminBloodBankMenu"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="role$ === 'User'">
+            <ng-container *ngTemplateOutlet="userMenu"></ng-container>
+        </ng-container>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar class="mat-prim">
+            <mat-toolbar-row>
+                <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span class="titleWidth">Medico</span>
-        <div *ngIf="loginStatus$ === false">
-          <button mat-fab type="button" class="mar" color="warn"   mat-button routerLink="/index">
+                <span class="titleWidth">Medico</span>
+                <div *ngIf="loginStatus$ === false">
+                    <button mat-fab type="button" class="mar" color="warn" mat-button routerLink="/index">
             <mat-icon>home</mat-icon>
           </button>
-          <button mat-fab type="button" class="mar" color="primary"   mat-button routerLink="/login">
+                    <button mat-fab type="button" class="mar" color="primary" mat-button routerLink="/login">
             <mat-icon>login</mat-icon>
           </button>
-          <button type="button" mat-fab class="mar"   mat-button routerLink="/register">
+                    <button type="button" mat-fab class="mar" mat-button routerLink="/register">
             <mat-icon class="mat-18">how_to_reg</mat-icon>
           </button>
-        </div>
-        <div *ngIf="role$ !== ''">
-            <i class="flaticon-medicine"  *ngIf="role$ === 'User'"  (click)= "idChangeForMedicine()" routerLink="/user/product"  aria-hidden="true" ></i>
-            <i  *ngIf="role$ === 'User'" (click)="idChangeForHospital()" type="button" routerLink = "/user/hospital" class="flaticon-hospital" aria-hidden="true"></i>
-              <i  *ngIf="role$ === 'User' && idForall === '1'" class="flaticon-shopping-cart" routerLink="/user/cartList"
-                aria-hidden="true" (click)= "getCartList()" ></i>
-                <span class='badge badge-warning' id='lblCartCount' *ngIf="role$ === 'User' && idForall === '1'">{{cartCount}} </span>
-          <i *ngIf="loginStatus$" [matMenuTriggerFor]="menu" class="flaticon-user"></i>
-          <mat-menu #menu="matMenu">
-            <button *ngIf="role$ === 'User'" mat-menu-item routerLink="/user/profile">My Profile</button>
-            <button mat-menu-item (click)="logout()">Logout</button>
-          </mat-menu>
-        </div>
-      </mat-toolbar-row>
-    </mat-toolbar>
-  </mat-sidenav-content>
+                </div>
+                <div *ngIf="role$ !== ''">
+                    <i class="flaticon-medicine" *ngIf="role$ === 'User'" type="button" (click)="idChangeForMedicine()" routerLink="/user/product" aria-hidden="true"></i>
+                    <i *ngIf="role$ === 'User'" (click)="idChangeForHospital()" type="button" routerLink="/user/hospital" class="flaticon-hospital" aria-hidden="true"></i>
+                    <i type="button" *ngIf="role$ === 'User' && idForall === '1'" class="flaticon-shopping-cart" routerLink="/user/cartList" aria-hidden="true" (click)="getCartList()"></i>
+                    <span class='badge badge-warning' id='lblCartCount' *ngIf="role$ === 'User' && idForall === '1'">{{cartCount}} </span>
+                    <i *ngIf="loginStatus$" [matMenuTriggerFor]="menu" class="flaticon-user" type="button"></i>
+                    <mat-menu #menu="matMenu">
+                        <button *ngIf="role$ === 'User'" mat-menu-item routerLink="/user/profile">My Profile</button>
+                        <button mat-menu-item (click)="logout()">Logout</button>
+                    </mat-menu>
+                </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+    </mat-sidenav-content>
 </mat-sidenav-container>
 
-<ng-template #userMenu  >
-  <mat-nav-list *ngIf="idForall === '1'">
-    <mat-list-item>
-      <a mat-list-item routerLink='/user/product'>All Products</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item *ngFor="let category of categories">
-      <a mat-list-item (click)="getProduct(category.categoryName)">{{category.categoryName}}</a>
-    </mat-list-item>
-    <mat-list-item>
-      <a mat-list-item routerLink='/user/orders'>Orders</a>
-    </mat-list-item>
-  </mat-nav-list>
+<ng-template #userMenu>
+    <mat-nav-list *ngIf="idForall === '1'">
+        <mat-list-item>
+            <a mat-list-item routerLink='/user/product'>All Products</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item *ngFor="let category of categories">
+            <a mat-list-item (click)="getProduct(category.categoryName)">{{category.categoryName}}</a>
+        </mat-list-item>
+        <mat-list-item>
+            <a mat-list-item routerLink='/user/orders'>Orders</a>
+        </mat-list-item>
+    </mat-nav-list>
 </ng-template>
 
 <ng-template #AdminMedicineMenu>
-  <mat-nav-list>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/dashboard'>Dashboard</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/Category'>Category</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/product'>Product</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/order'>Orders</a>
-    </mat-list-item>
-  </mat-nav-list>
+    <mat-nav-list>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/dashboard'>Dashboard</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/Category'>Category</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/product'>Product</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/order'>Orders</a>
+        </mat-list-item>
+    </mat-nav-list>
 </ng-template>
 <ng-template #AdminHospitalMenu>
-  <mat-nav-list>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/HospitalDashboard'>Hospital Dashboard</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/HospitalBranchAdd'>Hospital Add</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/HospitalBranchView'>Hospital View</a>
-    </mat-list-item>
-  </mat-nav-list>
+    <mat-nav-list>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/HospitalDashboard'>Hospital Dashboard</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/HospitalBranchAdd'>Hospital Add</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/HospitalBranchView'>Hospital View</a>
+        </mat-list-item>
+    </mat-nav-list>
 </ng-template>
 <ng-template #AdminBloodBankMenu>
-  <mat-nav-list>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/BloodBankDashboard'>BloodBank Dashboard</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/BloodBankAdd'>BloodBank Add</a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      <a mat-list-item routerLink='/Admin/BloodBankView'>BloodBank View</a>
-    </mat-list-item>
-  </mat-nav-list>
+    <mat-nav-list>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/BloodBankDashboard'>BloodBank Dashboard</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/BloodBankAdd'>BloodBank Add</a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a mat-list-item routerLink='/Admin/BloodBankView'>BloodBank View</a>
+        </mat-list-item>
+    </mat-nav-list>
 </ng-template>
-
-
-
