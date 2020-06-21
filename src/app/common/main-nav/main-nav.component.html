@@ -44,12 +44,10 @@
         <div *ngIf="role$ !== ''">
             <i class="flaticon-medicine"  *ngIf="role$ === 'User'"  (click)= "idChangeForMedicine()" routerLink="/user/product"  aria-hidden="true" ></i>
             <i  *ngIf="role$ === 'User'" (click)="idChangeForHospital()" type="button" routerLink = "/user/hospital" class="flaticon-hospital" aria-hidden="true"></i>
-            <button *ngIf="role$ === 'User' && idForall === '1'" type="button" mat-icon-button routerLink="/user/cartList">
-              <mat-icon matBadge="{{cartCount}}" (click)= "getCartList()" >shopping_cart</mat-icon>
-            </button>
-          <button *ngIf="loginStatus$" mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>account_circle</mat-icon>
-          </button>
+              <i  *ngIf="role$ === 'User' && idForall === '1'" class="flaticon-shopping-cart" routerLink="/user/cartList"
+                aria-hidden="true" (click)= "getCartList()" ></i>
+                <span class='badge badge-warning' id='lblCartCount' *ngIf="role$ === 'User' && idForall === '1'">{{cartCount}} </span>
+          <i *ngIf="loginStatus$" [matMenuTriggerFor]="menu" class="flaticon-user"></i>
           <mat-menu #menu="matMenu">
             <button *ngIf="role$ === 'User'" mat-menu-item routerLink="/user/profile">My Profile</button>
             <button mat-menu-item (click)="logout()">Logout</button>
