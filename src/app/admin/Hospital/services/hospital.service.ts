@@ -126,9 +126,24 @@ export class HospitalService {
     return this.http.get<{data: any}>(environment.apiUrl + '/users');
    }
 
-   getBranch() {
+   getHospitalData() {
     return this.http.get<{data: any}>(environment.apiUrl + '/hospital');
    }
+
+  //  getHospitalDataByCity(city: string) {
+  //    const cityData = {
+  //      city
+  //    };
+  //    return this.http.post<{data: any}>(environment.apiUrl + '/hospital/city', cityData);
+  //  }
+  getHospitalByLocation(state: string, city: string, area: string) {
+    const locationData = {
+      state,
+      city,
+      area
+    };
+    return this.http.post<{data: any}>(environment.apiUrl + '/hospital/location', locationData);
+  }
 
    getDataBranch(branch: string) {
    const  branches = {

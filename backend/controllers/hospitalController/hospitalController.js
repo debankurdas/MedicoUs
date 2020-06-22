@@ -180,3 +180,40 @@ exports.getDataFilterBybranchName = (req, res, next) => {
             })
         })
 }
+
+// exports.getHospitalBycity = (req, res, next) => {
+//   const city = req.body.city;
+//   hospitalSchema.find({ city: city }).then((finalResult) => {
+//               res.status(200).json({
+//                   status: 'Success',
+//                   message: 'Hospital Data is Fetched Successfully',
+//                   data: finalResult
+//               })
+//           })
+//           .catch(error => {
+//               res.status(401).json({
+//                   message: 'Hospital data can not be fetched now',
+//                   error: error
+//               });
+//           });
+// }
+exports.getHospitalByLocation = (req, res, next) => {
+  const state = req.body.state;
+  const city = req.body.city;
+  const area = req.body.area;
+  hospitalSchema.find({state: state, city: city, branchArea: area})
+  .then((finalResult) => {
+    res.status(200).json({
+      status: 'Success',
+      message: 'Hospital Data is Fetched Successfully',
+      data: finalResult
+    })
+  })
+  .catch(error => {
+    res.status(401).json({
+    message: 'Hospital data can not be fetched now',
+    error: error
+    });
+  });
+}
+

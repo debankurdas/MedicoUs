@@ -9,6 +9,8 @@ hospitalRouter.put(('/:id'), upload.single('image'),hospitalController.updateHos
 hospitalRouter.get('/:id', hospitalController.getHospialById);
 hospitalRouter.get('/',authVerify,hospitalController.getHospital);
 hospitalRouter.post('/getData', authVerify, hospitalController.getDataFilterBybranchName);
+// hospitalRouter.post('/city', authVerify, hospitalController.getHospitalBycity)
+hospitalRouter.post('/location', hospitalController.getHospitalByLocation);
 hospitalRouter.delete('/:id', hospitalController.deleteHospital);
 
 module.exports = hospitalRouter

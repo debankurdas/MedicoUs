@@ -14,7 +14,7 @@ export class BranchComponent implements OnInit {
   constructor(private adminHospitalService: HospitalService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.adminHospitalService.getBranch()
+    this.adminHospitalService.getHospitalData()
     .subscribe((result) => {
       console.log(result.data);
       this.hospital.push(result.data);
