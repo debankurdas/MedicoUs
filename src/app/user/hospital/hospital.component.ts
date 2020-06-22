@@ -10,6 +10,7 @@ export class HospitalComponent implements OnInit {
  state: string;
  city: string;
  area: string;
+ locationData = [];
   constructor(private hospitalService: HospitalService) { }
 
   ngOnInit() {
@@ -30,7 +31,12 @@ export class HospitalComponent implements OnInit {
   location() {
     this.hospitalService.getHospitalByLocation(this.state, this.city, this.area)
     .subscribe((result) => {
-      console.log(result.data);
-    })
+      this.locationData.push(result.data);
+      console.log(this.locationData);
+      if (result.data.length < 1) {
+        console.log('null');
+      }
+      this.locationData = [];
+    });
   }
 }
