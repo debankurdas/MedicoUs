@@ -1,7 +1,9 @@
-<div class="container" id="invoice" #invoice>
+<div class="container" id="invoice" #invoice style="padding: 30px;">
     <div class="invoice overflow-auto">
         <div style="min-width: 600px">
-            <header>
+            <header style="padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #3989c6;">
                 <div class="row">
                     <div class="col company-details">
                         <h2 class="name">
@@ -11,7 +13,7 @@
                         </h2>
                         <div>Chandi Ghosh Road</div>
                         <div>Kolkata -700040, West Bengal, India</div>
-                        <div>care@medico.com</div>
+                        <div class="email"><a href="care@medico.com">care@medico.com </a></div>
                     </div>
                 </div>
             </header>
@@ -19,15 +21,17 @@
                 <div class="row contacts">
 
                     <div class="col invoice-to">
-                        <div class="text-gray-light">INVOICE TO:</div>
+                        <br>
+                        <div class="text-gray-light"><b>INVOICE TO: </b></div>
                         <h2 class="to">{{order.shippingAddress.userName}}</h2>
                         <div class="address">{{order.shippingAddress.addressLine1}}</div>
                         <div class="address">{{order.shippingAddress.city}}</div>
+                        <div class="address">{{order.shippingAddress.state}}</div>
                         <div class="address">{{order.shippingAddress.pin}}</div>
                         <div class="email"><a href={{order.emailAddress}}>{{order.emailAddress}}</a></div>
                     </div>
                     <div class="col invoice-details">
-                        <h1 class="invoice-id">INVOICE :<b>{{order._id}} </b></h1>
+                        <h1 class="invoice-id">INVOICE Id:<b>{{order._id}} </b></h1>
                         <div class="date">Date of Invoice: {{date}}</div>
                         <div>Status : {{order.status}}</div>
                     </div>
