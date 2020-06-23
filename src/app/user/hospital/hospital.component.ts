@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { HospitalService } from './../../admin/Hospital/services/hospital.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +12,7 @@ export class HospitalComponent implements OnInit {
  city: string;
  area: string;
  locationData = [];
-  constructor(private hospitalService: HospitalService) { }
+  constructor(private hospitalService: HospitalService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
@@ -34,7 +35,9 @@ export class HospitalComponent implements OnInit {
       this.locationData.push(result.data);
       console.log(this.locationData);
       if (result.data.length < 1) {
-        console.log('null');
+        this.snackBar.open('No hospital is avilable in this region', 'Try another region', {
+          duration: 2000
+        });
       }
       this.locationData = [];
     });
