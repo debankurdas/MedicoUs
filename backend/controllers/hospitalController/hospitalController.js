@@ -286,7 +286,7 @@ exports.getHospitalByHospitalName = (req, res, next) => {
   console.log(req.body);
 const hospitalName = req.body.hospitalName;
   if (hospitalName) {
-    hospitalSchema.find({hospitalName: hospitalName})
+    hospitalSchema.find({hospitalName:{ $regex: hospitalName , $options:'i'}})
     .then((finalResult) => {
       res.status(200).json({
         status: 'Success',
