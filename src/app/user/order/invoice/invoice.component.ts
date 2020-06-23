@@ -15,7 +15,7 @@ export class InvoiceComponent implements OnInit {
   date: string;
   paymentMode: string;
 
-  @ViewChild('content', {static: false}) content: ElementRef;
+  @ViewChild('invoice', {static: false}) content: ElementRef;
   ngOnInit() {
     this.getOrderService();
   }

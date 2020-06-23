@@ -9,20 +9,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-        body {
-            background: #eee;
-        }
-
         .search-result .title h3 {
             margin: 0 0 15px;
             color: #333;
         }
-
+        
         .search-result .title p {
             font-size: 12px;
             color: #333;
         }
-
+        
         .well {
             border: 0;
             padding: 20px;
@@ -39,7 +35,7 @@
             -moz-transition: max-height 0.5s ease;
             -webkit-transition: max-height 0.5s ease;
         }
-
+        
         .form-control {
             height: 45px;
             padding: 10px;
@@ -90,9 +86,9 @@
                             </div>
                         </div>
                         <a>
-                          <div class="col-xs-5 col-sm-2 col-md-3 col-lg-2"   style="float: right;">
-                            <label class="label label-info cur" [routerLink]="['/user/invoice',item._id]">Invoice</label>
-                          </div>
+                            <div class="col-xs-5 col-sm-2 col-md-3 col-lg-2" style="float: right;">
+                                <label class="label label-info cur" [routerLink]="['/user/invoice',item._id]">Invoice</label>
+                            </div>
                             <div class="col-xs-5 col-sm-2 col-md-3 col-lg-2" *ngFor="let item of item.products">
                                 <img class="img-responsive" [routerLink]="['/user/product',item._id]" [src]="item.imageUrl" [alt]="item.productName">
                                 <h3>{{item.productName}}</h3>
