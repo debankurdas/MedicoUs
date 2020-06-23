@@ -1,9 +1,9 @@
-<img (click)='changeIdforSelectlocality()' *ngIf="idChange === 0" src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1">
+<img  (click)='changeIdforSelectlocality()' *ngIf="idChange === 0" src="../../../../assets/user_profile/images/Filter.jpg" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1">
 <mat-select placeholder='Select a option' *ngIf="idChange === 1">
     <mat-option (click)='changeIdforArea()'>Search By Area or Branch</mat-option>
     <mat-option (click)='changeIdforSpeciality()'>Search By Speciality or Branch</mat-option>
 </mat-select>
-<main class="pt-5 mx-lg-5" *ngIf="idChange === 2">
+<main class="pt-5 mx-lg-5" *ngIf="idChange === 2 || idChange === 6">
     <div class="container-fluid mt-5">
 
         <!-- Heading -->
@@ -14,14 +14,14 @@
                 <form [formGroup]="form" (submit)="Location()">
 
                     <h4 class="mb-2 mb-sm-0 pt-1">
-                        <span>Search by Area</span>
+                        <span>Search by Location</span>
                     </h4>
                     <div class="col-9">
                         <mat-form-field class="col-4">
                             <mat-label>State</mat-label>
                             <div>
                                 <mat-select placeholder="State" formControlName="state" required>
-                                    <mat-option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
+                                  <mat-option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
                                 </mat-select>
                             </div>
                         </mat-form-field>
@@ -29,15 +29,17 @@
                             <mat-label>City</mat-label>
                             <div>
                                 <mat-select placeholder="Anycity" formControlName="city">
-                                    <mat-option *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
+                                  <mat-option value="ALL">ALL</mat-option>
+                                    <mat-option (click) = "clickCity()" *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
                                 </mat-select>
                             </div>
                         </mat-form-field>
-                        <mat-form-field class="col-4">
+                        <mat-form-field class="col-4" *ngIf="idChange === 6" >
                             <mat-label>Area</mat-label>
                             <div>
                                 <mat-select placeholder="Area" formControlName="area">
-                                    <mat-option aria-placeholder="area" *ngFor="let area of sortArray" [value]="area">{{area}}</mat-option>
+                                  <mat-option value="ALL">ALL</mat-option>
+                                  <mat-option aria-placeholder="area" *ngFor="let area of sortArray" [value]="area">{{area}}</mat-option>
                                 </mat-select>
                             </div>
                         </mat-form-field>
@@ -59,9 +61,7 @@
 
         </div>
     </div>
-
-
-    <p><input type="button" value="back" (click)='back()'></p>
+    <img (click)='back()' src="../../../../assets/user_profile/images/Back.jpg" class="animated bounce infinite" alt="Back Logo" id="animated-img1">
 
 </main>
 <main class="pt-5 mx-lg-5" *ngIf="idChange === 3">
@@ -109,6 +109,6 @@
     </div>
 
 
-    <p><input type="button" value="back" (click)='back()'></p>
+    <img (click)='back()' src="../../../../assets/user_profile/images/Back.jpg" class="animated bounce infinite" alt="Back Logo" id="animated-img1">
 
 </main>

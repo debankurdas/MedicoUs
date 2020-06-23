@@ -142,6 +142,7 @@ export class HospitalService {
       city,
       area
     };
+    console.log(locationData);
     return this.http.post<{data: any}>(environment.apiUrl + '/hospital/location', locationData);
   }
 
