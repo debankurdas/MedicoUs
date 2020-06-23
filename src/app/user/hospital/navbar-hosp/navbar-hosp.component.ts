@@ -15,6 +15,8 @@ export class NavbarHospComponent implements OnInit {
   @Output() addState = new EventEmitter<any>();
   @Output() addcity = new EventEmitter<any>();
   @Output() addarea = new EventEmitter<any>();
+  modifyBedlist: any;
+  sortArray = [];
   constructor(private fb: FormBuilder, private adminService: HospitalService) { }
 
   ngOnInit() {
@@ -31,10 +33,20 @@ export class NavbarHospComponent implements OnInit {
     .subscribe((result) => {
 
       this.dataOfHospital.push(result.data);
-      console.log(this.dataOfHospital);
+      console.log(this.dataOfHospital, 'x');
+      this.modifyBedlist = JSON.parse(JSON.stringify(result.data));
+      console.log(this.modifyBedlist);
+      this.modifyBedlist.forEach( (element: { branchArea: any;  }) => {
+
+        console.log(element.branchArea,"x1");
+        this.sortArray.push(element.branchArea);
+      });
+      this.sortArray= this.sortArray.sort();
+      console.log(this.sortArray);
     });
   }
 
+  // tslint:disable-next-line:member-ordering
   countryList: Array<any> = [
     { name: ' -- select an option -- ', cities: ['-- select an option --'] },
     { name: 'Andhra Pradesh',
@@ -152,6 +164,7 @@ export class NavbarHospComponent implements OnInit {
       'South 24 Parganas', 'Uttar Dinajpur'] },
     { name: 'Andaman and Nicobar Islands', cities: ['All', 'Nicobar', 'North and Middle Andaman', 'South Andaman'] }
   ];
+  // tslint:disable-next-line:member-ordering
   cities: Array<any>;
   changeCountry(event, count) {
     this.cities = this.countryList.find(con => con.name === count.name).cities;
