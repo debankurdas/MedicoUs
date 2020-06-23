@@ -10,11 +10,13 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class NavbarHospComponent implements OnInit {
   form: FormGroup;
   form1: FormGroup;
+  form2: FormGroup;
   idChange = 0;
   dataOfHospital = [];
   @Output() addState = new EventEmitter<any>();
   @Output() addcity = new EventEmitter<any>();
   @Output() addarea = new EventEmitter<any>();
+  @Output() addHospital = new EventEmitter<any>();
   modifyBedlist: any;
   sortArray = [];
   constructor(private fb: FormBuilder, private adminService: HospitalService) { }
@@ -28,6 +30,9 @@ export class NavbarHospComponent implements OnInit {
     this.form1 = this.fb.group({
       state: new FormControl('', Validators.required),
       speciality: new FormControl('', Validators.required),
+    });
+    this.form2 = this.fb.group({
+      hospitalName: new FormControl('', Validators.required)
     });
     this.adminService.getHospitalData()
     .subscribe((result) => {
@@ -175,6 +180,10 @@ export class NavbarHospComponent implements OnInit {
     this.addarea.emit(this.form.controls.area.value);
 
   }
+  hospitalName() {
+    this.addHospital.emit(this.form2.controls.hospitalName.value);
+  }
+
   Speciality() {
     console.log('speciality');
   }

@@ -47,9 +47,9 @@
                     </div>
                 </form>
                 <div class="col-3">
-                    <form class="d-flex justify-content-center">
+                    <form [formGroup]="form2" class="d-flex justify-content-center" (submit)= 'hospitalName()'>
                         <!-- Default input -->
-                        <input type="search" placeholder="Type your query" aria-label="Search" class="form-control" style="height: 60px;">
+                        <input type="search" placeholder="Enter the HospitalName" formControlName = 'hospitalName' aria-label="Search" class="form-control" style="height: 60px;">
                         <button class="btn btn-primary btn-sm my-0 p" type="submit" style="height: 60px;">
                     <i class="fas fa-search 3px"></i>
                         </button>

@@ -282,3 +282,24 @@ exports.getHospitalByLocation = (req, res, next) => {
 
 }
 
+exports.getHospitalByHospitalName = (req, res, next) => {
+  console.log(req.body);
+const hospitalName = req.body.hospitalName;
+  if (hospitalName) {
+    hospitalSchema.find({hospitalName: hospitalName})
+    .then((finalResult) => {
+      res.status(200).json({
+        status: 'Success',
+        message: 'Hospital Data is Fetched Successfully',
+        data: finalResult
+      })
+    })
+    .catch(error => {
+      res.status(401).json({
+      message: 'Hospital data can not be fetched now',
+      error: error
+      });
+    });
+  }
+}
+

@@ -11,6 +11,7 @@ hospitalRouter.get('/',authVerify,hospitalController.getHospital);
 hospitalRouter.post('/getData', authVerify, hospitalController.getDataFilterBybranchName);
 // hospitalRouter.post('/city', authVerify, hospitalController.getHospitalBycity)
 hospitalRouter.post('/location', hospitalController.getHospitalByLocation);
+hospitalRouter.post('/hospitalSearch', hospitalController.getHospitalByHospitalName);
 hospitalRouter.delete('/:id', hospitalController.deleteHospital);
 
 module.exports = hospitalRouter

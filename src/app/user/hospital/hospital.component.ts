@@ -11,10 +11,16 @@ export class HospitalComponent implements OnInit {
  state: string;
  city: string;
  area: string;
- locationData = [];
+ hospitalByData = [];
   constructor(private hospitalService: HospitalService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+
+    this.hospitalService.getHospitalData()
+    .subscribe((result) => {
+      this.hospitalByData.push(result.data);
+      console.log(this.hospitalByData);
+    });
   }
 
   State(state: string) {
@@ -32,14 +38,23 @@ export class HospitalComponent implements OnInit {
   location() {
     this.hospitalService.getHospitalByLocation(this.state, this.city, this.area)
     .subscribe((result) => {
-      this.locationData.push(result.data);
-      console.log(this.locationData);
+      this.hospitalByData = [];
+      this.hospitalByData.push(result.data);
+      console.log('By location', this.hospitalByData);
       if (result.data.length < 1) {
         this.snackBar.open('No hospital is avilable in this region', 'Try another region', {
           duration: 2000
         });
       }
-      this.locationData = [];
+      this.hospitalByData = [];
+    });
+  }
+  Hospital(hospitalName: string) {
+    this.hospitalService.getHospitalByHospitalSearch(hospitalName)
+    .subscribe((result) => {
+      this.hospitalByData = [];
+      this.hospitalByData.push(result.data);
+      console.log('By name', this.hospitalByData);
     });
   }
 }

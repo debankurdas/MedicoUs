@@ -146,6 +146,13 @@ export class HospitalService {
     return this.http.post<{data: any}>(environment.apiUrl + '/hospital/location', locationData);
   }
 
+  getHospitalByHospitalSearch(hospitalName: string) {
+    const hospitalData = {
+      hospitalName
+    }
+    return this.http.post<{data: any}>(environment.apiUrl + '/hospital/hospitalSearch', hospitalData);
+  }
+
    getDataBranch(branch: string) {
    const  branches = {
       branchName: branch
