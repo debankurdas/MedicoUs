@@ -61,7 +61,7 @@ export class NavbarHospComponent implements OnInit {
   // tslint:disable-next-line:member-ordering
   countryList: Array<any> = [
     { name: ' -- select an option -- ', cities: ['-- select an option --'] },
-    {name: 'All'},
+    {name: 'ALL'},
     { name: 'Andhra Pradesh',
     cities: [ 'Anantapur' , 'Chittoor' , 'East Godavari' , 'Guntur' , 'YSR Kadapa' , 'Krishna' ,
     'Kurnool' , 'Nellore' , 'Prakasam' , 'Srikakulam' , 'Visakhapatnam' , 'Vizianagaram', 'West Godavari'] },

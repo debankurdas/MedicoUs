@@ -1,4 +1,5 @@
-<img  (click)='changeIdforSelectlocality()' *ngIf="idChange === 0" src="../../../../assets/user_profile/images/Filter.jpg" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1">
+<br><br>
+<img (click)='changeIdforSelectlocality()' *ngIf="idChange === 0" src="../../../../assets/user_profile/images/Filter.jpg" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1">
 <mat-select placeholder='Select a option' *ngIf="idChange === 1">
     <mat-option (click)='changeIdforArea()'>Search By Area or Branch</mat-option>
     <mat-option (click)='changeIdforSpeciality()'>Search By Speciality or Branch</mat-option>
@@ -7,7 +8,7 @@
     <div class="container-fluid mt-5">
 
         <!-- Heading -->
-        <div class="card mb-4 ">
+        <div class="card">
 
             <!--Card content-->
             <div class="card-body d-sm-flex justify-content-between">
@@ -16,40 +17,39 @@
                     <h4 class="mb-2 mb-sm-0 pt-1">
                         <span>Search by Location</span>
                     </h4>
-                    <div class="col-9">
-                        <mat-form-field class="col-4">
-                            <mat-label>State</mat-label>
-                            <div>
-                                <mat-select placeholder="State" formControlName="state" required>
-                                  <mat-option  (click)='clickState()'  *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
-                                </mat-select>
-                            </div>
-                        </mat-form-field>
-                        <mat-form-field class="col-4">
-                            <mat-label>City</mat-label>
-                            <div>
-                                <mat-select placeholder="Anycity" formControlName="city">
-                                  <mat-option value="ALL">ALL</mat-option>
-                                    <mat-option (click) = "clickCity()" *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
-                                </mat-select>
-                            </div>
-                        </mat-form-field>
-                        <mat-form-field class="col-4" *ngIf="idChange === 6" >
-                            <mat-label>Area</mat-label>
-                            <div>
-                                <mat-select placeholder="Area" formControlName="area">
-                                  <mat-option value="ALL">ALL</mat-option>
-                                  <mat-option aria-placeholder="area" *ngFor="let area of sortArray" [value]="area">{{area}}</mat-option>
-                                </mat-select>
-                            </div>
-                        </mat-form-field>
-                        <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Search</button>
-                    </div>
+                    <mat-form-field class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
+                        <mat-label>State</mat-label>
+                        <div>
+                            <mat-select placeholder="State" formControlName="state" required>
+                                <mat-option (click)='clickState()' *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
+                            </mat-select>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
+                        <mat-label>City</mat-label>
+                        <div>
+                            <mat-select placeholder="Anycity" formControlName="city">
+                                <mat-option value="ALL">ALL</mat-option>
+                                <mat-option (click)="clickCity()" *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
+                            </mat-select>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-12 col-sm-12 col-lg-4 col-xl-4" *ngIf="idChange === 6">
+                        <mat-label>Area</mat-label>
+                        <div>
+                            <mat-select placeholder="Area" formControlName="area">
+                                <mat-option value="ALL">ALL</mat-option>
+                                <mat-option aria-placeholder="area" *ngFor="let area of sortArray" [value]="area">{{area}}</mat-option>
+                            </mat-select>
+                        </div>
+                    </mat-form-field>
+                    <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Search</button>
+
                 </form>
-                <div class="col-3">
-                    <form [formGroup]="form2" class="d-flex justify-content-center" (submit)= 'hospitalName()'>
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4">
+                    <form [formGroup]="form2" class="d-flex justify-content-center" (submit)='hospitalName()'>
                         <!-- Default input -->
-                        <input type="search" placeholder="Enter the HospitalName" formControlName = 'hospitalName' aria-label="Search" class="form-control" style="height: 60px;">
+                        <input type="search" placeholder="Enter the HospitalName" formControlName='hospitalName' aria-label="Search" class="form-control" style="height: 60px;">
                         <button class="btn btn-primary btn-sm my-0 p" type="submit" style="height: 60px;">
                     <i class="fas fa-search 3px"></i>
                         </button>
@@ -61,6 +61,7 @@
 
         </div>
     </div>
+    <br><br>
     <img (click)='back()' src="../../../../assets/user_profile/images/Back.jpg" class="animated bounce infinite" alt="Back Logo" id="animated-img1">
 
 </main>
@@ -94,20 +95,20 @@
                         </div>
                     </mat-form-field>
                 </form>
-                <form [formGroup]="form2" class="d-flex justify-content-center" (submit)= 'hospitalName()'>
-                  <!-- Default input -->
-                  <input type="search" placeholder="Enter the HospitalName" formControlName = 'hospitalName' aria-label="Search" class="form-control" style="height: 60px;">
-                  <button class="btn btn-primary btn-sm my-0 p" type="submit" style="height: 60px;">
+                <form [formGroup]="form2" class="d-flex justify-content-center" (submit)='hospitalName()'>
+                    <!-- Default input -->
+                    <input type="search" placeholder="Enter the HospitalName" formControlName='hospitalName' aria-label="Search" class="form-control" style="height: 60px;">
+                    <button class="btn btn-primary btn-sm my-0 p" type="submit" style="height: 60px;">
               <i class="fas fa-search 3px"></i>
                   </button>
 
-              </form>
+                </form>
 
             </div>
 
         </div>
     </div>
-
+    <br><br>
 
     <img (click)='back()' src="../../../../assets/user_profile/images/Back.jpg" class="animated bounce infinite" alt="Back Logo" id="animated-img1">
 
