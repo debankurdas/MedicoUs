@@ -39,7 +39,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductComponent } from './user/product/product.component';
 import { ProductDetailsComponent } from './user/product/product-details/product-details.component';
 import { StrideComponent } from './user/payment/stride/stride.component';
-import { HospViewComponent } from './user/hospital/hosp-view/hosp-view.component';
 import { HospitalComponent } from './user/hospital/hospital.component';
 
 

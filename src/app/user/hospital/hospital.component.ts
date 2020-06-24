@@ -11,6 +11,7 @@ export class HospitalComponent implements OnInit {
  state: string;
  city: string;
  area: string;
+ speciality: string;
  hospitalByData = [];
   constructor(private hospitalService: HospitalService, private snackBar: MatSnackBar) { }
 
@@ -18,8 +19,14 @@ export class HospitalComponent implements OnInit {
 
     this.hospitalService.getHospitalData()
     .subscribe((result) => {
+      this.hospitalByData = [];
       this.hospitalByData.push(result.data);
-      console.log(this.hospitalByData);
+      if (this.hospitalByData.length < 0) {
+        this.snackBar.open('No Hospital is Found in this location', 'Try another one', {
+          duration: 2000
+        });
+      }
+      console.log('h', this.hospitalByData);
     });
   }
 
@@ -35,6 +42,11 @@ export class HospitalComponent implements OnInit {
     this.location();
   }
 
+  Speciality(spec: string) {
+    this.speciality = spec;
+
+  }
+
   location() {
     this.hospitalService.getHospitalByLocation(this.state, this.city, this.area)
     .subscribe((result) => {
@@ -46,8 +58,14 @@ export class HospitalComponent implements OnInit {
           duration: 2000
         });
       }
-      this.hospitalByData = [];
+
     });
+  }
+
+  SpecialityWiseHospital() {
+
+    console.log(this.state, this.speciality);
+
   }
   Hospital(hospitalName: string) {
     this.hospitalService.getHospitalByHospitalSearch(hospitalName)

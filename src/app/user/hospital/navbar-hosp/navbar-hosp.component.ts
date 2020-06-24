@@ -1,3 +1,4 @@
+import { MatSnackBar } from '@angular/material';
 import { HospitalService } from './../../../admin/Hospital/services/hospital.service';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -17,9 +18,13 @@ export class NavbarHospComponent implements OnInit {
   @Output() addcity = new EventEmitter<any>();
   @Output() addarea = new EventEmitter<any>();
   @Output() addHospital = new EventEmitter<any>();
+  @Output() addSpeciality =  new EventEmitter<any>();
+  AddState: string;
+  Addcity: string;
   modifyBedlist: any;
+  modifyArea: any;
   sortArray = [];
-  constructor(private fb: FormBuilder, private adminService: HospitalService) { }
+  constructor(private fb: FormBuilder, private adminService: HospitalService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -43,17 +48,18 @@ export class NavbarHospComponent implements OnInit {
       console.log(this.modifyBedlist);
       this.modifyBedlist.forEach( (element: { branchArea: any;  }) => {
 
-        console.log(element.branchArea,"x1");
+        console.log(element.branchArea, 'x1');
         this.sortArray.push(element.branchArea);
       });
       this.sortArray = this.sortArray.sort();
-      console.log(this.sortArray);
+      console.log('s', this.sortArray);
     });
   }
 
   // tslint:disable-next-line:member-ordering
   countryList: Array<any> = [
     { name: ' -- select an option -- ', cities: ['-- select an option --'] },
+    {name: 'All'},
     { name: 'Andhra Pradesh',
     cities: [ 'Anantapur' , 'Chittoor' , 'East Godavari' , 'Guntur' , 'YSR Kadapa' , 'Krishna' ,
     'Kurnool' , 'Nellore' , 'Prakasam' , 'Srikakulam' , 'Visakhapatnam' , 'Vizianagaram', 'West Godavari'] },
@@ -180,12 +186,13 @@ export class NavbarHospComponent implements OnInit {
     this.addarea.emit(this.form.controls.area.value);
 
   }
-  hospitalName() {
-    this.addHospital.emit(this.form2.controls.hospitalName.value);
-  }
 
   Speciality() {
-    console.log('speciality');
+    this.addState.emit(this.form1.controls.state.value);
+    this.addSpeciality.emit(this.form.controls.speciality.value);
+  }
+  hospitalName() {
+    this.addHospital.emit(this.form2.controls.hospitalName.value);
   }
 
   changeIdforSelectlocality() {
@@ -197,8 +204,38 @@ export class NavbarHospComponent implements OnInit {
   changeIdforSpeciality() {
     this.idChange = 3;
   }
+  clickState() {
+    this.AddState = this.form.controls.state.value;
+  }
   clickCity() {
-   this.idChange = 6;
+
+   this.Addcity = this.form.controls.city.value;
+   this.areaFound();
+  }
+
+  areaFound() {
+    this.adminService.getHospitalByLocation(this.AddState, this.Addcity, '')
+    .subscribe((result) => {
+      this.modifyArea = JSON.parse(JSON.stringify(result.data));
+      console.log(this.modifyArea);
+      this.sortArray =  [];
+      this.modifyArea.forEach( (element: { branchArea: any;  }) => {
+
+        console.log(element.branchArea, 'x1');
+
+        this.sortArray.push(element.branchArea);
+      });
+      this.sortArray = this.sortArray.sort();
+
+      if (this.sortArray.length > 0) {
+        this.idChange = 6;
+      } else {
+        this.snackBar.open('No area is found for hospital in this city', 'Try another city', {
+          duration: 2000
+        });
+      }
+      console.log('s', this.sortArray);
+    });
   }
   back() {
      this.idChange = 0;

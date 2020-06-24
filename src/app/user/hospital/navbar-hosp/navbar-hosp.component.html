@@ -21,7 +21,7 @@
                             <mat-label>State</mat-label>
                             <div>
                                 <mat-select placeholder="State" formControlName="state" required>
-                                  <mat-option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
+                                  <mat-option  (click)='clickState()'  *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
                                 </mat-select>
                             </div>
                         </mat-form-field>
@@ -88,20 +88,20 @@
                     <mat-form-field>
                         <mat-label class="col-6">Speciality</mat-label>
                         <div>
-                            <mat-select placeholder="Speciality" formControlName="speciality">
+                            <mat-select placeholder="Speciality" formControlName="speciality" required>
                                 <mat-option aria-placeholder="Speciality" value="All">All</mat-option>
                             </mat-select>
                         </div>
                     </mat-form-field>
                 </form>
-                <form class="d-flex justify-content-center">
-                    <!-- Default input -->
-                    <input type="search" placeholder="Type your query" aria-label="Search" class="form-control" style="height: 60px;">
-                    <button class="btn btn-primary btn-sm my-0 p" type="submit" style="height: 60px;">
-                    <i class="fas fa-search 3px"></i>
-                    </button>
+                <form [formGroup]="form2" class="d-flex justify-content-center" (submit)= 'hospitalName()'>
+                  <!-- Default input -->
+                  <input type="search" placeholder="Enter the HospitalName" formControlName = 'hospitalName' aria-label="Search" class="form-control" style="height: 60px;">
+                  <button class="btn btn-primary btn-sm my-0 p" type="submit" style="height: 60px;">
+              <i class="fas fa-search 3px"></i>
+                  </button>
 
-                </form>
+              </form>
 
             </div>
 

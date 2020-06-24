@@ -81,7 +81,6 @@ import { BloodChartComponent } from './admin/BloodBank/blood-bank-dashboard/char
 import { StrideComponent } from './user/payment/stride/stride.component';
 import { HospitalComponent } from './user/hospital/hospital.component';
 import { NavbarHospComponent } from './user/hospital/navbar-hosp/navbar-hosp.component';
-import { HospViewComponent } from './user/hospital/hosp-view/hosp-view.component';
 import { InvoiceComponent } from './user/order/invoice/invoice.component';
 @NgModule({
   declarations: [
@@ -134,7 +133,6 @@ import { InvoiceComponent } from './user/order/invoice/invoice.component';
     StrideComponent,
     HospitalComponent,
     NavbarHospComponent,
-    HospViewComponent,
     InvoiceComponent
   ],
   imports: [
