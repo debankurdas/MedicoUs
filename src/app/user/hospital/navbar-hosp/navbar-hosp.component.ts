@@ -23,7 +23,9 @@ export class NavbarHospComponent implements OnInit {
   Addcity: string;
   modifyBedlist: any;
   modifyArea: any;
+  specality: any;
   sortArray = [];
+  sortArrayForspeciality = [];
   constructor(private fb: FormBuilder, private adminService: HospitalService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
