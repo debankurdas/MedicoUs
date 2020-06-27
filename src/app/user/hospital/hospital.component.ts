@@ -42,9 +42,10 @@ export class HospitalComponent implements OnInit {
     this.location();
   }
 
-  Speciality(spec: string) {
-    this.speciality = spec;
-
+  Speciality(speciality: string) {
+    console.log(speciality);
+    this.speciality = speciality;
+    this.SpecialityWiseHospital();
   }
 
   location() {
@@ -64,7 +65,16 @@ export class HospitalComponent implements OnInit {
 
   SpecialityWiseHospital() {
 
-    console.log(this.state, this.speciality);
+    this.hospitalService.getHospitalBySpeciality(this.state, this.speciality)
+    .subscribe((result) => {
+      this.hospitalByData = [];
+      this.hospitalByData.push(result.data);
+      if (result.data.length < 1) {
+        this.snackBar.open('No hospital is avilable in this region', 'Try another region', {
+          duration: 2000
+        });
+      }
+    });
 
   }
   Hospital(hospitalName: string) {

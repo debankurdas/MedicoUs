@@ -23,7 +23,7 @@ export class NavbarHospComponent implements OnInit {
   Addcity: string;
   modifyBedlist: any;
   modifyArea: any;
-  specality: any;
+  speciality: any;
   sortArray = [];
   sortArrayForspeciality = [];
   constructor(private fb: FormBuilder, private adminService: HospitalService, private snackBar: MatSnackBar) { }
@@ -55,6 +55,16 @@ export class NavbarHospComponent implements OnInit {
       });
       this.sortArray = this.sortArray.sort();
       console.log('s', this.sortArray);
+
+      this.speciality = JSON.parse(JSON.stringify(result.data));
+      console.log(this.speciality);
+      this.speciality.forEach( (element: { speciality: any;  }) => {
+
+        console.log(element.speciality, 'x1');
+        this.sortArrayForspeciality.push(element.speciality);
+      });
+      this.sortArrayForspeciality = this.sortArrayForspeciality.sort();
+      console.log('s', this.sortArrayForspeciality);
     });
   }
 
@@ -191,7 +201,7 @@ export class NavbarHospComponent implements OnInit {
 
   Speciality() {
     this.addState.emit(this.form1.controls.state.value);
-    this.addSpeciality.emit(this.form.controls.speciality.value);
+    this.addSpeciality.emit(this.form1.controls.speciality.value);
   }
   hospitalName() {
     this.addHospital.emit(this.form2.controls.hospitalName.value);

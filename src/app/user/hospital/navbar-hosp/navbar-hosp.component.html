@@ -90,10 +90,11 @@
                         <mat-label class="col-6">Speciality</mat-label>
                         <div>
                             <mat-select placeholder="Speciality" formControlName="speciality" required>
-                                <mat-option aria-placeholder="Speciality" value="All">All</mat-option>
+                                <mat-option aria-placeholder="Speciality" *ngFor="let speciality of sortArrayForspeciality" [value]="speciality">{{speciality}}</mat-option>
                             </mat-select>
                         </div>
                     </mat-form-field>
+                    <button type="submit" mat-raised-button color="primary" [disabled]="!form1.valid">Search</button>
                 </form>
                 <form [formGroup]="form2" class="d-flex justify-content-center" (submit)='hospitalName()'>
                     <!-- Default input -->
@@ -111,5 +112,4 @@
     <br><br>
 
     <img (click)='back()' src="../../../../assets/user_profile/images/Back.jpg" class="animated bounce infinite" alt="Back Logo" id="animated-img1">
-
 </main>

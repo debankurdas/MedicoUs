@@ -318,3 +318,48 @@ exports.getHospitalByHospitalName = (req, res, next) => {
             });
     }
 }
+
+exports.getHospitalBySpeciality = (req, res, next) => {
+  console.log('hi');
+  console.log(req.body);
+  const state = req.body.state;
+  const speciality = req.body.speciality;
+
+  console.log(state);
+
+  if (state !== 'ALL' && speciality !== '') {
+    hospitalSchema.find({state: state, speciality: speciality})
+        .then((finalResult) => {
+            res.status(200).json({
+                status: 'Success',
+                message: 'Hospital Data is Fetched Successfully',
+                data: finalResult
+            })
+        })
+        .catch(error => {
+            res.status(401).json({
+                message: 'Hospital data can not be fetched now',
+                error: error
+            });
+        });
+
+} else  if (state === 'ALL' && speciality !== '') {
+  hospitalSchema.find({speciality: speciality})
+      .then((finalResult) => {
+          res.status(200).json({
+              status: 'Success',
+              message: 'Hospital Data is Fetched Successfully',
+              data: finalResult
+          })
+      })
+      .catch(error => {
+          res.status(401).json({
+              message: 'Hospital data can not be fetched now',
+              error: error
+          });
+      });
+
+}
+
+
+  }

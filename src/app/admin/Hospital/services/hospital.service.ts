@@ -145,7 +145,13 @@ export class HospitalService {
     console.log(locationData);
     return this.http.post<{data: any}>(environment.apiUrl + '/hospital/location', locationData);
   }
-
+  getHospitalBySpeciality(state: string, speciality: string) {
+    const hospData = {
+      state,
+      speciality
+    };
+    return this.http.post<{data: any}>(environment.apiUrl + '/hospital/speciality', hospData);
+  }
   getHospitalByHospitalSearch(hospitalName: string) {
     const hospitalData = {
       hospitalName
