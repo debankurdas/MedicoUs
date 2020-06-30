@@ -40,7 +40,7 @@ import { ProductComponent } from './user/product/product.component';
 import { ProductDetailsComponent } from './user/product/product-details/product-details.component';
 import { StrideComponent } from './user/payment/stride/stride.component';
 import { HospitalComponent } from './user/hospital/hospital.component';
-
+import { HospitalDisplayComponent } from './user/hospital-display/hospital-display.component';
 
 const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
@@ -85,6 +85,7 @@ const routes: Routes = [
   { path: 'user/payment', component: PaymentComponent, canActivate: [AuthGuard, UserGuard] },
   {path: 'user/invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/hospital', component: HospitalComponent, canActivate: [AuthGuard, UserGuard] },
+  { path: 'user/hospitaldisplay', component: HospitalDisplayComponent, canActivate: [AuthGuard, UserGuard] },
   {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];
 
