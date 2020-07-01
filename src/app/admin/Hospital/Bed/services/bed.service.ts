@@ -103,6 +103,13 @@ export class BedService {
       return this.http.delete(environment.apiUrl + '/bed/' + bedId);
      }
 
+     getBedsDatabyhospitalId(hospitalId: string) {
+      const hospId = {
+         hospitalId
+       };
+      return this.http.post<{data: any}>(environment.apiUrl + '/bed/getData', hospId);
+     }
+
      getBedDatabyhospitalId(hospitalId: string) {
       const hospId = {
          hospitalId
@@ -112,6 +119,7 @@ export class BedService {
         return {
           bed: bedData.data.map((bed) => {
           return {
+            cost: bed.cost,
             quantity: bed.quantity,
             existingBed: bed.existingBed,
             bedType: bed.bedType,

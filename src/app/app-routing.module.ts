@@ -85,7 +85,7 @@ const routes: Routes = [
   { path: 'user/payment', component: PaymentComponent, canActivate: [AuthGuard, UserGuard] },
   {path: 'user/invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/hospital', component: HospitalComponent, canActivate: [AuthGuard, UserGuard] },
-  { path: 'user/hospitaldisplay', component: HospitalDisplayComponent, canActivate: [AuthGuard, UserGuard] },
+  { path: 'user/hospital/:id', component: HospitalDisplayComponent, canActivate: [AuthGuard, UserGuard] },
   {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];
 

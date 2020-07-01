@@ -1,20 +1,19 @@
-<p>hospital-display works!</p>
 
-<body class="single-page">
-    <header>
+<app-main-nav></app-main-nav>
+    <header *ngFor="let data of hospitalData">
 
 
-        <img src="../../../assets/hospital/apollo.jpg" alt="" width="100%">
+        <img [src]= 'data.imageUrl' alt="" width="100%">
     </header>
     <!-- .site-header -->
     <br>
     <br>
-    <div class="container">
+    <div class="container"  >
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" *ngFor="let data of hospitalData">
                 <div>
                     <h2>
-                        Apollo Gleneagles Hospitals Limited
+                        {{data.hospitalName}}
                     </h2>
                 </div>
             </div>
@@ -29,7 +28,7 @@
                         <h2 class="d-flex align-items-center">Contact Info</h2>
 
                         <ul class="p-0 m-0">
-                            <li><span>Addtress:</span>58, Canal Circular Rd, Kadapara, Phool Bagan, Kankurgachi, Kolkata, West Bengal 700054</li>
+                            <li><span>Address:</span>{{address}}</li>
                             <li><span>Phone:</span>033 2320 3040</li>
                             <li><span>Email:</span>info@apollohospitals.com</li>
                         </ul>
@@ -70,42 +69,19 @@
                     <h2 class="entry-title">BEDS</h2>
                 </header>
 
-                <div class="entry-content elements-container">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 col-md-6 offset-lg-1 col-lg-2">
+                <div class="entry-content elements-container" >
+                    <div class="row" >
+                        <div class="col-12 col-sm-6 col-md-6 offset-lg-1 col-lg-2"
+                        *ngFor="let data of bedDetails" >
                             <div class="c100 p50 dark big orange">
-                                <span>50%</span>
+                                <span>{{data.existingBed}}</span>
                                 <div class="slice">
                                     <div class="bar"></div>
                                     <div class="fill"></div>
                                 </div>
                             </div>
                             <h3>
-                                ICU
-                            </h3>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 offset-lg-1 col-lg-2">
-                            <div class="c100 p50 dark big orange">
-                                <span>50%</span>
-                                <div class="slice">
-                                    <div class="bar"></div>
-                                    <div class="fill"></div>
-                                </div>
-                            </div>
-                            <h3>
-                                ICU
-                            </h3>
-                        </div>
-                        <div class="col-12 col-sm-6 col-md-6 offset-lg-1 col-lg-2">
-                            <div class="c100 p50 dark big orange">
-                                <span>50%</span>
-                                <div class="slice">
-                                    <div class="bar"></div>
-                                    <div class="fill"></div>
-                                </div>
-                            </div>
-                            <h3>
-                                ICU
+                                {{data.bedType}}
                             </h3>
                         </div>
                     </div>
@@ -119,12 +95,11 @@
         <div class="row">
             <div class="col-12">
                 <div class="contact-page-map">
-                    <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=Apollo Gleneagles Hospitals Limited, Canal Circular Road, Kadapara, Phool Bagan, Kankurgachi, Kolkata, West Bengal&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0"
+                    <iframe id="gmap_canvas" [src]="address" frameborder="0" scrolling="no" marginheight="0"
                         marginwidth="0"></iframe>
                 </div>
                 <!-- map -->
             </div>
         </div>
     </div>
-
-</body>
+<app-footer></app-footer>
