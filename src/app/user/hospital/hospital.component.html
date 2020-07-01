@@ -26,7 +26,7 @@
 
                         <!--Card image-->
                         <div class="view overlay">
-                            <img [src]='item.imageUrl' [routerLink]= 'item._id' alt="" class="card-img-top" height="400px">
+                            <img [src]='item.imageUrl' [routerLink]='item._id' alt="" class="card-img-top" height="400px">
                         </div>
 
                         <!--Card content-->
@@ -35,7 +35,7 @@
                             <h4 class="card-title">{{item.hospitalName}}</h4>
                             <!--Text-->
                             <p class="card-text">{{item.address}}</p>
-                            <a routerLink='/user/hospital/item._id' target="_blank" class="btn btn-primary btn-md">Details
+                            <a [routerLink]='item._id' class="btn btn-primary btn-md">Details
                               <i class="fas fa-arrow-right ml-2 "></i>
                           </a>
                         </div>

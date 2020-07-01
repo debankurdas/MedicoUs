@@ -153,6 +153,8 @@ cities: Array<any>;
      branchArea : new FormControl('', Validators.required),
      address: new FormControl('', Validators.required),
      pin: new FormControl('', Validators.required),
+     email: new FormControl('', Validators.required),
+     contact: new FormControl('', Validators.required),
    });
    this.route.paramMap.subscribe((paramMap: ParamMap) => {
      if (paramMap.has('hospitalId')) {
@@ -161,7 +163,6 @@ cities: Array<any>;
        // this.isLoading = true;
        this.hospitalService.getHospitalById(this.hospitalId)
        .subscribe((hospitalData) => {
-         // this.isLoading = false;
          this.hospitalDetails = {
            id: hospitalData._id,
            hospitalName: hospitalData.hospitalName,
@@ -176,6 +177,8 @@ cities: Array<any>;
            branchArea: hospitalData.branchArea,
            address: hospitalData.address,
            pin: hospitalData.pin,
+           email: hospitalData.email,
+          contact: hospitalData.contact
          };
          this.form.setValue({
           hospitalName: this.hospitalDetails.hospitalName,
@@ -188,7 +191,9 @@ cities: Array<any>;
           city: this.hospitalDetails.city,
           branchArea: this.hospitalDetails.branchArea,
           address: this.hospitalDetails.address,
-          pin: this.hospitalDetails.pin
+          pin: this.hospitalDetails.pin,
+          email: this.hospitalDetails.email,
+          contact: this.hospitalDetails.contact
         });
        });
      } else {
@@ -222,12 +227,13 @@ changeCountry(event, count) {
        this.hospitalService.addHospitalDetails(this.form.value.hospitalName, this.form.value.branchName,
         this.form.value.imageUrl, this.form.value.speciality, this.form.value.status ,
         this.form.value.description, this.form.value.state, this.form.value.city, this.form.value.branchArea,
-         this.form.value.address, this.form.value.pin );
+         this.form.value.address, this.form.value.pin,this.form.value.email,this.form.value.contact );
    } else  {
      // tslint:disable-next-line: max-line-length
      this.hospitalService.updateHospitalData(this.hospitalId, this.form.value.hospitalName,  this.form.value.branchName, this.hospitalDetails.adminId,
        this.form.value.imageUrl, this.form.value.speciality, this.form.value.status, this.form.value.description,
-       this.form.value.state, this.form.value.city, this.form.value.branchArea, this.form.value.address, this.form.value.pin);
+       // tslint:disable-next-line:max-line-length
+       this.form.value.state, this.form.value.city, this.form.value.branchArea, this.form.value.address, this.form.value.pin, this.form.value.email,this.form.value.contact);
    }
    this.form.reset();
  }
