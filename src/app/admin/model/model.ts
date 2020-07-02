@@ -20,6 +20,8 @@ export interface Hospital {
   branchArea: string;
   address: string;
   pin: string;
+  email: string;
+  contact: string;
 }
 
 export interface BloodBank {

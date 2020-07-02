@@ -17,6 +17,8 @@ exports.addHospital = (req, res, next) => {
         branchArea: req.body.branchArea,
         address: req.body.address,
         pin: req.body.pin,
+        email: req.body.email,
+        contact: req.body.contact
     });
     hospital.save()
         .then((requestedData) => {
@@ -114,7 +116,9 @@ exports.updateHospitalDetails = (req, res, next) => {
         city: req.body.city,
         branchArea: req.body.branchArea,
         address: req.body.address,
-        pin: req.body.pin
+        pin: req.body.pin,
+        email: req.body.email,
+        contact: req.body.contact
     })
     console.log(hospital);
     console.log(req.params.id);
@@ -320,46 +324,46 @@ exports.getHospitalByHospitalName = (req, res, next) => {
 }
 
 exports.getHospitalBySpeciality = (req, res, next) => {
-  console.log('hi');
-  console.log(req.body);
-  const state = req.body.state;
-  const speciality = req.body.speciality;
+    console.log('hi');
+    console.log(req.body);
+    const state = req.body.state;
+    const speciality = req.body.speciality;
 
-  console.log(state);
+    console.log(state);
 
-  if (state !== 'ALL' && speciality !== '') {
-    hospitalSchema.find({state: state, speciality: speciality})
-        .then((finalResult) => {
-            res.status(200).json({
-                status: 'Success',
-                message: 'Hospital Data is Fetched Successfully',
-                data: finalResult
+    if (state !== 'ALL' && speciality !== '') {
+        hospitalSchema.find({ state: state, speciality: speciality })
+            .then((finalResult) => {
+                res.status(200).json({
+                    status: 'Success',
+                    message: 'Hospital Data is Fetched Successfully',
+                    data: finalResult
+                })
             })
-        })
-        .catch(error => {
-            res.status(401).json({
-                message: 'Hospital data can not be fetched now',
-                error: error
+            .catch(error => {
+                res.status(401).json({
+                    message: 'Hospital data can not be fetched now',
+                    error: error
+                });
             });
-        });
 
-} else  if (state === 'ALL' && speciality !== '') {
-  hospitalSchema.find({speciality: speciality})
-      .then((finalResult) => {
-          res.status(200).json({
-              status: 'Success',
-              message: 'Hospital Data is Fetched Successfully',
-              data: finalResult
-          })
-      })
-      .catch(error => {
-          res.status(401).json({
-              message: 'Hospital data can not be fetched now',
-              error: error
-          });
-      });
+    } else if (state === 'ALL' && speciality !== '') {
+        hospitalSchema.find({ speciality: speciality })
+            .then((finalResult) => {
+                res.status(200).json({
+                    status: 'Success',
+                    message: 'Hospital Data is Fetched Successfully',
+                    data: finalResult
+                })
+            })
+            .catch(error => {
+                res.status(401).json({
+                    message: 'Hospital data can not be fetched now',
+                    error: error
+                });
+            });
+
+    }
+
 
 }
-
-
-  }

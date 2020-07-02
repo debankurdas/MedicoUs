@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const uniqueValidator = require('mongoose-unique-validator');
+// const { truncate } = require('fs/promises');
 const hospitalSchema = new mongoose.Schema({
     hospitalName: {
         type: String,
@@ -51,6 +52,14 @@ const hospitalSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    email: {
+        type: String,
+        required: true
+    },
+    contact: {
+        type: String,
+        required: true
+    }
 
 });
 mongoose.plugin(uniqueValidator);
