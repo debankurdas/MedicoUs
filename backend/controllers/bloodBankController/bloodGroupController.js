@@ -160,3 +160,22 @@ exports.getDataFilterBybloodBankId = (req,res,next) => {
     })
   })
 }
+
+// exports.getDataFilterBybloodGroup = (req,res,next) => {
+//   bloodGroup = req.body.bloodGroup;
+//   console.log(bloodGroup);
+//   bloodGroupSchema.find({bloodGroup: bloodGroup})
+//   .then((result) => {
+//     res.status(200).json({
+//       data: result,
+//       status: 'Success'
+//     })
+//   })
+//   .catch((error) =>{
+//     res.status(400).json({
+//       message: 'Please try again after some time',
+//       error: error,
+//       status: 'Failed'
+//     })
+//   })
+// }

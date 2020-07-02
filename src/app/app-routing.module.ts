@@ -1,3 +1,4 @@
+import { BloodBankComponent } from './user/blood-bank/blood-bank.component';
 import { InvoiceComponent } from './user/order/invoice/invoice.component';
 import { BloodBankDashboardComponent } from './admin/BloodBank/blood-bank-dashboard/blood-bank-dashboard.component';
 import { HospitalDashboardComponent } from './admin/Hospital/hospital-dashboard/hospital-dashboard.component';
@@ -86,6 +87,7 @@ const routes: Routes = [
   {path: 'user/invoice/:id', component: InvoiceComponent, canActivate: [AuthGuard, UserGuard]},
   { path: 'user/hospital', component: HospitalComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/hospital/:id', component: HospitalDisplayComponent, canActivate: [AuthGuard, UserGuard] },
+  {path: 'user/bloodBank', component: BloodBankComponent, canActivate: [AuthGuard, UserGuard]},
   {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];
 

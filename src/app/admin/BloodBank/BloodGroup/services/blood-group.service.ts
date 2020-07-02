@@ -74,6 +74,15 @@ export class BloodGroupService {
       return this.http.get<{data: any}>(
        environment.apiUrl + '/bloodGroup/' + id);
     }
+
+    // getbloodGroupDetailsbloodType(bloodGroup: string) {
+
+    //   const data = {
+    //     bloodGroup
+    //   };
+    //   return this.http.post<{data: any}>(
+    //    environment.apiUrl + '/bloodGroup/BybloodType', data);
+    // }
     updatebloodGroupData(id: string, bloodBankId: string, bloodBankName: string, bloodGroup: string, quantity: number,
                          existingBloodQuantity: number, date: Date) {
                   let bloodGroupData: BloodGroup;

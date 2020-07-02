@@ -125,4 +125,21 @@ export class BloodBankService {
       };
     return this.http.post<{data: any}>(environment.apiUrl + '/bloodBank/getData', branches);
     }
+
+    getBloodBankbyLocation(state: string, city: string, area: string) {
+      const locationData = {
+        state,
+        city,
+        area
+      };
+      console.log(locationData);
+      return this.http.post<{data: any}>(environment.apiUrl + '/bloodBank/location', locationData);
+    }
+
+    getBloodBankBySearch(bloodBankName: string) {
+      const bloodBankData = {
+        bloodBankName
+      };
+      return this.http.post<{data: any}>(environment.apiUrl + '/bloodBank/bloodBankSearch', bloodBankData);
+    }
 }

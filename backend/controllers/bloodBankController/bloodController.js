@@ -175,3 +175,125 @@ exports.getDataFilterBybranchArea = (req, res, next) => {
           })
       })
 }
+
+exports.getBloodBankbyLocation = (req, res, next) => {
+  console.log(req.body);
+  const state = req.body.state;
+  const city = req.body.city;
+  const area = req.body.area;
+  if (state === 'ALL' && city === 'ALL' && area === '') {
+      bloodBankSchema.find()
+          .then((finalResult) => {
+              res.status(200).json({
+                  status: 'Success',
+                  message: 'BloodBankData is Fetched Successfully',
+                  data: finalResult
+              })
+          })
+          .catch(error => {
+              res.status(401).json({
+                  message: 'BloodBankdata can not be fetched now',
+                  error: error
+              });
+          });
+
+  } else if (state !== '' && city === '' && area === '') {
+      bloodBankSchema.find({ state: state })
+          .then((finalResult) => {
+              res.status(200).json({
+                  status: 'Success',
+                  message: 'BloodBankData is Fetched Successfully',
+                  data: finalResult
+              })
+          })
+          .catch(error => {
+              res.status(401).json({
+                  message: 'BloodBankdata can not be fetched now',
+                  error: error
+              });
+          });
+  } else if (state !== '' && city === 'ALL' && area === '') {
+      bloodBankSchema.find({ state: state })
+          .then((finalResult) => {
+              res.status(200).json({
+                  status: 'Success',
+                  message: 'BloodBankData is Fetched Successfully',
+                  data: finalResult
+              })
+          })
+          .catch(error => {
+              res.status(401).json({
+                  message: 'BloodBankdata can not be fetched now',
+                  error: error
+              });
+          });
+
+  } else if (state !== '' && city !== 'ALL' && city !== '' && city !== 'undefined' && area === '') {
+      bloodBankSchema.find({ state: state, city: city })
+          .then((finalResult) => {
+              res.status(200).json({
+                  status: 'Success',
+                  message: 'BloodBankData is Fetched Successfully',
+                  data: finalResult
+              })
+          })
+          .catch(error => {
+              res.status(401).json({
+                  message: 'BloodBankdata can not be fetched now',
+                  error: error
+              });
+          });
+  } else if (state !== '' && city !== '' && city !== 'undefined' && city !== 'ALL' && area === 'ALL' && area != '') {
+      bloodBankSchema.find({ state: state, city: city })
+          .then((finalResult) => {
+              res.status(200).json({
+                  status: 'Success',
+                  message: 'BloodBankData is Fetched Successfully',
+                  data: finalResult
+              })
+          })
+          .catch(error => {
+              res.status(401).json({
+                  message: 'BloodBankdata can not be fetched now',
+                  error: error
+              });
+          });
+  } else if (state !== '' && city !== '' && city !== 'undefined' && city !== 'ALL' && (area != 'ALL' || area !== '' || area !== 'undefined')) {
+      bloodBankSchema.find({ state: state, city: city, branchArea: area })
+          .then((finalResult) => {
+              res.status(200).json({
+                  status: 'Success',
+                  message: 'BloodBankData is Fetched Successfully',
+                  data: finalResult
+              })
+          })
+          .catch(error => {
+              res.status(401).json({
+                  message: 'BloodBankdata can not be fetched now',
+                  error: error
+              });
+          });
+  }
+
+}
+
+exports.getBloodBankbySearch = (req, res, next) => {
+  console.log(req.body);
+  const bloodBankName = req.body.bloodBankName;
+  if (bloodBankName) {
+      bloodBankSchema.find({ bloodBankName: { $regex: bloodBankName, $options: 'i' } })
+          .then((finalResult) => {
+              res.status(200).json({
+                  status: 'Success',
+                  message: 'BloodBank Data is Fetched Successfully',
+                  data: finalResult
+              })
+          })
+          .catch(error => {
+              res.status(401).json({
+                  message: 'BloodBank data can not be fetched now',
+                  error: error
+              });
+          });
+  }
+}

@@ -101,6 +101,12 @@ export class MainNavComponent implements OnInit, OnDestroy {
     sessionStorage.setItem('idForall', this.idForall);
   }
 
+  idChangeForBloodBank() {
+    this.idForall = '2';
+    console.log(this.idForall);
+    sessionStorage.setItem('idForall', this.idForall);
+  }
+
   idChangeForMedicine() {
     this.idForall = '1';
     console.log(this.idForall);

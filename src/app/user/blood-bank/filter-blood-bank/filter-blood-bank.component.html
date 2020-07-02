@@ -1,0 +1,104 @@
+<br><br>
+<img (click)='changeIdforSelectlocality()' *ngIf="idChange === 0" src="../../../../assets/user_profile/images/Filter.jpg" class="animated bounce infinite" alt="Transparent MDB Logo" id="animated-img1">
+<mat-select placeholder='Select the option' *ngIf="idChange === 1">
+    <mat-option (click)='changeIdforArea()'>Search By Area or BloodBankName</mat-option>
+</mat-select>
+<main class="pt-5 mx-lg-5" *ngIf="idChange === 2 || idChange === 6">
+    <div class="container-fluid mt-5">
+
+        <!-- Heading -->
+        <div class="card">
+
+            <!--Card content-->
+            <div class="card-body d-sm-flex justify-content-between">
+                <form [formGroup]="form" (submit)="Location()">
+
+                    <h4 class="mb-2 mb-sm-0 pt-1">
+                        <span>Search by Location</span>
+                    </h4>
+                    <mat-form-field class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
+                        <mat-label>State</mat-label>
+                        <div>
+                            <mat-select placeholder="State" formControlName="state" required>
+                                <mat-option (click)='clickState()' *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
+                            </mat-select>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
+                        <mat-label>City</mat-label>
+                        <div>
+                            <mat-select placeholder="Anycity" formControlName="city">
+                                <mat-option value="ALL">ALL</mat-option>
+                                <mat-option (click)="clickCity()" *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
+                            </mat-select>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field class="col-md-12 col-sm-12 col-lg-4 col-xl-4" *ngIf="idChange === 6">
+                        <mat-label>Area</mat-label>
+                        <div>
+                            <mat-select placeholder="Area" formControlName="area">
+                                <mat-option value="ALL">ALL</mat-option>
+                                <mat-option aria-placeholder="area" *ngFor="let area of sortArray" [value]="area">{{area}}</mat-option>
+                            </mat-select>
+                        </div>
+                    </mat-form-field>
+                    <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">Search</button>
+
+                </form>
+                <div class="col-md-4 col-sm-4 col-lg-4 col-xl-4">
+                    <form [formGroup]="form2" class="d-flex justify-content-center" (submit)='bloodBankName()'>
+                        <!-- Default input -->
+                        <input type="search" placeholder="Enter the BloodBankName" formControlName='bloodBankName' aria-label="Search" class="form-control" style="height: 60px;">
+                        <button class="btn btn-primary btn-sm my-0 p" type="submit" style="height: 60px;">
+                    <i class="fas fa-search 3px"></i>
+                        </button>
+
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <br><br>
+    <img (click)='back()' src="../../../../assets/user_profile/images/Back.jpg" class="animated bounce infinite" alt="Back Logo" id="animated-img1">
+
+</main>
+<!-- <main class="pt-5 mx-lg-5" *ngIf="idChange === 3">
+  <div class="container-fluid mt-5">
+
+      <div class="card mb-4 ">
+
+
+          <div class="card-body d-sm-flex justify-content-between">
+            <form
+            [formGroup]="form1" (submit)="bloodTypewiseSearch()"
+            >
+            <mat-form-field class="formControl">
+              <mat-label>BloodGroup Type</mat-label>
+                <mat-select formControlName="bloodGroup" placeholder="bloodGroup" required>
+                  <mat-option value="A+">A+</mat-option>
+                  <mat-option value="A-">A-</mat-option>
+                  <mat-option value="B+">B+</mat-option>
+                  <mat-option value="B-">B-</mat-option>
+                  <mat-option value="AB+">AB+</mat-option>
+                  <mat-option value="AB-">AB-</mat-option>
+                  <mat-option value="O+">O+</mat-option>
+                  <mat-option value="O-">O-</mat-option>
+                </mat-select>
+            </mat-form-field>
+              <button color="primary" mat-raised-button type="submit"
+              [disabled]='!form1.valid'>Submit</button>
+            </form>
+
+          </div>
+
+      </div>
+  </div>
+  <br><br>
+
+  <img (click)='back()' src="../../../../assets/user_profile/images/Back.jpg" class="animated bounce infinite" alt="Back Logo" id="animated-img1">
+</main> -->
+
+
+
