@@ -26,6 +26,7 @@ export class NavbarHospComponent implements OnInit {
   speciality: any;
   sortArray = [];
   sortArrayForspeciality = [];
+  sets : any;
   constructor(private fb: FormBuilder, private adminService: HospitalService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -64,6 +65,8 @@ export class NavbarHospComponent implements OnInit {
         this.sortArrayForspeciality.push(element.speciality);
       });
       this.sortArrayForspeciality = this.sortArrayForspeciality.sort();
+      this.sets= new Set(this.sortArrayForspeciality);
+      this.sortArrayForspeciality = [...this.sets];
       console.log('s', this.sortArrayForspeciality);
     });
   }

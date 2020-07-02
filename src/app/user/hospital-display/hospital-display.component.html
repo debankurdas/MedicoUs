@@ -1,16 +1,16 @@
 <app-main-nav>
 </app-main-nav>
-<header *ngFor="let data of hospitalData">
+<header *ngFor="let data of hospitalData" style="margin-left: 30%;">
 
 
-    <img [src]='data.imageUrl' alt="" width="100%">
+    <img [src]='data.imageUrl' alt="" width="50%" style="align:center;">
 </header>
 <!-- .site-header -->
 <br>
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-12" *ngFor="let data of hospitalData">
+        <div class="col-12" *ngFor="let data of hospitalData" style="margin-left: 30%;">
             <div>
                 <h2>
                     {{data.hospitalName}}
@@ -29,8 +29,8 @@
 
                     <ul class="p-0 m-0">
                         <li><span>Address:</span>{{hospitalAddress}}</li>
-                        <li><span>Phone:</span>033 2320 3040</li>
-                        <li><span>Email:</span>info@apollohospitals.com</li>
+                        <li><span>Phone:</span>{{contact}}</li>
+                        <li><span>Email:</span>{{email}}</li>
                     </ul>
                 </div>
             </div>
@@ -66,7 +66,7 @@
     <div class="row elements-wrap">
         <div class="col-12">
             <header class="entry-header elements-heading">
-                <h2 class="entry-title">BEDS</h2>
+                <h2 class="entry-title">AVAILABLE BEDS</h2>
             </header>
 
             <div class="entry-content elements-container">
@@ -81,6 +81,9 @@
                         </div>
                         <h3>
                             {{data.bedType}}
+                        </h3>
+                        <h3>
+                            Average cost/day Rs.{{data.cost}}
                         </h3>
                     </div>
                 </div>
