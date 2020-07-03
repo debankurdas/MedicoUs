@@ -125,6 +125,13 @@ export class BloodGroupService {
        this.bloodDetailsModify.next({ blooGroupModify: [...this.bloodGroupModify]});
      });
      }
+
+     getBloodGroupbyBloodBankId(bloodBankId: string) {
+      const bloodId = {
+         bloodBankId
+       };
+      return this.http.post<{data: any}>(environment.apiUrl + '/bloodGroup/getData', bloodId);
+     }
      getBloodModifyListner() {
       return this.bloodDetailsModify.asObservable();
     }
