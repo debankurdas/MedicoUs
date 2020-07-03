@@ -3,7 +3,7 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport="true">
         <mat-toolbar>
-            Medico
+            Medico 
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" style="float: right;">
         <span class="material-icons">
           cancel
@@ -29,7 +29,7 @@
                 <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-                <span class="titleWidth">Medico</span>
+                <span class="titleWidth"><a routerLink = '' class="cur">Medico</a> </span>
                 <div *ngIf="loginStatus$ === false">
                     <button mat-fab type="button" class="mar" color="warn" mat-button routerLink="/index">
             <mat-icon>home</mat-icon>

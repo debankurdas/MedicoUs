@@ -5,7 +5,9 @@
 .sidenav {
   width: 200px;
 }
-
+.cur {
+  cursor: pointer;
+}
 .sidenav .mat-toolbar {
   background: inherit;
 }
