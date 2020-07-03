@@ -27,8 +27,8 @@
                 <div class="contact-info h-100">
                     <h2 class="d-flex align-items-center">Contact Info</h2>
 
-                    <ul class="p-0 m-0">
-                        <li><span>Address:</span>{{hospitalAddress}}</li>
+                    <ul class="p-0 m-0" *ngFor="let data of hospitalData">
+                        <li><span>Address:</span>{{hospitalAddress}}, {{data.city}}, {{data.state}}, {{data.pin}}</li>
                         <li><span>Phone:</span>{{contact}}</li>
                         <li><span>Email:</span>{{email}}</li>
                     </ul>

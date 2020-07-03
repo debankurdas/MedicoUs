@@ -65,7 +65,7 @@ export class NavbarHospComponent implements OnInit {
         this.sortArrayForspeciality.push(element.speciality);
       });
       this.sortArrayForspeciality = this.sortArrayForspeciality.sort();
-      this.sets= new Set(this.sortArrayForspeciality);
+      this.sets = new Set(this.sortArrayForspeciality);
       this.sortArrayForspeciality = [...this.sets];
       console.log('s', this.sortArrayForspeciality);
     });
