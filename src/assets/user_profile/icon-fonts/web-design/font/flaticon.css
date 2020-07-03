@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 21/06/2020 10:23
+  	Creation date: 03/07/2020 20:29
   	*/
 
 @font-face {
@@ -23,7 +23,7 @@
 }
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
   font-family: Flaticon;
         font-size: 34px;
 font-style: normal;
@@ -36,3 +36,6 @@ margin-left: 20px;
 .flaticon-medicine:before { content: "\f103"; }
 .flaticon-blood:before { content: "\f104"; }
 .flaticon-hospital:before { content: "\f105"; }
+.flaticon-house:before { content: "\f106"; }
+.flaticon-log-in:before { content: "\f107"; }
+.flaticon-login:before { content: "\f108"; }

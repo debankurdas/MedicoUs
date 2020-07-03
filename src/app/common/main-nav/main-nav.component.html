@@ -31,14 +31,14 @@
         </button>
                 <span class="titleWidth"><a routerLink = '' class="cur">Medico</a> </span>
                 <div *ngIf="loginStatus$ === false">
-                    <button mat-fab type="button" class="mar" color="warn" mat-button routerLink="/index">
-            <mat-icon>home</mat-icon>
+                    <button  type="button" class="mar" mat-button routerLink="/index">
+                    <i class= 'flaticon-house'></i>
           </button>
-                    <button mat-fab type="button" class="mar" color="primary" mat-button routerLink="/login">
-            <mat-icon>login</mat-icon>
+                    <button  type="button" class="mar"  mat-button routerLink="/login">
+            <i class= 'flaticon-log-in'></i>
           </button>
-                    <button type="button" mat-fab class="mar" mat-button routerLink="/register">
-            <mat-icon class="mat-18">how_to_reg</mat-icon>
+                    <button type="button"  class="mar" mat-button routerLink="/register">
+                    <i class="flaticon-login"></i>
           </button>
                 </div>
                 <div *ngIf="role$ !== ''">

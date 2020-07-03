@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 21/06/2020 10:23
+    Creation date: 03/07/2020 20:29
     */
 
     @font-face {
@@ -43,6 +43,9 @@
 .flaticon-medicine:before { content: "\f103"; }
 .flaticon-blood:before { content: "\f104"; }
 .flaticon-hospital:before { content: "\f105"; }
+.flaticon-house:before { content: "\f106"; }
+.flaticon-log-in:before { content: "\f107"; }
+.flaticon-login:before { content: "\f108"; }
     
     $font-Flaticon-shopping-cart: "\f100";
     $font-Flaticon-user: "\f101";
@@ -50,3 +53,6 @@
     $font-Flaticon-medicine: "\f103";
     $font-Flaticon-blood: "\f104";
     $font-Flaticon-hospital: "\f105";
+    $font-Flaticon-house: "\f106";
+    $font-Flaticon-log-in: "\f107";
+    $font-Flaticon-login: "\f108";
