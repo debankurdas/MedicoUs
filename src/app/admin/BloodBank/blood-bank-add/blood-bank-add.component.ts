@@ -142,6 +142,8 @@ export class BloodBankAddComponent implements OnInit {
        bloodBankName: new FormControl('', Validators.required),
        status: new FormControl('', Validators.required),
        description: new FormControl('', [Validators.required, Validators.maxLength(1000)]),
+       email: new FormControl('', Validators.required),
+       mobileno: new FormControl('', Validators.required),
        imageUrl: new FormControl('', Validators.required),
        state: new FormControl('', Validators.required),
        city: new FormControl('', Validators.required),
@@ -163,6 +165,8 @@ export class BloodBankAddComponent implements OnInit {
              adminId: bloodBankData.adminId,
              imageUrl: bloodBankData.imageUrl,
              description: bloodBankData.description,
+             email: bloodBankData.email,
+             mobileno: bloodBankData.mobileno,
              status: bloodBankData.status,
              state: bloodBankData.state,
              city: bloodBankData.city,
@@ -174,6 +178,8 @@ export class BloodBankAddComponent implements OnInit {
             bloodBankName: this.bloodBankDetails.bloodBankName,
             imageUrl: this.bloodBankDetails.imageUrl,
             description: this.bloodBankDetails.description,
+            email: this.bloodBankDetails.email,
+            mobileno: this.bloodBankDetails.mobileno,
             status: this.bloodBankDetails.status,
             state: this.bloodBankDetails.state,
             city: this.bloodBankDetails.city,
@@ -210,11 +216,13 @@ export class BloodBankAddComponent implements OnInit {
        // this.isLoading = true;
          this.bloodBankService.addbloodBankDetails(this.form.value.bloodBankName,
           this.form.value.imageUrl, this.form.value.status , this.form.value.state, this.form.value.city,
-          this.form.value.branchArea, this.form.value.description, this.form.value.address, this.form.value.pin);
+          this.form.value.branchArea, this.form.value.description, this.form.value.email, this.form.value.mobileno,
+           this.form.value.address, this.form.value.pin);
      } else  {
        this.bloodBankService.updatebloodBankData(this.bloodBankId, this.form.value.bloodBankName, this.bloodBankDetails.adminId,
          this.form.value.imageUrl, this.form.value.status, this.form.value.state, this.form.value.city,
-         this.form.value.branchArea, this.form.value.description, this.form.value.address, this.form.value.pin);
+         this.form.value.branchArea, this.form.value.description, this.form.value.email, this.form.value.mobileno,
+          this.form.value.address, this.form.value.pin);
      }
      this.form.reset();
    }

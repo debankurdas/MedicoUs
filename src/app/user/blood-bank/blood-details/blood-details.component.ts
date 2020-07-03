@@ -24,15 +24,20 @@ export class BloodDetailsComponent implements OnInit {
   percentage: any;
   perc: string;
   pin: string;
+  email: string;
+  mobileno: string;
   ngOnInit() {
     this.router.paramMap.subscribe((result) => {
       this.adminService.getbloodBankById(result.get('id'))
       .subscribe((data) => {
-        this.bloodBankData.push(data._id, data.address, data.bloodBankName, data.imageUrl, data.city, data.state, data.pin);
+        this.bloodBankData.push(data._id, data.address, data.bloodBankName, data.imageUrl, data.city,
+          data.state, data.pin, data.email, data.mobileno);
         this.bloodBankAddress = this.bloodBankData[1];
         this.bloodBankName = this.bloodBankData[2];
         this.imageUrl = this.bloodBankData[3];
         this.pin = this.bloodBankData[6];
+        this.email = this.bloodBankData[7];
+        this.mobileno = this.bloodBankData[8];
         console.log(this.bloodBankAddress);
         console.log(this.bloodBankData);
 

@@ -31,6 +31,8 @@ export interface BloodBank {
   imageUrl: File | string;
   status: string;
   description: string;
+  email: string;
+  mobileno: string;
   state: string;
   city: string;
   branchArea: string;

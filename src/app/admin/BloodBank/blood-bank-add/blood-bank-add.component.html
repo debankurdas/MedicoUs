@@ -35,6 +35,22 @@
       *ngIf="form.get('description').invalid">Please enter the Description</mat-error>
     </mat-form-field>
     <mat-form-field>
+      <textarea
+      matInput name="" id="" rows="6"
+      formControlName="email"
+       placeholder="Email"></textarea>
+      <mat-error
+      *ngIf="form.get('email').invalid">Please enter the Email</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+      matInput name="" id="" rows="6"
+      formControlName="mobileno"
+       placeholder="Mobileno"></textarea>
+      <mat-error
+      *ngIf="form.get('mobileno').invalid">Please enter the Mobile number</mat-error>
+    </mat-form-field>
+    <mat-form-field>
       <mat-label>State</mat-label>
       <div>
           <mat-select placeholder="State" formControlName="state" required>

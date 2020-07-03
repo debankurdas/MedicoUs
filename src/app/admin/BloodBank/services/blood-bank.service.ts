@@ -49,12 +49,15 @@ export class BloodBankService {
   }
 
   addbloodBankDetails(bloodBankName: string, imageUrl: File | string, status: string, state: string,
-                      city: string, branchArea: string, description: string, address: string, pin: string) {
+                      city: string, branchArea: string, description: string, email: string, mobileno: string,
+                      address: string, pin: string) {
     const formData = new FormData();
     formData.append('image', imageUrl);
     formData.append('bloodBankName', bloodBankName);
     formData.append('status', status);
     formData.append('description', description);
+    formData.append('email', email);
+    formData.append('mobileno', mobileno);
     formData.append('state', state);
     formData.append('city', city);
     formData.append('branchArea', branchArea);
@@ -68,13 +71,13 @@ export class BloodBankService {
   getbloodBankById(id: string) {
     // tslint:disable-next-line: max-line-length
     return this.http.get<{_id: string, bloodBankName: string, adminId: string, imageUrl: File | string,
-      status: string, description: string, state: string, city: string, branchArea: string,
+      status: string, description: string,email: string, mobileno: string, state: string, city: string, branchArea: string,
       address: string, pin: string}>(
      environment.apiUrl + '/bloodBank/' + id);
   }
   updatebloodBankData(id: string, bloodBankName: string, adminId: string, imageUrl: File | string,
                       status: string, state: string, city: string, branchArea: string,
-                      description: string, address: string, pin: string) {
+                      description: string, email: string, mobileno: string, address: string, pin: string) {
      let bloodBankData: BloodBank | FormData;
      console.log(typeof imageUrl);
      if (typeof imageUrl === 'object') {
@@ -84,6 +87,8 @@ export class BloodBankService {
        bloodBankData.append('adminId', adminId);
        bloodBankData.append('image', imageUrl, bloodBankName);
        bloodBankData.append('description', description);
+       bloodBankData.append('email', email);
+       bloodBankData.append('mobileno', mobileno);
        bloodBankData.append('state', state);
        bloodBankData.append('city', city);
        bloodBankData.append('branchArea', branchArea);
@@ -96,6 +101,8 @@ export class BloodBankService {
          bloodBankName,
          adminId,
          description,
+         email,
+         mobileno,
          status,
          imageUrl,
          state,
