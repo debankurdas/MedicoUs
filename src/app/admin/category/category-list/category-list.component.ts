@@ -1,3 +1,4 @@
+import { CategoryService } from './../../../common/service/category.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,10 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CategoryListComponent implements OnInit {
   displayedColumns = ['_id', 'categoryName', 'isLive'];
-@Input() categoryList: any;
-  constructor() { }
+  @Input() categoryList: any;
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
   }
+
+  // clickLive(str: string) {
+
+  // }
+
+
 
 }

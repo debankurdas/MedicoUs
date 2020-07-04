@@ -42,8 +42,7 @@
           </button>
                 </div>
                 <div *ngIf="role$ !== ''">
-                    <input type="text" name="" value="">
-                    <i class="flaticon-medicine" *ngIf="role$ === 'User'" type="button" (click)="idChangeForMedicine()" routerLink="/user/product" aria-hidden="true"></>
+                    <i class="flaticon-medicine" *ngIf="role$ === 'User'" type="button" (click)="idChangeForMedicine()" routerLink="/user/product" aria-hidden="true"></i>
                     <i *ngIf="role$ === 'User'" (click)="idChangeForHospital()" type="button" routerLink="/user/hospital" class="flaticon-hospital" aria-hidden="true"></i>
                     <i *ngIf="role$ === 'User'" (click)="idChangeForBloodBank()" type="button" routerLink="/user/bloodBank" class="flaticon-blood" aria-hidden="true"></i>
                     <i type="button" *ngIf="role$ === 'User' && idForall === '1'" class="flaticon-shopping-cart" routerLink="/user/cartList" aria-hidden="true" (click)="getCartList()"></i>

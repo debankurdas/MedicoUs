@@ -19,7 +19,8 @@ exports.postCategory = (req, res,next) => {
   });
 }
 exports.getCategory = (req,res,next) => {
-  categorySchema.find()
+  isLive = 'true';
+  categorySchema.find({isLive: isLive})
   .then((categoryPost) =>{
     if (categoryPost) {
       res.status(200).json({
@@ -37,4 +38,25 @@ exports.getCategory = (req,res,next) => {
       error:error
     });
   });
+}
+exports.updateCategoryLive = (req,res,next) => {
+  id = req.params.id;
+  isLive = req.body.isLive;
+
+  categorySchema.findByIdAndUpdate({_id:id}, {
+    $set: {
+      isLive: isLive
+    }
+  })
+  .then((result) => {
+    res.status(200).json({
+      status: 'Success'
+    })
+  })
+  .catch((error) => {
+    res.status(500).json({
+      message: 'Category cannot be updated ',
+      error: error
+  });
+  })
 }

@@ -18,4 +18,11 @@ export class CategoryService {
     return this.http.get<UserDataModel>(environment.apiUrl + '/categories');
   }
 
+  updateCategoryLive(id: string, isLive: string) {
+    const live = {
+      isLive
+    };
+    return this.http.put<{status: string}>(environment.apiUrl + '/categories/' + id, live);
+  }
+
 }
