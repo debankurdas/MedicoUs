@@ -3,7 +3,7 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport="true">
         <mat-toolbar>
-            Medico 
+            Medico
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" style="float: right;">
         <span class="material-icons">
           cancel
@@ -42,7 +42,8 @@
           </button>
                 </div>
                 <div *ngIf="role$ !== ''">
-                    <i class="flaticon-medicine" *ngIf="role$ === 'User'" type="button" (click)="idChangeForMedicine()" routerLink="/user/product" aria-hidden="true"></i>
+                    <input type="text" name="" value="">
+                    <i class="flaticon-medicine" *ngIf="role$ === 'User'" type="button" (click)="idChangeForMedicine()" routerLink="/user/product" aria-hidden="true"></>
                     <i *ngIf="role$ === 'User'" (click)="idChangeForHospital()" type="button" routerLink="/user/hospital" class="flaticon-hospital" aria-hidden="true"></i>
                     <i *ngIf="role$ === 'User'" (click)="idChangeForBloodBank()" type="button" routerLink="/user/bloodBank" class="flaticon-blood" aria-hidden="true"></i>
                     <i type="button" *ngIf="role$ === 'User' && idForall === '1'" class="flaticon-shopping-cart" routerLink="/user/cartList" aria-hidden="true" (click)="getCartList()"></i>
