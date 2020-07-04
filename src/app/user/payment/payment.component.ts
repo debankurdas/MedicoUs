@@ -176,7 +176,7 @@ cities: Array<any>;
     this.userDataObserver = this.profileService.getuserUpdateListner()
     .subscribe((userDatas: { user: USER[]}) => {
       this.UserDatas = userDatas.user;
-      console.log(this.UserDatas);
+      //(this.UserDatas);
       this.email = this.UserDatas[4];
       this.mobile = this.UserDatas[3];
     });
@@ -187,7 +187,7 @@ cities: Array<any>;
     // this.initConfig();
   }
   changeCountry($event, count: any) {
-    console.log(count.name);
+    //(count.name);
     this.cities = this.countryList.find(con => con.name === count.name).cities;
   }
   placeOrder() {
@@ -202,7 +202,7 @@ cities: Array<any>;
     this.cartIdArray.forEach((cart: any) => {
       this.cartService.deleteProduct(cart)
       .subscribe((message) => {
-        console.log(message.message);
+        //(message.message);
       });
     });
     this.orderService.placeOrder(orders).subscribe((result) => {
@@ -222,10 +222,10 @@ cities: Array<any>;
     // this.cartIdArray.forEach((cart: any) => {
     //   this.cartService.deleteProduct(cart)
     //   .subscribe((message) => {
-    //     console.log(message.message);
+    //     //(message.message);
     //   });
     // });
-    console.log(order);
+    //(order);
     this.paymentService.addOrder(order, this.cartIdArray);
     this.router.navigate(['/user/payWithCard']);
   }

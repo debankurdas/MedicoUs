@@ -34,7 +34,7 @@ tokenAuthentication = false;
     .subscribe((productData: { product: Product[] , productCount: number}) => {
       this.products = productData.product;
       this.productLength = productData.productCount;
-      console.log(this.products);
+      //(this.products);
     });
 
     // this.tokenAuthentication = this.loginService.getTokenAuth();
@@ -55,7 +55,7 @@ tokenAuthentication = false;
   getCategories() {
     this.categoryService.getCategory()
       .subscribe((result) => {
-        console.log(result);
+        //(result);
         if (result.status === 'Success') {
           this.catList = result.data;
 

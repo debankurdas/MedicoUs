@@ -41,7 +41,7 @@ export class BloodGroupService {
        };
       }))
       .subscribe((transformbloodGroupData) => {
-        console.log(transformbloodGroupData);
+        //(transformbloodGroupData);
         this.bloodGroup = transformbloodGroupData.bloodGroup;
         this.bloodGroupUpdated.next({ bloodGroup: [...this.bloodGroup], bloodGroupCount: transformbloodGroupData.count });
       });
@@ -61,7 +61,7 @@ export class BloodGroupService {
           existingBloodQuantity,
           date
           };
-          console.log(details);
+          //(details);
           this.http.post<{ status: string, data: any}>(environment.apiUrl + '/bloodGroup/bloodGroupAddition', details)
           .subscribe(() => {
             this.snackBar.open('bloodGroup information is succesfully added', 'Check it', {

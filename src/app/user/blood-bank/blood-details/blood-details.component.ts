@@ -38,24 +38,24 @@ export class BloodDetailsComponent implements OnInit {
         this.pin = this.bloodBankData[6];
         this.email = this.bloodBankData[7];
         this.mobileno = this.bloodBankData[8];
-        console.log(this.bloodBankAddress);
-        console.log(this.bloodBankData);
+        //(this.bloodBankAddress);
+        //(this.bloodBankData);
 
         this.address = this.sanitizer.bypassSecurityTrustResourceUrl
         ('https://maps.google.com/maps?q=' + this.bloodBankAddress + this.city + this.state + '&t=&z=13&ie=UTF8&iwloc=&output=embed');
-        console.log(this.address);
+        //(this.address);
 
         this.bloodService.getBloodGroupbyBloodBankId(result.get('id'))
         .subscribe((res) => {
-          console.log(res.data);
+          //(res.data);
           res.data.forEach( (element: { bloodGroup: any; quantity: any; existingBloodQuantity: any  }) => {
             this.percentage = (element.existingBloodQuantity / element.quantity) * 100 ;
             // tslint:disable-next-line: radix
             this.percentage = parseInt(this.percentage);
-            console.log(this.percentage);
+            //(this.percentage);
             this.perc = this.percentage + '%';
             this.bloodGroup.push([element.bloodGroup, element.quantity, element.existingBloodQuantity, this.percentage, this.perc]);
-            console.log(this.bloodGroup);
+            //(this.bloodGroup);
           });
         });
 

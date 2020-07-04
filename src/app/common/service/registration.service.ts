@@ -19,8 +19,8 @@ export class RegistrationService {
       verifyEmail: status,
       _id: id
     };
-    console.log(id);
-    console.log(details);
+    //(id);
+    //(details);
     this.http.put(environment.apiUrl + '/users/verifyEmail/' + id, details)
     .subscribe(() => {});
   }

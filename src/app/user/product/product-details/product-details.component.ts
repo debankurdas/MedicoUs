@@ -30,9 +30,9 @@ export class ProductDetailsComponent implements OnInit {
       this.productService.getProductById(data.get('id')).subscribe((result) => {
 
         this.productDetails.push(result);
-        console.log(this.productDetails);
+        //(this.productDetails);
         this.categoryNameforId = this.productDetails[0].categoryName;
-        console.log('Category', this.categoryNameforId);
+        //('Category', this.categoryNameforId);
       });
     });
 
@@ -41,9 +41,9 @@ export class ProductDetailsComponent implements OnInit {
   loadProduct() {
     this.productService.getProductByCategory(this.categoryNameforId)
     .subscribe((result) => {
-      console.log(result);
+      //(result);
       this.allProductDetails.push(result.data);
-      console.log(this.allProductDetails);
+      //(this.allProductDetails);
     });
   }
 

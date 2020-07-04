@@ -40,7 +40,7 @@ export class BedViewComponent implements OnInit, OnDestroy {
       this.bedLength = bedData.bedCount;
       this.date = bedData.date;
     });
-    console.log(this.bed);
+    //(this.bed);
 
   }
   onDelete( bedId: string) {

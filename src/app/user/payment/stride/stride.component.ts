@@ -26,7 +26,7 @@ total: any;
     .subscribe((data) => {
       this.actualData = data;
       this.total = data.total;
-      console.log(this.actualData);
+      //(this.actualData);
   });
     this.stripeTest = this.fb.group({
       cardHoldername: ['', [Validators.required]]
@@ -36,7 +36,7 @@ total: any;
         this.elements = elements;
         // Only mount the element the first time
         if (!this.card) {
-          console.log('hello');
+          //('hello');
           this.card = this.elements.create('card', {
             style: {
               base: {
@@ -64,7 +64,7 @@ total: any;
       .subscribe(obj => {
         if (obj) {
           const token = obj.token.id;
-          console.log('Token is --> ', token);
+          //('Token is --> ', token);
 
 
 

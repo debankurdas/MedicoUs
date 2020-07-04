@@ -23,7 +23,7 @@ export class OrderComponent implements OnInit {
     this.orderService.getUserOrders()
     .subscribe((result) => {
       this.orderDatas.push(result);
-      console.log(this.orderDatas);
+      //(this.orderDatas);
     });
   }
 

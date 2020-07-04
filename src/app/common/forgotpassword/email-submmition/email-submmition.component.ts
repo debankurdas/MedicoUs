@@ -15,7 +15,7 @@ export class EmailSubmmitionComponent implements OnInit {
   ngOnInit() {
   }
   emailSubmit() {
-    console.log(this.user.email);
+    //(this.user.email);
     this.forgotPasswordService.emailSubmittion(this.user.email);
 
   }

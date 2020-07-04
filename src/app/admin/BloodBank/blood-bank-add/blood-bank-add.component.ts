@@ -192,7 +192,7 @@ export class BloodBankAddComponent implements OnInit {
          this.bloodBankId = null;
        }
      });
-     console.log(this.mode);
+     //(this.mode);
    }
    changeCountry(event, count) {
     this.cities = this.countryList.find(con => con.name === count.name).cities;

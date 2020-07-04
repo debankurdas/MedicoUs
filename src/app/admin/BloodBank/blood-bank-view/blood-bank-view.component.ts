@@ -31,7 +31,7 @@ tokenAuthentication = false;
       this.bloodBank = bloodBankData.bloodBank;
       this.bloodBankLength = bloodBankData.bloodBankCount;
     });
-    console.log(this.bloodBank);
+    //(this.bloodBank);
 
   }
   onDelete( bloodBankId: string) {

@@ -30,7 +30,7 @@ export class BloodGroupAddComponent implements OnInit {
      this.route.paramMap.subscribe((paramMaps: ParamMap) => {
       if (paramMaps.has('bloodBankId')) {
         this.bloodBankId = paramMaps.get('bloodBankId');
-        console.log(this.bloodBankId);
+        //(this.bloodBankId);
         this.bloodBankService.getbloodBankById(this.bloodBankId)
         .subscribe((result) => {
           this.bloodBankName = result.bloodBankName;
@@ -64,7 +64,7 @@ export class BloodGroupAddComponent implements OnInit {
          this.bloodGroupId = null;
        }
      });
-     console.log(this.mode);
+     //(this.mode);
    }
   onSavePost() {
      if (this.form.invalid) {
@@ -72,7 +72,7 @@ export class BloodGroupAddComponent implements OnInit {
      }
      if (this.mode === 'create') {
        // this.isLoading = true;
-       console.log(this.bloodBankId);
+       //(this.bloodBankId);
        this.bloodGroupService.addbloodGroup(this.bloodBankId, this.bloodBankName, this.form.value.bloodGroup, this.form.value.quantity,
           this.form.value.existingBloodQuantity,  this.date);
      } else  {

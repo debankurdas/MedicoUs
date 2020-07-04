@@ -17,7 +17,7 @@ export class ForgotPasswordService {
     };
     this.http.post<{id: string, token: string}>(environment.apiUrl + '/users/tokenCreation', detalis)
     .subscribe((result) => {
-      console.log(result);
+      //(result);
       localStorage.setItem('passwordVerification_token', result.token);
       localStorage.setItem('userIdforPasswordVerification', result.id);
       this.snackBar.open('Check your mail where we send a token and link for reset your password', 'Password Reset notification', {

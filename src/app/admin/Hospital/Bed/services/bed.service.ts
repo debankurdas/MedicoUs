@@ -44,7 +44,7 @@ export class BedService {
        };
       }))
       .subscribe((transformbedData) => {
-        console.log(transformbedData);
+        //(transformbedData);
         this.bed = transformbedData.bed;
         this.bedUpdated.next({ bed: [...this.bed], bedCount: transformbedData.count });
       });
@@ -66,7 +66,7 @@ export class BedService {
           bedType,
           date
           };
-          console.log(details);
+          //(details);
           this.http.post<{ status: string, data: any}>(environment.apiUrl + '/bed/bedAddition', details)
           .subscribe(() => {
             this.snackBar.open('Bed information is succesfully added', 'Check it', {

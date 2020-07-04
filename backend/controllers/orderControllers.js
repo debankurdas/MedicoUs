@@ -23,7 +23,7 @@ exports.placeOrder = (req, res, next) => {
     })
     order.save()
         .then((result) => {
-            console.log(result);
+            //(result);
             resultId = result._id;
             email = result.emailAddress;
             mobile = result.mobile;
@@ -80,9 +80,9 @@ exports.placeOrder = (req, res, next) => {
             let description = "Your order is succesfully placed,Your order id is:" + resultId + '.' +
                 " For further information,Go through this link:" + "http://localhost:4200/user/orders";
 
-            //console.log(subject, heading, description);
+            ////(subject, heading, description);
             let msg = subject + "==>" + heading + "," + description;
-            console.log(msg);
+            //(msg);
             //let number = [];
             //number[0] = mobile;
             fast2sms.sendMessage({ authorization: env, message: msg, numbers: [mobile] });
@@ -95,7 +95,7 @@ exports.placeOrder = (req, res, next) => {
 }
 
 exports.placeOrderbyCard = (req, res, next) => {
-  console.log(req.body);
+    //(req.body);
     const order = new orderSchema({
         uId: req.userData.uId,
         userName: req.body.name,
@@ -110,7 +110,7 @@ exports.placeOrderbyCard = (req, res, next) => {
     })
     order.save()
         .then((result) => {
-            console.log(result);
+            //(result);
             resultId = result._id;
             userName = result.userName;
             address = result.shippingAddress;
@@ -174,9 +174,9 @@ exports.placeOrderbyCard = (req, res, next) => {
             let heading = "Welcome to Medico24/7";
             let description = "Your order is succesfully placed,Your order id is:" + resultId + '.' +
                 " For further information,Go through this link:" + "http://localhost:4200/user/orders";
-            //console.log(subject, heading, description);
+            ////(subject, heading, description);
             let msg = subject + "==>" + heading + "," + description;
-            console.log(msg);
+            //(msg);
             //let number = [];
             //number[0] = mobile;
             fast2sms.sendMessage({ authorization: env, message: msg, numbers: [mobile] });
@@ -231,7 +231,7 @@ exports.getAllOrders = (req, res, next) => {
 }
 
 exports.statusChange = (req, res, next) => {
-    console.log(req.body);
+    //(req.body);
     orderId = req.body.id,
         status = req.body.status
     orderSchema.findByIdAndUpdate(orderId, {

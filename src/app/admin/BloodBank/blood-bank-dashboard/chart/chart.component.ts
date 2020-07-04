@@ -26,9 +26,9 @@ id: number;
   }
   display() {
     this.modifyBedlist = JSON.parse(JSON.stringify(this.bloods));
-    console.log(this.modifyBedlist);
+    //(this.modifyBedlist);
     this.modifyBedlist.blooGroupModify.forEach((element: { quantity: number; existingBloodQuantity: number; bloodGroup: any; }) => {
-    console.log(typeof(element));
+    //(typeof(element));
     const arr: Array<any> = [];
     //arr.push(element. quantity);
     arr.push(element.bloodGroup)
@@ -59,7 +59,7 @@ id: number;
 
     this.address = this.sanitizer.bypassSecurityTrustResourceUrl
     ('https://maps.google.com/maps?q=' + this.hospitalAddress + this.city + this.state + this.pin + '&t=&z=13&ie=UTF8&iwloc=&output=embed');
-    console.log(this.address);
+    //(this.address);
   }
 
 

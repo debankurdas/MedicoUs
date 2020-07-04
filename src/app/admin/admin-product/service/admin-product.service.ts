@@ -48,7 +48,7 @@ export class AdminProductService {
        };
       }))
       .subscribe((transformProductData) => {
-        console.log(transformProductData);
+        //(transformProductData);
         this.product = transformProductData.product;
         this.productUpdated.next({ product: [...this.product], productCount: transformProductData.count });
       });
@@ -64,7 +64,7 @@ export class AdminProductService {
    updateProduct(id: string, productName: string, categoryName: string, imageUrl: File | string,
                  description: string, price: string) {
                   let productData: Product | FormData;
-                  console.log(typeof imageUrl);
+                  //(typeof imageUrl);
                   if (typeof imageUrl === 'object') {
                     productData = new FormData();
                     productData.append('id', id);

@@ -28,9 +28,9 @@ export class InvoiceComponent implements OnInit {
         .subscribe((result) => {
           this.orderDatas.push(result.data);
           this.date = new Date(result.data.createdOn).toUTCString();
-          console.log(this.date);
+          //(this.date);
           this.paymentMode = result.data.paymentToken;
-          console.log(this.orderDatas);
+          //(this.orderDatas);
         });
       }
     });

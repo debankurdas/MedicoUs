@@ -27,7 +27,7 @@ export class BloodBankComponent implements OnInit {
           duration: 2000
         });
       }
-      console.log('h', this.bloodBankByData);
+      //('h', this.bloodBankByData);
     });
   }
 
@@ -47,7 +47,7 @@ export class BloodBankComponent implements OnInit {
     .subscribe((result) => {
       this.bloodBankByData = [];
       this.bloodBankByData.push(result.data);
-      console.log('By location', this.bloodBankByData);
+      //('By location', this.bloodBankByData);
       if (result.data.length < 1) {
         this.snackBar.open('No hospital is avilable in this region', 'Try another region', {
           duration: 2000
@@ -58,10 +58,10 @@ export class BloodBankComponent implements OnInit {
   }
 
   // bloodBankbybloodType(bloodGroup: string) {
-  //   console.log(bloodGroup);
+  //   //(bloodGroup);
   //   this.bloodGroupService.getbloodGroupDetailsbloodType(bloodGroup)
   //   .subscribe((result) => {
-  //     console.log(result.data);
+  //     //(result.data);
   //   });
   // }
 
@@ -70,7 +70,7 @@ export class BloodBankComponent implements OnInit {
     .subscribe((result) => {
       this.bloodBankByData = [];
       this.bloodBankByData.push(result.data);
-      console.log('By name', this.bloodBankByData);
+      //('By name', this.bloodBankByData);
     });
   }
 

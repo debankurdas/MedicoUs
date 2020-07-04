@@ -25,7 +25,7 @@ export class UserOrderService {
       order,
       token
     };
-    console.log('hi', orderData);
+    //('hi', orderData);
     this.http.post<{status: any}>(environment.apiUrl + '/orders/payWithCard', orderData)
     .subscribe((result) => {
       if (result.status === 'success') {
@@ -35,10 +35,10 @@ export class UserOrderService {
             this.cartIdArray.forEach((cart: any) => {
             this.cartService.deleteProduct(cart)
             .subscribe((message) => {
-            console.log(message.message);
+            //(message.message);
             });
           });
-            console.log(listOfcartId);
+            //(listOfcartId);
         });
         this.route.navigate(['/user/orders']);
       }

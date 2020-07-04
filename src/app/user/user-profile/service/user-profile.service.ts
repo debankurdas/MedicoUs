@@ -63,7 +63,7 @@ export class UserProfileService {
 }
 
 contact(user: any) {
-  console.log(user);
+  //(user);
  return this.http.post<{status: string}>(environment.apiUrl + '/contact', user);
 }
 

@@ -33,12 +33,12 @@ export class BloodGroupViewComponent implements OnInit, OnDestroy {
      this.adminbloodGroupService.getbloodGroup(this.currentPage, this.bloodGroupPerpage, this.bloodBankId);
      this.bloodGroupsub = this.adminbloodGroupService.getbloodGroupUpdateListner()
      .subscribe((bloodGroupData: { bloodGroup: BloodGroup[] , bloodGroupCount: number, date: Date}) => {
-       console.log(bloodGroupData);
+       //(bloodGroupData);
        this.bloodGroup = bloodGroupData.bloodGroup;
        this.bloodGroupLength = bloodGroupData.bloodGroupCount;
        this.date = bloodGroupData.date;
      });
-     console.log(this.bloodGroup);
+     //(this.bloodGroup);
 
    }
    onDelete( bloodGroupId: string) {

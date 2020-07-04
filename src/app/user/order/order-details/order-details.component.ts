@@ -31,7 +31,7 @@ profileForm = new FormGroup({
 
   onSubmit() {
     console.warn(this.profileForm.value);
-    console.log(this.profileForm.get('x1').value);
+    //(this.profileForm.get('x1').value);
   }
 
 }

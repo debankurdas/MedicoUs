@@ -39,7 +39,7 @@ export class BloodBankService {
        };
       }))
       .subscribe((transformbloodBankData) => {
-        console.log(transformbloodBankData);
+        //(transformbloodBankData);
         this.bloodBank = transformbloodBankData.bloodBank;
         this.bloodBankUpdated.next({ bloodBank: [...this.bloodBank], bloodBankCount: transformbloodBankData.count });
       });
@@ -79,7 +79,7 @@ export class BloodBankService {
                       status: string, state: string, city: string, branchArea: string,
                       description: string, email: string, mobileno: string, address: string, pin: string) {
      let bloodBankData: BloodBank | FormData;
-     console.log(typeof imageUrl);
+     //(typeof imageUrl);
      if (typeof imageUrl === 'object') {
        bloodBankData = new FormData();
        bloodBankData.append('id', id);
@@ -139,7 +139,7 @@ export class BloodBankService {
         city,
         area
       };
-      console.log(locationData);
+      //(locationData);
       return this.http.post<{data: any}>(environment.apiUrl + '/bloodBank/location', locationData);
     }
 

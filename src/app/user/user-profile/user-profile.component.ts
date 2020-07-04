@@ -32,8 +32,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.userDataObserver = this.profileService.getuserUpdateListner()
     .subscribe((userDatas: { user: USER[]}) => {
       this.UserDatas = userDatas.user;
-      console.log(this.UserDatas);
-      console.log(typeof this.UserDatas[0]);
+      //(this.UserDatas);
+      //(typeof this.UserDatas[0]);
       this.userId = this.UserDatas[0];
       this.firstname = this.UserDatas[1];
       this.lastname = this.UserDatas[2];
@@ -61,7 +61,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   contacts() {
-    console.log(this.user);
+    //(this.user);
     this.profileService.contact(this.user)
     .subscribe((result) => {
       if (result.status === 'Success') {

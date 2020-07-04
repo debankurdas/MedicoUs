@@ -20,10 +20,10 @@ const app = express();
 mongoose.connect(
         "mongodb+srv://debankurdas:amitutul1@cluster0-nvn0n.mongodb.net/medico?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
-        console.log("Connected to database");
+        //("Connected to database");
     })
     .catch(() => {
-        console.log("Connection error");
+        //("Connection error");
     })
 var cors = require('cors');
 var originsWhitelist = [

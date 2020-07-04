@@ -18,7 +18,7 @@ exports.signUp = (req, res, next) => {
             user.save()
                 .then((requestedData) => {
                     const email = requestedData.email;
-                    console.log(email);
+                    //(email);
                     const token = jwt.sign({ uId: user._id },
                         'verify_email', { expiresIn: "1h" }
                     );
@@ -150,7 +150,7 @@ exports.updatePassword = (req, res, next) => {
     const userid = req.params.id;
     bcrypt.hash(req.body.password, 10)
         .then((hash) => {
-            console.log(hash)
+            //(hash)
             userSchema.findByIdAndUpdate(userid, {
                     $set: {
                         password: hash
@@ -221,7 +221,7 @@ exports.updateStatus = (req, res, next) => {
                 }
             })
             .then((updatedResult) => {
-                console.log(updatedResult);
+                //(updatedResult);
                 res.status(200).json({
                     status: 'Success',
                     message: 'Your mail is verified',
@@ -285,7 +285,7 @@ exports.getUserByparamsId = (req, res, next) => {
 }
 exports.updateProfile = (req, res, next) => {
     const userid = req.params.id;
-    console.log(userid);
+    //(userid);
     userSchema.findByIdAndUpdate(userid, {
             $set: {
                 firstname: req.body.firstname,
@@ -296,7 +296,7 @@ exports.updateProfile = (req, res, next) => {
             }
         })
         .then(result => {
-            console.log(result);
+            //(result);
             res.status(200).json({
                 message: "Updated!",
                 user: {
@@ -311,8 +311,8 @@ exports.updateProfile = (req, res, next) => {
         });
 };
 exports.adminAssign = (req, res, next) => {
-    console.log(req.body)
-    console.log(req.body.user);
+    //(req.body)
+    //(req.body.user);
     hospitalName = req.body.user.hospitalName;
     bloodBankName = req.body.user.bloodBankName;
     if (hospitalName !== null) {

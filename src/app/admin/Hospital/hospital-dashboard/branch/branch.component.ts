@@ -16,9 +16,9 @@ export class BranchComponent implements OnInit {
   ngOnInit() {
     this.adminHospitalService.getHospitalData()
     .subscribe((result) => {
-      console.log(result.data);
+      //(result.data);
       this.hospital.push(result.data);
-      console.log(this.hospital);
+      //(this.hospital);
     });
     this.form = this.fb.group({
       branchName: new FormControl('', Validators.required),

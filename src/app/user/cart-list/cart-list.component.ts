@@ -22,7 +22,7 @@ export class CartListComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    console.log(this.id1);
+    //(this.id1);
     if (this.id1 === undefined) {
       this.fetchData();
     } else {
@@ -32,10 +32,10 @@ export class CartListComponent implements OnInit {
   fetchData() {
     this.cartService.getcartList()
       .subscribe(result => {
-        console.log(result.data);
+        //(result.data);
         if (result.data === null) {
           this.productSize = [];
-          console.log(this.productSize.length);
+          //(this.productSize.length);
         } else {
           this.productSize = result.data;
         }
@@ -43,9 +43,9 @@ export class CartListComponent implements OnInit {
           this.id = cart._id;
           cart.UserCartList[0].quantity = cart.quantity;
           this.userCart.push(cart.UserCartList[0]);
-          console.log('Usercart' , this.userCart);
+          //('Usercart' , this.userCart);
           this.orderCart.push(this.id);
-          console.log('hhhh', this.orderCart);
+          //('hhhh', this.orderCart);
         });
         this.cartTable.dataSource = this.userCart;
         this.cartTable.renderRows();

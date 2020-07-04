@@ -36,12 +36,12 @@ export class MainNavComponent implements OnInit, OnDestroy {
               .subscribe((result) => {
 
                 this.loginStatus$ = result;
-                console.log('loginStatus when login' + this.loginStatus$);
+                //('loginStatus when login' + this.loginStatus$);
               });
               this.roleObservable = this.loginService.getUserRole()
               .subscribe((result) => {
                 this.role$ = result;
-                console.log('role when login' + this.role$);
+                //('role when login' + this.role$);
                 if (this.role$ === 'User') {
                   this.idForall = sessionStorage.getItem('idForall');
                   this.getCategories();
@@ -54,8 +54,8 @@ export class MainNavComponent implements OnInit, OnDestroy {
                 this.role$ = this.loginService.getUserBasedRole();
 
                 this.idForall = sessionStorage.getItem('idForall');
-                console.log('after refresh' + this.loginStatus$);
-                console.log('after role' + this.role$);
+                //('after refresh' + this.loginStatus$);
+                //('after role' + this.role$);
                 }
 
               if (this.loginStatus$ === true && this.role$ === 'User') {
@@ -66,7 +66,7 @@ export class MainNavComponent implements OnInit, OnDestroy {
             }
   getCategories() {
     this.categoryService.getCategory().subscribe((result) => {
-      console.log(result.data);
+      //(result.data);
       this.categories = result.data;
     });
   }
@@ -75,7 +75,7 @@ export class MainNavComponent implements OnInit, OnDestroy {
   //   .subscribe((result) => {
   //     if (result.status === 'Success') {
   //       this.cartCount = result.data.length;
-  //       console.log('Cart number', this.cartCount);
+  //       //('Cart number', this.cartCount);
   //     }
   //   });
   // }
@@ -97,19 +97,19 @@ export class MainNavComponent implements OnInit, OnDestroy {
 
   idChangeForHospital() {
     this.idForall = '2';
-    console.log(this.idForall);
+    //(this.idForall);
     sessionStorage.setItem('idForall', this.idForall);
   }
 
   idChangeForBloodBank() {
     this.idForall = '2';
-    console.log(this.idForall);
+    //(this.idForall);
     sessionStorage.setItem('idForall', this.idForall);
   }
 
   idChangeForMedicine() {
     this.idForall = '1';
-    console.log(this.idForall);
+    //(this.idForall);
     sessionStorage.setItem('idForall', this.idForall);
   }
 

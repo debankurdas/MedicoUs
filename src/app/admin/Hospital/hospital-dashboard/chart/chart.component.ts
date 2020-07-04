@@ -29,9 +29,9 @@ id: number;
   }
   display() {
     this.modifyBedlist = JSON.parse(JSON.stringify(this.bedList));
-    console.log(this.modifyBedlist);
+    //(this.modifyBedlist);
     this.modifyBedlist.bedModify.forEach((element: { bedType: any; existingBed: number; quantity: number; }) => {
-      console.log(typeof(element));
+      //(typeof(element));
       const arr: Array<any> = [];
       arr.push(element.bedType);
       arr.push(element.existingBed);
@@ -64,17 +64,17 @@ id: number;
       this.id = 1;
     });
 
-    console.log(this.address);
-    console.log( this.myBed, 'he');
+    //(this.address);
+    //( this.myBed, 'he');
     this.myBed = [];
     this.myBedForColumnChart = [];
     this.myBedForDonutChart = [];
     this.myBedForPiChart = [];
     // this.live = this.bedList;
-    // console.log(this.live);
+    // //(this.live);
     this.address = this.sanitizer.bypassSecurityTrustResourceUrl
     ('https://maps.google.com/maps?q=' + this.hospitalAddress + this.city + this.state + this.pin + '&t=&z=13&ie=UTF8&iwloc=&output=embed');
-    console.log(this.address);
+    //(this.address);
   }
   // tslint:disable-next-line: member-ordering
   title = 'Bed Details';

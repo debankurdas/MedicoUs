@@ -46,28 +46,28 @@ export class NavbarHospComponent implements OnInit {
     .subscribe((result) => {
 
       this.dataOfHospital.push(result.data);
-      console.log(this.dataOfHospital, 'x');
+      //(this.dataOfHospital, 'x');
       this.modifyBedlist = JSON.parse(JSON.stringify(result.data));
-      console.log(this.modifyBedlist);
+      //(this.modifyBedlist);
       this.modifyBedlist.forEach( (element: { branchArea: any;  }) => {
 
-        console.log(element.branchArea, 'x1');
+        //(element.branchArea, 'x1');
         this.sortArray.push(element.branchArea);
       });
       this.sortArray = this.sortArray.sort();
-      console.log('s', this.sortArray);
+      //('s', this.sortArray);
 
       this.speciality = JSON.parse(JSON.stringify(result.data));
-      console.log(this.speciality);
+      //(this.speciality);
       this.speciality.forEach( (element: { speciality: any;  }) => {
 
-        console.log(element.speciality, 'x1');
+        //(element.speciality, 'x1');
         this.sortArrayForspeciality.push(element.speciality);
       });
       this.sortArrayForspeciality = this.sortArrayForspeciality.sort();
       this.sets = new Set(this.sortArrayForspeciality);
       this.sortArrayForspeciality = [...this.sets];
-      console.log('s', this.sortArrayForspeciality);
+      //('s', this.sortArrayForspeciality);
     });
   }
 
@@ -232,11 +232,11 @@ export class NavbarHospComponent implements OnInit {
     this.adminService.getHospitalByLocation(this.AddState, this.Addcity, '')
     .subscribe((result) => {
       this.modifyArea = JSON.parse(JSON.stringify(result.data));
-      console.log(this.modifyArea);
+      //(this.modifyArea);
       this.sortArray =  [];
       this.modifyArea.forEach( (element: { branchArea: any;  }) => {
 
-        console.log(element.branchArea, 'x1');
+        //(element.branchArea, 'x1');
 
         this.sortArray.push(element.branchArea);
       });
@@ -249,7 +249,7 @@ export class NavbarHospComponent implements OnInit {
           duration: 2000
         });
       }
-      console.log('s', this.sortArray);
+      //('s', this.sortArray);
     });
   }
   back() {

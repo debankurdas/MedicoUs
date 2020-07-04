@@ -17,7 +17,7 @@ export class WishListComponent implements OnInit {
   ngOnInit() {
     this.wishListService.getWishList()
       .subscribe(result => {
-        console.log(result);
+        //(result);
         result.data.forEach((product: any) => {
           this.wishList.push(product.UserWishList[0]);
         });

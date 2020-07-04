@@ -28,19 +28,19 @@ export class BloodBankDashboardComponent implements OnInit, OnDestroy {
   branch(branchName: any) {
     this.adminBloodBankService.getDataBranch(branchName)
     .subscribe((result) => {
-      console.log(result.data);
+      //(result.data);
       this.BloodBankId = result.data[0]._id;
       this.BloodBankAddress = result.data[0].address;
       this.pin = result.data[0].pin;
       this.state = result.data[0].state;
       this.city = result.data[0].city;
-      console.log(this.BloodBankAddress);
-      console.log(this.BloodBankId);
+      //(this.BloodBankAddress);
+      //(this.BloodBankId);
       this.bloodGroupService.getBloodGroupDatabyBloodBankId(this.BloodBankId);
       this.bloodGroupModifyListner = this.bloodGroupService.getBloodModifyListner()
       .subscribe((results) => {
         this.ultimateResult = results;
-        console.log(this.ultimateResult);
+        //(this.ultimateResult);
         this.idForBed = 2;
       });
     });

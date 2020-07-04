@@ -33,23 +33,23 @@ export class HospitalDisplayComponent implements OnInit {
         this.hospitalAddress = this.hospitalData[0].address;
         this.email = this.hospitalData[0].email;
         this.contact = this.hospitalData[0].contact;
-        console.log(this.hospitalAddress);
+        //(this.hospitalAddress);
         this.address = this.sanitizer.bypassSecurityTrustResourceUrl
         ('https://maps.google.com/maps?q=' + this.hospitalAddress + '&t=&z=13&ie=UTF8&iwloc=&output=embed');
-        console.log(this.address);
-        console.log(this.hospitalData);
+        //(this.address);
+        //(this.hospitalData);
 
         this.bedService.getBedsDatabyhospitalId(data.get('id'))
         .subscribe((results) => {
 
           this.bedDetails = results.data;
-          console.log(this.bedDetails);
+          //(this.bedDetails);
         });
 
         // this.bedDetailObservable = this.bedService.getbedModifyListner()
         // .subscribe((results) => {
         //   this.bedDetails.push(results);
-        //   console.log(this.bedDetails);
+        //   //(this.bedDetails);
         // });
       });
     });

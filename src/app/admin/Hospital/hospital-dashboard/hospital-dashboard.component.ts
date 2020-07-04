@@ -32,19 +32,19 @@ export class HospitalDashboardComponent implements OnInit, OnDestroy {
   branch(branchName: any) {
     this.adminHospitalService.getDataBranch(branchName)
     .subscribe((result) => {
-      console.log(result.data);
+      //(result.data);
       this.hospitalId = result.data[0]._id;
       this.hospitalAddress = result.data[0].address;
       this.pin = result.data[0].pin;
       this.state = result.data[0].state;
       this.city = result.data[0].city;
-      console.log(this.hospitalAddress);
-      console.log(this.hospitalId);
+      //(this.hospitalAddress);
+      //(this.hospitalId);
       this.bedService.getBedDatabyhospitalId(this.hospitalId);
       this.bedModifyListner = this.bedService.getbedModifyListner()
       .subscribe((results) => {
         this.ultimateResult = results;
-        console.log(this.ultimateResult);
+        //(this.ultimateResult);
         this.idForBed = 2;
       });
     });

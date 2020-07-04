@@ -33,7 +33,7 @@ date: Date;
    this.route.paramMap.subscribe((paramMaps: ParamMap) => {
     if (paramMaps.has('hospitalId')) {
       this.hospitalId = paramMaps.get('hospitalId');
-      console.log(this.hospitalId);
+      //(this.hospitalId);
       this.hospitalService.getHospitalById(this.hospitalId)
       .subscribe((result) => {
         this.hospitalName = result.hospitalName;
@@ -71,7 +71,7 @@ date: Date;
        this.bedId = null;
      }
    });
-   console.log(this.mode);
+   //(this.mode);
  }
 onSavePost() {
    if (this.form.invalid) {
@@ -79,7 +79,7 @@ onSavePost() {
    }
    if (this.mode === 'create') {
      // this.isLoading = true;
-     console.log(this.hospitalId);
+     //(this.hospitalId);
      this.bedService.addBed(this.hospitalId, this.hospitalName, this.form.value.ward, this.form.value.quantity,
        this.form.value.cost, this.form.value.existingBed, this.form.value.bedType, this.date);
    } else  {

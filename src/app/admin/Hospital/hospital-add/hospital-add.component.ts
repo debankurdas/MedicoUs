@@ -201,7 +201,7 @@ cities: Array<any>;
        this.hospitalId = null;
      }
    });
-   console.log(this.mode);
+   //(this.mode);
 
  }
 changeCountry(event, count) {

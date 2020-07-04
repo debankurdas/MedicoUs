@@ -2,7 +2,7 @@ const hospitalSchema = require('../../models/hospitalModels/hospitalSchema');
 
 
 exports.addHospital = (req, res, next) => {
-    console.log(req.body);
+    //(req.body);
     url = req.protocol + '://' + req.get('host');
     const hospital = new hospitalSchema({
         hospitalName: req.body.hospitalName,
@@ -104,24 +104,24 @@ exports.updateHospitalDetails = (req, res, next) => {
         imageUrl = url + '/images/' + req.file.filename
     }
     const hospital = new hospitalSchema({
-        _id: req.body.id,
-        hospitalName: req.body.hospitalName,
-        branchName: req.body.branchName,
-        adminId: req.body.adminId,
-        description: req.body.description,
-        imageUrl: imageUrl,
-        speciality: req.body.speciality,
-        status: req.body.status,
-        state: req.body.state,
-        city: req.body.city,
-        branchArea: req.body.branchArea,
-        address: req.body.address,
-        pin: req.body.pin,
-        email: req.body.email,
-        contact: req.body.contact
-    })
-    console.log(hospital);
-    console.log(req.params.id);
+            _id: req.body.id,
+            hospitalName: req.body.hospitalName,
+            branchName: req.body.branchName,
+            adminId: req.body.adminId,
+            description: req.body.description,
+            imageUrl: imageUrl,
+            speciality: req.body.speciality,
+            status: req.body.status,
+            state: req.body.state,
+            city: req.body.city,
+            branchArea: req.body.branchArea,
+            address: req.body.address,
+            pin: req.body.pin,
+            email: req.body.email,
+            contact: req.body.contact
+        })
+        //(hospital);
+        //(req.params.id);
     hospitalSchema.updateOne({ _id: req.params.id }, hospital)
         .then(result => {
             if (result.n > 0) {
@@ -202,7 +202,7 @@ exports.getDataFilterBybranchName = (req, res, next) => {
 //           });
 // }
 exports.getHospitalByLocation = (req, res, next) => {
-    console.log(req.body);
+    //(req.body);
     const state = req.body.state;
     const city = req.body.city;
     const area = req.body.area;
@@ -303,7 +303,7 @@ exports.getHospitalByLocation = (req, res, next) => {
 }
 
 exports.getHospitalByHospitalName = (req, res, next) => {
-    console.log(req.body);
+    //(req.body);
     const hospitalName = req.body.hospitalName;
     if (hospitalName) {
         hospitalSchema.find({ hospitalName: { $regex: hospitalName, $options: 'i' } })
@@ -324,12 +324,12 @@ exports.getHospitalByHospitalName = (req, res, next) => {
 }
 
 exports.getHospitalBySpeciality = (req, res, next) => {
-    console.log('hi');
-    console.log(req.body);
+    //('hi');
+    //(req.body);
     const state = req.body.state;
     const speciality = req.body.speciality;
 
-    console.log(state);
+    //(state);
 
     if (state !== 'ALL' && speciality !== '') {
         hospitalSchema.find({ state: state, speciality: speciality })

@@ -26,12 +26,12 @@ export class HospitalComponent implements OnInit {
           duration: 2000
         });
       }
-      console.log('h', this.hospitalByData);
+      //('h', this.hospitalByData);
     });
   }
 
   State(state: string) {
-    console.log(state);
+    //(state);
     this.state = state;
   }
   City(city: string) {
@@ -43,7 +43,7 @@ export class HospitalComponent implements OnInit {
   }
 
   Speciality(speciality: string) {
-    console.log(speciality);
+    //(speciality);
     this.speciality = speciality;
     this.SpecialityWiseHospital();
   }
@@ -53,7 +53,7 @@ export class HospitalComponent implements OnInit {
     .subscribe((result) => {
       this.hospitalByData = [];
       this.hospitalByData.push(result.data);
-      console.log('By location', this.hospitalByData);
+      //('By location', this.hospitalByData);
       if (result.data.length < 1) {
         this.snackBar.open('No hospital is avilable in this region', 'Try another region', {
           duration: 2000
@@ -82,7 +82,7 @@ export class HospitalComponent implements OnInit {
     .subscribe((result) => {
       this.hospitalByData = [];
       this.hospitalByData.push(result.data);
-      console.log('By name', this.hospitalByData);
+      //('By name', this.hospitalByData);
     });
   }
 }

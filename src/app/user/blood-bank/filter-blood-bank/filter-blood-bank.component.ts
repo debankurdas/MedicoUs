@@ -45,16 +45,16 @@ export class FilterBloodBankComponent implements OnInit {
     .subscribe((result) => {
 
       this.dataOfBloodBank.push(result.data);
-      console.log(this.dataOfBloodBank, 'x');
+      //(this.dataOfBloodBank, 'x');
       this.modifyBloodBankArea = JSON.parse(JSON.stringify(result.data));
-      console.log(this.modifyBloodBankArea);
+      //(this.modifyBloodBankArea);
       this.modifyBloodBankArea.forEach( (element: { branchArea: any;  }) => {
 
-        console.log(element.branchArea, 'x1');
+        //(element.branchArea, 'x1');
         this.sortArray.push(element.branchArea);
       });
       this.sortArray = this.sortArray.sort();
-      console.log('s', this.sortArray);
+      //('s', this.sortArray);
     });
   }
 
@@ -218,11 +218,11 @@ export class FilterBloodBankComponent implements OnInit {
     this.adminBloodBankService.getBloodBankbyLocation(this.AddState, this.Addcity, '')
     .subscribe((result) => {
       this.modifyArea = JSON.parse(JSON.stringify(result.data));
-      console.log(this.modifyArea);
+      //(this.modifyArea);
       this.sortArray =  [];
       this.modifyArea.forEach( (element: { branchArea: any;  }) => {
 
-        console.log(element.branchArea, 'x1');
+        //(element.branchArea, 'x1');
 
         this.sortArray.push(element.branchArea);
       });
@@ -235,7 +235,7 @@ export class FilterBloodBankComponent implements OnInit {
           duration: 2000
         });
       }
-      console.log('s', this.sortArray);
+      //('s', this.sortArray);
     });
   }
   back() {

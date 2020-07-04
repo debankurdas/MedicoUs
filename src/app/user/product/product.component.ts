@@ -30,9 +30,9 @@ export class ProductComponent implements OnInit {
           this.category = 'All Products';
           this.productService.getAllProducts().subscribe((result) => {
             this.product = result.data;
-            console.log(this.product);
+            //(this.product);
             this.productCount = result.data.length;
-            console.log('Length' + this.productCount);
+            //('Length' + this.productCount);
           });
         }
       });

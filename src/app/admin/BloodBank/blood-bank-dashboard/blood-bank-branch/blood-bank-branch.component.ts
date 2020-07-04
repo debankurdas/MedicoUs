@@ -17,9 +17,9 @@ export class BloodBankBranchComponent implements OnInit {
   ngOnInit() {
     this.adminBloodBankService.getbloodBankbranch()
     .subscribe((result) => {
-      console.log(result.data);
+      //(result.data);
       this.BloodBank.push(result.data);
-      console.log(this.BloodBank);
+      //(this.BloodBank);
     });
     this.form = this.fb.group({
       branchName: new FormControl('', Validators.required),

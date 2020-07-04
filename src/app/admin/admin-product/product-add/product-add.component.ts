@@ -62,7 +62,7 @@ export class ProductAddComponent implements OnInit {
         this.productId = null;
       }
     });
-    console.log(this.mode);
+    //(this.mode);
   }
   // handelFileInput(file: FileList) {
   //   this.filetoUpload = file.item(0);
