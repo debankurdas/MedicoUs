@@ -55,7 +55,7 @@ exports.deleteProduct = (req, res, next) => {
     cartListSchema.deleteOne({ _id: req.params.id })
         .then((result) => {
 
-            if (result.n > 0) {
+            if (result.n >= 0) {
                 res.status(200).json({
                     message: 'Product is deleted'
                 });
