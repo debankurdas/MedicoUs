@@ -86,6 +86,7 @@ import { HospitalDisplayComponent } from './user/hospital-display/hospital-displ
 import { BloodBankComponent } from './user/blood-bank/blood-bank.component';
 import { FilterBloodBankComponent } from './user/blood-bank/filter-blood-bank/filter-blood-bank.component';
 import { BloodDetailsComponent } from './user/blood-bank/blood-details/blood-details.component';
+import { TermsComponent } from './common/registration/terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -142,7 +143,8 @@ import { BloodDetailsComponent } from './user/blood-bank/blood-details/blood-det
     HospitalDisplayComponent,
     BloodBankComponent,
     FilterBloodBankComponent,
-    BloodDetailsComponent
+    BloodDetailsComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

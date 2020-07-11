@@ -43,9 +43,11 @@ import { StrideComponent } from './user/payment/stride/stride.component';
 import { HospitalComponent } from './user/hospital/hospital.component';
 import { HospitalDisplayComponent } from './user/hospital-display/hospital-display.component';
 import { BloodDetailsComponent } from './user/blood-bank/blood-details/blood-details.component';
+import { TermsComponent } from './common/registration/terms/terms.component';
 
 const routes: Routes = [
   {path: 'register', component: RegistrationComponent},
+  {path: 'register/terms', component: TermsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'index', component: IndexComponent},
   {path: 'verifyMail', component: VerifYEmailComponent},
@@ -90,6 +92,7 @@ const routes: Routes = [
   { path: 'user/hospital/:id', component: HospitalDisplayComponent, canActivate: [AuthGuard, UserGuard] },
   { path: 'user/bloodBank/:id', component: BloodDetailsComponent, canActivate: [AuthGuard, UserGuard] },
   {path: 'user/bloodBank', component: BloodBankComponent, canActivate: [AuthGuard, UserGuard]},
+
   {path: '', redirectTo: 'index', pathMatch: 'full'}
 ];
 
