@@ -1,101 +1,100 @@
 <app-main-nav></app-main-nav>
-    <header>
+<header>
 
 
-        <img [src]="imageUrl" alt="" width="50%" height="400px">
-    </header>
-    <!-- .site-header -->
-    <br>
-    <br>
+    <img [src]="imageUrl" alt="" width="50%" height="400px">
+</header>
+<!-- .site-header -->
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div>
+                <h2>{{bloodBankName}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contact-page-short-boxes">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div>
-                    <h2>{{bloodBankName}}</h2>
+            <div class="col-12 col-md-4">
+                <div class="contact-info h-100">
+                    <h2 class="d-flex align-items-center">Contact Info</h2>
+
+                    <ul class="p-0 m-0">
+                        <li><span>Address:</span>{{bloodBankAddress}},{{city}},{{state}}, {{pin}}</li>
+                        <li><span>Phone:</span>{{mobileno}}</li>
+                        <li><span>Email:</span>{{email}}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mt-5 mt-lg-0">
+                <div class="opening-hours h-100">
+                    <h2 class="d-flex align-items-center">Opening Hours</h2>
+
+                    <ul class="p-0 m-0">
+                        <li>Monday - Thursday <span>Open 24 Hours</span></li>
+                        <li>Friday <span>Open 24 Hours</span></li>
+                        <li>Saturday <span>Open 24 Hours</span></li>
+                        <li>Sunday <span>Open 24 Hours</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 mt-5 mt-lg-0">
+                <div class="emergency-box h-100">
+                    <h2 class="d-flex align-items-center">Emergency</h2>
+
+                    <div class="call-btn text-center">
+                        <a class="d-flex justify-content-center align-items-center button gradient-bg" href="#"><img src="../../../../assets/hospital/emergency-call.png"> 033 2475 3639 </a>
+                    </div>
+
+                    <p>An easy to remember emergency access number - 1066. Ambulances that are well equipped and manned by trained personnel - indeed a veritable 'Hospital on Wheels'.</p>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="contact-page-short-boxes">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <div class="contact-info h-100">
-                        <h2 class="d-flex align-items-center">Contact Info</h2>
-
-                        <ul class="p-0 m-0">
-                            <li><span>Address:</span>{{bloodBankAddress}},{{city}},{{state}}, {{pin}}</li>
-                            <li><span>Phone:</span>{{mobileno}}</li>
-                            <li><span>Email:</span>{{email}}</li>
-                        </ul>
+</div>
+<div class="container">
+    <div class="row elements-wrap">
+        <div class="col-12">
+            <header class="entry-header elements-heading">
+                <h1 class="entry-title">Blood Group Availability</h1>
+            </header>
+            <br>
+            <div *ngFor="let item of bloodGroup">
+                <div class="progress ">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': item[4]}">
+                        <!-- [ngStyle]="{'color':category.color}" -->
+                        <br>
+                        <br>
                     </div>
+                    <span class="progress-type"><h1>{{item[0]}}</h1></span>
+                    <span class="progress-completed"><h1>{{item[3]}}%</h1></span>
+
                 </div>
-
-                <div class="col-12 col-md-4 mt-5 mt-lg-0">
-                    <div class="opening-hours h-100">
-                        <h2 class="d-flex align-items-center">Opening Hours</h2>
-
-                        <ul class="p-0 m-0">
-                            <li>Monday - Thursday <span>Open 24 Hours</span></li>
-                            <li>Friday <span>Open 24 Hours</span></li>
-                            <li>Saturday <span>Open 24 Hours</span></li>
-                            <li>Sunday <span>Open 24 Hours</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-12 col-md-4 mt-5 mt-lg-0">
-                    <div class="emergency-box h-100">
-                        <h2 class="d-flex align-items-center">Emergency</h2>
-
-                        <div class="call-btn text-center">
-                            <a class="d-flex justify-content-center align-items-center button gradient-bg" href="#"><img src="images/emergency-call.png"> 033 2475 3639 </a>
-                        </div>
-
-                        <p>An easy to remember emergency access number - 1066. Ambulances that are well equipped and manned by trained personnel - indeed a veritable 'Hospital on Wheels'.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row elements-wrap">
-            <div class="col-12">
-                <header class="entry-header elements-heading">
-                    <h1 class="entry-title">Blood Group Availability</h1>
-                </header>
                 <br>
-                <div  *ngFor="let item of bloodGroup">
-                    <div class="progress " >
-                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                         [ngStyle]="{'width': item[4]}">
-                         <!-- [ngStyle]="{'color':category.color}" -->
-                          <br>
-                          <br>
-                        </div>
-                        <span class="progress-type"><h1>{{item[0]}}</h1></span>
-                        <span class="progress-completed"><h1>{{item[3]}}%</h1></span>
-
-                    </div>
-                    <br>
-                    <br>
-                  </div>
+                <br>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="contact-page-map">
-                    <iframe id="gmap_canvas" [src]="address" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                </div>
-                <!-- map -->
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="contact-page-map">
+                <iframe id="gmap_canvas" [src]="address" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
             </div>
+            <!-- map -->
         </div>
     </div>
+</div>
 
-    <!-- <div class="container">
+<!-- <div class="container">
         <div class="row">
             <div class="col-12">
 
@@ -866,4 +865,3 @@
 </div> -->
 
 <app-footer></app-footer>
-
