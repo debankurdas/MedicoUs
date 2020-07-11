@@ -32,7 +32,10 @@ export class BloodBankService {
              state: bloodBank.state,
              city: bloodBank.city,
              branchArea: bloodBank.branchArea,
-             address: bloodBank.address
+             address: bloodBank.address,
+             pin: bloodBank.pin,
+             email: bloodBank.email,
+             mobileno: bloodBank.mobileno,
            };
          }),
          count: bloodBankData.maxCount

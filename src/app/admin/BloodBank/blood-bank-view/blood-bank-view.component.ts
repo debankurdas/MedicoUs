@@ -30,7 +30,7 @@ tokenAuthentication = false;
     .subscribe((bloodBankData: { bloodBank: BloodBank[] , bloodBankCount: number}) => {
       this.bloodBank = bloodBankData.bloodBank;
       this.bloodBankLength = bloodBankData.bloodBankCount;
-      console.log(this.bloodBank,"xx");
+      //console.log(this.bloodBank,"xx");
     });
     //(this.bloodBank);
 

@@ -17,6 +17,10 @@
         <p>{{blood.address}} {{blood.city}} {{blood.state}} </p>
         <mat-label><strong>PinCode</strong></mat-label>
         <p> {{blood.pin}}</p>
+        <mat-label><strong>Email</strong></mat-label>
+        <p> {{blood.email}}</p>
+        <mat-label><strong>Contact No</strong></mat-label>
+        <p> {{blood.mobileno}}</p>
         <mat-action-row>
             <a mat-button color="primary" [routerLink]="['/Admin/BloodBank/edit',blood.id]">Edit</a>
             <button mat-button color="warn" (click)="onDelete(blood.id)">Delete</button>
