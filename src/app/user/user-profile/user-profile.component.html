@@ -121,12 +121,12 @@
                                 <div class="col-md-8 col-sm-8 col-xs-4">
                                     <ul class="tabs">
                                         <li class="tab">
-                                            <a class="home-btn" (click)="homeId()"><i class="fa fa-home" aria-hidden="true"></i></a>
+                                            <a class="home-btn" (click)="homeId()"><i class="fa fa-home" aria-hidden="true" (mouseenter)="au()"></i></a>
                                         </li>
-                                        <li class="tab"><a class="cursor" (click)="Faq()">FAQ</a></li>
-                                        <li class="tab"><a class="cursor" [routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</a></li>
-                                        <li class="tab"><a class="cursor" routerLink="/user/orders">ORDERS</a></li>
-                                        <li class="tab"><a class="cursor" (click)="contact()">CONTACT</a></li>
+                                        <li class="tab"><a class="cursor" (click)="Faq()" (mouseenter)="au()">FAQ</a></li>
+                                        <li class="tab"><a class="cursor" [routerLink]="['/userprofile/edit',userId]" (mouseenter)="au()">EDIT PROFILE</a></li>
+                                        <li class="tab"><a class="cursor" routerLink="/user/orders" (mouseenter)="au()">ORDERS</a></li>
+                                        <li class="tab"><a class="cursor" (click)="contact()" (mouseenter)="au()">CONTACT</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-8 dynamic">
@@ -135,10 +135,10 @@
                                       <div class="mm"></div>
                                       <div class="mm"></div></button>
                                     <mat-menu #menu="matMenu">
-                                        <button mat-menu-item class="cursor" (click)="Faq()">FAQ</button>
-                                        <button mat-menu-item [routerLink]="['/userprofile/edit',userId]">EDIT PROFILE</button>
-                                        <button mat-menu-item routerLink="/user/orders">ORDERS</button>
-                                        <button mat-menu-item (click)="contact()">CONTACT</button>
+                                        <button mat-menu-item class="cursor" (click)="Faq()" (mouseenter)="au()">FAQ</button>
+                                        <button mat-menu-item [routerLink]="['/userprofile/edit',userId]" (mouseenter)="au()">EDIT PROFILE</button>
+                                        <button mat-menu-item routerLink="/user/orders" (mouseenter)="au()">ORDERS</button>
+                                        <button mat-menu-item (click)="contact()" (mouseenter)="au()">CONTACT</button>
                                     </mat-menu>
                                 </div>
                             </div>
@@ -517,7 +517,7 @@
                                                 <mat-error *ngIf="message.invalid">Please enter a valid message</mat-error>
                                             </mat-form-field>
                                             <div class="form-group">
-                                                <button class="btn btn-warning btn-block" type="submit" [disabled]="!myForm.form.valid">Submit</button>
+                                                <button class="btn btn-warning btn-block" type="submit" [disabled]="!myForm.form.valid" (mouseenter)="au()">Submit</button>
                                             </div>
                                         </form>
                                     </section>

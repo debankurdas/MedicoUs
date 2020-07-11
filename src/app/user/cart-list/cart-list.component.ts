@@ -71,5 +71,11 @@ export class CartListComponent implements OnInit {
   // ngOnDestroy() {
   //   this.productSub.unsubscribe();
   // }
-
+  au()
+  {
+    let audio = new Audio();
+    audio.src = '../../../assets/click.mp3';
+    audio.load();
+    audio.play();
+  }
 }

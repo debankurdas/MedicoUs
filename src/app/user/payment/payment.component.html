@@ -70,7 +70,7 @@
                                 <mat-form-field>
                                     <mat-label>State</mat-label>
                                     <div>
-                                        <mat-select placeholder="State" formControlName="state" required>
+                                        <mat-select placeholder="State" formControlName="state" required (mouseenter)="au()">
                                             <mat-option *ngFor="let count of countryList" value={{count.name}} (click)="changeCountry($event, count)">{{count.name}} </mat-option>
                                         </mat-select>
                                     </div>
@@ -82,7 +82,7 @@
                                 <mat-form-field>
                                     <mat-label>City</mat-label>
                                     <div>
-                                        <mat-select placeholder="Anycity" formControlName="city">
+                                        <mat-select placeholder="Anycity" formControlName="city" (mouseenter)="au()">
                                             <mat-option *ngFor="let city of cities" value={{city}}>{{city}}</mat-option>
                                         </mat-select>
                                     </div>
@@ -99,17 +99,17 @@
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
                                 <input id="Pay" name="paymentMethod" type="radio" class="custom-control-input" (click)="idChangeforPay()" checked required value="Pay">
-                                <label class="custom-control-label" for="Pay">Pay with card</label>
+                                <label class="custom-control-label" for="Pay" (mouseenter)="au()">Pay with card</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input id="cash" name="paymentMethod" type="radio" class="custom-control-input" (click)="idChange()" required value="cash">
-                                <label class="custom-control-label" for="cash">Cash</label>
+                                <label class="custom-control-label" for="cash" (mouseenter)="au()">Cash</label>
                             </div>
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-danger btn-lg btn-block" routerLink="/user/product">Back</button>
-                        <button class="btn btn-primary btn-lg btn-block" *ngIf="shippingAddress.valid && id === 1 && idForProduct === 12" type="submit" (click)="placeOrderwithCard()">Continue to checkout</button>
-                        <button class="btn btn-primary btn-lg btn-block" *ngIf="shippingAddress.valid && id === 0 && idForProduct === 12" type="submit" (click)="placeOrder()">Continue to checkout</button>
+                        <button class="btn btn-danger btn-lg btn-block" routerLink="/user/product" (mouseenter)="au()">Back</button>
+                        <button class="btn btn-primary btn-lg btn-block" *ngIf="shippingAddress.valid && id === 1 && idForProduct === 12" type="submit" (click)="placeOrderwithCard()" (mouseenter)="au()">Continue to checkout</button>
+                        <button class="btn btn-primary btn-lg btn-block" *ngIf="shippingAddress.valid && id === 0 && idForProduct === 12" type="submit" (click)="placeOrder()" (mouseenter)="au()">Continue to checkout</button>
 
                     </form>
 

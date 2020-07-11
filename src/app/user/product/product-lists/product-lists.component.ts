@@ -16,5 +16,11 @@ export class ProductListsComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  au()
+  {
+    let audio = new Audio();
+    audio.src = '../../../../assets/click.mp3';
+    audio.load();
+    audio.play();
+  }
 }

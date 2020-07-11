@@ -249,5 +249,11 @@ cities: Array<any>;
    ngOnDestroy() {
      this.userDataObserver.unsubscribe();
    }
-
+   au()
+   {
+     let audio = new Audio();
+     audio.src = '../../../assets/click.mp3';
+     audio.load();
+     audio.play();
+   }
 }

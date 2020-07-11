@@ -1,79 +1,77 @@
 <app-main-nav></app-main-nav>
 <main class="mt-5 pt-4">
-  <div class="container dark-grey-text mt-5" *ngFor="let product of productDetails;">
+    <div class="container dark-grey-text mt-5" *ngFor="let product of productDetails;">
 
-    <!--Grid row-->
-    <div class="row wow fadeIn">
+        <!--Grid row-->
+        <div class="row wow fadeIn">
 
-      <!--Grid column-->
-      <div class="col-md-6 mb-4">
-        <img [src]="product?.imageUrl" class="img-fluid" alt="">
+            <!--Grid column-->
+            <div class="col-md-6 mb-4" (mouseenter)="au()">
+                <img [src]="product?.imageUrl" class="img-fluid" alt="">
 
-      </div>
-      <!--Grid column-->
+            </div>
+            <!--Grid column-->
 
-      <!--Grid column-->
-      <div class="col-md-6 mb-4">
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
 
-        <!--Content-->
-        <div class="p-4">
+                <!--Content-->
+                <div class="p-4">
 
-          <p class="lead">
-<!--            <span class="mr-1">
+                    <p class="lead">
+                        <!--            <span class="mr-1">
               <del>$200</del>
             </span> -->
-            <strong>{{product?.productName}}</strong>
-            <br>
-            <br>
-            <span>{{product?.price | currency: 'INR'}}</span>
-          </p>
+                        <strong>{{product?.productName}}</strong>
+                        <br>
+                        <br>
+                        <span>{{product?.price | currency: 'INR'}}</span>
+                    </p>
 
-          <p class="lead font-weight-bold">Description</p>
+                    <p class="lead font-weight-bold">Description</p>
 
-          <p>{{product?.description}}</p>
+                    <p>{{product?.description}}</p>
 
-          <form class="d-flex justify-content-left">
-            <!-- Default input -->
-            <input type="number" value="1" aria-label="Search" [formControl]= "quantity" class="form-control" style="width: 100px">
-            <button class="btn btn-primary btn-md my-0 p" type="submit" (click)="addToCart(product._id)">Add to cart
+                    <form class="d-flex justify-content-left">
+                        <!-- Default input -->
+                        <input type="number" value="1" aria-label="Search" [formControl]="quantity" class="form-control" style="width: 100px" (mouseenter)="au()">
+                        <button class="btn btn-primary btn-md my-0 p" type="submit" (click)="addToCart(product._id)" (mouseenter)="au()">Add to cart
               <i class="fas fa-shopping-cart ml-1"></i>
             </button>
 
-          </form>
+                    </form>
+
+                </div>
+                <!--Content-->
+
+            </div>
+            <!--Grid column-->
 
         </div>
-        <!--Content-->
+        <!--Grid row-->
 
-      </div>
-      <!--Grid column-->
+        <hr>
+        <!--Grid row-->
+        <div class="row wow fadeIn" *ngFor="let product of allProductDetails;">
 
-    </div>
-    <!--Grid row-->
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-12 mb-4" *ngFor="let item of product">
 
-    <hr>
-    <!--Grid row-->
-    <div class="row wow fadeIn" *ngFor="let product of allProductDetails;">
+                <img [routerLink]="[product._id]" [src]="item.imageUrl" [alt]="item.productName" class="img-fluid" alt="">
 
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4" *ngFor= "let item of product" >
+            </div>
+            <!--Grid column-->
 
-        <img [routerLink]="[product._id]" [src]="item.imageUrl" [alt]="item.productName" class="img-fluid" alt="">
-
-      </div>
-      <!--Grid column-->
+        </div>
+        <!--Grid row-->
 
     </div>
-    <!--Grid row-->
-
-  </div>
 </main>
 <!-- {{ productDetails | json}} -->
 
 <div class="row">
-  <button type="button" class="btn btn-info  btn-block" (click)= "loadProduct()" *ngIf="allProductDetails.length===0">
+    <button type="button" class="btn btn-info  btn-block" (click)="loadProduct()" *ngIf="allProductDetails.length===0">
       <i class="glyphicon glyphicon-refresh"></i>Load additional medicine of same category
   </button>
 </div>
 <app-footer></app-footer>
-
-
