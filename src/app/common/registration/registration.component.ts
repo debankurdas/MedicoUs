@@ -50,5 +50,12 @@ export class RegistrationComponent implements OnInit {
       this.registration.reset();
     });
   }
+  au()
+  {
+    let audio = new Audio();
+    audio.src = '../../../assets/click.mp3';
+    audio.load();
+    audio.play();
+  }
 
 }

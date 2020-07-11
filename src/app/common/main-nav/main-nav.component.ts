@@ -122,5 +122,11 @@ export class MainNavComponent implements OnInit, OnDestroy {
     this.roleObservable.unsubscribe();
     // this.cartCountObservable.unsubscribe();
   }
-
+  au()
+  {
+    let audio = new Audio();
+    audio.src = '../../../assets/click.mp3';
+    audio.load();
+    audio.play();
+  }
 }

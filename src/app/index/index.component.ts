@@ -30,5 +30,11 @@ id: number;
     this.id = 3;
     //(this.id);
   }
-
+  au()
+  {
+    let audio = new Audio();
+    audio.src = '../../assets/click.mp3';
+    audio.load();
+    audio.play();
+  }
 }

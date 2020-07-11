@@ -1,43 +1,46 @@
 .sidenav-container {
-  height: 11%;
+    height: 11%;
 }
 
 .sidenav {
-  width: 200px;
+    width: 200px;
 }
+
 .cur {
-  cursor: pointer;
+    cursor: pointer;
 }
+
 .sidenav .mat-toolbar {
-  background: inherit;
+    background: inherit;
 }
 
 .mar {
-  margin-right: 8px;
+    margin-right: 8px;
 }
 
 .mat-toolbar.mat-prim {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .titleWidth {
-  width: 80%;
+    width: 80%;
 }
 
 .badge {
-  padding-left: 9px;
-  padding-right: 9px;
-  -webkit-border-radius: 9px;
-  -moz-border-radius: 9px;
-  border-radius: 9px;
+    padding-left: 9px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
 }
 
 .label-warning[href],
 .badge-warning[href] {
-  background-color: #c67605;
+    background-color: #c67605;
 }
+
 #lblCartCount {
     font-size: 12px;
     background: #ff0000;
@@ -45,4 +48,23 @@
     padding: 0 5px;
     vertical-align: top;
     margin-left: -10px;
+}
+
+.x1 {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 105%;
+}
+
+.mar:hover .x1 {
+    visibility: visible;
 }

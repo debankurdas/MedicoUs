@@ -31,6 +31,12 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.login(this.user);
   }
-
+  au()
+  {
+    let audio = new Audio();
+    audio.src = '../../../assets/click.mp3';
+    audio.load();
+    audio.play();
+  }
 
 }

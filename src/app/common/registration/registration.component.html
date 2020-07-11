@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -22,69 +21,64 @@
 </head>
 
 <body style="background-repeat:no-repeat;">
-  <app-main-nav></app-main-nav>
+    <app-main-nav></app-main-nav>
     <div class="register-photo">
         <div class="form-container">
             <div class="image-holder" style="background-image:url(&quot;../../../../../assets/assets_registration/img/photo-medication-pills-on-white-plastic-container-3683074.jpg&quot;);background-position:center;background-size:cover;background-repeat:no-repeat;"></div>
-            <form  [formGroup]="registration" (submit)="register()">
+            <form [formGroup]="registration" (submit)="register()">
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <mat-form-field class="example-full-width">
-                  <mat-label>First Name</mat-label>
-                  <input type="text" matInput placeholder="First Name" formControlName="firstname" required>
-                  <mat-error
-                  *ngIf="registration.get('firstname').invalid" >Please enter the FirstName</mat-error>
+                    <mat-label>First Name</mat-label>
+                    <input type="text" matInput placeholder="First Name" formControlName="firstname" required>
+                    <mat-error *ngIf="registration.get('firstname').invalid">Please enter the FirstName</mat-error>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                  <mat-label>Last Name</mat-label>
-                  <input type="text" matInput placeholder="Last Name" style="padding:11px;margin:0px;margin-top:14px;" formControlName="lastname" required>
-                  <mat-error
-                  *ngIf="registration.get('lastname').invalid" >Please enter the LastName</mat-error>
+                    <mat-label>Last Name</mat-label>
+                    <input type="text" matInput placeholder="Last Name" style="padding:11px;margin:0px;margin-top:14px;" formControlName="lastname" required>
+                    <mat-error *ngIf="registration.get('lastname').invalid">Please enter the LastName</mat-error>
                 </mat-form-field>
                 <mat-radio-group formControlName="gender" aria-label="Select an option">
-                  <mat-radio-button value="Male">Male</mat-radio-button>
-                  <mat-radio-button value="Female">Female</mat-radio-button>
+                    <mat-radio-button value="Male" (mouseenter)="au()">Male</mat-radio-button>
+                    <mat-radio-button value="Female" (mouseenter)="au()">Female</mat-radio-button>
                 </mat-radio-group>
                 <mat-form-field class="example-full-width">
-                  <mat-label>Email</mat-label>
-                  <input type="email" matInput placeholder="Email" formControlName="email" required style="margin-top:14px;">
-                  <mat-error
-                  *ngIf="registration.get('email').invalid" >Please enter the valid emailAddress</mat-error>
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput placeholder="Email" formControlName="email" required style="margin-top:14px;">
+                    <mat-error *ngIf="registration.get('email').invalid">Please enter the valid emailAddress</mat-error>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                  <mat-label>Mobile No.</mat-label>
-                  <input type="text" matInput style="margin-top:14px;" placeholder="Mobile Number" formControlName="mobile" required>
-                  <mat-error
-                  *ngIf="registration.get('mobile').invalid" >Please enter 10 digit mobile number</mat-error>
+                    <mat-label>Mobile No.</mat-label>
+                    <input type="text" matInput style="margin-top:14px;" placeholder="Mobile Number" formControlName="mobile" required>
+                    <mat-error *ngIf="registration.get('mobile').invalid">Please enter 10 digit mobile number</mat-error>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                  <mat-label>Password</mat-label>
-                  <input type="password" matInput placeholder="Password" formControlName="password" required>
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput placeholder="Password" formControlName="password" required>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                  <mat-label>Confirm Password</mat-label>
-                  <input type="password" matInput placeholder="Confirm Password" formControlName="confirm_password" required>
+                    <mat-label>Confirm Password</mat-label>
+                    <input type="password" matInput placeholder="Confirm Password" formControlName="confirm_password" required>
                 </mat-form-field>
                 <div>
-                  <mat-error
-                  *ngIf="registration.errors?.invalidPassword" >Password and Confirm Password must be same
-                </mat-error>
+                    <mat-error *ngIf="registration.errors?.invalidPassword">Password and Confirm Password must be same
+                    </mat-error>
                 </div>
                 <div class="form-group">
                     <div class="form-check">
-                      <label class="form-check-label">
+                        <label class="form-check-label">
                         <input class="form-check-input" type="checkbox">I agree to the license terms.
                       </label>
                     </div>
-                 </div>
+                </div>
                 <div class="form-group">
-                  <button class="btn btn-primary btn-block" type="submit" [disabled]="registration.invalid">Sign Up</button>
+                    <button class="btn btn-primary btn-block" type="submit" [disabled]="registration.invalid" (mouseenter)="au()">Sign Up</button>
                 </div>
                 <a href="#" class="already">You already have an account? Login here.</a>
             </form>
         </div>
     </div>
     <div>
-      <app-footer></app-footer>
+        <app-footer></app-footer>
     </div>
     <script src="../../../assets/assets_registration/js/jquery.min.js"></script>
     <script src="../../../assets/assets_registration/js/bootstrap.min.js"></script>
@@ -94,4 +88,3 @@
 </body>
 
 </html>
-
