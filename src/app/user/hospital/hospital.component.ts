@@ -17,16 +17,17 @@ export class HospitalComponent implements OnInit {
 
   ngOnInit() {
 
-    this.hospitalService.getHospitalData()
+    this.hospitalService.getHospitalByLocation('ALL', 'ALL', '')
     .subscribe((result) => {
       this.hospitalByData = [];
       this.hospitalByData.push(result.data);
-      if (this.hospitalByData.length < 0) {
-        this.snackBar.open('No Hospital is Found in this location', 'Try another one', {
+      //('By location', this.hospitalByData);
+      if (result.data.length < 1) {
+        this.snackBar.open('No hospital is avilable in this region', 'Try another region', {
           duration: 2000
         });
       }
-      //('h', this.hospitalByData);
+
     });
   }
 

@@ -1,5 +1,6 @@
 const hospitalSchema = require('../../models/hospitalModels/hospitalSchema');
-
+//const userRole
+//const admin_role ='Admin_H';
 
 exports.addHospital = (req, res, next) => {
     //(req.body);
@@ -41,8 +42,10 @@ exports.getHospital = (req, res, next) => {
     let fetchHospital;
     const adminId = req.userData.uId;
     console.log(pageSize, currentPage, adminId);
+    //console.log(hospitalName);
     const hospitalQuery = hospitalSchema.find({ adminId: adminId });
     if (pageSize && currentPage) {
+        console.log('x1');
         hospitalQuery.skip(pageSize * (currentPage - 1)).limit(pageSize)
         hospitalQuery.then(result => {
                 fetchHospital = result;
@@ -63,8 +66,9 @@ exports.getHospital = (req, res, next) => {
                 });
             });
     } else if (isNaN(pageSize) && isNaN(currentPage) && adminId != null) {
+
         const adminId = req.userData.uId;
-        // console.log(adminId);
+        console.log('x1');
         hospitalSchema.find({ adminId: adminId })
             .then((hospital) => {
                 if (hospital) {
@@ -82,7 +86,7 @@ exports.getHospital = (req, res, next) => {
                 });
             });
     } else {
-
+        console.log('hi');
         hospitalSchema.find()
             .then((result) => {
                 res.status(200).json({
@@ -386,5 +390,8 @@ exports.getHospitalBySpeciality = (req, res, next) => {
 
     }
 
+
+}
+exports.getHospitalByUser = (req, res, next) => {
 
 }

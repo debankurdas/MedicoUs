@@ -18,16 +18,17 @@ export class BloodBankComponent implements OnInit {
   speciality: string;
   bloodBankByData = [];
   ngOnInit() {
-    this.bloodBankService.getbloodBankbranch()
+    this.bloodBankService.getBloodBankbyLocation('ALL', 'ALL', '')
     .subscribe((result) => {
       this.bloodBankByData = [];
       this.bloodBankByData.push(result.data);
-      if (this.bloodBankByData.length < 0) {
-        this.snackBar.open('No Hospital is Found in this location', 'Try another one', {
+      //('By location', this.bloodBankByData);
+      if (result.data.length < 1) {
+        this.snackBar.open('No hospital is avilable in this region', 'Try another region', {
           duration: 2000
         });
       }
-      //('h', this.bloodBankByData);
+
     });
   }
 
