@@ -40,6 +40,7 @@ exports.getHospital = (req, res, next) => {
     const currentPage = +req.query.currentPage;
     let fetchHospital;
     const adminId = req.userData.uId;
+    console.log(pageSize, currentPage, adminId);
     const hospitalQuery = hospitalSchema.find({ adminId: adminId });
     if (pageSize && currentPage) {
         hospitalQuery.skip(pageSize * (currentPage - 1)).limit(pageSize)
@@ -61,7 +62,27 @@ exports.getHospital = (req, res, next) => {
                     error: error
                 });
             });
+    } else if (isNaN(pageSize) && isNaN(currentPage) && adminId != null) {
+        const adminId = req.userData.uId;
+        // console.log(adminId);
+        hospitalSchema.find({ adminId: adminId })
+            .then((hospital) => {
+                if (hospital) {
+                    res.status(200).json({
+                        data: hospital
+                    });
+                } else {
+                    res.status(401).json({ message: 'Hospital is not found' });
+                }
+            })
+            .catch(error => {
+                res.status(401).json({
+                    message: 'Hospital data is not fetched!',
+                    error: error
+                });
+            });
     } else {
+
         hospitalSchema.find()
             .then((result) => {
                 res.status(200).json({

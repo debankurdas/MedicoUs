@@ -139,6 +139,9 @@ export class HospitalService {
    getHospitalData() {
     return this.http.get<{data: any}>(environment.apiUrl + '/hospital');
    }
+  //  getHospitalDataByadminId() {
+  //   return this.http.get<{data: any}>(environment.apiUrl + '/hospital/admin');
+  //  }
 
   //  getHospitalDataByCity(city: string) {
   //    const cityData = {

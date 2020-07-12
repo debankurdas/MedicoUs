@@ -58,6 +58,25 @@ exports.getbloodBank = (req, res, next) => {
                     error: error
                 });
             });
+    } else if (isNaN(pageSize) && isNaN(currentPage) && adminId != null) {
+        const adminId = req.userData.uId;
+        console.log(adminId);
+        bloodBankSchema.find({ adminId: adminId })
+            .then((bloodBank) => {
+                if (bloodBank) {
+                    res.status(200).json({
+                        data: bloodBank
+                    });
+                } else {
+                    res.status(401).json({ message: 'Blood Bank is not found' });
+                }
+            })
+            .catch(error => {
+                res.status(401).json({
+                    message: 'Blood Bank data is not fetched!',
+                    error: error
+                });
+            });
     } else {
         bloodBankSchema.find()
             .then((result) => {

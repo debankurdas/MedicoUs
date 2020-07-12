@@ -133,7 +133,7 @@ export class FilterBloodBankComponent implements OnInit {
     { name: 'Nagaland', cities: [ 'Dimapur district', 'Kiphire district', 'Kohima district', 'Longleng district',
      'Mokokchung district', 'Mon District', 'Peren district', 'Phek district', 'Tuensang district',
       'Wokha district', 'Zunheboto district', 'Noklak district'] },
-    { name: 'Odisha', cities: [ 'Angul', ' Balangir', ' Balasore', ' Bargarh', ' Bhadrak', ' Boudh',
+    { name: 'Odisha', cities: [ 'Angul', ' Balangir', ' Balasore', ' Bargarh', ' Bhadrak','Bhubaneswar', ' Boudh',
     ' Cuttack', ' Deogarh', ' Dhenkanal', ' Gajapati', ' Ganjam', ' Jagatsinghpur', ' Jajpur', ' Jharsuguda',
     ' Kandhamal', ' Kalahandi', ' Kendrapara', ' Keonjhar', ' Khordha', ' Koraput', ' Malkangiri', ' Mayurbhanj',
      ' Nabarangpur', ' Nayagarh', ' Nuapada', ' Puri', ' Rayagada', ' Sambalpur', ' Subarnapur', ' Sundargarh'] },
